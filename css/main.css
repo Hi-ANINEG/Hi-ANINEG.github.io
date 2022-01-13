@@ -2791,3 +2791,12 @@ body {
 .post-block {
   background: rgba(255,255,255,0.7) none repeat scroll !important;
 }
+/**普通指针样式**/
+body {
+  cursor: url("Normal.cur"), default;
+  background-color: ;
+}
+/**链接指针样式**/
+a:hover {
+  cursor: url("Link.cur"), pointer;
+}
