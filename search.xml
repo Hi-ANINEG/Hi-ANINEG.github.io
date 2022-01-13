@@ -24,13 +24,11 @@ hexo d   # 部署发布</p>
 <span id="more"></span>
 <p>也可以不使用命令自己创建 .md 文件,只需在文件开头手动加入如下格式 Front-matter 即可,写完后运行 <code>hexo g</code> 和 <code>hexo d</code> 发布。</p>
 <blockquote>
-<h2 id="title-Hello-World-标题date-2019-3-26-hh-mm-ss-时间categories-分类-Diarytags-标签-PS3-Games">title: Hello World # 标题<br>
+<p>title: Hello World # 标题<br>
 date: 2019/3/26 hh:mm:ss # 时间<br>
 categories: # 分类<br>
 -Diary<br>
-tags: # 标签<br>
--PS3<br>
--Games</h2>
+tags: # 标签</p>
 <p>摘要<br>
 <code>&lt;!–more–&gt;</code><br>
 正文</p>
@@ -50,6 +48,9 @@ hexo help             # 帮助</p>
 <p>Hexo 主页文章列表默认会显示文章全文,浏览时很不方便,可以在文章中插入<code>&lt;!–more–&gt;</code>进行分段。</p>
 <p>该代码前面的内容会作为摘要显示,而后面的内容会替换为 “Read More” 隐藏起来。</p>
 ]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
       <tags>
         <tag>hexo</tag>
       </tags>
