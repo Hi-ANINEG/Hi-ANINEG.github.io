@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>写在前面</title>
-    <url>/2022/01/12/start/</url>
-    <content><![CDATA[<h3 id="做了一天的界面，虽然很累，虽然不尽人意，虽然…">做了一天的界面，虽然很累，虽然不尽人意，虽然…</h3>
-<h2 id="但真的比昨天强太多了，网页的背景搞不上去，这个姑且先放着，以后再研究吧-😉">但真的比昨天强太多了，网页的背景搞不上去，这个姑且先放着，以后再研究吧~😉</h2>
-]]></content>
-  </entry>
-  <entry>
     <title>hexo基本操作</title>
     <url>/2022/01/13/hexo/</url>
     <content><![CDATA[<h1>发布文章</h1>
@@ -54,5 +47,12 @@ hexo help             # 帮助</p>
       <tags>
         <tag>hexo</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>写在前面</title>
+    <url>/2022/01/12/start/</url>
+    <content><![CDATA[<h3 id="做了一天的界面，虽然很累，虽然不尽人意，虽然…">做了一天的界面，虽然很累，虽然不尽人意，虽然…</h3>
+<h2 id="但真的比昨天强太多了，网页的背景搞不上去，这个姑且先放着，以后再研究吧-😉">但真的比昨天强太多了，网页的背景搞不上去，这个姑且先放着，以后再研究吧~😉</h2>
+]]></content>
   </entry>
 </search>
