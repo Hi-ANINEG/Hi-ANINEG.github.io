@@ -20,25 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="学 无 止 境">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ANINEG&#39;s blog">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="发布文章 进入博客所在目录,右键打开 Git Bash Here,创建博文:  hexo new “My New Post”  然后 source 文件夹中会出现一个 My New Post.md 文件,就可以使用 Markdown 编辑器在该文件中撰写文章了。 写完后运行下面代码将文章渲染并部署到 GitHub Pages 上完成发布。以后每次发布文章都是这两条命令。  hexo g   # 生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo基本操作">
+<meta property="og:url" content="http://example.com/2022/01/13/hexo/index.html">
 <meta property="og:site_name" content="ANINEG&#39;s blog">
-<meta property="og:description" content="学 无 止 境">
+<meta property="og:description" content="发布文章 进入博客所在目录,右键打开 Git Bash Here,创建博文:  hexo new “My New Post”  然后 source 文件夹中会出现一个 My New Post.md 文件,就可以使用 Markdown 编辑器在该文件中撰写文章了。 写完后运行下面代码将文章渲染并部署到 GitHub Pages 上完成发布。以后每次发布文章都是这两条命令。  hexo g   # 生">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-13T02:56:46.000Z">
+<meta property="article:modified_time" content="2022-01-13T03:44:59.180Z">
 <meta property="article:author" content="ANINEG">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/01/13/hexo/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/01/13/hexo/","path":"2022/01/13/hexo/","title":"hexo基本操作"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>ANINEG's blog</title>
+<title>hexo基本操作 | ANINEG's blog</title>
   
 
 
@@ -71,7 +74,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">ANINEG's blog</h1>
+      <p class="site-title">ANINEG's blog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">书山寻宝 • 学海泛舟</p>
@@ -108,7 +111,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -121,6 +124,19 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">发布文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-Hello-World-%E6%A0%87%E9%A2%98date-2019-3-26-hh-mm-ss-%E6%97%B6%E9%97%B4categories-%E5%88%86%E7%B1%BB-Diarytags-%E6%A0%87%E7%AD%BE-PS3-Games"><span class="nav-number">1.1.</span> <span class="nav-text">title: Hello World # 标题
+
+date: 2019&#x2F;3&#x2F;26 hh:mm:ss # 时间
+
+categories: # 分类
+
+-Diary
+
+tags: # 标签
+
+-PS3
+
+-Games</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">显示文章摘要</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -167,16 +183,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/13/hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -189,9 +206,9 @@
       <meta itemprop="name" content="ANINEG's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/13/hexo/" class="post-title-link" itemprop="url">hexo基本操作</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          hexo基本操作
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -215,7 +232,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>发布文章</h1>
+        <h1>发布文章</h1>
 <p>进入博客所在目录,右键打开 Git Bash Here,创建博文:</p>
 <blockquote>
 <p>hexo new “My New Post”</p>
@@ -226,93 +243,61 @@
 <p>hexo g   # 生成页面<br>
 hexo d   # 部署发布</p>
 </blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/13/hexo/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+<span id="more"></span>
+<p>也可以不使用命令自己创建 .md 文件,只需在文件开头手动加入如下格式 Front-matter 即可,写完后运行 <code>hexo g</code> 和 <code>hexo d</code> 发布。</p>
+<blockquote>
+<h2 id="title-Hello-World-标题date-2019-3-26-hh-mm-ss-时间categories-分类-Diarytags-标签-PS3-Games">title: Hello World # 标题<br>
+date: 2019/3/26 hh:mm:ss # 时间<br>
+categories: # 分类<br>
+-Diary<br>
+tags: # 标签<br>
+-PS3<br>
+-Games</h2>
+<p>摘要<br>
+<code>&lt;!–more–&gt;</code><br>
+正文</p>
+</blockquote>
+<h1>常用命令</h1>
+<blockquote>
+<p>hexo new “name”       # 新建文章<br>
+hexo new page “name”  # 新建页面<br>
+hexo g                # 生成页面<br>
+hexo d                # 部署<br>
+hexo g -d             # 生成页面并部署<br>
+hexo s                # 本地预览<br>
+hexo clean            # 清除缓存和已生成的静态文件<br>
+hexo help             # 帮助</p>
+</blockquote>
+<h1>显示文章摘要</h1>
+<p>Hexo 主页文章列表默认会显示文章全文,浏览时很不方便,可以在文章中插入<code>&lt;!–more–&gt;</code>进行分段。</p>
+<p>该代码前面的内容会作为摘要显示,而后面的内容会替换为 “Read More” 隐藏起来。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+          </div>
+
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/12/start/" rel="prev" title="写在前面">
+                  <i class="fa fa-chevron-left"></i> 写在前面
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/12/start/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ANINEG">
-      <meta itemprop="description" content="学 无 止 境">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ANINEG's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/12/start/" class="post-title-link" itemprop="url">写在前面</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-01-12 16:54:17 / 修改时间：16:59:34" itemprop="dateCreated datePublished" datetime="2022-01-12T16:54:17+08:00">2022-01-12</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="做了一天的界面，虽然很累，虽然不尽人意，虽然…">做了一天的界面，虽然很累，虽然不尽人意，虽然…</h3>
-<h2 id="但真的比昨天强太多了，网页的背景搞不上去，这个姑且先放着，以后再研究吧-😉">但真的比昨天强太多了，网页的背景搞不上去，这个姑且先放着，以后再研究吧~😉</h2>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
