@@ -1,3 +1,20 @@
+.post-button .btn {
+  color: #555 !important;
+  background-color: #fff;
+  border-radius: 3px;
+  font-size: 15px;
+  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.35);
+  border: none !important;
+  transition-property: unset;
+  padding: 0px 15px;
+}
+.post-button .btn:hover {
+  color: #fff !important;
+  border-radius: 3px;
+  font-size: 15px;
+  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.35);
+  background-image: linear-gradient(90deg, #a166ab 0%, #ef4e7b 25%, #f37055 50%, #ef4e7b 75%, #a166ab 100%);
+}
 :root {
   --body-bg-color: #eee;
   --content-bg-color: #fff;
@@ -2774,13 +2791,14 @@ body {
   background: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 100% 100%;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 .content-wrap {
-  opacity: 0.9;
+  opacity: 0.8;
 }
 .sidebar-inner {
-  background: rgba(255,255,255,0.7) none repeat scroll !important;
+  background: rgba(255,255,255,0.8) none repeat scroll !important;
 }
 .header-inner {
   background: rgba(255,255,255,0.8);
@@ -2789,7 +2807,7 @@ body {
   opacity: 0.8;
 }
 .post-block {
-  background: rgba(255,255,255,0.7) none repeat scroll !important;
+  background: rgba(255,255,255,0.8) none repeat scroll !important;
 }
 /**普通指针样式**/
 body {
