@@ -1,0 +1,469 @@
+
+[data-theme="dark"]
+  #aside-content .card-widget{
+      background: rgba(0, 0, 0, 0.5)!important;
+    }
+[data-theme="dark"]
+  div#post{
+    background: rgba(0, 0, 0, 0.5)!important;
+    }
+[data-theme="dark"]
+  #recent-posts > .recent-post-item{
+      background: rgba(0, 0, 0, 0.5)!important;
+    }
+[data-theme="dark"]
+  div#page{
+    background: rgba(0, 0, 0, 0.5)!important;
+    }
+[data-theme="dark"]
+ div#archive{
+      background: rgba(0, 0, 0, 0.5)!important;
+    }
+[data-theme="dark"]
+  div#tag{
+    background: rgba(0, 0, 0, 0.5)!important;
+    }
+[data-theme="dark"]
+  div#category{
+    background: rgba(0, 0, 0, 0.5)!important;
+    }
+/*
+  く__,.ヘヽ.        /  ,ー､ 〉
+           ＼ ', !-─‐-i  /  /´
+           ／｀ｰ'       L/／｀ヽ､
+         /   ／,   /|   ,   ,       ',
+       ｲ   / /-‐/  ｉ  L_ ﾊ ヽ!   i
+        ﾚ ﾍ 7ｲ｀ﾄ   ﾚ'ｧ-ﾄ､!ハ|   |
+          !,/7 '0'     ´0iソ|    |
+          |.从"    _     ,,,, / |./    |
+          ﾚ'| i＞.､,,__  _,.イ /   .i   |
+            ﾚ'| | / k_７_/ﾚ'ヽ,  ﾊ.  |
+              | |/i 〈|/   i  ,.ﾍ |  i  |
+             .|/ /  ｉ：    ﾍ!    ＼  |
+              kヽ>､ﾊ    _,.ﾍ､    /､!
+              !'〈//｀Ｔ´', ＼ ｀'7'ｰr'
+              ﾚ'ヽL__|___i,___,ンﾚ|ノ
+                  ﾄ-,/  |___./
+                  'ｰ'    !_,.:
+    CGX你别看了，又想扒我代码是不是！！！ (ﾟДﾟ*)ﾉ 
+*/
+/* 首页文章卡片 */
+#recent-posts > .recent-post-item{
+    background:rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+}
+/* 首页侧栏卡片 */
+.card-widget{
+  background:rgba(255, 255, 255, 0.4)!important;
+  backdrop-filter: blur(10px);
+}
+/* 搜索框 */
+.search-dialog,.local-search-box--input{
+  background:rgba(255, 255, 255, 0.4)!important;
+  backdrop-filter: blur(10px);
+}
+
+.swiper-slide.history_slide{
+  background:rgba(255, 255, 255, 0)!important;
+}
+
+a{
+  color: #1478d2;
+}
+
+.nav-fixed #nav{
+  background:rgba(255, 255, 255, 0.4)!important;
+  backdrop-filter: blur(10px);
+}
+
+/* 文章页面正文背景 */
+div#post{
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+/* 分页页面 */
+div#page{
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+}
+/* 归档页面 */
+div#archive{
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+}
+/* 标签页面 */
+div#tag{
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+}
+/* 分类页面 */
+div#category{
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+  background-color: rgba(73, 177, 245, 0.2);
+  border-radius: 2em;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: #49b1f5;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+  border-radius: 2em;
+}
+ 
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+ 
+::-moz-selection {
+  color: #fff;
+  background-color: #49b1f5;
+}
+
+/* 页脚透明渐变 */
+#footer {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  backdrop-filter: saturate(100%) blur(10px);
+}
+
+#footer::before {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#footer #footer-wrap {
+  color: var(--font-color);
+}
+
+#footer #footer-wrap a {
+  color: var(--font-color);
+}
+
+/*10s为加载动画的时间，1为加载动画的次数，ease-in-out为动画效果
+#page-header,
+#web_bg {
+    -webkit-animation: imgblur 1s 1 ease-in-out;
+    animation: imgblur 1s 1 ease-in-out;
+}
+@keyframes imgblur {
+  0% {
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}*/
+/*适配使用-webkit内核的浏览器 */
+@-webkit-keyframes imgblur {
+  0% {
+    -webkit-filter: blur(5px);
+  }
+  100% {
+    -webkit-filter: blur(0px);
+  }
+}
+
+
+body {
+    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),
+        default;
+}
+a,
+img {
+    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+        default;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+  /* 默认情况下缩进左侧66px，只留一点箭头部分 */
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0 !important;
+  /* 鼠标悬停是左侧缩进归零，完全显示按钮 */
+}
+
+@font-face{
+  font-family:'shine' ;  /* 字体名自定义即可 */
+  src:url('https://uss.anineg.space/fonts/shine.ttf'); /* 字体文件路径 */
+  font-display : swap;
+}
+
+@font-face{
+  font-family:'black' ;  /* 字体名自定义即可 */
+  src:url('https://uss.anineg.space/fonts/black.ttf'); /* 字体文件路径 */
+  font-display : swap;
+}
+
+svg.icon.festival-decoration {
+    width: 3em;
+    height: 3em;
+    left: 2em;
+    margin-bottom: -3em;
+    display: block;
+    z-index: 100;
+    position: relative;
+    -webkit-animation: sway 1s infinite ease-in-out alternate;
+    animation: sway 1s infinite ease-in-out alternate;
+}
+@-webkit-keyframes sway {
+  0% {
+    -webkit-transform: rotate(20deg);
+    transform-origin: center top;
+  }
+  100% {
+    -webkit-transform: rotate(-20deg);
+    transform-origin: center top;
+  }
+}
+@keyframes sway {
+  0% {
+    transform: rotate(20deg);
+    transform-origin: center top;
+  }
+  100% {
+    transform: rotate(-20deg);
+    transform-origin: center top;
+  }
+}
+
+/* 页脚透明 */
+/*#footer{
+  background: transparent!important;
+}*/
+/* 页脚黑色透明玻璃效果移除 */
+#footer::before{
+    background: transparent!important;
+  }
+/* 头图透明 */
+#page-header{
+  background: transparent!important;
+}
+/* 头图遮罩层透明 */
+#page-header::before{
+  background: transparent!important;
+  }
+/*top-img黑色透明玻璃效果移除，不建议加，除非你执着于完全一图流或者背景图对比色明显 */
+/*#page-header.post-bg:before {
+  background-color: transparent!important;
+}*/
+/*夜间模式伪类遮罩层透明*/
+[data-theme="dark"]
+  #footer::before{
+      background: transparent!important;
+    }
+[data-theme="dark"]
+  #page-header::before{
+    background: transparent!important;
+    }
+
+
+/*强制不显示歌词*/
+.aplayer.aplayer-fixed .aplayer-lrc{
+    display: none!important;
+}
+
+/*修改插件整体背景*/
+.aplayer.aplayer-fixed {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    border-radius:0 4px 0 0!important;
+}
+
+.aplayer-body{
+    background: rgba(255,255,255,0.1)!important;
+    backdrop-filter: blur(10px);
+}
+
+/*修改列表正在播放的歌曲背景*/
+.aplayer-list-light{
+    background: rgba(255,255,255,0.1)!important;
+    backdrop-filter: blur(10px);
+}
+
+/*修改歌曲列表背景*/
+.aplayer-list {
+    border: 1px solid #f1f1f1!important;
+    border-radius: 4px!important;
+}
+
+/*修改歌曲列表鼠标悬停时背景*/
+.aplayer-list li:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(15px);
+}
+
+/*修改播放列表正在播放歌曲左侧提示条颜色*/
+.aplayer-list-cur{
+    background: #666!important;
+}
+
+/*修改进度条颜色，不设置此项默认是蓝色 #2980b9*/
+.aplayer-bar .aplayer-played,.aplayer-thumb{
+    background: #4c4948!important;
+}
+
+/*删除底部歌曲播放信息边框*/
+.aplayer-info{
+    border: none!important;
+}
+
+/*删除歌曲列表边框*/
+.aplayer-list li {
+    border: none!important;
+}
+
+/*删除歌词按钮*/
+.aplayer-icon.aplayer-icon-lrc{
+    display: none!important;
+}
+
+/*修改插件主体在深色模式下的样式*/
+[data-theme="dark"]
+.aplayer.aplayer-fixed {
+    background: rgba(0, 0, 0, 0.6)!important;
+    color: #e1e1e1;
+}
+
+/*修改深色模式下鼠标悬停在列表时的样式*/
+[data-theme="dark"]
+.aplayer-list li:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
+
+}
+
+/*修改歌曲列表在深色模式下的样式*/
+[data-theme="dark"]
+.aplayer-list {
+    background: rgba(12, 12, 12, 0) !important;
+    border: 1px solid #0d0d0d!important;
+}
+
+/*修改深色模式下列表当前选中的歌曲样式*/
+[data-theme="dark"]
+.aplayer-list-light{
+    background: rgba(0,0,0,0.5)!important;
+}
+
+/*深色模式下给歌曲封面增加遮罩*/
+[data-theme="dark"]
+.aplayer-pic {
+    -webkit-filter: brightness(.7)!important;
+    filter: brightness(.7)!important;
+}
+
+/*访客地图自适应尺寸及圆角*/
+.card-ip a>img{
+    border-radius: 7px!important;
+    width: 100% !important;
+    margin-top: 5px!important;
+}
+
+/* 隐藏 Waline 的 powered by*/
+.wl-power {
+  display: none;
+}
+
+/*哔哩哔哩视频适配*/
+.aspect-ratio {position: relative;width: 100%;height: 0;padding-bottom: 75%;margin: 3% auto;text-align: center;}      
+.aspect-ratio iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+/*上下篇最新推荐卡片圆角*/
+.pagination-post,.relatedPosts-list>div{
+    border-radius:8px!important
+}
+.article-sort-item-img,.aside-list-item .thumbnail{
+    border-radius:5px
+}
+
+/* 文章页H1-H6图标样式效果 */
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+    -webkit-animation: ccc 1.6s linear infinite ;
+    animation: ccc 1.6s linear infinite ;
+}
+@-webkit-keyframes ccc {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(-1turn);
+        transform: rotate(-1turn)
+    }
+}
+@keyframes ccc {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(-1turn);
+        transform: rotate(-1turn)
+    }
+}
+
+.card-tags .card-tag-cloud a{
+    background:rgba(255,255,255,.3)!important;
+    color:rgba(0,0,0,.5)!important;
+    line-height:24px;
+    padding:0 10px!important;
+    font-size:14px!important;
+    margin:5px 1px;
+    border-radius:8px;
+    box-shadow:0 0 5px 0 rgba(100,100,100,.1)
+}
+#aside-content .card-tag-cloud a{
+    display:inline-block;
+    padding:0 4px
+}
+.tag-cloud-list a{
+    display:inline-block;
+    font-size:20px!important;
+    background:rgba(255,255,255,.3)!important;
+    color:rgba(0,0,0,.6)!important;
+    line-height:24px;
+    backdrop-filter:blur(10px);
+    padding:5px 10px!important;
+    margin:7px 7px;
+    border-radius:10px;
+    box-shadow:0 0 5px 0 rgb(100 100 100 / 10%)
+}
+[data-theme=dark] .card-tags .card-tag-cloud a{
+    color:rgba(255,255,255,.6)!important
+}
+[data-theme=dark] .tag-cloud-list a{
+    color:rgba(255,255,255,.6)!important;
+    background:rgba(0,0,0,.1)!important;
+    box-shadow:0 0 3px 0 rgb(220 220 220 / 10%)
+}
+[data-theme=dark] .card-tags .card-tag-cloud a{
+    background:rgba(0,0,0,.1)!important;
+    box-shadow:0 0 3px 0 rgba(220,220,220,.1)
+}
