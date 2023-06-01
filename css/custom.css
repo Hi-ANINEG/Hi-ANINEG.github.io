@@ -50,17 +50,17 @@
 /* 首页文章卡片 */
 #recent-posts > .recent-post-item{
     background:rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 /* 首页侧栏卡片 */
 .card-widget{
   background:rgba(255, 255, 255, 0.4)!important;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 /* 搜索框 */
 .search-dialog,.local-search-box--input{
   background:rgba(255, 255, 255, 0.4)!important;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 
 .swiper-slide.history_slide{
@@ -73,33 +73,33 @@ a{
 
 .nav-fixed #nav{
   background:rgba(255, 255, 255, 0.4)!important;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 
 /* 文章页面正文背景 */
 div#post{
   background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 /* 分页页面 */
 div#page{
   background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 /* 归档页面 */
 div#archive{
   background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 /* 标签页面 */
 div#tag{
   background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 /* 分类页面 */
 div#category{
   background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
 }
 
 
@@ -144,7 +144,7 @@ div#category{
   color: #000;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  backdrop-filter: saturate(100%) blur(10px);
+  backdrop-filter: saturate(100%) blur(20px);
 }
 
 #footer::before {
@@ -287,19 +287,19 @@ svg.icon.festival-decoration {
 /*修改插件整体背景*/
 .aplayer.aplayer-fixed {
     background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     border-radius:0 4px 0 0!important;
 }
 
 .aplayer-body{
     background: rgba(255,255,255,0.1)!important;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 
 /*修改列表正在播放的歌曲背景*/
 .aplayer-list-light{
     background: rgba(255,255,255,0.1)!important;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 
 /*修改歌曲列表背景*/
@@ -449,7 +449,7 @@ h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
     background:rgba(255,255,255,.3)!important;
     color:rgba(0,0,0,.6)!important;
     line-height:24px;
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(20px);
     padding:5px 10px!important;
     margin:7px 7px;
     border-radius:10px;

