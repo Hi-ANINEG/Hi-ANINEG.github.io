@@ -3496,7 +3496,7 @@
 <h2 id="一、基础概念">一、基础概念</h2>
 <p>Server-side request forgery (SSRF)，服务端请求伪造，简单来说，就是你可以访问A站点，A站点可以访问内网的B站点，你不可以直接访问B站点，但是由于A站点的防护措施或者校验不足，你可以通过控制请求，访问到B站点上的资源，然后A站点将内部网络返回的结果传递给你，你就完成了对内网的攻击。SSRF可能可以实现扫描内网，向内部任意主机的任意端口发送构造的攻击请求，攻击内网WEB应用，读取文件等等。</p>
 <h2 id="二、题目">二、题目</h2>
-<p>**题目链接：**<a href="https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost">https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost</a></p>
+<p><strong>题目链接：</strong> <a href="https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost">https://portswigger.net/web-security/ssrf/lab-basic-ssrf-against-localhost</a></p>
 <p><strong>APPRENTICE</strong></p>
 <p>This lab has a stock check feature which fetches data from an internal system.</p>
 <p>这个实验室有一个库存检查功能，可以从内部系统获取数据。</p>
