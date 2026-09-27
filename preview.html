@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b12">
+
+    <title>CDN Service Unavailable</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                "Microsoft YaHei",
+                "PingFang SC",
+                Arial,
+                sans-serif;
+
+            color: #f4f7ff;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(77, 115, 255, 0.16), transparent 32%),
+                radial-gradient(circle at 80% 70%, rgba(126, 68, 255, 0.13), transparent 35%),
+                #080b12;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* 背景网格 */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+            background-size: 45px 45px;
+
+            mask-image: linear-gradient(
+                to bottom,
+                transparent,
+                black 20%,
+                black 80%,
+                transparent
+            );
+
+            pointer-events: none;
+        }
+
+        /* 背景光晕 */
+        .glow {
+            position: fixed;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: 0.16;
+            pointer-events: none;
+        }
+
+        .glow.one {
+            background: #4676ff;
+            top: -180px;
+            left: -160px;
+        }
+
+        .glow.two {
+            background: #8a4dff;
+            bottom: -220px;
+            right: -180px;
+        }
+
+        .container {
+            width: min(92%, 720px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            position: relative;
+            padding: 52px 50px 42px;
+
+            background: rgba(14, 18, 29, 0.72);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 24px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.45),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(107, 142, 255, 0.85),
+                rgba(159, 95, 255, 0.85),
+                transparent
+            );
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 7px 13px;
+
+            border-radius: 100px;
+            border: 1px solid rgba(255, 183, 77, 0.18);
+            background: rgba(255, 166, 56, 0.08);
+
+            color: #ffc66e;
+
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+            background: #ffb347;
+
+            box-shadow: 0 0 10px rgba(255, 179, 71, 0.8);
+
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.45;
+                transform: scale(0.75);
+            }
+        }
+
+        .code {
+            margin-top: 30px;
+
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                "Liberation Mono",
+                monospace;
+
+            color: #78849a;
+
+            font-size: 13px;
+            letter-spacing: 1.5px;
+        }
+
+        h1 {
+            margin-top: 12px;
+
+            font-size: clamp(32px, 6vw, 52px);
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -1.8px;
+
+            background: linear-gradient(
+                100deg,
+                #ffffff 0%,
+                #c9d4ff 55%,
+                #b69aff 100%
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+        .description {
+            margin-top: 20px;
+
+            color: #929bad;
+
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .redirect-box {
+            margin-top: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 18px 20px;
+
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+        }
+
+        .redirect-info {
+            min-width: 0;
+        }
+
+        .redirect-label {
+            color: #737d90;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .redirect-url {
+            margin-top: 6px;
+
+            color: #b6c5ff;
+            font-size: 14px;
+
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .countdown {
+            flex-shrink: 0;
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(112, 139, 255, 0.3);
+            background: rgba(83, 112, 255, 0.08);
+
+            color: #dbe2ff;
+
+            font-size: 22px;
+            font-weight: 600;
+
+            box-shadow:
+                inset 0 0 20px rgba(89, 115, 255, 0.07),
+                0 0 25px rgba(89, 115, 255, 0.08);
+        }
+
+        .progress {
+            margin-top: 20px;
+
+            height: 3px;
+
+            background: rgba(255,255,255,0.06);
+            border-radius: 100px;
+
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 100%;
+
+            border-radius: inherit;
+
+            background: linear-gradient(
+                90deg,
+                #5878ff,
+                #895cff
+            );
+
+            transform-origin: left;
+        }
+
+        .actions {
+            margin-top: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            padding: 11px 17px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            color: #e2e7ff;
+            background: rgba(99, 122, 255, 0.1);
+            border: 1px solid rgba(110, 135, 255, 0.18);
+
+            font-size: 13px;
+            font-weight: 500;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .button:hover {
+            background: rgba(99, 122, 255, 0.17);
+            border-color: rgba(125, 147, 255, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .button:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        .brand {
+            color: #596275;
+
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                monospace;
+
+            font-size: 11px;
+            letter-spacing: 1.3px;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 38px 27px 30px;
+                border-radius: 20px;
+            }
+
+            .redirect-box {
+                padding: 15px;
+            }
+
+            .actions {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .brand {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<main class="container">
+
+    <section class="card">
+
+        <div class="status">
+            <span class="status-dot"></span>
+            SERVICE UNAVAILABLE
+        </div>
+
+        <div class="code">HTTP / CDN_STATUS</div>
+
+        <h1>CDN Service<br>Unavailable.</h1>
+
+        <p class="description">
+            当前 CDN 服务已停止提供访问。<br>
+            您即将被自动重定向至新的服务地址。
+        </p>
+
+        <div class="redirect-box">
+
+            <div class="redirect-info">
+                <div class="redirect-label">REDIRECTING TO</div>
+                <div class="redirect-url">
+                    https://pan.anineg.space/
+                </div>
+            </div>
+
+            <div class="countdown" id="countdown">5</div>
+
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="actions">
+
+            <span class="brand">
+                ANINEG / CDN
+            </span>
+
+            <a
+                href="https://pan.anineg.space/"
+                class="button"
+            >
+                立即前往
+                <span class="arrow">→</span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+    // ==============================
+    // 设置自动跳转时间（秒）
+    // ==============================
+    const COUNTDOWN_SECONDS = 5;
+
+    // 跳转目标
+    const REDIRECT_URL = "https://pan.anineg.space/";
+
+    const countdownElement = document.getElementById("countdown");
+    const progressBar = document.getElementById("progressBar");
+
+    let remaining = COUNTDOWN_SECONDS;
+
+    countdownElement.textContent = remaining;
+
+    // 进度条动画
+    progressBar.animate(
+        [
+            { transform: "scaleX(1)" },
+            { transform: "scaleX(0)" }
+        ],
+        {
+            duration: COUNTDOWN_SECONDS * 1000,
+            easing: "linear",
+            fill: "forwards"
+        }
+    );
+
+    const timer = setInterval(() => {
+
+        remaining--;
+
+        countdownElement.textContent = Math.max(remaining, 0);
+
+        if (remaining <= 0) {
+            clearInterval(timer);
+            window.location.replace(REDIRECT_URL);
+        }
+
+    }, 1000);
+</script>
+
+</body>
+</html>
